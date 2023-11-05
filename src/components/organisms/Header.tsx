@@ -52,6 +52,7 @@ export const Header = (): JSX.Element => {
 					}
 				`}
 			>
+				<Link to="https://blog.aki.wtf/">ブログ</Link>
 				<Link to="/portfolio">ポートフォリオ</Link>
 				<Link to="/works">お仕事</Link>
 				<Link to="/contact">お問い合わせ</Link>
@@ -93,12 +94,12 @@ export const Header = (): JSX.Element => {
 								background-color: ${navOpen ? "#82fc81" : "white"};
 							}
 
-							&:first-child {
+							&:first-of-type {
 								top: ${navOpen ? "50%" : "0"};
 								transform: rotate(${navOpen ? "45deg" : "0deg"}) translateY(${navOpen ? "-50%" : "0"});
 							}
 
-							&:last-child {
+							&:last-of-type {
 								bottom: ${navOpen ? "50%" : "0"};
 								width: ${navOpen ? "100%" : "80%"};
 								transform: rotate(${navOpen ? "-45deg" : "0deg"}) translateY(${navOpen ? "50%" : "0"});
@@ -139,6 +140,7 @@ export const Header = (): JSX.Element => {
 						}
 					`}
 				>
+					<Link to="https://blog.aki.wtf/">ブログ</Link>
 					<Link to="/portfolio">ポートフォリオ</Link>
 					<Link to="/works">お仕事</Link>
 					<Link to="/contact">お問い合わせ</Link>
