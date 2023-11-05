@@ -1,0 +1,42 @@
+---
+import { Main } from "@/routes/Main";
+import { formatPath } from "@/libs/format-path";
+import { formatTitle } from "@/libs/format-title";
+import { getTitle } from "@/libs/title";
+import "@/style.css";
+
+const path = formatPath(Astro.url.pathname);
+const pageTitle = formatTitle(getTitle("/" + path));
+
+interface Props {
+	notFound?: boolean;
+}
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="彩季のポートフォリオです。" />
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+		<meta name="author" content="彩季" />
+		<link rel="canonical" href={`https://blog.aki.wtf/${path}`} />
+		<link rel="icon" href="/favicon.ico" />
+		<title>{pageTitle}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap&text=Aki" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+	</head>
+	<body>
+		<Main client:only />
+	</body>
+</html>
+
+<style>
+	body {
+		background-color: #fc9e81;
+	}
+</style>
