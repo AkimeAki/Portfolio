@@ -1,8 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 
 export const Header = (): JSX.Element => {
+	const [navOpen, setNavOpen] = useState<boolean>(false);
+	const location = useLocation();
+
+	useEffect(() => {
+		setNavOpen(false);
+	}, [location]);
+
 	return (
 		<header
 			css={css`
@@ -33,6 +41,10 @@ export const Header = (): JSX.Element => {
 					display: flex;
 					gap: 30px;
 
+					@media screen and (max-width: 670px) {
+						display: none;
+					}
+
 					a {
 						color: white;
 						font-size: 22px;
@@ -44,6 +56,94 @@ export const Header = (): JSX.Element => {
 				<Link to="/works">お仕事</Link>
 				<Link to="/contact">お問い合わせ</Link>
 			</nav>
+			<div
+				css={css`
+					display: none;
+
+					@media screen and (max-width: 670px) {
+						display: block;
+					}
+				`}
+			>
+				<div
+					onClick={() => {
+						setNavOpen((status) => {
+							return !status;
+						});
+					}}
+					css={css`
+						position: fixed;
+						top: 30px;
+						right: 30px;
+						width: 30px;
+						height: 15px;
+						cursor: pointer;
+						z-index: 2;
+
+						div {
+							position: absolute;
+							width: 100%;
+							height: 2px;
+							right: 0;
+							background-color: ${navOpen ? "#fc9e81" : "white"};
+							transition-duration: 200ms;
+							transition-property: top, bottom, transform, width;
+
+							@media (prefers-color-scheme: dark) {
+								background-color: ${navOpen ? "#82fc81" : "white"};
+							}
+
+							&:first-child {
+								top: ${navOpen ? "50%" : "0"};
+								transform: rotate(${navOpen ? "45deg" : "0deg"}) translateY(${navOpen ? "-50%" : "0"});
+							}
+
+							&:last-child {
+								bottom: ${navOpen ? "50%" : "0"};
+								width: ${navOpen ? "100%" : "80%"};
+								transform: rotate(${navOpen ? "-45deg" : "0deg"}) translateY(${navOpen ? "50%" : "0"});
+							}
+						}
+					`}
+				>
+					<div />
+					<div />
+				</div>
+				<nav
+					css={css`
+						position: fixed;
+						flex-direction: column;
+						align-items: flex-end;
+						padding: 70px 30px;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						display: ${navOpen ? "flex" : "none"};
+						gap: 20px;
+						background-color: white;
+						z-index: 1;
+
+						@media (prefers-color-scheme: dark) {
+							background-color: #444444;
+						}
+
+						a {
+							color: #fc9e81;
+							font-size: 22px;
+							text-decoration: none;
+
+							@media (prefers-color-scheme: dark) {
+								color: #82fc81;
+							}
+						}
+					`}
+				>
+					<Link to="/portfolio">ポートフォリオ</Link>
+					<Link to="/works">お仕事</Link>
+					<Link to="/contact">お問い合わせ</Link>
+				</nav>
+			</div>
 		</header>
 	);
 };

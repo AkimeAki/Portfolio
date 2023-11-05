@@ -17,10 +17,10 @@ export const Main = (): JSX.Element => {
 			<div
 				css={css`
 					width: 100%;
-					max-width: 970px;
+					max-width: 1000px;
 					height: 100%;
 					margin: 0 auto;
-					padding: 30px 10px;
+					padding: 30px;
 				`}
 			>
 				<div
