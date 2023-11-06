@@ -5,6 +5,7 @@ import { Home } from "@/routes/pages/Home";
 import { Portfolio } from "@/routes/pages/Portfolio";
 import { Contact } from "@/routes/pages/Contact";
 import { Works } from "@/routes/pages/Works";
+import { Links } from "@/routes/pages/Links";
 import { NotFound } from "@/routes/pages/NotFound";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
@@ -35,7 +36,8 @@ export const Main = (): JSX.Element => {
 					<Header />
 					<main
 						css={css`
-							height: calc(100% - (80px + 100px));
+							position: relative;
+							min-height: calc(100% - (80px + 100px));
 						`}
 					>
 						<Routes>
@@ -43,6 +45,7 @@ export const Main = (): JSX.Element => {
 							<Route path="/portfolio" element={<Router element={<Portfolio />} />} />
 							<Route path="/contact" element={<Router element={<Contact />} />} />
 							<Route path="/works" element={<Router element={<Works />} />} />
+							<Route path="/links" element={<Router element={<Links />} />} />
 							<Route path="*" element={<Router element={<NotFound />} />} />
 						</Routes>
 					</main>

@@ -5,11 +5,14 @@ export const Home = (): JSX.Element => {
 	return (
 		<div
 			css={css`
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				gap: 10px;
-				height: 100%;
 				user-select: none;
 				pointer-events: none;
 			`}

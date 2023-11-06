@@ -41,7 +41,7 @@ export const Header = (): JSX.Element => {
 					display: flex;
 					gap: 30px;
 
-					@media screen and (max-width: 750px) {
+					@media screen and (max-width: 900px) {
 						display: none;
 					}
 
@@ -55,13 +55,14 @@ export const Header = (): JSX.Element => {
 				<Link to="https://blog.aki.wtf/">ブログ</Link>
 				<Link to="/portfolio">ポートフォリオ</Link>
 				<Link to="/works">お仕事</Link>
+				<Link to="/links">各種リンク</Link>
 				<Link to="/contact">お問い合わせ</Link>
 			</nav>
 			<div
 				css={css`
 					display: none;
 
-					@media screen and (max-width: 750px) {
+					@media screen and (max-width: 900px) {
 						display: block;
 					}
 				`}
@@ -153,6 +154,7 @@ export const Header = (): JSX.Element => {
 					<Link to="https://blog.aki.wtf/">ブログ</Link>
 					<Link to="/portfolio">ポートフォリオ</Link>
 					<Link to="/works">お仕事</Link>
+					<Link to="/links">各種リンク</Link>
 					<Link to="/contact">お問い合わせ</Link>
 				</nav>
 			</div>
