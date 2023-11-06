@@ -41,7 +41,7 @@ export const Header = (): JSX.Element => {
 					display: flex;
 					gap: 30px;
 
-					@media screen and (max-width: 670px) {
+					@media screen and (max-width: 750px) {
 						display: none;
 					}
 
@@ -61,7 +61,7 @@ export const Header = (): JSX.Element => {
 				css={css`
 					display: none;
 
-					@media screen and (max-width: 670px) {
+					@media screen and (max-width: 750px) {
 						display: block;
 					}
 				`}
@@ -74,12 +74,17 @@ export const Header = (): JSX.Element => {
 					}}
 					css={css`
 						position: fixed;
-						top: 30px;
-						right: 30px;
+						top: 60px;
+						right: 60px;
 						width: 30px;
 						height: 15px;
 						cursor: pointer;
 						z-index: 2;
+
+						@media screen and (max-width: 550px) {
+							top: 30px;
+							right: 30px;
+						}
 
 						div {
 							position: absolute;
@@ -115,7 +120,7 @@ export const Header = (): JSX.Element => {
 						position: fixed;
 						flex-direction: column;
 						align-items: flex-end;
-						padding: 70px 30px;
+						padding: 100px 60px;
 						top: 0;
 						left: 0;
 						width: 100%;
@@ -129,10 +134,15 @@ export const Header = (): JSX.Element => {
 							background-color: #444444;
 						}
 
+						@media screen and (max-width: 550px) {
+							padding: 70px 30px;
+						}
+
 						a {
 							color: #fc9e81;
 							font-size: 22px;
 							text-decoration: none;
+							user-select: none;
 
 							@media (prefers-color-scheme: dark) {
 								color: #82fc81;

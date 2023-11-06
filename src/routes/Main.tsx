@@ -20,7 +20,11 @@ export const Main = (): JSX.Element => {
 					max-width: 1000px;
 					height: 100%;
 					margin: 0 auto;
-					padding: 30px;
+					padding: 30px 60px;
+
+					@media screen and (max-width: 550px) {
+						padding: 0 30px;
+					}
 				`}
 			>
 				<div

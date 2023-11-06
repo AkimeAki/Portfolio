@@ -23,6 +23,7 @@ export const Footer = (): JSX.Element => {
 				css={css`
 					display: flex;
 					gap: 10px;
+					user-select: none;
 
 					a {
 						border-radius: 50%;

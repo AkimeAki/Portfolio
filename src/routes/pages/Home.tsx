@@ -14,15 +14,15 @@ export const Home = (): JSX.Element => {
 				pointer-events: none;
 			`}
 		>
-			<img
+			<div
 				css={css`
-					display: block;
 					width: 100px;
+					mask-image: url(/img/ghost.svg);
+					mask-repeat: no-repeat;
+					mask-position: center;
 					aspect-ratio: 1/1;
-					filter: brightness(0) invert(1);
+					background-color: white;
 				`}
-				src="/img/ghost.png"
-				alt="アイコン"
 			/>
 			<div
 				css={css`
