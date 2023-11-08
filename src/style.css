@@ -6,6 +6,7 @@
 		"Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 	font-size: 18px;
 	line-height: 1.6;
+	font-weight: 400;
 }
 *:focus {
 	outline: none;

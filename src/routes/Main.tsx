@@ -6,6 +6,7 @@ import { Portfolio } from "@/routes/pages/Portfolio";
 import { Contact } from "@/routes/pages/Contact";
 import { Works } from "@/routes/pages/Works";
 import { Links } from "@/routes/pages/Links";
+import { About } from "@/routes/pages/About";
 import { NotFound } from "@/routes/pages/NotFound";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
@@ -46,6 +47,7 @@ export const Main = (): JSX.Element => {
 							<Route path="/contact" element={<Router element={<Contact />} />} />
 							<Route path="/works" element={<Router element={<Works />} />} />
 							<Route path="/links" element={<Router element={<Links />} />} />
+							<Route path="/about" element={<Router element={<About />} />} />
 							<Route path="*" element={<Router element={<NotFound />} />} />
 						</Routes>
 					</main>

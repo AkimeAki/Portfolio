@@ -12,6 +12,9 @@ export const getTitle = (path: string): string | undefined => {
 		case "/works":
 			return "お仕事";
 
+		case "/about":
+			return "🔎";
+
 		default:
 			return undefined;
 	}

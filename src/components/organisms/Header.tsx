@@ -52,11 +52,11 @@ export const Header = (): JSX.Element => {
 					}
 				`}
 			>
+				<Link to="/about">あばうと</Link>
 				<Link to="https://blog.aki.wtf/">ブログ</Link>
 				<Link to="/portfolio">ポートフォリオ</Link>
 				<Link to="/works">お仕事</Link>
 				<Link to="/links">各種リンク</Link>
-				<Link to="/contact">お問い合わせ</Link>
 			</nav>
 			<div
 				css={css`
@@ -151,11 +151,11 @@ export const Header = (): JSX.Element => {
 						}
 					`}
 				>
+					<Link to="/about">あばうと</Link>
 					<Link to="https://blog.aki.wtf/">ブログ</Link>
 					<Link to="/portfolio">ポートフォリオ</Link>
 					<Link to="/works">お仕事</Link>
 					<Link to="/links">各種リンク</Link>
-					<Link to="/contact">お問い合わせ</Link>
 				</nav>
 			</div>
 		</header>
