@@ -5,6 +5,14 @@ import { SectionTitle, SectionTitle2 } from "@/components/atoms/SectionTitle";
 const tableStyle = css`
 	th {
 		text-align: left;
+		width: 150px;
+		vertical-align: top;
+	}
+
+	@media screen and (max-width: 500px) {
+		* {
+			font-size: 16px;
+		}
 	}
 `;
 
