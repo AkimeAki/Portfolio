@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { SectionTitle, SectionTitle2 } from "@/components/atoms/SectionTitle";
-import { PortfolioWeb, PortfolioYouTube } from "@/components/atoms/Portfolio";
+import { PortfolioWeb, PortfolioYouTube, PortfolioChromeExtension } from "@/components/atoms/Portfolio";
 
 export const Portfolio = (): JSX.Element => {
 	return (
@@ -22,19 +22,38 @@ export const Portfolio = (): JSX.Element => {
 			</div>
 			<div>
 				<SectionTitle2>YouTube用エンディング</SectionTitle2>
+				<p>Adobe Premiere ProとAdobe Affter Effectsを使用しました。</p>
 				<PortfolioYouTube url="AzuWH9S4jRk?start=22" />
 			</div>
 			<div>
 				<SectionTitle2>ニコニコ動画用エンディング</SectionTitle2>
+				<p>Adobe Premiere ProとAdobe Affter Effectsを使用しました。</p>
 				<PortfolioYouTube url="9-wqOhxLYyw?start=22" />
 			</div>
 			<div>
 				<SectionTitle2>YouTube用エンディング2</SectionTitle2>
+				<p>AviUtlで作成しました。</p>
 				<PortfolioYouTube url="bxIPbOl98f0" />
 			</div>
 			<div>
 				<SectionTitle2>ブログ</SectionTitle2>
+				<p>Astroを使用して作成しました。Cloudflare Pagesでホスティングしています。</p>
 				<PortfolioWeb url="https://blog.aki.wtf/" />
+			</div>
+			<div>
+				<SectionTitle2>Keybinds for Google Chat</SectionTitle2>
+				<p>Google ChatのキーバインドをカスタマイズするChrome拡張機能です。</p>
+				<PortfolioChromeExtension id="kabocfciobpmopkcbiphmgdljpdlighk" iframely="RzrynWD" />
+			</div>
+			<div>
+				<SectionTitle2>Convert and Download Image</SectionTitle2>
+				<p>画像の拡張子を変換した上で保存することができるChrome拡張機能です。</p>
+				<PortfolioChromeExtension id="kinldkcfdohpgpedpglhcfjenoaklhkk" iframely="i0SuWW9" />
+			</div>
+			<div>
+				<SectionTitle2>Print for Google Apps Script Page</SectionTitle2>
+				<p>Google Apps Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。</p>
+				<PortfolioChromeExtension id="gacknebdjgldkfjibmbkkdbkihomoiaj" iframely="y7kSzMn" />
 			</div>
 		</div>
 	);

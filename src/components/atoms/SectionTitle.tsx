@@ -11,6 +11,10 @@ export const SectionTitle = ({ children }: Props): JSX.Element => {
 			css={css`
 				font-weight: 700;
 				font-size: 40px;
+
+				@media screen and (max-width: 550px) {
+					font-size: 30px;
+				}
 			`}
 		>
 			{children}
@@ -24,6 +28,10 @@ export const SectionTitle2 = ({ children }: Props): JSX.Element => {
 			css={css`
 				font-weight: 700;
 				font-size: 30px;
+
+				@media screen and (max-width: 550px) {
+					font-size: 20px;
+				}
 			`}
 		>
 			{children}

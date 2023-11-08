@@ -1,11 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useEffect } from "react";
 
-interface Props {
-	url: string;
-}
-
-export const PortfolioWeb = ({ url }: Props): JSX.Element => {
+export const PortfolioWeb = ({ url }: { url: string }): JSX.Element => {
 	return (
 		<div
 			css={css`
@@ -81,7 +78,7 @@ export const PortfolioWeb = ({ url }: Props): JSX.Element => {
 	);
 };
 
-export const PortfolioYouTube = ({ url }: Props): JSX.Element => {
+export const PortfolioYouTube = ({ url }: { url: string }): JSX.Element => {
 	return (
 		<iframe
 			css={css`
@@ -94,5 +91,30 @@ export const PortfolioYouTube = ({ url }: Props): JSX.Element => {
 			title="YouTube video player"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		/>
+	);
+};
+
+export const PortfolioChromeExtension = ({ id, iframely }: { id: string; iframely: string }): JSX.Element => {
+	useEffect(() => {
+		(window as any).iframely?.load();
+	}, []);
+
+	return (
+		<>
+			<div className="iframely-embed">
+				<div
+					className="iframely-responsive"
+					css={css`
+						height: 160px;
+						padding-bottom: 0;
+					`}
+				>
+					<a
+						href={`https://chrome.google.com/webstore/detail/${id}`}
+						data-iframely-url={`//iframely.net/${iframely}`}
+					/>
+				</div>
+			</div>
+		</>
 	);
 };
