@@ -24,7 +24,8 @@ export const Portfolio = (): JSX.Element => {
 				css={css`
 					display: flex;
 					flex-wrap: wrap;
-					gap: 30px;
+					row-gap: 50px;
+					column-gap: 30px;
 
 					& > div {
 						display: flex;
@@ -62,10 +63,10 @@ export const Portfolio = (): JSX.Element => {
 				</div>
 				<div>
 					<div>
-						<SectionTitle2>ブログ</SectionTitle2>
-						<p>Astroを使用して作成しました。Cloudflare Pagesでホスティングしています。</p>
+						<SectionTitle2>ポートフォリオ（このサイト）</SectionTitle2>
+						<p>Astro + Reactを使用して作成しました。Cloudflare Pagesでホスティングしています。</p>
 					</div>
-					<PortfolioWeb url="https://blog.aki.wtf/" />
+					<PortfolioWeb url="https://aki.wtf/" />
 				</div>
 				<div>
 					<div>
