@@ -50,8 +50,15 @@ ol {
 	margin-inline-end: 0;
 }
 a {
-	color: #1976d2;
+	color: #ff0000;
 }
+
+@media (prefers-color-scheme: dark) {
+	a {
+		color: #56c7ff;
+	}
+}
+
 p {
 	margin-bottom: 10px;
 }

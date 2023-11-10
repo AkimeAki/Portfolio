@@ -15,6 +15,9 @@ export const getTitle = (path: string): string | undefined => {
 		case "/about":
 			return "🔎";
 
+		case "/links":
+			return "各種リンク";
+
 		default:
 			return undefined;
 	}

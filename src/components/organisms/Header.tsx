@@ -53,7 +53,9 @@ export const Header = (): JSX.Element => {
 				`}
 			>
 				<Link to="/about">あばうと</Link>
-				<Link to="https://blog.aki.wtf/">ブログ</Link>
+				<Link to="https://blog.aki.wtf/" target="_blank">
+					ブログ
+				</Link>
 				<Link to="/portfolio">ポートフォリオ</Link>
 				<Link to="/works">お仕事</Link>
 				<Link to="/links">各種リンク</Link>
@@ -80,7 +82,7 @@ export const Header = (): JSX.Element => {
 						width: 30px;
 						height: 15px;
 						cursor: pointer;
-						z-index: 2;
+						z-index: 9999;
 
 						@media screen and (max-width: 550px) {
 							top: 30px;
@@ -129,7 +131,7 @@ export const Header = (): JSX.Element => {
 						display: ${navOpen ? "flex" : "none"};
 						gap: 20px;
 						background-color: white;
-						z-index: 1;
+						z-index: 999;
 
 						@media (prefers-color-scheme: dark) {
 							background-color: #444444;
@@ -152,7 +154,9 @@ export const Header = (): JSX.Element => {
 					`}
 				>
 					<Link to="/about">あばうと</Link>
-					<Link to="https://blog.aki.wtf/">ブログ</Link>
+					<Link to="https://blog.aki.wtf/" target="_blank">
+						ブログ
+					</Link>
 					<Link to="/portfolio">ポートフォリオ</Link>
 					<Link to="/works">お仕事</Link>
 					<Link to="/links">各種リンク</Link>

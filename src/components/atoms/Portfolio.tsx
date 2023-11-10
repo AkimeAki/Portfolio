@@ -1,67 +1,52 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const PortfolioWeb = ({ url }: { url: string }): JSX.Element => {
+	const [uniqueKey] = useState<string>(
+		new Date().getTime().toString(16) + Math.floor(1000 * Math.random()).toString(16)
+	);
+
+	useEffect(() => {
+		const resize = (): void => {
+			const wrapper = document.querySelector(`.portfolio-web-wrapper-${uniqueKey}`);
+
+			if (wrapper !== null) {
+				const iframe = wrapper.querySelector("iframe");
+				if (iframe !== null) {
+					iframe.style.transform = `scale(${wrapper.clientWidth / 1300})`;
+				}
+			}
+		};
+
+		resize();
+		window.addEventListener("resize", resize, false);
+
+		return () => {
+			window.removeEventListener("resize", resize, false);
+		};
+	}, []);
+
 	return (
 		<div
+			className={`portfolio-web-wrapper-${uniqueKey}`}
 			css={css`
 				position: relative;
-				width: 650px;
+				width: 100%;
 				aspect-ratio: 16/9;
 				overflow: hidden;
-
-				@media screen and (max-width: 780px) {
-					width: 520px;
-				}
-
-				@media screen and (max-width: 635px) {
-					width: 390px;
-				}
-
-				@media screen and (max-width: 460px) {
-					width: 325px;
-				}
-
-				@media screen and (max-width: 400px) {
-					width: 260px;
-				}
-
-				@media screen and (max-width: 328px) {
-					width: 195px;
-				}
 			`}
 		>
 			<iframe
 				css={css`
-					width: 1300px;
 					aspect-ratio: 16/9;
 					transform-origin: 0 0;
-					transform: scale(0.5);
 					border: none;
-
-					@media screen and (max-width: 780px) {
-						transform: scale(0.4);
-					}
-
-					@media screen and (max-width: 635px) {
-						transform: scale(0.3);
-					}
-
-					@media screen and (max-width: 460px) {
-						transform: scale(0.25);
-					}
-
-					@media screen and (max-width: 400px) {
-						transform: scale(0.2);
-					}
-
-					@media screen and (max-width: 328px) {
-						transform: scale(0.15);
-					}
+					width: 1300px;
 				`}
 				src={url}
 			/>
+			<canvas />
 			<a
 				css={css`
 					position: absolute;
@@ -83,7 +68,6 @@ export const PortfolioYouTube = ({ url }: { url: string }): JSX.Element => {
 		<iframe
 			css={css`
 				width: 100%;
-				max-width: 500px;
 				aspect-ratio: 16/9;
 				border: none;
 			`}

@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { SectionTitle, SectionTitle2 } from "@/components/atoms/SectionTitle";
+import { Link } from "react-router-dom";
 
 const tableStyle = css`
 	th {
@@ -43,13 +44,18 @@ export const About = (): JSX.Element => {
 				<p>動画編集するタイプのウェブエンジニアです。</p>
 			</div>
 			<div>
-				<SectionTitle>作品</SectionTitle>
-				<p>作ったものはポートフォリオページに載せています。</p>
+				<SectionTitle>作ったもの</SectionTitle>
+				<p>
+					作ったものは<Link to="/portfolio">ポートフォリオページ</Link>に載せています。
+				</p>
 			</div>
 			<div>
 				<SectionTitle>お仕事</SectionTitle>
 				<p>動画編集もしくは、ウェブ制作の依頼受け付けています。</p>
 				<p>✉ aki@magic-pla.net か、TwitterのDMなど連絡が取れるもので連絡くれると嬉しいです。</p>
+				<p>
+					詳しくは<Link to="/works">お仕事ページ</Link>をご覧ください。
+				</p>
 			</div>
 			<div
 				css={css`
@@ -90,10 +96,6 @@ export const About = (): JSX.Element => {
 								<th>なんとかわかる：</th>
 								<td>Deno, Laravel, NW.js</td>
 							</tr>
-							<tr>
-								<th>存在は知ってる：</th>
-								<td>Babylon.js</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -122,7 +124,7 @@ export const About = (): JSX.Element => {
 						<tbody>
 							<tr>
 								<th>ちょっとわかる：</th>
-								<td>Visual Studio Code, AviUtl, WordPress, Docker, Git, GitHub</td>
+								<td>Visual Studio Code, AviUtl, WordPress, microCMS, Docker, Git, GitHub</td>
 							</tr>
 							<tr>
 								<th>なんとかわかる：</th>

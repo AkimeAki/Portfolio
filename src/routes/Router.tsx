@@ -14,6 +14,7 @@ export const Router = ({ element }: Props): JSX.Element => {
 	useEffect(() => {
 		const path = "/" + formatPath(location.pathname);
 		const title = getTitle(path);
+		document.body.scrollTo(0, 0);
 		document.title = formatTitle(title);
 	}, [location]);
 
