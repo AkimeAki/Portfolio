@@ -10,7 +10,7 @@ export const SectionTitle = ({ children }: Props): JSX.Element => {
 		<h2
 			css={css`
 				font-weight: 700;
-				font-size: 40px;
+				font-size: 35px;
 
 				@media screen and (max-width: 550px) {
 					font-size: 30px;

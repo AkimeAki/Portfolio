@@ -26,7 +26,9 @@ export const Works = (): JSX.Element => {
 				<p>
 					個人でお仕事を請け負った経験があまりないため、比較的に金額は安価で対応させていただいています。予算や納期の相談などお待ちしています。
 				</p>
-				<SectionTitle2>出来そうなこと</SectionTitle2>
+			</div>
+			<div>
+				<SectionTitle>出来そうなこと</SectionTitle>
 				<p>動画編集</p>
 				<ul>
 					<li>ゲーム実況の動画編集</li>
