@@ -56,7 +56,7 @@ export const Header = (): JSX.Element => {
 				<Link to="https://blog.aki.wtf/" target="_blank">
 					ブログ
 				</Link>
-				<Link to="/portfolio">ポートフォリオ</Link>
+				<Link to="/portfolio">作ったもの</Link>
 				<Link to="/works">お仕事</Link>
 				<Link to="/links">各種リンク</Link>
 			</nav>
@@ -157,7 +157,7 @@ export const Header = (): JSX.Element => {
 					<Link to="https://blog.aki.wtf/" target="_blank">
 						ブログ
 					</Link>
-					<Link to="/portfolio">ポートフォリオ</Link>
+					<Link to="/portfolio">作ったもの</Link>
 					<Link to="/works">お仕事</Link>
 					<Link to="/links">各種リンク</Link>
 				</nav>

@@ -46,7 +46,7 @@ export const About = (): JSX.Element => {
 			<div>
 				<SectionTitle>作ったもの</SectionTitle>
 				<p>
-					作ったものは<Link to="/portfolio">ポートフォリオページ</Link>に載せています。
+					作ったものは<Link to="/portfolio">作ったものページ</Link>に載せています。
 				</p>
 			</div>
 			<div>

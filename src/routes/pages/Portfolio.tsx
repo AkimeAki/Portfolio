@@ -17,7 +17,7 @@ export const Portfolio = (): JSX.Element => {
 			`}
 		>
 			<div>
-				<SectionTitle>ポートフォリオ</SectionTitle>
+				<SectionTitle>作ったもの</SectionTitle>
 				<p>作ったもの置いてます。</p>
 			</div>
 			<div
