@@ -78,7 +78,7 @@ export const PortfolioYouTube = ({ url }: { url: string }): JSX.Element => {
 	);
 };
 
-export const PortfolioChromeExtension = ({ id, iframely }: { id: string; iframely: string }): JSX.Element => {
+export const PortfolioEmbed = ({ url }: { url: string }): JSX.Element => {
 	useEffect(() => {
 		(window as any).iframely?.load();
 	}, []);
@@ -94,8 +94,8 @@ export const PortfolioChromeExtension = ({ id, iframely }: { id: string; iframel
 					`}
 				>
 					<a
-						href={`https://chrome.google.com/webstore/detail/${id}`}
-						data-iframely-url={`//iframely.net/${iframely}`}
+						href={url}
+						data-iframely-url={`//cdn.iframe.ly/api/iframe?url=${url}&key=eca76088bfa1b4e9e0d567f86d2fb456`}
 					/>
 				</div>
 			</div>

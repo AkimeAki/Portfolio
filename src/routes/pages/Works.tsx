@@ -27,26 +27,20 @@ export const Works = (): JSX.Element => {
 					個人でお仕事を請け負った経験があまりないため、比較的に金額は安価で対応させていただいています。予算や納期の相談などお待ちしています。
 				</p>
 				<SectionTitle2>出来そうなこと</SectionTitle2>
-				<p>
-					動画編集
-					<br />
-					・ゲーム実況の動画編集
-					<br />
-					・配信の切り抜き作成
-				</p>
-				<p>
-					ウェブ制作
-					<br />
-					・WordPressのテーマ作成
-					<br />
-					・HTML, CSS, JavaScriptなどを用いたコーディング
-					<br />
-					・ReactやNextなどを用いたウェブ制作
-					<br />
-					・Discord Botの開発
-					<br />
-					・ヘッドレスCMSへの移行など
-				</p>
+				<p>動画編集</p>
+				<ul>
+					<li>ゲーム実況の動画編集</li>
+					<li>配信の切り抜き作成</li>
+				</ul>
+				<p>ウェブ制作</p>
+				<ul>
+					<li>WordPressのテーマ作成</li>
+					<li>HTML, CSS, JavaScriptなどを用いたコーディング</li>
+					<li>ReactやNextなどを用いたウェブ制作</li>
+					<li>Discord Botの作成</li>
+					<li>Chrome拡張機能の作成</li>
+					<li>ヘッドレスCMSへの移行など</li>
+				</ul>
 			</div>
 		</div>
 	);
