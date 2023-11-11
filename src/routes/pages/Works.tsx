@@ -113,6 +113,15 @@ export const Works = (): JSX.Element => {
 								<td>8,000円/サイト</td>
 							</tr>
 							<tr>
+								<th>
+									WordPressからmicroCMSへの移行
+									<ul>
+										<li>デザインそのまま</li>
+									</ul>
+								</th>
+								<td>20,000円/サイト</td>
+							</tr>
+							<tr>
 								<th>Chrome拡張機能制作</th>
 								<td>2,000円/機能</td>
 							</tr>
