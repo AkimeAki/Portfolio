@@ -36,7 +36,7 @@ export const Portfolio = (): JSX.Element => {
 	}, [selectTab]);
 
 	useEffect(() => {
-		window.iframely?.load();
+		(window as any).iframely?.load();
 	}, [portfolioContents]);
 
 	return (
