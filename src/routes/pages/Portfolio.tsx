@@ -6,11 +6,12 @@ import { Button } from "@/components/atoms/Button";
 import { useEffect, useState } from "react";
 import { MainLayout } from "@/layouts/MainLayout";
 import { getListContents } from "@/libs/microcms";
-import type { MicroCMSPortfolio } from "@/libs/microcms";
+import type { MicroCMSCategory, MicroCMSPortfolio } from "@/libs/microcms";
 import type { MicroCMSListResponse } from "microcms-js-sdk";
+import { ContentWrapper } from "@/components/molecules/ContentWrapper";
 
 export const Portfolio = (): JSX.Element => {
-	const [selectTab, setSelectTab] = useState<"movie" | "web" | "chrome" | "mctexture" | "discord">("movie");
+	const [selectTab, setSelectTab] = useState<string>("movie");
 	const [portfolioContents, setPortfolioContents] = useState<MicroCMSListResponse<MicroCMSPortfolio>>({
 		contents: [],
 		totalCount: 0,
@@ -19,6 +20,25 @@ export const Portfolio = (): JSX.Element => {
 	});
 	const [loading, setLoading] = useState<boolean>(true);
 	const [bodyHeight, setBodyHeight] = useState<number>(0);
+	const [tabs, setTabs] = useState<MicroCMSListResponse<MicroCMSCategory>>({
+		contents: [],
+		totalCount: 0,
+		limit: 0,
+		offset: 0
+	});
+
+	useEffect(() => {
+		const getTabs = async (): Promise<void> => {
+			setLoading(true);
+			const categories = await getListContents<MicroCMSCategory>("categories", {
+				orders: "publishedAt"
+			});
+			setTabs(categories);
+			setLoading(false);
+		};
+
+		void getTabs();
+	}, []);
 
 	useEffect(() => {
 		const getContents = async (): Promise<void> => {
@@ -41,10 +61,10 @@ export const Portfolio = (): JSX.Element => {
 
 	return (
 		<MainLayout>
-			<div>
+			<ContentWrapper>
 				<SectionTitle>作ったもの</SectionTitle>
 				<p>作ったもの置いてます。</p>
-			</div>
+			</ContentWrapper>
 			<div
 				css={css`
 					display: flex;
@@ -60,46 +80,17 @@ export const Portfolio = (): JSX.Element => {
 					}
 				`}
 			>
-				<Button
-					onClick={() => {
-						setSelectTab("movie");
-					}}
-					selected={selectTab === "movie"}
-				>
-					動画
-				</Button>
-				<Button
-					onClick={() => {
-						setSelectTab("web");
-					}}
-					selected={selectTab === "web"}
-				>
-					ウェブサイト
-				</Button>
-				<Button
-					onClick={() => {
-						setSelectTab("chrome");
-					}}
-					selected={selectTab === "chrome"}
-				>
-					Chrome 拡張機能
-				</Button>
-				<Button
-					onClick={() => {
-						setSelectTab("mctexture");
-					}}
-					selected={selectTab === "mctexture"}
-				>
-					Minecraft リソースパック
-				</Button>
-				<Button
-					onClick={() => {
-						setSelectTab("discord");
-					}}
-					selected={selectTab === "discord"}
-				>
-					Discord Bot
-				</Button>
+				{tabs.contents.map((content) => (
+					<Button
+						key={content.id}
+						onClick={() => {
+							setSelectTab(content.id);
+						}}
+						selected={selectTab === content.id}
+					>
+						{content.name}
+					</Button>
+				))}
 			</div>
 			<div
 				css={css`

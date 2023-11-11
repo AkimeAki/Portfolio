@@ -44,12 +44,14 @@ const client = createClient({
 	apiKey: import.meta.env.PUBLIC_MICROCMS_API_KEY
 });
 
+export interface MicroCMSCategory {
+	name: string;
+}
+
 export interface MicroCMSPortfolio {
 	title: string;
 	description: string;
-	category: {
-		name: string;
-	} & MicroCMSListContent;
+	category: MicroCMSCategory & MicroCMSListContent;
 	content:
 		| Array<{
 				fieldId: "card";
