@@ -19,12 +19,7 @@ const tableStyle = css`
 		}
 
 		th {
-			display: block;
-		}
-
-		td {
-			display: block;
-			padding-left: 30px;
+			width: 130px;
 		}
 	}
 `;
@@ -126,7 +121,7 @@ export const About = (): JSX.Element => {
 							<th>ちょっとわかる：</th>
 							<td>
 								Visual Studio Code,{" "}
-								<span css={BackImageStyle("/img/icon/white/aviutl.png", 30, 50, -20)}>AviUtl</span>,
+								<span css={BackImageStyle("/img/icon/white/aviutl.png", 30, -30, -20)}>AviUtl</span>,
 								WordPress, microCMS, Docker, Git, GitHub
 							</td>
 						</tr>
