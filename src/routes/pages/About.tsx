@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { SectionTitle, SectionTitle2 } from "@/components/atoms/SectionTitle";
 import { Link } from "react-router-dom";
+import { MainLayout } from "@/layouts/MainLayout";
 
 const tableStyle = css`
 	th {
@@ -28,17 +29,7 @@ const tableStyle = css`
 
 export const About = (): JSX.Element => {
 	return (
-		<div
-			css={css`
-				display: flex;
-				flex-direction: column;
-				gap: 30px;
-
-				p {
-					line-height: 1.8;
-				}
-			`}
-		>
+		<MainLayout>
 			<div>
 				<SectionTitle>私について</SectionTitle>
 				<p>動画編集するタイプのウェブエンジニアです。</p>
@@ -52,7 +43,14 @@ export const About = (): JSX.Element => {
 			<div>
 				<SectionTitle>お仕事</SectionTitle>
 				<p>動画編集もしくは、ウェブ制作の依頼受け付けています。</p>
-				<p>✉ aki@magic-pla.net か、TwitterのDMなど連絡が取れるもので連絡くれると嬉しいです。</p>
+				<p>
+					<Link to="mailto:aki@magic-pla.net">✉ aki@magic-pla.net</Link>
+					か、
+					<Link to="https://x.com/Akime_Aki" target="_blank">
+						X (Twitter)
+					</Link>
+					のDMなど連絡が取れるもので連絡くれると嬉しいです。
+				</p>
 				<p>
 					詳しくは<Link to="/works">お仕事ページ</Link>をご覧ください。
 				</p>
@@ -134,6 +132,6 @@ export const About = (): JSX.Element => {
 					</table>
 				</div>
 			</div>
-		</div>
+		</MainLayout>
 	);
 };

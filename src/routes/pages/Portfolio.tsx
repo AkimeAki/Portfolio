@@ -4,22 +4,13 @@ import { SectionTitle, SectionTitle2 } from "@/components/atoms/SectionTitle";
 import { PortfolioWeb, PortfolioYouTube, PortfolioEmbed } from "@/components/atoms/Portfolio";
 import { Button } from "@/components/atoms/Button";
 import { useState } from "react";
+import { MainLayout } from "@/layouts/MainLayout";
 
 export const Portfolio = (): JSX.Element => {
 	const [selectTab, setSelectTab] = useState<"movie" | "web" | "chrome" | "mctexture">("movie");
 
 	return (
-		<div
-			css={css`
-				display: flex;
-				flex-direction: column;
-				gap: 30px;
-
-				p {
-					line-height: 1.8;
-				}
-			`}
-		>
+		<MainLayout>
 			<div>
 				<SectionTitle>作ったもの</SectionTitle>
 				<p>作ったもの置いてます。</p>
@@ -190,6 +181,6 @@ export const Portfolio = (): JSX.Element => {
 					</>
 				)}
 			</div>
-		</div>
+		</MainLayout>
 	);
 };

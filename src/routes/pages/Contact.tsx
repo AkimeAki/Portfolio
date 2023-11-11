@@ -1,3 +1,5 @@
+import { MainLayout } from "@/layouts/MainLayout";
+
 export const Contact = (): JSX.Element => {
-	return <div>お問い合わせ</div>;
+	return <MainLayout>お問い合わせ</MainLayout>;
 };

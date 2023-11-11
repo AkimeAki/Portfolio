@@ -20,6 +20,7 @@ export const Button = ({ children, selected = false, onClick }: Props): JSX.Elem
 				border: 2px solid white;
 				transition-duration: 200ms;
 				transition-property: background-color;
+				color: ${selected ? "white" : "#2e2e2e"};
 
 				@media (prefers-color-scheme: dark) {
 					background-color: ${selected ? "#6ae369" : "white"};

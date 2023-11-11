@@ -3,7 +3,6 @@ import { Main } from "@/routes/Main";
 import { formatPath } from "@/libs/format-path";
 import { formatTitle } from "@/libs/format-title";
 import { getTitle } from "@/libs/title";
-import "@/style.css";
 
 const path = formatPath(Astro.url.pathname);
 const pageTitle = formatTitle(getTitle("/" + path));
@@ -36,7 +35,29 @@ interface Props {
 	</body>
 </html>
 
-<style>
+<style is:global lang="scss">
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		font-family: "Zen Maru Gothic", "游ゴシック体", YuGothic, "游ゴシック", "メイリオ", Meiryo,
+			"Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+		font-size: 18px;
+		line-height: 1.8;
+		font-weight: 400;
+		color: white;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+	}
+
 	html {
 		overflow: hidden;
 	}
@@ -44,15 +65,42 @@ interface Props {
 	body {
 		background-color: #fc9e81;
 		overflow-y: scroll;
-	}
 
-	* {
-		color: white;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		body {
+		@media (prefers-color-scheme: dark) {
 			background-color: #283927;
 		}
+	}
+
+	ul,
+	ol {
+		padding-block-start: 0;
+		padding-block-end: 0;
+		padding-inline-start: 40px;
+		margin-inline-start: 0;
+		margin-inline-end: 0;
+	}
+
+	a {
+		color: #951034;
+
+		@media (prefers-color-scheme: dark) {
+			color: #56c7ff;
+		}
+	}
+
+	p {
+		margin-bottom: 10px;
+
+		a {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+	}
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+	img {
+		max-width: 100%;
+		height: auto;
 	}
 </style>

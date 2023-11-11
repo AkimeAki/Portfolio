@@ -24,10 +24,10 @@ export const SectionTitle = ({ children }: Props): JSX.Element => {
 
 export const SectionTitle2 = ({ children }: Props): JSX.Element => {
 	return (
-		<h2
+		<h3
 			css={css`
 				font-weight: 700;
-				font-size: 30px;
+				font-size: 25px;
 
 				@media screen and (max-width: 550px) {
 					font-size: 20px;
@@ -35,6 +35,6 @@ export const SectionTitle2 = ({ children }: Props): JSX.Element => {
 			`}
 		>
 			{children}
-		</h2>
+		</h3>
 	);
 };
