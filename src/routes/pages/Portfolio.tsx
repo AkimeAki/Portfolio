@@ -1,13 +1,43 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { SectionTitle, SectionTitle2 } from "@/components/atoms/SectionTitle";
-import { PortfolioWeb, PortfolioYouTube, PortfolioEmbed } from "@/components/atoms/Portfolio";
+import { PortfolioWeb, PortfolioYouTube } from "@/components/atoms/Portfolio";
 import { Button } from "@/components/atoms/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MainLayout } from "@/layouts/MainLayout";
+import { getListContents } from "@/libs/microcms";
+import type { MicroCMSPortfolio } from "@/libs/microcms";
+import type { MicroCMSListResponse } from "microcms-js-sdk";
 
 export const Portfolio = (): JSX.Element => {
 	const [selectTab, setSelectTab] = useState<"movie" | "web" | "chrome" | "mctexture" | "discord">("movie");
+	const [portfolioContents, setPortfolioContents] = useState<MicroCMSListResponse<MicroCMSPortfolio>>({
+		contents: [],
+		totalCount: 0,
+		limit: 0,
+		offset: 0
+	});
+	const [loading, setLoading] = useState<boolean>(true);
+	const [bodyHeight, setBodyHeight] = useState<number>(0);
+
+	useEffect(() => {
+		const getContents = async (): Promise<void> => {
+			setLoading(true);
+			setBodyHeight(document.body.clientHeight);
+			const contents = await getListContents<MicroCMSPortfolio>("portfolio", {
+				filters: `category[equals]${selectTab}`,
+				orders: "publishedAt"
+			});
+			setPortfolioContents(contents);
+			setLoading(false);
+		};
+
+		void getContents();
+	}, [selectTab]);
+
+	useEffect(() => {
+		window.iframely?.load();
+	}, [portfolioContents]);
 
 	return (
 		<MainLayout>
@@ -91,129 +121,35 @@ export const Portfolio = (): JSX.Element => {
 					}
 				`}
 			>
-				{selectTab === "movie" && (
-					<>
-						<div>
+				{loading ? (
+					<p
+						css={css`
+							height: ${bodyHeight}px;
+						`}
+					>
+						読み込み中...
+					</p>
+				) : (
+					portfolioContents.contents.map((content) => (
+						<div key={content.id}>
 							<div>
-								<SectionTitle2>YouTube用エンディング</SectionTitle2>
-								<p>Adobe Premiere ProとAdobe Affter Effectsを使用しました。</p>
+								<SectionTitle2>{content.title}</SectionTitle2>
+								<div dangerouslySetInnerHTML={{ __html: content.description }} />
 							</div>
-							<PortfolioYouTube url="AzuWH9S4jRk?start=22" />
+							{content.content.map((content, index) => (
+								<div key={index}>
+									{content.fieldId === "youtube" && (
+										<PortfolioYouTube url={`${content.ytid}?start=${content.ms}`} />
+									)}
+									{content.fieldId === "iframe" && <PortfolioWeb url={content.url} />}
+									{content.fieldId === "card" && (
+										<div dangerouslySetInnerHTML={{ __html: content.editor }} />
+									)}
+									{content.fieldId === "image" && <img src={content.image.url} />}
+								</div>
+							))}
 						</div>
-						<div>
-							<div>
-								<SectionTitle2>ニコニコ動画用エンディング</SectionTitle2>
-								<p>Adobe Premiere ProとAdobe Affter Effectsを使用しました。</p>
-							</div>
-							<PortfolioYouTube url="9-wqOhxLYyw?start=22" />
-						</div>
-						<div>
-							<div>
-								<SectionTitle2>YouTube用エンディング2</SectionTitle2>
-								<p>AviUtlで作成しました。</p>
-							</div>
-							<PortfolioYouTube url="bxIPbOl98f0" />
-						</div>
-					</>
-				)}
-				{selectTab === "web" && (
-					<>
-						<div>
-							<div>
-								<SectionTitle2>ポートフォリオ（このサイト）</SectionTitle2>
-								<p>Astro + Reactを使用して作成しました。Cloudflare Pagesでホスティングしています。</p>
-							</div>
-							<PortfolioWeb url="https://aki.wtf/" />
-						</div>
-						<div>
-							<div>
-								<SectionTitle2>ブログ</SectionTitle2>
-								<p>Astroを使用して作成しました。Cloudflare Pagesでホスティングしています。</p>
-							</div>
-							<PortfolioWeb url="https://blog.aki.wtf/" />
-						</div>
-					</>
-				)}
-				{selectTab === "chrome" && (
-					<>
-						<div>
-							<div>
-								<SectionTitle2>Keybinds for Google Chat</SectionTitle2>
-								<p>Google ChatのキーバインドをカスタマイズするChrome拡張機能です。</p>
-							</div>
-							<PortfolioEmbed url="https://chrome.google.com/webstore/detail/kabocfciobpmopkcbiphmgdljpdlighk" />
-						</div>
-						<div>
-							<div>
-								<SectionTitle2>Convert and Download Image</SectionTitle2>
-								<p>画像の拡張子を変換した上で保存することができるChrome拡張機能です。</p>
-							</div>
-							<PortfolioEmbed url="https://chrome.google.com/webstore/detail/kinldkcfdohpgpedpglhcfjenoaklhkk" />
-						</div>
-						<div>
-							<div>
-								<SectionTitle2>Print for Google Apps Script Page</SectionTitle2>
-								<p>
-									Google Apps Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。
-								</p>
-							</div>
-							<PortfolioEmbed url="https://chrome.google.com/webstore/detail/gacknebdjgldkfjibmbkkdbkihomoiaj" />
-						</div>
-						<div>
-							<div>
-								<SectionTitle2>カーソルを追従する四角いの</SectionTitle2>
-								<p>
-									全ウェブページでマウスカーソルにオブジェクトがついてきたり、リンクで形が変わったりする娯楽Chrome拡張機能です。
-								</p>
-							</div>
-							<PortfolioEmbed url="https://chrome.google.com/webstore/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn" />
-						</div>
-					</>
-				)}
-				{selectTab === "mctexture" && (
-					<>
-						<div>
-							<div>
-								<SectionTitle2>Kawaii Piglin</SectionTitle2>
-								<p>ピグリンをかわいい女の子にする3Dリソースパックです。</p>
-							</div>
-							<PortfolioEmbed url="https://a-k-i.booth.pm/items/4469914" />
-						</div>
-						<div>
-							<div>
-								<SectionTitle2>Paper Airplane Trident</SectionTitle2>
-								<p>トライデントを紙飛行機にする3Dリソースパックです。</p>
-							</div>
-							<PortfolioEmbed url="https://a-k-i.booth.pm/items/4470965" />
-						</div>
-					</>
-				)}
-				{selectTab === "discord" && (
-					<>
-						<div>
-							<div>
-								<SectionTitle2>DeepL翻訳Bot</SectionTitle2>
-								<p>リアクション付けたメッセージをDeepL翻訳するBotです。</p>
-								<p>※現在非公開</p>
-							</div>
-							<div>
-								<img src="/img/portfolio/deepl-bot-sample.png" alt="DeepL翻訳Botのサンプル画像" />
-							</div>
-						</div>
-						<div>
-							<div>
-								<SectionTitle2>Minecraftサーバー管理Bot</SectionTitle2>
-								<p>GCP上で起動しているMinecraftサーバーをDiscord上で起動、停止するBotです。</p>
-								<p>※現在非公開</p>
-							</div>
-							<div>
-								<img
-									src="/img/portfolio/mc-gcp-sample.png"
-									alt="Minecraftサーバー管理Botのサンプル画像"
-								/>
-							</div>
-						</div>
-					</>
+					))
 				)}
 			</div>
 		</MainLayout>

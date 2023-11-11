@@ -77,28 +77,3 @@ export const PortfolioYouTube = ({ url }: { url: string }): JSX.Element => {
 		/>
 	);
 };
-
-export const PortfolioEmbed = ({ url }: { url: string }): JSX.Element => {
-	useEffect(() => {
-		(window as any).iframely?.load();
-	}, []);
-
-	return (
-		<>
-			<div className="iframely-embed">
-				<div
-					className="iframely-responsive"
-					css={css`
-						height: 160px;
-						padding-bottom: 0;
-					`}
-				>
-					<a
-						href={url}
-						data-iframely-url={`//cdn.iframe.ly/api/iframe?url=${url}&key=eca76088bfa1b4e9e0d567f86d2fb456`}
-					/>
-				</div>
-			</div>
-		</>
-	);
-};
