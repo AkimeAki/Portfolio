@@ -4,6 +4,7 @@ import { SectionTitle, SectionTitle2 } from "@/components/atoms/SectionTitle";
 import { Link } from "react-router-dom";
 import { MainLayout } from "@/layouts/MainLayout";
 import { ContentWrapper } from "@/components/molecules/ContentWrapper";
+import { BackImageStyle } from "@/components/atoms/BackImageStyle";
 
 const tableStyle = css`
 	th {
@@ -47,7 +48,11 @@ export const About = (): JSX.Element => {
 				<p>
 					<Link to="mailto:aki@magic-pla.net">✉ aki@magic-pla.net</Link>
 					か、
-					<Link to="https://x.com/Akime_Aki" target="_blank">
+					<Link
+						css={BackImageStyle("/img/icon/white/twitter.png", 30, 30, -20)}
+						to="https://x.com/Akime_Aki"
+						target="_blank"
+					>
 						X (Twitter)
 					</Link>
 					のDMなど連絡が取れるもので連絡くれると嬉しいです。
@@ -82,7 +87,10 @@ export const About = (): JSX.Element => {
 					<tbody>
 						<tr>
 							<th>ちょっとわかる：</th>
-							<td>Node.js, React, Next, Astro, discord.js, Express</td>
+							<td>
+								<span css={BackImageStyle("/img/icon/white/nodejs.png", 30, -30, 20)}>Node.js</span>,
+								React, Next, Astro, discord.js, Express
+							</td>
 						</tr>
 						<tr>
 							<th>なんとかわかる：</th>
@@ -116,7 +124,11 @@ export const About = (): JSX.Element => {
 					<tbody>
 						<tr>
 							<th>ちょっとわかる：</th>
-							<td>Visual Studio Code, AviUtl, WordPress, microCMS, Docker, Git, GitHub</td>
+							<td>
+								Visual Studio Code,{" "}
+								<span css={BackImageStyle("/img/icon/white/aviutl.png", 30, 50, -20)}>AviUtl</span>,
+								WordPress, microCMS, Docker, Git, GitHub
+							</td>
 						</tr>
 						<tr>
 							<th>なんとかわかる：</th>

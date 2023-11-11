@@ -1,13 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import type { SerializedStyles } from "@emotion/react";
 
 interface Props {
 	children: React.ReactNode;
 	selected?: boolean;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
+	style?: SerializedStyles;
 }
 
-export const Button = ({ children, selected = false, onClick }: Props): JSX.Element => {
+export const Button = ({ children, selected = false, onClick, style = css`` }: Props): JSX.Element => {
 	return (
 		<button
 			onClick={onClick}
@@ -33,6 +35,8 @@ export const Button = ({ children, selected = false, onClick }: Props): JSX.Elem
 						background-color: ${selected ? "#6ae369" : "#b5ffb4"};
 					}
 				}
+
+				${style}
 			`}
 		>
 			{children}

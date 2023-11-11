@@ -12,6 +12,7 @@ export const ContentWrapper = ({ children }: Props): JSX.Element => {
 				display: flex;
 				flex-direction: column;
 				gap: 10px;
+				align-items: flex-start;
 
 				ul,
 				ol {

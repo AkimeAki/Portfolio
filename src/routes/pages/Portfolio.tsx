@@ -9,6 +9,7 @@ import { getListContents } from "@/libs/microcms";
 import type { MicroCMSCategory, MicroCMSPortfolio } from "@/libs/microcms";
 import type { MicroCMSListResponse } from "microcms-js-sdk";
 import { ContentWrapper } from "@/components/molecules/ContentWrapper";
+import { BackImageStyle } from "@/components/atoms/BackImageStyle";
 
 export const Portfolio = (): JSX.Element => {
 	const [selectTab, setSelectTab] = useState<string>("movie");
@@ -81,15 +82,41 @@ export const Portfolio = (): JSX.Element => {
 				`}
 			>
 				{tabs.contents.map((content) => (
-					<Button
-						key={content.id}
-						onClick={() => {
-							setSelectTab(content.id);
-						}}
-						selected={selectTab === content.id}
-					>
-						{content.name}
-					</Button>
+					<>
+						{content.id === "discord" ? (
+							<Button
+								key={content.id}
+								onClick={() => {
+									setSelectTab(content.id);
+								}}
+								selected={selectTab === content.id}
+								style={BackImageStyle("/img/icon/white/discord.png", -50, 50, -20)}
+							>
+								{content.name}
+							</Button>
+						) : content.id === "chrome" ? (
+							<Button
+								key={content.id}
+								onClick={() => {
+									setSelectTab(content.id);
+								}}
+								selected={selectTab === content.id}
+								style={BackImageStyle("/img/icon/white/chrome.png", 30, -30, 20)}
+							>
+								{content.name}
+							</Button>
+						) : (
+							<Button
+								key={content.id}
+								onClick={() => {
+									setSelectTab(content.id);
+								}}
+								selected={selectTab === content.id}
+							>
+								{content.name}
+							</Button>
+						)}
+					</>
 				))}
 			</div>
 			<div

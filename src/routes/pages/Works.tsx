@@ -4,10 +4,12 @@ import { MainLayout } from "@/layouts/MainLayout";
 import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import { ContentWrapper } from "@/components/molecules/ContentWrapper";
+import { BackImageStyle } from "@/components/atoms/BackImageStyle";
 
 const tableStyle = css`
 	border: 1px solid white;
 	border-collapse: collapse;
+	width: 100%;
 
 	thead {
 		th,
@@ -59,7 +61,11 @@ export const Works = (): JSX.Element => {
 				<p>
 					<Link to="mailto:aki@magic-pla.net">✉ aki@magic-pla.net</Link>
 					か、
-					<Link to="https://x.com/Akime_Aki" target="_blank">
+					<Link
+						css={BackImageStyle("/img/icon/white/twitter.png", 30, 30, -20)}
+						to="https://x.com/Akime_Aki"
+						target="_blank"
+					>
 						X (Twitter)
 					</Link>
 					のDMなど連絡が取れるもので連絡くれると嬉しいです。
