@@ -7,7 +7,7 @@ import { useState } from "react";
 import { MainLayout } from "@/layouts/MainLayout";
 
 export const Portfolio = (): JSX.Element => {
-	const [selectTab, setSelectTab] = useState<"movie" | "web" | "chrome" | "mctexture">("movie");
+	const [selectTab, setSelectTab] = useState<"movie" | "web" | "chrome" | "mctexture" | "discord">("movie");
 
 	return (
 		<MainLayout>
@@ -61,6 +61,14 @@ export const Portfolio = (): JSX.Element => {
 					selected={selectTab === "mctexture"}
 				>
 					Minecraft リソースパック
+				</Button>
+				<Button
+					onClick={() => {
+						setSelectTab("discord");
+					}}
+					selected={selectTab === "discord"}
+				>
+					Discord Bot
 				</Button>
 			</div>
 			<div
@@ -177,6 +185,33 @@ export const Portfolio = (): JSX.Element => {
 								<p>トライデントを紙飛行機にする3Dリソースパックです。</p>
 							</div>
 							<PortfolioEmbed url="https://a-k-i.booth.pm/items/4470965" />
+						</div>
+					</>
+				)}
+				{selectTab === "discord" && (
+					<>
+						<div>
+							<div>
+								<SectionTitle2>DeepL翻訳Bot</SectionTitle2>
+								<p>リアクション付けたメッセージをDeepL翻訳するBotです。</p>
+								<p>※現在非公開</p>
+							</div>
+							<div>
+								<img src="/img/portfolio/deepl-bot-sample.png" alt="DeepL翻訳Botのサンプル画像" />
+							</div>
+						</div>
+						<div>
+							<div>
+								<SectionTitle2>Minecraftサーバー管理Bot</SectionTitle2>
+								<p>GCP上で起動しているMinecraftサーバーをDiscord上で起動、停止するBotです。</p>
+								<p>※現在非公開</p>
+							</div>
+							<div>
+								<img
+									src="/img/portfolio/mc-gcp-sample.png"
+									alt="Minecraftサーバー管理Botのサンプル画像"
+								/>
+							</div>
 						</div>
 					</>
 				)}

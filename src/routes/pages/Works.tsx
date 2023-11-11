@@ -53,6 +53,7 @@ export const Works = (): JSX.Element => {
 					のDMなど連絡が取れるもので連絡くれると嬉しいです。
 				</p>
 				<p>予算や納期の相談などお待ちしています。</p>
+				<p>※制作したものは制作実績として公開させていただきます。掲載してほしくない場合はご相談ください。</p>
 			</div>
 			<div>
 				<SectionTitle>金額目安</SectionTitle>
