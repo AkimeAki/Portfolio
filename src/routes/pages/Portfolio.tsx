@@ -42,6 +42,8 @@ export const Portfolio = (): JSX.Element => {
 	}, []);
 
 	useEffect(() => {
+		let ignore = false;
+
 		const getContents = async (): Promise<void> => {
 			setLoading(true);
 			setBodyHeight(document.body.clientHeight);
@@ -49,11 +51,17 @@ export const Portfolio = (): JSX.Element => {
 				filters: `category[equals]${selectTab}`,
 				orders: "publishedAt"
 			});
-			setPortfolioContents(contents);
-			setLoading(false);
+			if (!ignore) {
+				setPortfolioContents(contents);
+				setLoading(false);
+			}
 		};
 
 		void getContents();
+
+		return () => {
+			ignore = true;
+		};
 	}, [selectTab]);
 
 	useEffect(() => {
