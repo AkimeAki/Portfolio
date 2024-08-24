@@ -1,17 +1,23 @@
 /** @jsxImportSource @emotion/react */
 
+import { openAppList } from "@/atom";
+import { sortList } from "@/lib/app-select";
 import { css } from "@emotion/react";
+import { useStore } from "@nanostores/react";
 
 interface Props {
 	children: React.ReactNode;
-	onClick: () => void;
+	id: string;
 }
 
-export default function ({ children, onClick }: Props) {
+export default function ({ children, id }: Props) {
+	const $openAppList = useStore(openAppList);
+
 	return (
 		<div
 			onClick={() => {
-				onClick();
+				history.pushState("", "", `/${id}`);
+				openAppList.set(sortList(id, $openAppList));
 			}}
 			css={css`
 				display: flex;

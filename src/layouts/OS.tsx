@@ -8,25 +8,20 @@ import { useEffect } from "react";
 import AppWindow from "@/components/AppWindow";
 import { useStore } from "@nanostores/react";
 import { openAppList } from "@/atom";
+import { sortList } from "@/lib/app-select";
 
-export default function () {
+interface Props {
+	select?: string;
+}
+
+export default function ({ select }: Props) {
 	const $openAppList = useStore(openAppList);
 
-	const appSelect = (id: string) => {
-		let result = [...$openAppList];
-
-		if (!result.includes(id)) {
-			result.push(id);
-		} else {
-			result = result.filter((item) => {
-				return item !== id;
-			});
-
-			result = [...result, id];
+	useEffect(() => {
+		if (select !== undefined) {
+			openAppList.set(sortList(select, $openAppList));
 		}
-
-		openAppList.set(result);
-	};
+	}, []);
 
 	useEffect(() => {
 		console.log($openAppList);
@@ -38,6 +33,7 @@ export default function () {
 				position: relative;
 				width: 100%;
 				height: 100%;
+				overflow: hidden;
 			`}
 		>
 			<div
@@ -66,27 +62,9 @@ export default function () {
 						user-select: none;
 					`}
 				>
-					<AppIcon
-						onClick={() => {
-							appSelect("portfolio");
-						}}
-					>
-						作ったもの
-					</AppIcon>
-					<AppIcon
-						onClick={() => {
-							appSelect("blog");
-						}}
-					>
-						ブログ
-					</AppIcon>
-					<AppIcon
-						onClick={() => {
-							appSelect("faq");
-						}}
-					>
-						FAQ
-					</AppIcon>
+					<AppIcon id="portfolio">作ったもの</AppIcon>
+					<AppIcon id="blog">ブログ</AppIcon>
+					<AppIcon id="faq">FAQ</AppIcon>
 				</div>
 				<div
 					css={css`
@@ -117,6 +95,7 @@ export default function () {
 					left: 0;
 					height: 70px;
 					width: 100%;
+					z-index: calc(infinity);
 				`}
 			>
 				<div

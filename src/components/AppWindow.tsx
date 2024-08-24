@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
 import { openAppList } from "@/atom";
+import { sortList } from "@/lib/app-select";
 import { css } from "@emotion/react";
 import { useStore } from "@nanostores/react";
+import { useEffect, useRef } from "react";
 
 interface Props {
 	title: string;
@@ -12,14 +14,47 @@ interface Props {
 
 export default function ({ title, children, id }: Props) {
 	const $openAppList = useStore(openAppList);
+	const windowBarElement = useRef<HTMLDivElement | null>(null);
+	const windowElement = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		const move = (e: PointerEvent) => {
+			if (e.buttons === 1 && windowElement.current !== null && windowBarElement.current !== null) {
+				windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
+				windowElement.current.style.left = windowElement.current.offsetLeft + e.movementX + "px";
+				windowElement.current.draggable = false;
+				windowBarElement.current.setPointerCapture(e.pointerId);
+			}
+		};
+
+		const mousedown = () => {
+			const sortResult = sortList(id, $openAppList);
+			if (JSON.stringify(sortResult) !== JSON.stringify($openAppList)) {
+				openAppList.set(sortList(id, $openAppList));
+				history.pushState("", "", `/${id}`);
+			}
+		};
+
+		if (windowBarElement.current !== null) {
+			windowBarElement.current.addEventListener("pointermove", move);
+			windowBarElement.current.addEventListener("mousedown", mousedown);
+		}
+
+		return () => {
+			if (windowBarElement.current !== null) {
+				windowBarElement.current.removeEventListener("pointermove", move);
+				windowBarElement.current.removeEventListener("mousedown", mousedown);
+			}
+		};
+	}, [$openAppList]);
 
 	return (
 		<div
+			ref={windowElement}
 			css={css`
 				position: absolute;
-				top: calc(50% - 70px / 2);
-				right: 20px;
-				transform: translateY(-50%);
+				top: 0;
+				left: 0;
 				width: 80%;
 				height: calc(90% - 70px);
 				border-left: 4px solid #edf8aa;
@@ -29,6 +64,7 @@ export default function ({ title, children, id }: Props) {
 				user-select: auto;
 				pointer-events: auto;
 				z-index: ${$openAppList.indexOf(id)};
+				box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
 			`}
 		>
 			<div
@@ -38,8 +74,8 @@ export default function ({ title, children, id }: Props) {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					background-color: #edf8aa;
-					opacity: 0.8;
+					background-color: #ffffff;
+					opacity: 0.95;
 				`}
 			/>
 			<div
@@ -54,6 +90,7 @@ export default function ({ title, children, id }: Props) {
 				`}
 			>
 				<div
+					ref={windowBarElement}
 					css={css`
 						position: relative;
 						height: 50px;
@@ -107,11 +144,17 @@ export default function ({ title, children, id }: Props) {
 						/>
 						<div
 							onClick={() => {
-								openAppList.set(
-									$openAppList.filter((item) => {
-										return item !== id;
-									})
-								);
+								const closeAppList = $openAppList.filter((item) => {
+									return item !== id;
+								});
+
+								if (closeAppList.length === 0) {
+									history.pushState("", "", "/");
+								} else {
+									history.pushState("", "", `/${closeAppList[0]}`);
+								}
+
+								openAppList.set(closeAppList);
 							}}
 							css={css`
 								width: 25px;
