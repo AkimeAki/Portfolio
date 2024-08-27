@@ -1,6 +1,8 @@
 import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
 import "@/global.scss";
 
+export const runtime = "edge";
+
 interface Props {
 	children: React.ReactNode;
 }

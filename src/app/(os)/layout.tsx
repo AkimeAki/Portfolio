@@ -4,6 +4,8 @@ import Loading from "@/components/os/loading";
 import Taskbar from "@/components/os/Taskbar";
 import { css } from "@kuma-ui/core";
 
+export const runtime = "edge";
+
 interface Props {
 	children: React.ReactNode;
 }
