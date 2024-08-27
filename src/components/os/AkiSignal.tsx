@@ -49,7 +49,6 @@ export default function () {
 					opacity: 0;
 					image-rendering: pixelated;
 					animation-duration: 70ms;
-					animation-delay: 1500ms;
 					animation-fill-mode: forwards;
 					animation-iteration-count: 5;
 					animation-timing-function: linear;
