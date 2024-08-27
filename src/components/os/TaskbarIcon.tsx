@@ -1,6 +1,4 @@
-/** @jsxImportSource @emotion/react */
-
-import { css } from "@emotion/react";
+import { css } from "@kuma-ui/core";
 
 interface Props {
 	href: string;
@@ -13,7 +11,7 @@ export default function ({ href, alt, iconPath }: Props) {
 		<a
 			href={href}
 			target="_blank"
-			css={css`
+			className={css`
 				display: block;
 				width: 40px;
 				height: 40px;
@@ -30,7 +28,7 @@ export default function ({ href, alt, iconPath }: Props) {
 			<img
 				src={iconPath}
 				alt={alt}
-				css={css`
+				className={css`
 					display: block;
 					width: 100%;
 					height: 100%;

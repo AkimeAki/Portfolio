@@ -1,11 +1,15 @@
-/** @jsxImportSource @emotion/react */
+"use client";
 
-import { css } from "@emotion/react";
+import { osLoading } from "@/atom";
+import { css } from "@kuma-ui/core";
+import { useStore } from "@nanostores/react";
 
 export default function () {
+	const $osLoading = useStore(osLoading);
+
 	return (
 		<div
-			css={css`
+			className={css`
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -24,7 +28,7 @@ export default function () {
 			<img
 				src="/aki.png"
 				alt="でっかい彩季"
-				css={css`
+				className={css`
 					position: absolute;
 					bottom: 0;
 					right: 0;
@@ -36,17 +40,17 @@ export default function () {
 			<img
 				src="/aki-signal.png"
 				alt="でっかい彩季"
-				css={css`
+				style={{ animationName: $osLoading ? "" : "aki-signal" }}
+				className={css`
 					position: absolute;
 					bottom: 0;
 					right: 0;
 					width: 80vmin;
 					opacity: 0;
 					image-rendering: pixelated;
-					animation-name: aki-signal;
 					animation-duration: 70ms;
+					animation-delay: 1500ms;
 					animation-fill-mode: forwards;
-					animation-delay: 500ms;
 					animation-iteration-count: 5;
 					animation-timing-function: linear;
 					filter: brightness(110%) blur(3px);
@@ -55,15 +59,14 @@ export default function () {
 			<img
 				src="/aki-signal.png"
 				alt="でっかい彩季"
-				css={css`
+				style={{ animationName: $osLoading ? "" : "aki-signal" }}
+				className={css`
 					position: absolute;
 					bottom: 0;
 					right: 0;
 					width: 80vmin;
 					opacity: 0;
 					image-rendering: pixelated;
-					animation-delay: 500ms;
-					animation-name: aki-signal;
 					animation-duration: 70ms;
 					animation-fill-mode: forwards;
 					animation-iteration-count: 8;

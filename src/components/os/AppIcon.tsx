@@ -1,8 +1,8 @@
-/** @jsxImportSource @emotion/react */
+"use client";
 
-import { openAppList } from "@/atom";
+import { openAppSortList } from "@/atom";
 import { sortList } from "@/lib/app-select";
-import { css } from "@emotion/react";
+import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 
 interface Props {
@@ -11,15 +11,15 @@ interface Props {
 }
 
 export default function ({ children, id }: Props) {
-	const $openAppList = useStore(openAppList);
+	const $openAppSortList = useStore(openAppSortList);
 
 	return (
 		<div
 			onClick={() => {
-				history.pushState("", "", `/${id}`);
-				openAppList.set(sortList(id, $openAppList));
+				history.pushState({}, "", `/${id}`);
+				openAppSortList.set(sortList(id, $openAppSortList));
 			}}
-			css={css`
+			className={css`
 				display: flex;
 				gap: 3px;
 				flex-direction: column;
@@ -37,7 +37,7 @@ export default function ({ children, id }: Props) {
 			`}
 		>
 			<div
-				css={css`
+				className={css`
 					background-color: red;
 					width: 80px;
 					height: 80px;
@@ -45,7 +45,7 @@ export default function ({ children, id }: Props) {
 				`}
 			/>
 			<span
-				css={css`
+				className={css`
 					font-size: 17px;
 					font-weight: bold;
 					width: 100%;

@@ -1,5 +1,5 @@
 {
-	"name": "aki-coffee",
+	"name": "aki-portfolio",
 	"version": "1.0.0",
 	"type": "module",
 	"private": true,
@@ -7,37 +7,35 @@
 		"node": "20.16.0"
 	},
 	"scripts": {
-		"dev": "astro dev --host",
-		"build": "astro build",
-		"preview": "astro preview --host",
+		"dev": "WATCHPACK_POLLING=true next dev -p 34661",
+		"build": "next build",
+		"preview": "next start -p 34661",
 		"format": "prettier --write './**/*'",
 		"lint": "ESLINT_USE_FLAT_CONFIG=true eslint .",
 		"lint:fix": "npm run lint -- --fix && npm run format"
 	},
 	"dependencies": {
-		"@astrojs/react": "^3.6.2",
-		"@astrojs/sitemap": "^3.1.6",
-		"@emotion/react": "^11.13.3",
+		"@kuma-ui/core": "^1.5.7",
 		"@nanostores/react": "^0.7.3",
-		"@types/react": "^18.3.4",
-		"@types/react-dom": "^18.3.0",
-		"astro": "^4.12.3",
-		"microcms-js-sdk": "^3.1.2",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
 		"nanostores": "^0.11.2",
+		"next": "14.2.6",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"sass": "^1.63.6"
+		"sass": "^1.63.6",
+		"typescript": "^5"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.8.0",
+		"@kuma-ui/next-plugin": "^1.3.1",
 		"@typescript-eslint/parser": "^8.0.0",
-		"astro-eslint-parser": "^1.0.2",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-astro": "^1.2.3",
 		"globals": "^15.8.0",
 		"prettier": "3.2.5",
-		"prettier-plugin-astro": "0.13.0",
 		"prettier-plugin-sh": "^0.14.0",
 		"typescript-eslint": "^7.18.0"
 	}

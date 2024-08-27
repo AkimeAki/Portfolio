@@ -1,8 +1,8 @@
-/** @jsxImportSource @emotion/react */
+"use client";
 
-import { openAppList } from "@/atom";
+import { openAppSortList } from "@/atom";
 import { sortList } from "@/lib/app-select";
-import { css } from "@emotion/react";
+import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef } from "react";
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function ({ title, children, id }: Props) {
-	const $openAppList = useStore(openAppList);
+	const $openAppSortList = useStore(openAppSortList);
 	const windowBarElement = useRef<HTMLDivElement | null>(null);
 	const windowElement = useRef<HTMLDivElement | null>(null);
 
@@ -28,47 +28,74 @@ export default function ({ title, children, id }: Props) {
 		};
 
 		const mousedown = () => {
-			const sortResult = sortList(id, $openAppList);
-			if (JSON.stringify(sortResult) !== JSON.stringify($openAppList)) {
-				openAppList.set(sortList(id, $openAppList));
-				history.pushState("", "", `/${id}`);
+			const sortResult = sortList(id, $openAppSortList);
+			if (JSON.stringify(sortResult) !== JSON.stringify($openAppSortList)) {
+				openAppSortList.set(sortList(id, $openAppSortList));
+				history.pushState({}, "", `/${id}`);
 			}
 		};
 
-		if (windowBarElement.current !== null) {
+		if (windowBarElement.current !== null && windowElement.current !== null) {
 			windowBarElement.current.addEventListener("pointermove", move);
-			windowBarElement.current.addEventListener("mousedown", mousedown);
+			windowElement.current.addEventListener("mousedown", mousedown);
 		}
 
 		return () => {
-			if (windowBarElement.current !== null) {
+			if (windowBarElement.current !== null && windowElement.current !== null) {
 				windowBarElement.current.removeEventListener("pointermove", move);
-				windowBarElement.current.removeEventListener("mousedown", mousedown);
+				windowElement.current.removeEventListener("mousedown", mousedown);
 			}
 		};
-	}, [$openAppList]);
+	}, [$openAppSortList]);
+
+	useEffect(() => {
+		if (windowElement.current !== null) {
+			const width = Math.min(window.innerWidth * 0.9, 1200);
+			const height = Math.min(window.innerHeight * 0.9 - 70, 700);
+			let top = (window.innerHeight - 70 - height) / 2;
+			let left = (window.innerWidth - width) / 2;
+
+			const appWindows = document.querySelectorAll<HTMLDivElement>("[data-app-id]");
+			appWindows.forEach((appWindow) => {
+				if (appWindow.dataset.appId !== id) {
+					const otherWindowTop = Number(appWindow.style.top.replace("px", ""));
+					const otherWindowLeft = Number(appWindow.style.left.replace("px", ""));
+					if (Math.abs(otherWindowTop - top) < 30) {
+						top = otherWindowTop + 30;
+					}
+
+					if (Math.abs(otherWindowLeft - top) < 30) {
+						left = otherWindowLeft + 30;
+					}
+				}
+			});
+
+			windowElement.current.style.width = `${width}px`;
+			windowElement.current.style.height = `${height}px`;
+			windowElement.current.style.top = `${top}px`;
+			windowElement.current.style.left = `${left}px`;
+		}
+	}, []);
 
 	return (
 		<div
 			ref={windowElement}
-			css={css`
+			data-app-id={id}
+			style={{ zIndex: $openAppSortList.indexOf(id), display: $openAppSortList.includes(id) ? "block" : "none" }}
+			className={css`
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: 80%;
-				height: calc(90% - 70px);
 				border-left: 4px solid #edf8aa;
 				border-right: 4px solid #edf8aa;
 				border-bottom: 4px solid #edf8aa;
-				display: ${$openAppList.includes(id) ? "block" : "none"};
-				user-select: auto;
+				user-select: text;
 				pointer-events: auto;
-				z-index: ${$openAppList.indexOf(id)};
 				box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
 			`}
 		>
 			<div
-				css={css`
+				className={css`
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -79,7 +106,7 @@ export default function ({ title, children, id }: Props) {
 				`}
 			/>
 			<div
-				css={css`
+				className={css`
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -91,16 +118,17 @@ export default function ({ title, children, id }: Props) {
 			>
 				<div
 					ref={windowBarElement}
-					css={css`
+					className={css`
 						position: relative;
 						height: 50px;
 						background-color: #edf8aa;
 						display: flex;
 						justify-content: space-between;
+						user-select: none;
 					`}
 				>
 					<div
-						css={css`
+						className={css`
 							display: flex;
 							height: 100%;
 							align-items: center;
@@ -108,17 +136,17 @@ export default function ({ title, children, id }: Props) {
 						`}
 					>
 						<h2
-							css={css`
+							className={css`
 								line-height: 1;
 								font-weight: bold;
 								font-size: 20px;
 							`}
 						>
-							{title}
+							{decodeURIComponent(title)}
 						</h2>
 					</div>
 					<div
-						css={css`
+						className={css`
 							display: flex;
 							height: 100%;
 							gap: 10px;
@@ -127,7 +155,7 @@ export default function ({ title, children, id }: Props) {
 						`}
 					>
 						<div
-							css={css`
+							className={css`
 								width: 25px;
 								height: 25px;
 								background-color: #c82746;
@@ -135,7 +163,7 @@ export default function ({ title, children, id }: Props) {
 							`}
 						/>
 						<div
-							css={css`
+							className={css`
 								width: 25px;
 								height: 25px;
 								background-color: #c82746;
@@ -144,19 +172,26 @@ export default function ({ title, children, id }: Props) {
 						/>
 						<div
 							onClick={() => {
-								const closeAppList = $openAppList.filter((item) => {
+								const closeAppList = $openAppSortList.filter((item) => {
 									return item !== id;
 								});
 
 								if (closeAppList.length === 0) {
-									history.pushState("", "", "/");
+									history.pushState({}, "", "/");
 								} else {
-									history.pushState("", "", `/${closeAppList[0]}`);
+									history.pushState({}, "", `/${closeAppList[0]}`);
 								}
 
-								openAppList.set(closeAppList);
+								if (windowElement.current !== null) {
+									windowElement.current.style.top = "";
+									windowElement.current.style.left = "";
+									windowElement.current.style.width = "";
+									windowElement.current.style.height = "";
+								}
+
+								openAppSortList.set(closeAppList);
 							}}
-							css={css`
+							className={css`
 								width: 25px;
 								height: 25px;
 								background-color: #c82746;
@@ -166,7 +201,7 @@ export default function ({ title, children, id }: Props) {
 					</div>
 				</div>
 				<div
-					css={css`
+					className={css`
 						flex: 1;
 					`}
 				>
