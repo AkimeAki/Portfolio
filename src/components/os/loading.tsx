@@ -85,6 +85,8 @@ export default function () {
 						* {
 							color: white;
 							font-size: 15px;
+							font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック",
+								"Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Verdana, Meiryo;
 						}
 					`}
 				>
