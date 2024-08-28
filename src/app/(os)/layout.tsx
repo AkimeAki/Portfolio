@@ -2,9 +2,13 @@ import AkiSignal from "@/components/os/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
 import Loading from "@/components/os/loading";
 import Taskbar from "@/components/os/Taskbar";
+import { seoHead } from "@/lib/seo";
 import { css } from "@kuma-ui/core";
+import { Metadata } from "next";
 
 export const runtime = "edge";
+
+export const metadata: Metadata = seoHead({});
 
 interface Props {
 	children: React.ReactNode;
