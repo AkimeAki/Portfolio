@@ -56,7 +56,6 @@ export default function () {
 			setTimeout(() => {
 				osLoading.set(false);
 			}, 3000);
-			console.log("loaded");
 		}
 	}, [imageLoading, fontsLoading]);
 
@@ -81,6 +80,8 @@ export default function () {
 						height: 100%;
 						z-index: calc(infinity);
 						padding: 10px;
+						user-select: none;
+						pointer-events: none;
 
 						* {
 							color: white;

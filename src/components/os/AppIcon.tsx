@@ -1,7 +1,7 @@
 "use client";
 
 import { openAppSortList } from "@/atom";
-import { sortList } from "@/lib/app-select";
+import { appList, sortList } from "@/lib/app-select";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 
@@ -17,6 +17,7 @@ export default function ({ children, id }: Props) {
 		<div
 			onClick={() => {
 				history.pushState({}, "", `/${id}`);
+				document.title = appList[id].pageTitle;
 				openAppSortList.set(sortList(id, $openAppSortList));
 			}}
 			className={css`

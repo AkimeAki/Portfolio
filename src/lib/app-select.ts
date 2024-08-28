@@ -1,3 +1,7 @@
+import Portfolio from "@/components/os/app/Portfolio";
+import Faq from "@/components/os/app/Faq";
+import { pageTitle } from "@/lib/seo";
+
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
 
@@ -12,4 +16,23 @@ export const sortList = (id: string, list: string[]) => {
 	}
 
 	return result;
+};
+
+export const appList: {
+	[key: string]: {
+		title: string;
+		pageTitle: string;
+		component: () => React.JSX.Element;
+	};
+} = {
+	portfolio: {
+		title: "作ったもの",
+		pageTitle: `作ったもの - ${pageTitle}`,
+		component: Portfolio
+	},
+	faq: {
+		title: "FAQ",
+		pageTitle: `FAQ - ${pageTitle}`,
+		component: Faq
+	}
 };

@@ -1,7 +1,8 @@
 "use client";
 
 import { openAppSortList } from "@/atom";
-import { sortList } from "@/lib/app-select";
+import { appList, sortList } from "@/lib/app-select";
+import { pageTitle } from "@/lib/seo";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef } from "react";
@@ -32,6 +33,7 @@ export default function ({ title, children, id }: Props) {
 			if (JSON.stringify(sortResult) !== JSON.stringify($openAppSortList)) {
 				openAppSortList.set(sortList(id, $openAppSortList));
 				history.pushState({}, "", `/${id}`);
+				document.title = appList[id].pageTitle;
 			}
 		};
 
@@ -50,7 +52,7 @@ export default function ({ title, children, id }: Props) {
 
 	useEffect(() => {
 		if (windowElement.current !== null) {
-			const width = Math.min(window.innerWidth * 0.9, 1200);
+			const width = Math.min(window.innerWidth * 0.9, 1300);
 			const height = Math.min(window.innerHeight * 0.9 - 70, 700);
 			let top = (window.innerHeight - 70 - height) / 2;
 			let left = (window.innerWidth - width) / 2;
@@ -86,9 +88,9 @@ export default function ({ title, children, id }: Props) {
 				position: absolute;
 				top: 0;
 				left: 0;
-				border-left: 4px solid #edf8aa;
-				border-right: 4px solid #edf8aa;
-				border-bottom: 4px solid #edf8aa;
+				border-left: 4px solid #44755a;
+				border-right: 4px solid #44755a;
+				border-bottom: 4px solid #44755a;
 				user-select: text;
 				pointer-events: auto;
 				box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
@@ -121,7 +123,7 @@ export default function ({ title, children, id }: Props) {
 					className={css`
 						position: relative;
 						height: 50px;
-						background-color: #edf8aa;
+						background-color: #44755a;
 						display: flex;
 						justify-content: space-between;
 						user-select: none;
@@ -140,6 +142,7 @@ export default function ({ title, children, id }: Props) {
 								line-height: 1;
 								font-weight: bold;
 								font-size: 20px;
+								color: #e7f8b0;
 							`}
 						>
 							{decodeURIComponent(title)}
@@ -155,22 +158,6 @@ export default function ({ title, children, id }: Props) {
 						`}
 					>
 						<div
-							className={css`
-								width: 25px;
-								height: 25px;
-								background-color: #c82746;
-								cursor: pointer;
-							`}
-						/>
-						<div
-							className={css`
-								width: 25px;
-								height: 25px;
-								background-color: #c82746;
-								cursor: pointer;
-							`}
-						/>
-						<div
 							onClick={() => {
 								const closeAppList = $openAppSortList.filter((item) => {
 									return item !== id;
@@ -178,8 +165,10 @@ export default function ({ title, children, id }: Props) {
 
 								if (closeAppList.length === 0) {
 									history.pushState({}, "", "/");
+									document.title = pageTitle;
 								} else {
 									history.pushState({}, "", `/${closeAppList[0]}`);
+									document.title = appList[closeAppList[0]].pageTitle;
 								}
 
 								if (windowElement.current !== null) {
@@ -192,10 +181,40 @@ export default function ({ title, children, id }: Props) {
 								openAppSortList.set(closeAppList);
 							}}
 							className={css`
+								position: relative;
 								width: 25px;
 								height: 25px;
-								background-color: #c82746;
 								cursor: pointer;
+
+								&:hover {
+									background-color: #c82746;
+
+									&:before,
+									&:after {
+										background-color: white;
+									}
+								}
+
+								&:before,
+								&:after {
+									position: absolute;
+									left: 4px;
+									display: block;
+									content: "";
+									width: 17px;
+									height: 3px;
+									background-color: #eeb5be;
+								}
+
+								&:before {
+									top: 11px;
+									transform: rotate(45deg);
+								}
+
+								&:after {
+									bottom: 11px;
+									transform: rotate(-45deg);
+								}
 							`}
 						/>
 					</div>
@@ -203,6 +222,7 @@ export default function ({ title, children, id }: Props) {
 				<div
 					className={css`
 						flex: 1;
+						overflow: auto;
 					`}
 				>
 					{children}

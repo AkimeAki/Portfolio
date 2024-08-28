@@ -6,13 +6,13 @@ interface Props {
 	isFullTitle?: boolean;
 }
 
+export const pageTitle = "彩季.AkiOS";
+
 export const seoHead = ({
 	title,
 	isFullTitle = false,
 	description = "彩季のポートフォリオサイトです。"
 }: Props): Metadata => {
-	const pageTitle = "彩季.AkiOS";
-
 	let metaTitle = pageTitle;
 	if (title !== undefined) {
 		if (isFullTitle) {
@@ -36,16 +36,15 @@ export const seoHead = ({
 			description,
 			siteName: pageTitle,
 			images: {
-				url: `${process.env.SITEURL}/favicon.png`
+				url: "https://aki.wtf/favicon.ico"
 			}
 		},
 		twitter: {
 			card: "summary",
 			site: "@Akime_Aki",
 			creator: "@Akime_Aki",
-			images: `${process.env.SITEURL}/favicon.png`
+			images: "https://aki.wtf/favicon.ico"
 		},
-		icons: `${process.env.SITEURL}/favicon.png`,
-		manifest: `${process.env.SITEURL}/manifest.json`
+		icons: "https://aki.wtf/favicon.ico"
 	};
 };
