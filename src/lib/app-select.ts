@@ -1,6 +1,7 @@
 import Portfolio from "@/components/os/app/Portfolio";
 import Faq from "@/components/os/app/Faq";
 import { pageTitle } from "@/lib/seo";
+import Profile from "@/components/os/app/Profile";
 
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
@@ -34,5 +35,10 @@ export const appList: {
 		title: "FAQ",
 		pageTitle: `FAQ - ${pageTitle}`,
 		component: Faq
+	},
+	profile: {
+		title: "プロフィール",
+		pageTitle: `プロフィール - ${pageTitle}`,
+		component: Profile
 	}
 };

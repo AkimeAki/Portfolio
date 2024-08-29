@@ -49,6 +49,9 @@ export default function () {
 				}
 			`}
 		>
+			<AppIcon id="profile" imgSrc="/app/aki.png">
+				プロフィール
+			</AppIcon>
 			<AppIcon id="portfolio" imgSrc="/app/picaxe.png">
 				作ったもの
 			</AppIcon>
