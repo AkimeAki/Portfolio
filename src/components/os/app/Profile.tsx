@@ -100,6 +100,8 @@ export default function () {
 						}
 
 						table {
+							width: 100%;
+
 							th,
 							td {
 								border-bottom: 2px solid #d0e79f;
