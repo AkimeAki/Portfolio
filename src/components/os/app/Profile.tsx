@@ -1,3 +1,4 @@
+import ColorLabel from "@/components/ColorLabel";
 import { css } from "@kuma-ui/core";
 
 export default function () {
@@ -104,18 +105,186 @@ export default function () {
 					`}
 				>
 					<h4>比較的できる</h4>
-					<p>言語：HTML, CSS, SCSS, JavaScript, TypeScript</p>
-					<p>フレームワークなど：React, Next.js, Astro, jQuery</p>
-					<p>ツール：Visual Studio Code, Git, GitHub, Node.js, WordPress, Docker</p>
-					<p>インフラ：Cloudflare Pages</p>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>言語：</p>
+						<ColorLabel bgColor="#d94a2d" color="white">
+							HTML
+						</ColorLabel>
+						<ColorLabel bgColor="#2e49d8" color="white">
+							CSS
+						</ColorLabel>
+						<ColorLabel bgColor="#c66093" color="white">
+							SCSS
+						</ColorLabel>
+						<ColorLabel bgColor="#edd840" color="black">
+							JavaScript
+						</ColorLabel>
+						<ColorLabel bgColor="#3774bd" color="white">
+							TypeScript
+						</ColorLabel>
+					</div>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>フレームワークなど：</p>
+						<ColorLabel bgColor="#68d3f1" color="black">
+							React
+						</ColorLabel>
+						<ColorLabel bgColor="#000000" color="white">
+							Next.js
+						</ColorLabel>
+						<ColorLabel bgColor="#f2591c" color="white">
+							Astro
+						</ColorLabel>
+						<ColorLabel bgColor="#1c6fab" color="white">
+							jQuery
+						</ColorLabel>
+					</div>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>ツール：</p>
+						<ColorLabel bgColor="#36a7e8" color="white">
+							Visual Studio Code
+						</ColorLabel>
+						<ColorLabel bgColor="#e54d37" color="white">
+							Git
+						</ColorLabel>
+						<ColorLabel bgColor="#171516" color="white">
+							GitHub
+						</ColorLabel>
+						<ColorLabel bgColor="#5b9358" color="white">
+							Node.js
+						</ColorLabel>
+						<ColorLabel bgColor="#729fb3" color="white">
+							WordPress
+						</ColorLabel>
+						<ColorLabel bgColor="#2a5fe1" color="white">
+							Docker
+						</ColorLabel>
+						<ColorLabel bgColor="#3d45c1" color="white">
+							AWS CodeCommit
+						</ColorLabel>
+					</div>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>インフラ：</p>
+						<ColorLabel bgColor="#eb9444" color="black">
+							Cloudflare Pages
+						</ColorLabel>
+						<ColorLabel bgColor="#e13842" color="white">
+							AWS Amplify
+						</ColorLabel>
+					</div>
 					<h4>どちらかというとできる</h4>
-					<p>言語：PHP</p>
-					<p>フレームワークなど：Laravel</p>
-					<p>インフラ：Debian, Ubuntu, AWS Amplify, Google Cloud Run, Vercel, Netlify</p>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>言語：</p>
+						<ColorLabel bgColor="#7477aa" color="white">
+							PHP
+						</ColorLabel>
+					</div>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>フレームワークなど：</p>
+						<ColorLabel bgColor="#f22928" color="white">
+							Laravel
+						</ColorLabel>
+					</div>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>インフラ：</p>
+						<ColorLabel bgColor="#a0002f" color="white">
+							Debian
+						</ColorLabel>
+						<ColorLabel bgColor="#d2451f" color="white">
+							Ubuntu
+						</ColorLabel>
+						<ColorLabel bgColor="#4880e8" color="white">
+							Google Cloud Run
+						</ColorLabel>
+						<ColorLabel bgColor="#000000" color="white">
+							Vercel
+						</ColorLabel>
+						<ColorLabel bgColor="#5095b7" color="white">
+							Netlify
+						</ColorLabel>
+						<ColorLabel bgColor="#cd6323" color="white">
+							AWS Lamda
+						</ColorLabel>
+					</div>
 					<h4>自信なし</h4>
-					<p>言語：Japanese</p>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>言語：</p>
+						<ColorLabel bgColor="white" color="#b0182f">
+							Japanese
+						</ColorLabel>
+					</div>
 					<h4>大好き</h4>
-					<p>ライブラリ：Emotion, Kuma UI</p>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>ライブラリ：</p>
+						<ColorLabel bgColor="#c966b9" color="#ffda6c">
+							Emotion
+						</ColorLabel>
+						<ColorLabel bgColor="#9bbee8" color="black">
+							Kuma UI
+						</ColorLabel>
+					</div>
 				</div>
 			</div>
 			<div
@@ -140,11 +309,35 @@ export default function () {
 					`}
 				>
 					<h4>比較的できる</h4>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<ColorLabel bgColor="#010100" color="white">
+							AviUtl
+						</ColorLabel>
+					</div>
 					<p>AviUtl</p>
 					<h4>どちらかというとできる</h4>
-					<p>Adobe Premiere Pro, Adobe After Effect</p>
-					<h4>自信なし</h4>
-					<p>日本語</p>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<ColorLabel bgColor="#030056" color="#9593f3">
+							Adobe Premiere Pro
+						</ColorLabel>
+						<ColorLabel bgColor="#030056" color="#9693f3">
+							Adobe After Effect
+						</ColorLabel>
+					</div>
 				</div>
 			</div>
 			<div
