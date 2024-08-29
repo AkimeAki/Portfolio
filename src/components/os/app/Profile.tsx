@@ -185,6 +185,9 @@ export default function () {
 						<ColorLabel bgColor="#3d45c1" color="white">
 							AWS CodeCommit
 						</ColorLabel>
+						<ColorLabel bgColor="#2a2b2e" color="white">
+							microCMS
+						</ColorLabel>
 					</div>
 					<div
 						className={css`
@@ -265,6 +268,9 @@ export default function () {
 						</ColorLabel>
 						<ColorLabel bgColor="#4880e8" color="white">
 							Google Apps Script
+						</ColorLabel>
+						<ColorLabel bgColor="#313131" color="white">
+							Newt
 						</ColorLabel>
 					</div>
 					<div
@@ -361,6 +367,9 @@ export default function () {
 						<ColorLabel bgColor="#010100" color="white">
 							AviUtl
 						</ColorLabel>
+						<ColorLabel bgColor="#191919" color="white">
+							ゆっくりムービーメーカー3
+						</ColorLabel>
 					</div>
 					<h4>どちらかというとできる</h4>
 					<div
@@ -376,6 +385,9 @@ export default function () {
 						</ColorLabel>
 						<ColorLabel bgColor="#030056" color="#9693f3">
 							Adobe After Effect
+						</ColorLabel>
+						<ColorLabel bgColor="#191919" color="white">
+							ゆっくりムービーメーカー4
 						</ColorLabel>
 					</div>
 				</div>
