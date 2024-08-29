@@ -7,19 +7,26 @@ import { useStore } from "@nanostores/react";
 
 interface Props {
 	children: React.ReactNode;
-	id: string;
+	id?: string;
 	imgSrc?: string;
+	href?: string;
 }
 
-export default function ({ children, id, imgSrc }: Props) {
+export default function ({ children, id, imgSrc, href }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
 
 	return (
 		<div
 			onClick={() => {
-				history.pushState({}, "", `/${id}`);
-				document.title = appList[id].pageTitle;
-				openAppSortList.set(sortList(id, $openAppSortList));
+				if (id !== undefined) {
+					history.pushState({}, "", `/${id}`);
+					document.title = appList[id].pageTitle;
+					openAppSortList.set(sortList(id, $openAppSortList));
+				}
+
+				if (href !== undefined) {
+					window.open(href, "_blank");
+				}
 			}}
 			className={css`
 				display: flex;

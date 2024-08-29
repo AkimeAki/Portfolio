@@ -30,6 +30,8 @@ export default function () {
 				"/aki-signal.png",
 				"/aki.png",
 				"/app/ghost.png",
+				"/app/book.png",
+				"/app/tv.png",
 				"/app/picaxe.png"
 			];
 			await Promise.all(targetUrls.map((target) => fetch(target)));

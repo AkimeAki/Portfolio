@@ -52,6 +52,12 @@ export default function () {
 			<AppIcon id="portfolio" imgSrc="/app/picaxe.png">
 				作ったもの
 			</AppIcon>
+			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/book.png">
+				日常ブログ
+			</AppIcon>
+			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/tv.png">
+				技術ブログ
+			</AppIcon>
 			<AppIcon id="faq" imgSrc="/app/ghost.png">
 				FAQ
 			</AppIcon>
