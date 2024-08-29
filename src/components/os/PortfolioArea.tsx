@@ -13,13 +13,16 @@ export default function ({ title, description, imgSrc, href }: Props) {
 			className={css`
 				display: flex;
 				justify-content: space-between;
-				min-width: 100%;
+				width: 100%;
 				gap: 20px;
+
+				@container (max-width: 900px) {
+					flex-direction: column;
+				}
 			`}
 		>
 			<div
 				className={css`
-					min-width: 300px;
 					flex: 1;
 					display: flex;
 					flex-direction: column;
@@ -55,9 +58,7 @@ export default function ({ title, description, imgSrc, href }: Props) {
 			</div>
 			<div
 				className={css`
-					min-width: 500px;
-					width: 100%;
-					max-width: 700px;
+					width: 500px;
 				`}
 			>
 				<img

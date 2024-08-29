@@ -88,12 +88,19 @@ export default function ({ title, children, id }: Props) {
 				position: absolute;
 				top: 0;
 				left: 0;
-				border-left: 4px solid #44755a;
-				border-right: 4px solid #44755a;
-				border-bottom: 4px solid #44755a;
+				border-left: 4px solid #d0e79a;
+				border-right: 4px solid #d0e79a;
+				border-bottom: 4px solid #d0e79a;
 				user-select: text;
 				pointer-events: auto;
 				box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
+
+				@media (max-width: 720px) {
+					top: 0 !important;
+					left: 0 !important;
+					width: 100% !important;
+					height: calc(100% - 70px) !important;
+				}
 			`}
 		>
 			<div
@@ -123,7 +130,7 @@ export default function ({ title, children, id }: Props) {
 					className={css`
 						position: relative;
 						height: 50px;
-						background-color: #44755a;
+						background-color: #d0e79a;
 						display: flex;
 						justify-content: space-between;
 						user-select: none;
@@ -141,11 +148,11 @@ export default function ({ title, children, id }: Props) {
 							className={css`
 								line-height: 1;
 								font-weight: bold;
-								font-size: 20px;
-								color: #e7f8b0;
+								font-size: 18px;
+								color: #e73e6b;
 							`}
 						>
-							{decodeURIComponent(title)}
+							{title}
 						</h2>
 					</div>
 					<div
@@ -223,6 +230,7 @@ export default function ({ title, children, id }: Props) {
 					className={css`
 						flex: 1;
 						overflow: auto;
+						container-type: inline-size;
 					`}
 				>
 					{children}

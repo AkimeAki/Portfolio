@@ -1,6 +1,6 @@
 import AkiSignal from "@/components/os/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
-import Loading from "@/components/os/loading";
+import Loading from "@/components/os/Loading";
 import Taskbar from "@/components/os/Taskbar";
 import { seoHead } from "@/lib/seo";
 import { css } from "@kuma-ui/core";

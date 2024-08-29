@@ -141,7 +141,12 @@ export default function () {
 								font-family: "DotGothic16";
 							`}
 						>
-							{">"} Hello 🍵{" "}
+							{">"} Hello{" "}
+							{(() => {
+								const emojis = ["🍣", "🍵", "☕", "🐱", "🦜", "🪳"];
+
+								return emojis[Math.floor(Math.random() * emojis.length)];
+							})()}{" "}
 							<span
 								className={css`
 									font-family: "DotGothic16";
