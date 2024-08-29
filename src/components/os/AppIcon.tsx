@@ -63,7 +63,6 @@ export default function ({ children, id, imgSrc, href }: Props) {
 						width: 50px;
 						height: 50px;
 						border-radius: 50%;
-						overflow: hidden;
 						background-color: #cb284a;
 						filter: drop-shadow(0px 1px 1px #52161c) drop-shadow(0px 1px 1px #52161c)
 							drop-shadow(0px 1px 1px #52161c);
@@ -87,11 +86,43 @@ export default function ({ children, id, imgSrc, href }: Props) {
 							@media (max-width: 720px) {
 								width: 80%;
 								height: 80%;
+								border-radius: 50%;
 								filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
 									drop-shadow(0px 0px 1px white);
 							}
 						`}
 					/>
+				)}
+				{href !== undefined && (
+					<>
+						<img
+							src="/shortcut.png"
+							className={css`
+								position: absolute;
+								bottom: 10px;
+								left: 10px;
+								image-rendering: pixelated;
+
+								@media (max-width: 720px) {
+									display: none;
+								}
+							`}
+						/>
+						<img
+							src="/chrome-shortcut.png"
+							className={css`
+								display: none;
+								position: absolute;
+								bottom: 0;
+								right: 0;
+								image-rendering: pixelated;
+
+								@media (max-width: 720px) {
+									display: block;
+								}
+							`}
+						/>
+					</>
 				)}
 			</div>
 			<span
