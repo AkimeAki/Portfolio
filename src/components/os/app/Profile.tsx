@@ -151,6 +151,9 @@ export default function () {
 						<ColorLabel bgColor="#1c6fab" color="white">
 							jQuery
 						</ColorLabel>
+						<ColorLabel bgColor="#2eadb3" color="white">
+							Tailwind CSS
+						</ColorLabel>
 					</div>
 					<div
 						className={css`
@@ -225,6 +228,44 @@ export default function () {
 						<ColorLabel bgColor="#f22928" color="white">
 							Laravel
 						</ColorLabel>
+						<ColorLabel bgColor="#5c64ed" color="white">
+							discord.js
+						</ColorLabel>
+						<ColorLabel bgColor="#2a2d37" color="#a1e6f3">
+							Electron
+						</ColorLabel>
+					</div>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>DB：</p>
+						<ColorLabel bgColor="#4085e6" color="white">
+							CockroachDB
+						</ColorLabel>
+					</div>
+					<div
+						className={css`
+							display: flex;
+							align-items: baseline;
+							flex-wrap: wrap;
+							gap: 5px;
+						`}
+					>
+						<p>ツール：</p>
+						<ColorLabel bgColor="#d9d9d9" color="#4981e6">
+							Google Search Console
+						</ColorLabel>
+						<ColorLabel bgColor="#e87622" color="white">
+							Google Analytics
+						</ColorLabel>
+						<ColorLabel bgColor="#4880e8" color="white">
+							Google Apps Script
+						</ColorLabel>
 					</div>
 					<div
 						className={css`
@@ -242,7 +283,7 @@ export default function () {
 							Ubuntu
 						</ColorLabel>
 						<ColorLabel bgColor="#4880e8" color="white">
-							Google Cloud Run
+							Cloud Run
 						</ColorLabel>
 						<ColorLabel bgColor="#000000" color="white">
 							Vercel
@@ -321,7 +362,6 @@ export default function () {
 							AviUtl
 						</ColorLabel>
 					</div>
-					<p>AviUtl</p>
 					<h4>どちらかというとできる</h4>
 					<div
 						className={css`
