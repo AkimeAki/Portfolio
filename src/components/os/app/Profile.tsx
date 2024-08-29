@@ -112,7 +112,7 @@ export default function () {
 					<p>言語：PHP</p>
 					<p>フレームワークなど：Laravel</p>
 					<p>インフラ：Debian, Ubuntu, AWS Amplify, Google Cloud Run, Vercel, Netlify</p>
-					<h4>自身なし</h4>
+					<h4>自信なし</h4>
 					<p>言語：Japanese</p>
 					<h4>大好き</h4>
 					<p>ライブラリ：Emotion, Kuma UI</p>
@@ -143,7 +143,7 @@ export default function () {
 					<p>AviUtl</p>
 					<h4>どちらかというとできる</h4>
 					<p>Adobe Premiere Pro, Adobe After Effect</p>
-					<h4>自身なし</h4>
+					<h4>自信なし</h4>
 					<p>日本語</p>
 				</div>
 			</div>
