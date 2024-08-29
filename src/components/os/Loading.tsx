@@ -28,7 +28,9 @@ export default function () {
 				"/icon/x.png",
 				"/icon/youtube.png",
 				"/aki-signal.png",
-				"/aki.png"
+				"/aki.png",
+				"/app/ghost.png",
+				"/app/picaxe.png"
 			];
 			await Promise.all(targetUrls.map((target) => fetch(target)));
 			setTimeout(() => {

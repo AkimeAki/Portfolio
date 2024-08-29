@@ -20,8 +20,14 @@ export default function ({ href, alt, iconPath }: Props) {
 				border-width: 2px;
 				border-color: transparent;
 
-				&:hover {
-					border-color: #c6dd95;
+				@media (max-width: 720px) {
+					border-radius: 50%;
+				}
+
+				@media (hover: hover) {
+					&:hover {
+						border-color: #c6dd95;
+					}
 				}
 			`}
 		>

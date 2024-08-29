@@ -37,10 +37,23 @@ export default function () {
 						pointer-events: all;
 					}
 				}
+
+				@media (max-width: 720px) {
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr 1fr;
+					gap: 0;
+					width: 100%;
+					height: auto;
+					row-gap: 10px;
+				}
 			`}
 		>
-			<AppIcon id="portfolio">作ったもの</AppIcon>
-			<AppIcon id="faq">FAQ</AppIcon>
+			<AppIcon id="portfolio" imgSrc="/app/picaxe.png">
+				作ったもの
+			</AppIcon>
+			<AppIcon id="faq" imgSrc="/app/ghost.png">
+				FAQ
+			</AppIcon>
 		</div>
 	);
 }

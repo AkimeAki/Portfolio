@@ -92,6 +92,10 @@ export default function () {
 						padding: 0 20px;
 						gap: 20px;
 						z-index: 1;
+
+						@media (max-width: 720px) {
+							justify-content: center;
+						}
 					`}
 				>
 					<TaskbarIcon iconPath="/icon/x.png" alt="Xのアイコン" href="https://x.com/Akime_Aki" />

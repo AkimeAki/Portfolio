@@ -28,7 +28,7 @@ export default function () {
 			/>
 			<PortfolioArea
 				title={"カーソルを追従する四角いの"}
-				description={"マウスの後ろぬ四角いのが付いてくるChrome拡張機能です。"}
+				description={"マウスの後ろから四角いのが付いてくるChrome拡張機能です。"}
 				imgSrc="/portfolio/rectangle-follows-cursor.png"
 				href="https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn"
 			/>
