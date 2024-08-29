@@ -57,7 +57,9 @@ export default function ({ children, id, imgSrc }: Props) {
 						height: 50px;
 						border-radius: 50%;
 						overflow: hidden;
-						background-color: #eaf9a8;
+						background-color: #cb284a;
+						filter: drop-shadow(0px 1px 1px #52161c) drop-shadow(0px 1px 1px #52161c)
+							drop-shadow(0px 1px 1px #52161c);
 					}
 				`}
 			>
@@ -72,12 +74,14 @@ export default function ({ children, id, imgSrc }: Props) {
 							width: 100%;
 							height: 100%;
 							image-rendering: pixelated;
-							filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
-								drop-shadow(0px 0px 1px white);
+							filter: drop-shadow(0px 0px 1px #f74358) drop-shadow(0px 0px 1px #f74358)
+								drop-shadow(0px 0px 1px #f74358);
 
 							@media (max-width: 720px) {
 								width: 80%;
 								height: 80%;
+								filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
+									drop-shadow(0px 0px 1px white);
 							}
 						`}
 					/>

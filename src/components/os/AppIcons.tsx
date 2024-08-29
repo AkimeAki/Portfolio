@@ -45,6 +45,7 @@ export default function () {
 					width: 100%;
 					height: auto;
 					row-gap: 10px;
+					padding: 30px 0;
 				}
 			`}
 		>
