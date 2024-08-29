@@ -58,7 +58,8 @@ export default function ({ title, description, imgSrc, href }: Props) {
 			</div>
 			<div
 				className={css`
-					width: 500px;
+					max-width: 500px;
+					width: 100%;
 				`}
 			>
 				<img
