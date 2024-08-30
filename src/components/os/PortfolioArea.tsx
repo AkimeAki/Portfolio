@@ -3,11 +3,12 @@ import { css } from "@kuma-ui/core";
 interface Props {
 	title: string;
 	description: string;
-	imgSrc: string;
+	children: React.ReactNode;
 	href?: string;
+	buttonTitle?: string;
 }
 
-export default function ({ title, description, imgSrc, href }: Props) {
+export default function ({ title, description, children, href, buttonTitle = "アクセスする" }: Props) {
 	return (
 		<div
 			className={css`
@@ -52,7 +53,7 @@ export default function ({ title, description, imgSrc, href }: Props) {
 							font-size: 14px;
 						`}
 					>
-						アクセスする
+						{buttonTitle}
 					</a>
 				)}
 			</div>
@@ -62,12 +63,7 @@ export default function ({ title, description, imgSrc, href }: Props) {
 					width: 100%;
 				`}
 			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src={imgSrc}
-				/>
+				{children}
 			</div>
 		</div>
 	);

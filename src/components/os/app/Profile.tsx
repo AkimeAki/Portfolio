@@ -90,45 +90,43 @@ export default function () {
 					gap: 30px;
 					flex-direction: column;
 					align-items: flex-start;
+
+					h4 {
+						font-weight: bold;
+					}
+
+					table {
+						width: 100%;
+
+						th,
+						td {
+							border-bottom: 2px solid #d0e79f;
+							padding: 10px 0;
+						}
+
+						th {
+							text-align: left;
+							width: 170px;
+
+							@container (max-width: 900px) {
+								width: 120px;
+								font-size: 12px;
+								font-weight: bold;
+							}
+						}
+
+						td {
+							div {
+								display: flex;
+								flex-wrap: wrap;
+								gap: 5px;
+							}
+						}
+					}
 				`}
 			>
 				<h3>開発系スキル</h3>
-				<div
-					className={css`
-						h4 {
-							font-weight: bold;
-						}
-
-						table {
-							width: 100%;
-
-							th,
-							td {
-								border-bottom: 2px solid #d0e79f;
-								padding: 10px 0;
-							}
-
-							th {
-								text-align: left;
-								width: 170px;
-
-								@container (max-width: 900px) {
-									width: 120px;
-									font-size: 12px;
-									font-weight: bold;
-								}
-							}
-
-							td {
-								div {
-									display: flex;
-									flex-wrap: wrap;
-									gap: 5px;
-								}
-							}
-						}
-					`}
-				>
+				<div>
 					<div
 						className={css`
 							display: flex;
@@ -262,6 +260,9 @@ export default function () {
 											<ColorLabel bgColor="#2a2d37" color="#a1e6f3">
 												Electron
 											</ColorLabel>
+											<ColorLabel bgColor="#33c6cf" color="#780dca">
+												NextAuth.js
+											</ColorLabel>
 										</div>
 									</td>
 								</tr>
@@ -313,6 +314,9 @@ export default function () {
 											<ColorLabel bgColor="#4880e8" color="white">
 												Cloud Run
 											</ColorLabel>
+											<ColorLabel bgColor="#3863cb" color="white">
+												Cloud Build
+											</ColorLabel>
 											<ColorLabel bgColor="#000000" color="white">
 												Vercel
 											</ColorLabel>
@@ -321,6 +325,12 @@ export default function () {
 											</ColorLabel>
 											<ColorLabel bgColor="#cd6323" color="white">
 												AWS Lamda
+											</ColorLabel>
+											<ColorLabel bgColor="#41822e" color="white">
+												Amazon S3
+											</ColorLabel>
+											<ColorLabel bgColor="#e87c2f" color="white">
+												Cloudflare R2
 											</ColorLabel>
 										</div>
 									</td>
@@ -384,40 +394,44 @@ export default function () {
 						`}
 					>
 						<h4>比較的できる</h4>
-						<div
-							className={css`
-								display: flex;
-								align-items: baseline;
-								flex-wrap: wrap;
-								gap: 5px;
-							`}
-						>
-							<ColorLabel bgColor="#010100" color="white">
-								AviUtl
-							</ColorLabel>
-							<ColorLabel bgColor="#191919" color="white">
-								ゆっくりムービーメーカー3
-							</ColorLabel>
-						</div>
+						<table>
+							<tbody>
+								<tr>
+									<th>動画編集ソフト</th>
+									<td>
+										<div>
+											<ColorLabel bgColor="#010100" color="white">
+												AviUtl
+											</ColorLabel>
+											<ColorLabel bgColor="#191919" color="white">
+												ゆっくりムービーメーカー3
+											</ColorLabel>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 						<h4>どちらかというとできる</h4>
-						<div
-							className={css`
-								display: flex;
-								align-items: baseline;
-								flex-wrap: wrap;
-								gap: 5px;
-							`}
-						>
-							<ColorLabel bgColor="#030056" color="#9593f3">
-								Adobe Premiere Pro
-							</ColorLabel>
-							<ColorLabel bgColor="#030056" color="#9693f3">
-								Adobe After Effect
-							</ColorLabel>
-							<ColorLabel bgColor="#191919" color="white">
-								ゆっくりムービーメーカー4
-							</ColorLabel>
-						</div>
+						<table>
+							<tbody>
+								<tr>
+									<th>動画編集ソフト</th>
+									<td>
+										<div>
+											<ColorLabel bgColor="#030056" color="#9593f3">
+												Adobe Premiere Pro
+											</ColorLabel>
+											<ColorLabel bgColor="#030056" color="#9693f3">
+												Adobe After Effect
+											</ColorLabel>
+											<ColorLabel bgColor="#191919" color="white">
+												ゆっくりムービーメーカー4
+											</ColorLabel>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
