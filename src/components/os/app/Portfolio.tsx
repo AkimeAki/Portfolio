@@ -76,7 +76,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"YouTube用エンディング1"}
-				description={"Adobe Premiere ProとAdobe Affter Effectsを使用しました。"}
+				description={"Adobe Premiere ProとAdobe After Effectsを使用しました。"}
 			>
 				<iframe
 					className={css`
@@ -92,7 +92,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"ニコニコ動画用エンディング"}
-				description={"Adobe Premiere ProとAdobe Affter Effectsを使用しました。"}
+				description={"Adobe Premiere ProとAdobe After Effectsを使用しました。"}
 			>
 				<iframe
 					className={css`
