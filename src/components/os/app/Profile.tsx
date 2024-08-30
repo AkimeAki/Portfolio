@@ -170,6 +170,9 @@ export default function () {
 									<ColorLabel bgColor="#2eadb3" color="white">
 										Tailwind CSS
 									</ColorLabel>
+									<ColorLabel bgColor="#227af2" color="white">
+										MUI
+									</ColorLabel>
 								</div>
 							</td>
 						</tr>
@@ -206,6 +209,9 @@ export default function () {
 									</ColorLabel>
 									<ColorLabel bgColor="#1a2a31" color="white">
 										Prettier
+									</ColorLabel>
+									<ColorLabel bgColor="#218989" color="white">
+										KARTE
 									</ColorLabel>
 								</div>
 							</td>
@@ -264,6 +270,21 @@ export default function () {
 									<ColorLabel bgColor="#33c6cf" color="#780dca">
 										NextAuth.js
 									</ColorLabel>
+									<ColorLabel bgColor="#d8d8d8" color="#103148">
+										Prisma
+									</ColorLabel>
+									<ColorLabel bgColor="#111111" color="white">
+										Kysely
+									</ColorLabel>
+									<ColorLabel bgColor="#7503ea" color="white">
+										Bootstrap
+									</ColorLabel>
+									<ColorLabel bgColor="#dc8d7b" color="white">
+										styled-components
+									</ColorLabel>
+									<ColorLabel bgColor="#1d1d1d" color="#e6c87a">
+										Master CSS
+									</ColorLabel>
 								</div>
 							</td>
 						</tr>
@@ -299,6 +320,9 @@ export default function () {
 									<ColorLabel bgColor="#63a0ee" color="white">
 										Biome
 									</ColorLabel>
+									<ColorLabel bgColor="#000000" color="white">
+										Resend
+									</ColorLabel>
 								</div>
 							</td>
 						</tr>
@@ -317,6 +341,9 @@ export default function () {
 									</ColorLabel>
 									<ColorLabel bgColor="#3863cb" color="white">
 										Cloud Build
+									</ColorLabel>
+									<ColorLabel bgColor="#eb9444" color="black">
+										Cloudflare Workers
 									</ColorLabel>
 									<ColorLabel bgColor="#000000" color="white">
 										Vercel
