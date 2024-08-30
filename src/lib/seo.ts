@@ -36,14 +36,14 @@ export const seoHead = ({
 			description,
 			siteName: pageTitle,
 			images: {
-				url: "https://aki.wtf/favicon.ico"
+				url: "https://aki.wtf/favicon.png"
 			}
 		},
 		twitter: {
 			card: "summary",
 			site: "@Akime_Aki",
 			creator: "@Akime_Aki",
-			images: "https://aki.wtf/favicon.ico"
+			images: "https://aki.wtf/favicon.png"
 		},
 		icons: "https://aki.wtf/favicon.ico"
 	};
