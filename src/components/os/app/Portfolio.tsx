@@ -42,6 +42,7 @@ export default function () {
 				title={"カーソルを追従する四角いの"}
 				description={"マウスの後ろから四角いのが付いてくるChrome拡張機能です。"}
 				href="https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn"
+				buttonTitle={"Chrome ウェブストアで見る"}
 			>
 				<img
 					className={css`
@@ -54,6 +55,7 @@ export default function () {
 				title={"拡張子を変更して画像を保存"}
 				description={"画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。"}
 				href="https://chromewebstore.google.com/detail/kinldkcfdohpgpedpglhcfjenoaklhkk"
+				buttonTitle={"Chrome ウェブストアで見る"}
 			>
 				<img
 					className={css`
@@ -66,6 +68,7 @@ export default function () {
 				title={"Google Apps Script製ページ用印刷"}
 				description={"Google Apps Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。"}
 				href="https://chromewebstore.google.com/detail/gacknebdjgldkfjibmbkkdbkihomoiaj"
+				buttonTitle={"Chrome ウェブストアで見る"}
 			>
 				<img
 					className={css`
