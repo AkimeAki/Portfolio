@@ -5,7 +5,8 @@ import { Metadata } from "next";
 export const runtime = "edge";
 
 export const metadata: Metadata = seoHead({
-	title: "プロフィール"
+	title: "プロフィール",
+	description: "彩季です。"
 });
 
 export default function () {
