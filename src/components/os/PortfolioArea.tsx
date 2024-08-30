@@ -2,7 +2,7 @@ import { css } from "@kuma-ui/core";
 
 interface Props {
 	title: string;
-	description: string;
+	description: React.ReactNode;
 	children: React.ReactNode;
 	href?: string;
 	buttonTitle?: string;
@@ -39,7 +39,16 @@ export default function ({ title, description, children, href, buttonTitle = "ã‚
 				>
 					{title}
 				</h3>
-				<p>{description}</p>
+				<div
+					className={css`
+						word-break: break-all;
+						p:not(:last-child) {
+							margin-bottom: 10px;
+						}
+					`}
+				>
+					{description}
+				</div>
 				{href !== undefined && (
 					<a
 						href={href}

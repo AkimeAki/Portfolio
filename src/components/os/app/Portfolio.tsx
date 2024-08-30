@@ -16,7 +16,7 @@ export default function () {
 		>
 			<PortfolioArea
 				title={"アレルギーナビ（制作中）"}
-				description={"アレルギーの方向けのアレルゲン情報サイトです。"}
+				description={<p>アレルギーの方向けのアレルゲン情報サイトです。</p>}
 				href="https://allergy-navi.com/"
 			>
 				<img
@@ -28,7 +28,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"どっとや"}
-				description={"ドット絵の素材配布サイトです。"}
+				description={<p>ドット絵の素材配布サイトです。</p>}
 				href="https://pixel.gives/"
 			>
 				<img
@@ -40,7 +40,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"カーソルを追従する四角いの"}
-				description={"マウスの後ろから四角いのが付いてくるChrome拡張機能です。"}
+				description={<p>マウスの後ろから四角いのが付いてくるChrome拡張機能です。</p>}
 				href="https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
@@ -53,7 +53,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"拡張子を変更して画像を保存"}
-				description={"画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。"}
+				description={<p>画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。</p>}
 				href="https://chromewebstore.google.com/detail/kinldkcfdohpgpedpglhcfjenoaklhkk"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
@@ -66,7 +66,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"Google Apps Script製ページ用印刷"}
-				description={"Google Apps Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。"}
+				description={<p>Google Apps Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。</p>}
 				href="https://chromewebstore.google.com/detail/gacknebdjgldkfjibmbkkdbkihomoiaj"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
@@ -79,7 +79,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"YouTube用エンディング1"}
-				description={"Adobe Premiere ProとAdobe After Effectsを使用しました。"}
+				description={<p>Adobe Premiere ProとAdobe After Effectsを使用しました。</p>}
 			>
 				<iframe
 					className={css`
@@ -95,7 +95,7 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"ニコニコ動画用エンディング"}
-				description={"Adobe Premiere ProとAdobe After Effectsを使用しました。"}
+				description={<p>Adobe Premiere ProとAdobe After Effectsを使用しました。</p>}
 			>
 				<iframe
 					className={css`
@@ -109,7 +109,7 @@ export default function () {
 					allowFullScreen
 				/>
 			</PortfolioArea>
-			<PortfolioArea title={"YouTube用エンディング2"} description={"AviUtlで作成しました。"}>
+			<PortfolioArea title={"YouTube用エンディング2"} description={<p>AviUtlで作成しました。</p>}>
 				<iframe
 					className={css`
 						width: 100%;
@@ -120,6 +120,26 @@ export default function () {
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					referrerPolicy="strict-origin-when-cross-origin"
 					allowFullScreen
+				/>
+			</PortfolioArea>
+			<PortfolioArea
+				title={"DevContainer Install Local Extensions"}
+				description={
+					<>
+						<p>Dev Containerを使った時にローカルの拡張機能全部使いてぇよって人におすすめの拡張機能です。</p>
+						<p>
+							開発コンテナにローカルにインストールされている拡張機能をインストールする設定「dev.containers.defaultExtensionsIfInstalledLocally」に自動的にローカルにインストールされている全ての拡張機能を設定します。
+						</p>
+					</>
+				}
+				href="https://marketplace.visualstudio.com/items?itemName=AkimeAki.devcontainer-install-local-extensions"
+				buttonTitle={"Visual Studio Marketplaceで見る"}
+			>
+				<img
+					className={css`
+						width: 100%;
+					`}
+					src="/portfolio/devcontainer-local.png"
 				/>
 			</PortfolioArea>
 		</div>
