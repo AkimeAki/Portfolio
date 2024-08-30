@@ -223,6 +223,16 @@ export default function () {
 								</div>
 							</td>
 						</tr>
+						<tr>
+							<th>拡張機能制作</th>
+							<td>
+								<div>
+									<ColorLabel bgColor="#f4c752" color="#4e86e8">
+										Chrome 拡張機能
+									</ColorLabel>
+								</div>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<h4>どちらかというとできる</h4>
@@ -326,6 +336,16 @@ export default function () {
 								</div>
 							</td>
 						</tr>
+						<tr>
+							<th>拡張機能制作</th>
+							<td>
+								<div>
+									<ColorLabel bgColor="#36a7e8" color="white">
+										Extensions for Visual Studio Code
+									</ColorLabel>
+								</div>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<h4>自信なし</h4>
@@ -347,7 +367,7 @@ export default function () {
 				<table>
 					<tbody>
 						<tr>
-							<th>ライブラリ</th>
+							<th>CSS in JS</th>
 							<td>
 								<div>
 									<ColorLabel bgColor="#c966b9" color="#ffda6c">
