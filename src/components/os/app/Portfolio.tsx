@@ -74,7 +74,10 @@ export default function () {
 					src="/portfolio/gas-print.png"
 				/>
 			</PortfolioArea>
-			<PortfolioArea title={"YouTube用エンディング1"} description={"AviUtlで作成しました。"}>
+			<PortfolioArea
+				title={"YouTube用エンディング1"}
+				description={"Adobe Premiere ProとAdobe Affter Effectsを使用しました。"}
+			>
 				<iframe
 					className={css`
 						width: 100%;
