@@ -66,7 +66,7 @@ export default function ({ title, children, id }: Props) {
 						top = otherWindowTop + 30;
 					}
 
-					if (Math.abs(otherWindowLeft - top) < 30) {
+					if (Math.abs(otherWindowLeft - left) < 30) {
 						left = otherWindowLeft + 30;
 					}
 				}
