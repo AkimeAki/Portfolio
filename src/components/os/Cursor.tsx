@@ -1,10 +1,45 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { css } from "@kuma-ui/core";
+
+const isTouchDevice = (): boolean => {
+	if (typeof window !== "undefined") {
+		return (
+			"ontouchstart" in window || navigator.maxTouchPoints > 0 || window.matchMedia("(pointer:coarse)").matches
+		);
+	} else {
+		return false;
+	}
+};
 
 export default function () {
 	const element = useRef<HTMLDivElement | null>(null);
+	const [isTouch, setIsTouch] = useState<boolean>(isTouchDevice());
+
+	useEffect(() => {
+		const touched = (): void => {
+			setIsTouch(true);
+		};
+
+		const move = (e: PointerEvent): void => {
+			if (e.pointerType === "mouse") {
+				setIsTouch(false);
+			}
+
+			if (e.pointerType === "touch" || e.pointerType === "pen") {
+				setIsTouch(true);
+			}
+		};
+
+		window.addEventListener("touchstart", touched, false);
+		window.addEventListener("pointermove", move, false);
+
+		return () => {
+			window.removeEventListener("touchstart", touched);
+			window.removeEventListener("pointermove", move);
+		};
+	}, []);
 
 	useEffect(() => {
 		let x = 0;
@@ -106,6 +141,7 @@ export default function () {
 	return (
 		<div
 			ref={element}
+			style={{ display: isTouch ? "none" : "block" }}
 			className={css`
 				position: fixed;
 				z-index: calc(infinity);
