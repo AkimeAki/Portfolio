@@ -83,7 +83,7 @@ export default function () {
 						left: 0;
 						width: 100%;
 						height: 100%;
-						z-index: calc(infinity);
+						z-index: calc(infinity - 1);
 						padding: 10px;
 						user-select: none;
 						pointer-events: none;

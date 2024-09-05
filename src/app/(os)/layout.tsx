@@ -1,5 +1,6 @@
 import AkiSignal from "@/components/os/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
+import Cursor from "@/components/os/Cursor";
 import Loading from "@/components/os/Loading";
 import Taskbar from "@/components/os/Taskbar";
 import { seoHead } from "@/lib/seo";
@@ -54,6 +55,7 @@ export default function ({ children }: Props) {
 				</div>
 				<Taskbar />
 			</div>
+			<Cursor />
 		</>
 	);
 }

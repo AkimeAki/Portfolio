@@ -12,6 +12,15 @@
 	line-height: 1.6;
 	color: #777777;
 	font-weight: normal;
+	cursor: none;
+}
+
+body[data-tick-tock-clock="true"] {
+	cursor: auto !important;
+
+	* {
+		cursor: auto !important;
+	}
 }
 
 *:focus {

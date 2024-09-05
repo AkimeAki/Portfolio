@@ -34,7 +34,6 @@ export default function ({ children, id, imgSrc, href }: Props) {
 				flex-direction: column;
 				align-items: center;
 				width: 150px;
-				cursor: pointer;
 				border-style: solid;
 				border-color: transparent;
 				border-width: 2px;

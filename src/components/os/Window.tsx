@@ -191,7 +191,6 @@ export default function ({ title, children, id }: Props) {
 								position: relative;
 								width: 25px;
 								height: 25px;
-								cursor: pointer;
 
 								&:hover {
 									background-color: #c82746;
