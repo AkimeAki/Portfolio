@@ -3,6 +3,7 @@ import AppIcons from "@/components/os/AppIcons";
 import Cursor from "@/components/os/Cursor";
 import Loading from "@/components/os/Loading";
 import Taskbar from "@/components/os/Taskbar";
+import Touch from "@/components/os/Touch";
 import { seoHead } from "@/lib/seo";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
@@ -19,6 +20,7 @@ export default function ({ children }: Props) {
 	return (
 		<>
 			<Loading />
+			<Touch />
 			<div
 				className={css`
 					position: relative;

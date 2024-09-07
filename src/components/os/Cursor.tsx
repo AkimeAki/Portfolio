@@ -1,45 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { css } from "@kuma-ui/core";
-
-const isTouchDevice = (): boolean => {
-	if (typeof window !== "undefined") {
-		return (
-			"ontouchstart" in window || navigator.maxTouchPoints > 0 || window.matchMedia("(pointer:coarse)").matches
-		);
-	} else {
-		return false;
-	}
-};
+import { useStore } from "@nanostores/react";
+import { isTouch } from "@/atom";
 
 export default function () {
 	const element = useRef<HTMLDivElement | null>(null);
-	const [isTouch, setIsTouch] = useState<boolean>(isTouchDevice());
-
-	useEffect(() => {
-		const touched = (): void => {
-			setIsTouch(true);
-		};
-
-		const move = (e: PointerEvent): void => {
-			if (e.pointerType === "mouse") {
-				setIsTouch(false);
-			}
-
-			if (e.pointerType === "touch" || e.pointerType === "pen") {
-				setIsTouch(true);
-			}
-		};
-
-		window.addEventListener("touchstart", touched, false);
-		window.addEventListener("pointermove", move, false);
-
-		return () => {
-			window.removeEventListener("touchstart", touched);
-			window.removeEventListener("pointermove", move);
-		};
-	}, []);
+	const $isTouch = useStore(isTouch);
 
 	useEffect(() => {
 		let x = 0;
@@ -141,7 +109,7 @@ export default function () {
 	return (
 		<div
 			ref={element}
-			style={{ display: isTouch ? "none" : "block" }}
+			style={{ display: $isTouch ? "none" : "block" }}
 			className={css`
 				position: fixed;
 				z-index: calc(infinity);

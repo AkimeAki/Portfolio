@@ -1,11 +1,11 @@
 "use client";
 
-import { openAppSortList } from "@/atom";
+import { isTouch, openAppSortList } from "@/atom";
 import { appList, sortList } from "@/lib/app-select";
 import { pageTitle } from "@/lib/seo";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
 	title: string;
@@ -17,6 +17,16 @@ export default function ({ title, children, id }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
 	const windowBarElement = useRef<HTMLDivElement | null>(null);
 	const windowElement = useRef<HTMLDivElement | null>(null);
+	const $isTouch = useStore(isTouch);
+	const [isMaxWindow, setIsMaxWindow] = useState<boolean>(false);
+
+	useEffect(() => {
+		if ($isTouch) {
+			setIsMaxWindow(true);
+		} else {
+			setIsMaxWindow(false);
+		}
+	}, [$isTouch]);
 
 	useEffect(() => {
 		const move = (e: PointerEvent) => {
@@ -84,24 +94,34 @@ export default function ({ title, children, id }: Props) {
 			ref={windowElement}
 			data-app-id={id}
 			style={{ zIndex: $openAppSortList.indexOf(id), display: $openAppSortList.includes(id) ? "block" : "none" }}
-			className={css`
-				position: absolute;
-				top: 0;
-				left: 0;
-				border-left: 4px solid #d0e79a;
-				border-right: 4px solid #d0e79a;
-				border-bottom: 4px solid #d0e79a;
-				user-select: text;
-				pointer-events: auto;
-				box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
+			className={[
+				css`
+					position: absolute;
+					top: 0;
+					left: 0;
+					border-left: 4px solid #d0e79a;
+					border-right: 4px solid #d0e79a;
+					border-bottom: 4px solid #d0e79a;
+					user-select: text;
+					pointer-events: auto;
+					box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
 
-				@media (max-width: 720px) {
-					top: 0 !important;
-					left: 0 !important;
-					width: 100% !important;
-					height: calc(100% - 70px) !important;
-				}
-			`}
+					@media (max-width: 720px) {
+						top: 0 !important;
+						left: 0 !important;
+						width: 100% !important;
+						height: calc(100% - 70px) !important;
+					}
+				`,
+				isMaxWindow
+					? css`
+							top: 0 !important;
+							left: 0 !important;
+							width: 100% !important;
+							height: calc(100% - 70px) !important;
+						`
+					: ""
+			].join(" ")}
 		>
 			<div
 				className={css`
@@ -164,6 +184,66 @@ export default function ({ title, children, id }: Props) {
 							margin-right: 10px;
 						`}
 					>
+						<div
+							onClick={() => {
+								if (!$isTouch) {
+									setIsMaxWindow(!isMaxWindow);
+								}
+							}}
+							style={{ display: $isTouch ? "none" : "flex" }}
+							className={[
+								css`
+									align-items: center;
+									justify-content: center;
+									position: relative;
+									width: 25px;
+									height: 25px;
+
+									&:hover {
+										background-color: #eeb5be;
+
+										&:before,
+										&:after {
+											border-color: white;
+										}
+									}
+								`,
+								isMaxWindow
+									? css`
+											&:before,
+											&:after {
+												display: block;
+												content: "";
+												border-color: #eeb5be;
+												border-style: solid;
+												border-width: 2px;
+											}
+
+											&:before {
+												transform: translate(2px, 2px);
+												width: 8px;
+												height: 8px;
+											}
+
+											&:after {
+												transform: translate(-3px, -3px);
+												width: 5px;
+												height: 5px;
+											}
+										`
+									: css`
+											&:before {
+												display: block;
+												content: "";
+												width: 11px;
+												height: 11px;
+												border-color: #eeb5be;
+												border-style: solid;
+												border-width: 2px;
+											}
+										`
+							].join(" ")}
+						/>
 						<div
 							onClick={() => {
 								const closeAppList = $openAppSortList.filter((item) => {
