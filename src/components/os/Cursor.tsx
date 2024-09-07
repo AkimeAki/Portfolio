@@ -10,6 +10,18 @@ export default function () {
 	const $isTouch = useStore(isTouch);
 
 	useEffect(() => {
+		if (element.current !== null) {
+			if ($isTouch) {
+				element.current.style.display = "none";
+			}
+
+			if (!$isTouch) {
+				element.current.style.display = "block";
+			}
+		}
+	}, [$isTouch]);
+
+	useEffect(() => {
 		let x = 0;
 		let y = 0;
 
@@ -81,8 +93,8 @@ export default function () {
 	return (
 		<div
 			ref={element}
-			style={{ display: $isTouch ? "none" : "block" }}
 			className={css`
+				display: none;
 				position: fixed;
 				z-index: calc(infinity);
 				width: 44px;

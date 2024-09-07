@@ -27,7 +27,12 @@ export default function () {
 		let startY = -10;
 
 		const move = (e: PointerEvent) => {
-			if (e.buttons === 1 && selectAreaElement.current !== null && targetAreaElement.current !== null) {
+			if (
+				e.buttons === 1 &&
+				selectAreaElement.current !== null &&
+				targetAreaElement.current !== null &&
+				!$isTouch
+			) {
 				if (e.offsetX - startX > 0 && e.offsetY - startY > 0) {
 					setSelectArea(
 						startY + "px",
@@ -79,13 +84,13 @@ export default function () {
 		const mousedown = (e: MouseEvent) => {
 			startX = e.offsetX;
 			startY = e.offsetY;
-			if (selectAreaElement.current !== null) {
+			if (selectAreaElement.current !== null && !$isTouch) {
 				selectAreaElement.current.style.display = "block";
 			}
 		};
 
 		const mouseup = () => {
-			if (selectAreaElement.current !== null) {
+			if (selectAreaElement.current !== null && !$isTouch) {
 				startX = -10;
 				startY = -10;
 				setSelectArea(startY + "px", startX + "px", "auto", "auto", 0, 0);
@@ -106,7 +111,7 @@ export default function () {
 				targetAreaElement.current.removeEventListener("mouseup", mouseup);
 			}
 		};
-	}, []);
+	}, [$isTouch]);
 
 	return (
 		<div
