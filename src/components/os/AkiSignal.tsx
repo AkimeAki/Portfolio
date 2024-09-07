@@ -29,7 +29,7 @@ export default function () {
 		>
 			<img
 				src="/aki.png"
-				alt="でっかい彩季"
+				alt={"でっかい彩季"}
 				className={css`
 					position: absolute;
 					bottom: 0;

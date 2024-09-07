@@ -119,25 +119,25 @@ export default function () {
 						}
 					`}
 				>
-					<TaskbarIcon iconPath="/icon/x.png" alt="Xのアイコン" href="https://x.com/Akime_Aki" />
+					<TaskbarIcon iconPath="/icon/x.png" alt={"Xのアイコン"} href="https://x.com/Akime_Aki" />
 					<TaskbarIcon
 						iconPath="/icon/youtube.png"
-						alt="YouTubeのアイコン"
+						alt={"YouTubeのアイコン"}
 						href="https://www.youtube.com/@AkimeAki"
 					/>
 					<TaskbarIcon
 						iconPath="/icon/twitch.png"
-						alt="Twitchのアイコン"
+						alt={"Twitchのアイコン"}
 						href="https://twitch.tv/Akime_Aki"
 					/>
 					<TaskbarIcon
 						iconPath="/icon/niconico.png"
-						alt="ニコニコ動画のアイコン"
+						alt={"ニコニコ動画のアイコン"}
 						href="https://www.nicovideo.jp/user/98282698"
 					/>
 					<TaskbarIcon
 						iconPath="/icon/github.png"
-						alt="GitHubのアイコン"
+						alt={"GitHubのアイコン"}
 						href="https://github.com/AkimeAki"
 					/>
 				</div>
