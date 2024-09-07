@@ -1,13 +1,51 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { isTouch, openAppSortList, osLoading } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function () {
 	const $osLoading = useStore(osLoading);
 	const [animation, setAnimation] = useState<boolean>(true);
+	const signalElement = useRef<HTMLImageElement | null>(null);
+	const $isTouch = useStore(isTouch);
+	const $openAppSortList = useStore(openAppSortList);
+
+	useEffect(() => {
+		const click = (e: MouseEvent) => {
+			if (animation && signalElement.current !== null && !$isTouch && $openAppSortList.length === 0) {
+				const canvas = document.createElement("canvas");
+				const ctx = canvas.getContext("2d");
+				const image = signalElement.current;
+
+				canvas.width = image.naturalWidth;
+				canvas.height = image.naturalHeight;
+				ctx!.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+				const rect = image.getBoundingClientRect();
+
+				const clickPixelX = (e.offsetX - rect.left) / (image.width / image.naturalWidth);
+				const clickPixelY = (e.offsetY - rect.top) / (image.width / image.naturalHeight);
+
+				const pixelData = ctx!.getImageData(clickPixelX, clickPixelY, 1, 1).data;
+				const alpha = pixelData[3];
+				if (alpha === 255) {
+					canvas.remove();
+					setAnimation(false);
+					setTimeout(() => {
+						setAnimation(true);
+					}, 100);
+				}
+			}
+		};
+
+		window.addEventListener("click", click);
+
+		return () => {
+			window.removeEventListener("click", click);
+		};
+	}, [animation, $isTouch, $openAppSortList]);
 
 	return (
 		<div
@@ -41,32 +79,9 @@ export default function () {
 			/>
 			<img
 				src="/aki-signal.png"
+				ref={signalElement}
 				alt={"でっかい彩季"}
 				style={{ animationName: $osLoading ? "" : animation ? "aki-signal" : "" }}
-				onClick={(e) => {
-					if (animation) {
-						const canvas = document.createElement("canvas");
-						const ctx = canvas.getContext("2d");
-						const image = e.target as HTMLImageElement;
-
-						canvas.width = image.naturalWidth;
-						canvas.height = image.naturalHeight;
-						ctx!.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-						const clickPixelX = e.nativeEvent.offsetX / (image.width / image.naturalWidth);
-						const clickPixelY = e.nativeEvent.offsetY / (image.width / image.naturalHeight);
-
-						const pixelData = ctx!.getImageData(clickPixelX, clickPixelY, 1, 1).data;
-						const alpha = pixelData[3];
-						if (alpha === 255) {
-							canvas.remove();
-							setAnimation(false);
-							setTimeout(() => {
-								setAnimation(true);
-							}, 100);
-						}
-					}
-				}}
 				className={css`
 					position: absolute;
 					bottom: 0;
@@ -78,10 +93,6 @@ export default function () {
 					animation-fill-mode: forwards;
 					animation-iteration-count: 5;
 					animation-timing-function: linear;
-					pointer-events: auto;
-					user-drag: none;
-					-webkit-user-drag: none;
-					-moz-user-select: none;
 					filter: brightness(110%) blur(3px);
 				`}
 			/>

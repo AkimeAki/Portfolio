@@ -2,6 +2,7 @@ import AkiSignal from "@/components/os/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
 import Cursor from "@/components/os/Cursor";
 import Loading from "@/components/os/Loading";
+import SelectArea from "@/components/os/SelectArea";
 import Taskbar from "@/components/os/Taskbar";
 import Touch from "@/components/os/Touch";
 import { seoHead } from "@/lib/seo";
@@ -40,6 +41,7 @@ export default function ({ children }: Props) {
 					`}
 				>
 					<AkiSignal />
+					<SelectArea />
 					<AppIcons />
 					<div
 						className={css`
