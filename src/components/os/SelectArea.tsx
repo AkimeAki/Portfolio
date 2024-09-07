@@ -10,6 +10,18 @@ export default function () {
 	const selectAreaElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
 
+	useEffect(() => {
+		if (targetAreaElement.current !== null) {
+			if ($isTouch) {
+				targetAreaElement.current.style.display = "none";
+			}
+
+			if (!$isTouch) {
+				targetAreaElement.current.style.display = "block";
+			}
+		}
+	}, [$isTouch]);
+
 	const setSelectArea = (top: string, left: string, bottom: string, right: string, width: number, height: number) => {
 		if (selectAreaElement.current !== null) {
 			selectAreaElement.current.style.top = top;
@@ -116,7 +128,6 @@ export default function () {
 	return (
 		<div
 			ref={targetAreaElement}
-			style={{ display: $isTouch ? "none" : "block" }}
 			className={css`
 				position: absolute;
 				top: 0;
