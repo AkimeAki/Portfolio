@@ -5,19 +5,31 @@ import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
 import RandomFont from "@/components/os/RandomFont";
+import Link from "next/link";
 
-export default function () {
+interface Props {
+	notFound?: boolean;
+}
+
+export default function ({ notFound = false }: Props) {
 	const $osLoading = useStore(osLoading);
 	const [imageLoading, setImageLoading] = useState<boolean>(true);
 	const [fontsLoading, setFontsLoading] = useState<boolean>(true);
 	const [agent, setAgent] = useState<string>("");
 	const [ready, setReady] = useState(false);
+	const [isValidJS, setIsValidJS] = useState<boolean>(false);
+
+	useEffect(() => {
+		setIsValidJS(true);
+	}, []);
 
 	useEffect(() => {
 		setTimeout(() => {
-			setReady(true);
+			if (!notFound) {
+				setReady(true);
+			}
 		}, 200);
-	}, []);
+	}, [notFound]);
 
 	useEffect(() => {
 		const getLoadingData = async () => {
@@ -99,6 +111,79 @@ export default function () {
 					<p>
 						<RandomFont text="Welcome" />
 					</p>
+					{(!isValidJS || notFound) && (
+						<p
+							className={css`
+								opacity: 0;
+								animation-name: viewPermissionCheck;
+								animation-delay: 500ms;
+								animation-fill-mode: forwards;
+								animation-duration: 0s;
+
+								@keyframes viewPermissionCheck {
+									100% {
+										opacity: 1;
+									}
+								}
+							`}
+						>
+							<RandomFont text="> Network Check... " />
+							<span
+								className={css`
+									color: #c72a4d;
+									font-weight: bold;
+									opacity: 0;
+
+									animation-name: viewPermissionCheck;
+									animation-delay: 3s;
+									animation-fill-mode: forwards;
+									animation-duration: 0s;
+								`}
+							>
+								{notFound ? "404" : "Error"}
+							</span>
+							<span
+								className={css`
+									display: block;
+									opacity: 0;
+
+									span,
+									a {
+										color: #c72a4d;
+										font-weight: bold;
+									}
+
+									span {
+										display: block;
+									}
+
+									animation-name: viewPermissionCheck;
+									animation-delay: 4s;
+									animation-fill-mode: forwards;
+									animation-duration: 0s;
+								`}
+							>
+								{!notFound && <>{"> "}Networkが問題が発生中</>}
+								{notFound && (
+									<>
+										<span>{"> "}アクセス先が見つかりませんでした</span>
+										<span>
+											{"> "}
+											<Link
+												href="/"
+												className={css`
+													cursor: pointer;
+													pointer-events: all;
+												`}
+											>
+												再起動する
+											</Link>
+										</span>
+									</>
+								)}
+							</span>
+						</p>
+					)}
 					{ready && (
 						<>
 							<p>

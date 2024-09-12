@@ -39,6 +39,22 @@ export default function () {
 				/>
 			</PortfolioArea>
 			<PortfolioArea
+				title={"SimpleV"}
+				description={
+					<p>
+						配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
+					</p>
+				}
+				href="https://simple-v.aki.wtf/"
+			>
+				<img
+					className={css`
+						width: 100%;
+					`}
+					src="/portfolio/simplev.png"
+				/>
+			</PortfolioArea>
+			<PortfolioArea
 				title={"カーソルを追従する四角いの"}
 				description={<p>マウスの後ろから四角いのが付いてくるChrome拡張機能です。</p>}
 				href="https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn"

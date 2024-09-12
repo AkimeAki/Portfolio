@@ -1,5 +1,6 @@
 import AkiSignal from "@/components/os/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
+import ContextMenu from "@/components/os/ContextMenu";
 import Cursor from "@/components/os/Cursor";
 import Loading from "@/components/os/Loading";
 import SelectArea from "@/components/os/SelectArea";
@@ -22,6 +23,7 @@ export default function ({ children }: Props) {
 		<>
 			<Loading />
 			<Touch />
+			<ContextMenu />
 			<div
 				className={css`
 					position: relative;
