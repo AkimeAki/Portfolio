@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /*/
-Disallow: /*.html
-Disallow: /404
-Sitemap: https://coffee.aki.wtf/sitemap-index.xml
