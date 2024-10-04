@@ -30,7 +30,12 @@ export default function ({ title, children, id }: Props) {
 
 	useEffect(() => {
 		const move = (e: PointerEvent) => {
-			if (e.buttons === 1 && windowElement.current !== null && windowBarElement.current !== null) {
+			if (
+				e.buttons === 1 &&
+				windowElement.current !== null &&
+				windowBarElement.current !== null &&
+				!isMaxWindow
+			) {
 				windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
 				windowElement.current.style.left = windowElement.current.offsetLeft + e.movementX + "px";
 				windowElement.current.draggable = false;
@@ -58,7 +63,7 @@ export default function ({ title, children, id }: Props) {
 				windowElement.current.removeEventListener("mousedown", mousedown);
 			}
 		};
-	}, [$openAppSortList]);
+	}, [$openAppSortList, isMaxWindow]);
 
 	useEffect(() => {
 		if (windowElement.current !== null) {
@@ -99,12 +104,14 @@ export default function ({ title, children, id }: Props) {
 					position: absolute;
 					top: 0;
 					left: 0;
-					border-left: 4px solid #d0e79a;
-					border-right: 4px solid #d0e79a;
-					border-bottom: 4px solid #d0e79a;
+					border-left: 4px solid #e5d3cc;
+					border-right: 4px solid #e5d3cc;
+					border-bottom: 4px solid #e5d3cc;
 					user-select: text;
 					pointer-events: auto;
 					box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
+					border-radius: 10px;
+					overflow: hidden;
 
 					@media (max-width: 720px) {
 						top: 0 !important;
@@ -119,6 +126,7 @@ export default function ({ title, children, id }: Props) {
 							left: 0 !important;
 							width: 100% !important;
 							height: calc(100% - 70px) !important;
+							border-radius: 0;
 						`
 					: ""
 			].join(" ")}
@@ -150,7 +158,7 @@ export default function ({ title, children, id }: Props) {
 					className={css`
 						position: relative;
 						height: 50px;
-						background-color: #d0e79a;
+						background-color: #e5d3cc;
 						display: flex;
 						justify-content: space-between;
 						user-select: none;
@@ -170,6 +178,7 @@ export default function ({ title, children, id }: Props) {
 								font-weight: bold;
 								font-size: 18px;
 								color: #e73e6b;
+								margin-bottom: 5px;
 							`}
 						>
 							{title}
@@ -196,11 +205,12 @@ export default function ({ title, children, id }: Props) {
 									align-items: center;
 									justify-content: center;
 									position: relative;
-									width: 25px;
-									height: 25px;
+									width: 27px;
+									height: 27px;
+									border-radius: 50%;
 
 									&:hover {
-										background-color: #eeb5be;
+										background-color: #91797d;
 
 										&:before,
 										&:after {
@@ -214,7 +224,7 @@ export default function ({ title, children, id }: Props) {
 											&:after {
 												display: block;
 												content: "";
-												border-color: #eeb5be;
+												border-color: #91797d;
 												border-style: solid;
 												border-width: 2px;
 											}
@@ -237,7 +247,7 @@ export default function ({ title, children, id }: Props) {
 												content: "";
 												width: 11px;
 												height: 11px;
-												border-color: #eeb5be;
+												border-color: #91797d;
 												border-style: solid;
 												border-width: 2px;
 											}
@@ -269,8 +279,9 @@ export default function ({ title, children, id }: Props) {
 							}}
 							className={css`
 								position: relative;
-								width: 25px;
-								height: 25px;
+								width: 27px;
+								height: 27px;
+								border-radius: 50%;
 
 								&:hover {
 									background-color: #c82746;
@@ -284,21 +295,21 @@ export default function ({ title, children, id }: Props) {
 								&:before,
 								&:after {
 									position: absolute;
-									left: 4px;
+									left: 5px;
 									display: block;
 									content: "";
 									width: 17px;
 									height: 3px;
-									background-color: #eeb5be;
+									background-color: #91797d;
 								}
 
 								&:before {
-									top: 11px;
+									top: 12px;
 									transform: rotate(45deg);
 								}
 
 								&:after {
-									bottom: 11px;
+									bottom: 12px;
 									transform: rotate(-45deg);
 								}
 							`}

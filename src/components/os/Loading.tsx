@@ -42,10 +42,14 @@ export default function ({ notFound = false }: Props) {
 				"/aki-signal.png",
 				"/aki.png",
 				"/app/ghost.png",
-				"/app/book.png",
-				"/app/tv.png",
+				"/app/aki-coffee.png",
+				"/app/blog.png",
 				"/app/aki.png",
-				"/app/picaxe.png"
+				"/app/picaxe.png",
+				"/app/simplev.png",
+				"/app/allergy-navi.png",
+				"/app/dotya.png",
+				"/app/kagarinosu.png"
 			];
 			await Promise.all(targetUrls.map((target) => fetch(target)));
 			setTimeout(() => {
@@ -228,7 +232,7 @@ export default function ({ notFound = false }: Props) {
 					{agent !== "" && (
 						<p
 							className={css`
-								font-family: "DotGothic16";
+								font-family: "BestTenCRT";
 							`}
 						>
 							{">"} Hello{" "}
@@ -239,7 +243,7 @@ export default function ({ notFound = false }: Props) {
 							})()}{" "}
 							<span
 								className={css`
-									font-family: "DotGothic16";
+									font-family: "BestTenCRT";
 									color: #c72a4d;
 									font-weight: bold;
 								`}

@@ -10,9 +10,10 @@ interface Props {
 	id?: string;
 	imgSrc?: string;
 	href?: string;
+	isPixel?: boolean;
 }
 
-export default function ({ children, id, imgSrc, href }: Props) {
+export default function ({ children, id, imgSrc, href, isPixel = false }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
 
 	return (
@@ -71,25 +72,30 @@ export default function ({ children, id, imgSrc, href }: Props) {
 				{imgSrc !== undefined && (
 					<img
 						src={imgSrc}
-						className={css`
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%, -50%);
-							width: 100%;
-							height: 100%;
-							image-rendering: pixelated;
-							filter: drop-shadow(0px 0px 1px #f74358) drop-shadow(0px 0px 1px #f74358)
-								drop-shadow(0px 0px 1px #f74358);
+						className={[
+							css`
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+								width: 100%;
+								height: 100%;
+								filter: drop-shadow(0px 0px 1px #f74358) drop-shadow(0px 0px 1px #f74358)
+									drop-shadow(0px 0px 1px #f74358);
 
-							@media (max-width: 720px) {
-								width: 80%;
-								height: 80%;
-								border-radius: 50%;
-								filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
-									drop-shadow(0px 0px 1px white);
-							}
-						`}
+								@media (max-width: 720px) {
+									width: 80%;
+									height: 80%;
+									border-radius: 50%;
+									filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
+										drop-shadow(0px 0px 1px white);
+								}
+							`,
+							isPixel &&
+								css`
+									image-rendering: pixelated;
+								`
+						].join(" ")}
 					/>
 				)}
 				{href !== undefined && (
@@ -109,17 +115,22 @@ export default function ({ children, id, imgSrc, href }: Props) {
 						/>
 						<img
 							src="/chrome-shortcut.png"
-							className={css`
-								display: none;
-								position: absolute;
-								bottom: 0;
-								right: 0;
-								image-rendering: pixelated;
+							className={[
+								css`
+									display: none;
+									position: absolute;
+									bottom: 0;
+									right: 0;
 
-								@media (max-width: 720px) {
-									display: block;
-								}
-							`}
+									@media (max-width: 720px) {
+										display: block;
+									}
+								`,
+								isPixel &&
+									css`
+										image-rendering: pixelated;
+									`
+							].join(" ")}
 						/>
 					</>
 				)}
@@ -131,10 +142,13 @@ export default function ({ children, id, imgSrc, href }: Props) {
 					width: 100%;
 					text-align: center;
 					line-height: 1;
-					overflow: hidden;
 
 					@media (max-width: 720px) {
 						font-size: 15px;
+					}
+
+					@media (max-width: 460px) {
+						font-size: 12px;
 					}
 				`}
 			>

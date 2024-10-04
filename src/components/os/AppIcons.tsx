@@ -52,16 +52,28 @@ export default function () {
 			<AppIcon id="profile" imgSrc="/app/aki.png">
 				プロフィール
 			</AppIcon>
-			<AppIcon id="portfolio" imgSrc="/app/picaxe.png">
+			<AppIcon id="portfolio" imgSrc="/app/picaxe.png" isPixel>
 				作ったもの
 			</AppIcon>
-			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/book.png">
+			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/aki-coffee.png" isPixel>
 				日常ブログ
 			</AppIcon>
-			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/tv.png">
+			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/blog.png" isPixel>
 				技術ブログ
 			</AppIcon>
-			<AppIcon id="faq" imgSrc="/app/ghost.png">
+			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.png">
+				アレルギーナビ
+			</AppIcon>
+			<AppIcon href="https://pixel.gives/" imgSrc="/app/dotya.png" isPixel>
+				どっとや
+			</AppIcon>
+			<AppIcon href="https://simple-v.aki.wtf/" imgSrc="/app/simplev.png" isPixel>
+				SimpleV
+			</AppIcon>
+			<AppIcon href="https://kagari.aki.wtf/" imgSrc="/app/kagarinosu.png" isPixel>
+				篝之鼠
+			</AppIcon>
+			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
 				FAQ
 			</AppIcon>
 		</div>

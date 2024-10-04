@@ -142,53 +142,6 @@ export default function () {
 					/>
 				</div>
 				<div
-					onClick={() => {
-						const time = new Date(nowTime);
-
-						if (document.body.dataset.tickTockClock === "true") {
-							document.body.dataset.tickTockClock = "false";
-							document.body.dataset.tick = "";
-						} else {
-							if (time.getSeconds() === 0) {
-								document.body.dataset.tickTockClock = "true";
-								document.body.dataset.tick = "12";
-							}
-
-							if (
-								time.getSeconds() === 5 ||
-								time.getSeconds() === 10 ||
-								time.getSeconds() === 15 ||
-								time.getSeconds() === 20 ||
-								time.getSeconds() === 25
-							) {
-								document.body.dataset.tickTockClock = "true";
-								document.body.dataset.tick = "12345";
-							}
-
-							if (time.getSeconds() === 30) {
-								const random = Math.floor(Math.random() * 2 + 1);
-								document.body.dataset.tickTockClock = "true";
-								if (random === 1) {
-									document.body.dataset.tick = "12345";
-								}
-
-								if (random === 2) {
-									document.body.dataset.tick = "7891011";
-								}
-							}
-
-							if (
-								time.getSeconds() === 35 ||
-								time.getSeconds() === 40 ||
-								time.getSeconds() === 45 ||
-								time.getSeconds() === 50 ||
-								time.getSeconds() === 55
-							) {
-								document.body.dataset.tickTockClock = "true";
-								document.body.dataset.tick = "7891011";
-							}
-						}
-					}}
 					className={css`
 						position: absolute;
 						top: 50%;

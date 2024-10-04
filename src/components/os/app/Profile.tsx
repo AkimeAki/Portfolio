@@ -465,20 +465,6 @@ export default function () {
 					</tbody>
 				</table>
 			</div>
-
-			<div
-				className={css`
-					display: flex;
-					gap: 10px;
-					flex-direction: column;
-					align-items: flex-start;
-				`}
-			>
-				<h3>実績</h3>
-				<p>
-					ないです...。趣味で作ったやつはあるのでこのウィンドウを閉じて「作ったもの」ってとこ見てください...。
-				</p>
-			</div>
 		</div>
 	);
 }
