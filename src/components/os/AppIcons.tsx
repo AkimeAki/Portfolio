@@ -70,9 +70,9 @@ export default function () {
 			<AppIcon href="https://simple-v.aki.wtf/" imgSrc="/app/simplev.png" isPixel>
 				SimpleV
 			</AppIcon>
-			<AppIcon href="https://kagari.aki.wtf/" imgSrc="/app/kagarinosu.png" isPixel>
+			{/* <AppIcon href="https://kagari.aki.wtf/" imgSrc="/app/kagarinosu.png" isPixel>
 				篝之鼠
-			</AppIcon>
+			</AppIcon> */}
 			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
 				FAQ
 			</AppIcon>
