@@ -34,7 +34,6 @@ export default function ({ title, description, children, href, buttonTitle = "ã‚
 				<h3
 					className={css`
 						font-size: 20px;
-						font-weight: bold;
 					`}
 				>
 					{title}

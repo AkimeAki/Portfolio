@@ -143,7 +143,6 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 				className={[
 					css`
 						font-size: 17px;
-						font-weight: bold;
 						width: 100%;
 						text-align: center;
 						line-height: 1;

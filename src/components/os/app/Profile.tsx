@@ -14,7 +14,6 @@ export default function () {
 				margin: 0 auto;
 
 				h3 {
-					font-weight: bold;
 					display: table;
 					font-size: 18px;
 					color: #e73e6b;
@@ -91,10 +90,6 @@ export default function () {
 					flex-direction: column;
 					align-items: flex-start;
 
-					h4 {
-						font-weight: bold;
-					}
-
 					table {
 						width: 100%;
 
@@ -111,7 +106,6 @@ export default function () {
 							@container (max-width: 900px) {
 								width: 120px;
 								font-size: 12px;
-								font-weight: bold;
 							}
 						}
 

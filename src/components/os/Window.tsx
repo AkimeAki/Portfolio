@@ -412,7 +412,6 @@ export default function ({ title, children, id }: Props) {
 							<h2
 								className={css`
 									line-height: 1;
-									font-weight: bold;
 									font-size: 18px;
 									color: #e73e6b;
 									margin-bottom: 5px;

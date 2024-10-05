@@ -16,6 +16,10 @@ export default function ({ children, bgColor, color }: Props) {
 				padding: 2px 10px 6px;
 				border-radius: 6px;
 				line-height: 1;
+
+				body[data-os="android"] & {
+					padding: 2px 10px 4px;
+				}
 			`}
 		>
 			{children}
