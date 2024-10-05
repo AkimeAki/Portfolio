@@ -66,6 +66,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 					width: 80px;
 					height: 80px;
 					flex-shrink: 0;
+					pointer-events: none;
 
 					@media (max-width: 720px) {
 						width: 50px;
@@ -123,22 +124,17 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 						/>
 						<img
 							src="/chrome-shortcut.png"
-							className={[
-								css`
-									display: none;
-									position: absolute;
-									bottom: 0;
-									right: 0;
+							className={css`
+								display: none;
+								position: absolute;
+								bottom: 0;
+								right: 0;
+								image-rendering: pixelated;
 
-									@media (max-width: 720px) {
-										display: block;
-									}
-								`,
-								isPixel &&
-									css`
-										image-rendering: pixelated;
-									`
-							].join(" ")}
+								@media (max-width: 720px) {
+									display: block;
+								}
+							`}
 						/>
 					</>
 				)}
