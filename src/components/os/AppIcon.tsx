@@ -151,10 +151,12 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 						width: 100%;
 						text-align: center;
 						line-height: 1;
+						margin-bottom: 10px;
 						transition-duration: 200ms;
 						transition-property: color;
 
 						@media (max-width: 720px) {
+							margin-bottom: 0;
 							font-size: 15px;
 						}
 
