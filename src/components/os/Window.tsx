@@ -1,8 +1,7 @@
 "use client";
 
-import { isTouch, openAppSortList } from "@/atom";
-import { appList, sortList } from "@/lib/app-select";
-import { pageTitle } from "@/lib/seo";
+import { pinWindowList, isTouch, openAppSortList } from "@/atom";
+import useWindow from "@/lib/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
@@ -11,9 +10,16 @@ interface Props {
 	title: string;
 	children: React.ReactNode;
 	id: string;
+	resize: boolean;
+	size?: {
+		width: number;
+		height: number;
+	};
+	viewPinButton: boolean;
+	defaultPin: boolean;
 }
 
-export default function ({ title, children, id }: Props) {
+export default function ({ title, children, id, resize, size, viewPinButton, defaultPin }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
 	const windowBarElement = useRef<HTMLDivElement | null>(null);
 	const windowElement = useRef<HTMLDivElement | null>(null);
@@ -27,9 +33,12 @@ export default function ({ title, children, id }: Props) {
 	const bottomLeftResizeElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
 	const [isMaxWindow, setIsMaxWindow] = useState<boolean>(false);
+	const { openWindow, closeWindow, pinWindow, unpinWindow } = useWindow();
+	const $pinWindowList = useStore(pinWindowList);
+	const [windowList, setWindowList] = useState<string[]>([]);
 
 	useEffect(() => {
-		if ($isTouch) {
+		if ($isTouch && resize) {
 			setIsMaxWindow(true);
 		} else {
 			setIsMaxWindow(false);
@@ -52,12 +61,7 @@ export default function ({ title, children, id }: Props) {
 		};
 
 		const mousedown = () => {
-			const sortResult = sortList(id, $openAppSortList);
-			if (JSON.stringify(sortResult) !== JSON.stringify($openAppSortList)) {
-				openAppSortList.set(sortList(id, $openAppSortList));
-				history.pushState({}, "", `/${id}`);
-				document.title = appList[id].pageTitle;
-			}
+			openWindow(id);
 		};
 
 		if (windowBarElement.current !== null && windowElement.current !== null) {
@@ -192,9 +196,36 @@ export default function ({ title, children, id }: Props) {
 	}, []);
 
 	useEffect(() => {
+		const nonpinWindowList = $openAppSortList.filter((id) => {
+			return !$pinWindowList.includes(id);
+		});
+
+		const pinWindowList = $openAppSortList.filter((id) => {
+			return $pinWindowList.includes(id);
+		});
+
+		setWindowList([...nonpinWindowList, ...pinWindowList]);
+	}, [$openAppSortList, $pinWindowList]);
+
+	useEffect(() => {
+		if (defaultPin) {
+			pinWindow(id);
+		}
+	}, [defaultPin]);
+
+	useEffect(() => {
 		if (windowElement.current !== null) {
-			const width = Math.min(window.innerWidth * 0.9, 1300);
-			const height = Math.min(window.innerHeight * 0.9 - 70, 700);
+			let width = 0;
+			let height = 0;
+
+			if (size !== undefined) {
+				width = size.width;
+				height = size.height;
+			} else {
+				width = Math.min(window.innerWidth * 0.9, 1300);
+				height = Math.min(window.innerHeight * 0.9 - 70, 700);
+			}
+
 			let top = (window.innerHeight - 70 - height) / 2;
 			let left = (window.innerWidth - width) / 2;
 
@@ -224,7 +255,7 @@ export default function ({ title, children, id }: Props) {
 		<div
 			ref={windowElement}
 			data-app-id={id}
-			style={{ zIndex: $openAppSortList.indexOf(id), display: $openAppSortList.includes(id) ? "block" : "none" }}
+			style={{ zIndex: windowList.indexOf(id), display: $openAppSortList.includes(id) ? "block" : "none" }}
 			className={[
 				css`
 					position: absolute;
@@ -256,7 +287,7 @@ export default function ({ title, children, id }: Props) {
 							pointer-events: all;
 						}
 					`,
-					isMaxWindow
+					isMaxWindow || !resize
 						? css`
 								display: none;
 							`
@@ -433,80 +464,164 @@ export default function ({ title, children, id }: Props) {
 								margin-right: 10px;
 							`}
 						>
-							<div
-								onClick={() => {
-									if (!$isTouch) {
-										setIsMaxWindow(!isMaxWindow);
-									}
-								}}
-								style={{ display: $isTouch ? "none" : "flex" }}
-								className={[
-									css`
-										align-items: center;
-										justify-content: center;
+							{viewPinButton && (
+								<div
+									onClick={() => {
+										if (!$isTouch) {
+											if (!$pinWindowList.includes(id)) {
+												pinWindow(id);
+											} else {
+												unpinWindow(id);
+											}
+										}
+									}}
+									style={{ display: $isTouch ? "none" : "flex" }}
+									className={css`
 										position: relative;
 										width: 27px;
 										height: 27px;
 										border-radius: 50%;
 
+										&:before {
+											position: absolute;
+											top: 6px;
+											left: 50%;
+											transform: translateX(-50%);
+											display: block;
+											content: "";
+											width: 8px;
+											height: 8px;
+											background-color: #91797d;
+										}
+
+										&:after {
+											position: absolute;
+											top: 13px;
+											left: 50%;
+											transform: translateX(-50%);
+											display: block;
+											content: "";
+											width: 16px;
+											height: 5px;
+											background-color: #91797d;
+										}
+
 										&:hover {
 											background-color: #91797d;
 
 											&:before,
-											&:after {
-												border-color: white;
+											&:after,
+											& > div {
+												background-color: white;
+											}
+
+											.slash-pin {
+												width: 3px;
+												border: none;
 											}
 										}
-									`,
-									isMaxWindow
-										? css`
+									`}
+								>
+									<div
+										className={css`
+											position: absolute;
+											top: 14px;
+											left: 50%;
+											transform: translateX(-50%);
+											display: block;
+											width: 3px;
+											height: 9px;
+											background-color: #91797d;
+										`}
+									/>
+									{!$pinWindowList.includes(id) && (
+										<div
+											className={[
+												css`
+													position: absolute;
+													top: calc(50% + 1px);
+													left: 50%;
+													transform: translate(-50%, -50%) rotate(-45deg);
+													display: block;
+													width: 6px;
+													height: 24px;
+													border: 2px solid #e5d3cc;
+													z-index: 1;
+												`,
+												"slash-pin"
+											].join(" ")}
+										/>
+									)}
+								</div>
+							)}
+							{resize && (
+								<div
+									onClick={() => {
+										if (!$isTouch) {
+											setIsMaxWindow(!isMaxWindow);
+										}
+									}}
+									style={{ display: $isTouch ? "none" : "flex" }}
+									className={[
+										css`
+											align-items: center;
+											justify-content: center;
+											position: relative;
+											width: 27px;
+											height: 27px;
+											border-radius: 50%;
+
+											&:hover {
+												background-color: #91797d;
+
 												&:before,
 												&:after {
-													display: block;
-													content: "";
-													border-color: #91797d;
-													border-style: solid;
-													border-width: 2px;
+													border-color: white;
 												}
+											}
+										`,
+										isMaxWindow
+											? css`
+													&:before,
+													&:after {
+														display: block;
+														content: "";
+														border-color: #91797d;
+														border-style: solid;
+														border-width: 2px;
+													}
 
-												&:before {
-													transform: translate(2px, 2px);
-													width: 8px;
-													height: 8px;
-												}
+													&:before {
+														transform: translate(2px, 2px);
+														width: 8px;
+														height: 8px;
+													}
 
-												&:after {
-													transform: translate(-3px, -3px);
-													width: 5px;
-													height: 5px;
-												}
-											`
-										: css`
-												&:before {
-													display: block;
-													content: "";
-													width: 11px;
-													height: 11px;
-													border-color: #91797d;
-													border-style: solid;
-													border-width: 2px;
-												}
-											`
-								].join(" ")}
-							/>
+													&:after {
+														transform: translate(-3px, -3px);
+														width: 5px;
+														height: 5px;
+													}
+												`
+											: css`
+													&:before {
+														display: block;
+														content: "";
+														width: 11px;
+														height: 11px;
+														border-color: #91797d;
+														border-style: solid;
+														border-width: 2px;
+													}
+												`
+									].join(" ")}
+								/>
+							)}
 							<div
 								onClick={() => {
-									const closeAppList = $openAppSortList.filter((item) => {
-										return item !== id;
-									});
+									// 閉じるボタンを押したときの処理
 
-									if (closeAppList.length === 0) {
-										history.pushState({}, "", "/");
-										document.title = pageTitle;
-									} else {
-										history.pushState({}, "", `/${closeAppList[0]}`);
-										document.title = appList[closeAppList[0]].pageTitle;
-									}
+									closeWindow(id);
 
 									if (windowElement.current !== null) {
 										windowElement.current.style.top = "";
@@ -514,8 +629,6 @@ export default function ({ title, children, id }: Props) {
 										windowElement.current.style.width = "";
 										windowElement.current.style.height = "";
 									}
-
-									openAppSortList.set(closeAppList);
 								}}
 								className={css`
 									position: relative;

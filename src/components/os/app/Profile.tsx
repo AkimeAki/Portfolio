@@ -1,7 +1,15 @@
+"use client";
+
+import { isTouch } from "@/atom";
 import ColorLabel from "@/components/ColorLabel";
+import useWindow from "@/lib/useWindow";
 import { css } from "@kuma-ui/core";
+import { useStore } from "@nanostores/react";
 
 export default function () {
+	const { openWindow } = useWindow();
+	const $isTouch = useStore(isTouch);
+
 	return (
 		<div
 			className={css`
@@ -37,6 +45,10 @@ export default function () {
 				<div
 					className={css`
 						flex: 1;
+
+						p {
+							margin-bottom: 10px;
+						}
 					`}
 				>
 					<p>
@@ -67,7 +79,44 @@ export default function () {
 					<p>
 						適当にウェブ開発などやってるゆっくり実況者。もしくは、適当にゆっくり実況をやっているウェブエンジニア。
 					</p>
-					<p>フリーナと重音テトが推しです。ここを見た人は推すことをおすすめします。</p>
+					<p>
+						<span
+							className={css`
+								color: #43c1e7;
+								cursor: pointer;
+							`}
+							onClick={() => {
+								if ($isTouch) {
+									window.open(
+										"https://www.youtube.com/watch?v=DkROVPRcceM&list=PLnVoUTTAoKRrI5sgu4NdqiJivv8FZKdci"
+									);
+								} else {
+									openWindow("furina");
+								}
+							}}
+						>
+							フリーナ
+						</span>
+						と
+						<span
+							className={css`
+								color: #fa5353;
+								cursor: pointer;
+							`}
+							onClick={() => {
+								if ($isTouch) {
+									window.open(
+										"https://www.youtube.com/watch?v=LLjfal8jCYI&list=PLnVoUTTAoKRrLKI-G9oAymJm_k8RVs_m9"
+									);
+								} else {
+									openWindow("teto");
+								}
+							}}
+						>
+							重音テト
+						</span>
+						が推しです。ここを見た人は推すことをおすすめします。
+					</p>
 				</div>
 				<div
 					className={css`

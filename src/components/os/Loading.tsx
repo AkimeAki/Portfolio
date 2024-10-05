@@ -168,7 +168,7 @@ export default function ({ notFound = false }: Props) {
 									animation-duration: 0s;
 								`}
 							>
-								{!notFound && <>{"> "}Networkが問題が発生中</>}
+								{!notFound && <>{"> "}Networkに問題が発生中</>}
 								{notFound && (
 									<>
 										<span>{"> "}アクセス先が見つかりませんでした</span>

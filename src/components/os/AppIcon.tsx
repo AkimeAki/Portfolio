@@ -1,9 +1,7 @@
 "use client";
 
-import { openAppSortList } from "@/atom";
-import { appList, sortList } from "@/lib/app-select";
+import useWindow from "@/lib/useWindow";
 import { css } from "@kuma-ui/core";
-import { useStore } from "@nanostores/react";
 
 interface Props {
 	children: React.ReactNode;
@@ -14,15 +12,13 @@ interface Props {
 }
 
 export default function ({ children, id, imgSrc, href, isPixel = false }: Props) {
-	const $openAppSortList = useStore(openAppSortList);
+	const { openWindow } = useWindow();
 
 	return (
 		<div
 			onClick={() => {
 				if (id !== undefined) {
-					history.pushState({}, "", `/${id}`);
-					document.title = appList[id].pageTitle;
-					openAppSortList.set(sortList(id, $openAppSortList));
+					openWindow(id);
 				}
 
 				if (href !== undefined) {
