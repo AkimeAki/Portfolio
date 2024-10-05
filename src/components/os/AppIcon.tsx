@@ -37,12 +37,20 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 				width: 150px;
 				border-style: solid;
 				border-color: transparent;
-				border-width: 2px;
+				border-width: 1px;
+				background-color: transparent;
 				padding: 2px;
+				transition-duration: 200ms;
+				transition-property: bodrer-color, background-color;
 
 				@media (hover: hover) {
 					&:hover {
-						border-color: #c6dd95;
+						border-color: #d8fa8e88;
+						background-color: #d8fa8e55;
+
+						.app-icon-name {
+							color: white;
+						}
 					}
 				}
 
@@ -136,21 +144,26 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 				)}
 			</div>
 			<span
-				className={css`
-					font-size: 17px;
-					font-weight: bold;
-					width: 100%;
-					text-align: center;
-					line-height: 1;
+				className={[
+					css`
+						font-size: 17px;
+						font-weight: bold;
+						width: 100%;
+						text-align: center;
+						line-height: 1;
+						transition-duration: 200ms;
+						transition-property: color;
 
-					@media (max-width: 720px) {
-						font-size: 15px;
-					}
+						@media (max-width: 720px) {
+							font-size: 15px;
+						}
 
-					@media (max-width: 460px) {
-						font-size: 12px;
-					}
-				`}
+						@media (max-width: 460px) {
+							font-size: 12px;
+						}
+					`,
+					"app-icon-name"
+				].join(" ")}
 			>
 				{children}
 			</span>
