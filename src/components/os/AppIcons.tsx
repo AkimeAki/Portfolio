@@ -76,6 +76,9 @@ export default function () {
 			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
 				FAQ
 			</AppIcon>
+			<AppIcon id="twitter" imgSrc="/app/twitter.png">
+				Twitter
+			</AppIcon>
 		</div>
 	);
 }

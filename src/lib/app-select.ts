@@ -4,6 +4,7 @@ import { pageTitle } from "@/lib/seo";
 import Profile from "@/components/os/app/Profile";
 import Teto from "@/components/os/app/Teto";
 import Furina from "@/components/os/app/Furina";
+import Twitter from "@/components/os/app/Twitter";
 
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
@@ -85,5 +86,18 @@ export const appList: {
 		},
 		viewPinButton: true,
 		defaultPin: true
+	},
+	twitter: {
+		title: "Twitter",
+		pageTitle: "Twitter",
+		component: Twitter,
+		resize: false,
+		changeHistory: false,
+		size: {
+			width: 350,
+			height: 600
+		},
+		viewPinButton: true,
+		defaultPin: false
 	}
 };

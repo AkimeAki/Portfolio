@@ -49,7 +49,9 @@ export default function ({ notFound = false }: Props) {
 				"/app/simplev.png",
 				"/app/allergy-navi.png",
 				"/app/dotya.png",
-				"/app/kagarinosu.png"
+				"/app/kagarinosu.png",
+				"/app/twitter.png",
+				"/app/bluesky.png"
 			];
 			await Promise.all(targetUrls.map((target) => fetch(target)));
 			setTimeout(() => {

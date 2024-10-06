@@ -38,7 +38,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 	const [windowList, setWindowList] = useState<string[]>([]);
 
 	useEffect(() => {
-		if ($isTouch && resize) {
+		if ($isTouch) {
 			setIsMaxWindow(true);
 		} else {
 			setIsMaxWindow(false);
