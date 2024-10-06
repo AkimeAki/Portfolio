@@ -261,6 +261,19 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					position: absolute;
 					top: 0;
 					left: 0;
+					animation-name: view-window;
+					animation-iteration-count: 1;
+					animation-duration: 200ms;
+
+					@keyframes view-window {
+						0% {
+							transform: scale(0);
+						}
+
+						100% {
+							transform: scale(1);
+						}
+					}
 				`,
 				isMaxWindow
 					? css`
@@ -446,6 +459,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 									font-size: 18px;
 									color: #e73e6b;
 									margin-bottom: 5px;
+									white-space: nowrap;
 
 									body[data-os="android"] & {
 										margin-bottom: 0;

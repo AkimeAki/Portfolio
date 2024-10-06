@@ -5,6 +5,8 @@ import Profile from "@/components/os/app/Profile";
 import Teto from "@/components/os/app/Teto";
 import Furina from "@/components/os/app/Furina";
 import Twitter from "@/components/os/app/Twitter";
+import MisskeyIo from "@/components/os/app/MisskeyIo";
+import Bluesky from "@/components/os/app/Bluesky";
 
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
@@ -91,6 +93,32 @@ export const appList: {
 		title: "Twitter",
 		pageTitle: "Twitter",
 		component: Twitter,
+		resize: false,
+		changeHistory: false,
+		size: {
+			width: 350,
+			height: 600
+		},
+		viewPinButton: true,
+		defaultPin: false
+	},
+	misskeyio: {
+		title: "Misskey.io",
+		pageTitle: "Misskey.io",
+		component: MisskeyIo,
+		resize: false,
+		changeHistory: false,
+		size: {
+			width: 350,
+			height: 600
+		},
+		viewPinButton: true,
+		defaultPin: false
+	},
+	bluesky: {
+		title: "Bluesky",
+		pageTitle: "Bluesky",
+		component: Bluesky,
 		resize: false,
 		changeHistory: false,
 		size: {

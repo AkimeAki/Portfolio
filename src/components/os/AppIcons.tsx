@@ -79,6 +79,12 @@ export default function () {
 			<AppIcon id="twitter" imgSrc="/app/twitter.png">
 				Twitter
 			</AppIcon>
+			{/* <AppIcon id="misskeyio" imgSrc="/app/misskey.png">
+				Misskey.io
+			</AppIcon> */}
+			{/* <AppIcon id="bluesky" imgSrc="/app/bluesky.png">
+				Bluesky
+			</AppIcon> */}
 		</div>
 	);
 }
