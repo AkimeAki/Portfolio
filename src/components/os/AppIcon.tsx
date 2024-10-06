@@ -85,8 +85,6 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 								transform: translate(-50%, -50%);
 								width: 100%;
 								height: 100%;
-								filter: drop-shadow(0px 0px 1px #f74358) drop-shadow(0px 0px 1px #f74358)
-									drop-shadow(0px 0px 1px #f74358);
 
 								@media (max-width: 720px) {
 									width: 80%;
