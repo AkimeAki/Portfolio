@@ -96,6 +96,7 @@ export default function () {
 		const mousedown = (e: MouseEvent) => {
 			startX = e.offsetX;
 			startY = e.offsetY;
+			document.body.dataset.userSelect = "none";
 			if (selectAreaElement.current !== null && !$isTouch) {
 				selectAreaElement.current.style.display = "block";
 			}
@@ -108,6 +109,7 @@ export default function () {
 				setSelectArea(startY + "px", startX + "px", "auto", "auto", 0, 0);
 				selectAreaElement.current.style.display = "none";
 			}
+			document.body.dataset.userSelect = "";
 		};
 
 		if (targetAreaElement.current !== null) {

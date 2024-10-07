@@ -22,6 +22,10 @@
 	body[data-browser-type="chromium"] & {
 		font-weight: bold;
 	}
+
+	body[data-user-select="none"] & {
+		user-select: none !important;
+	}
 }
 
 *:focus {

@@ -60,19 +60,31 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 			}
 		};
 
-		const mousedown = () => {
+		const windowMousedown = () => {
 			openWindow(id);
+		};
+
+		const barMousedown = () => {
+			document.body.dataset.userSelect = "none";
+		};
+
+		const barMouseup = () => {
+			document.body.dataset.userSelect = "";
 		};
 
 		if (windowBarElement.current !== null && windowElement.current !== null) {
 			windowBarElement.current.addEventListener("pointermove", move);
-			windowElement.current.addEventListener("mousedown", mousedown);
+			windowBarElement.current.addEventListener("mousedown", barMousedown);
+			windowBarElement.current.addEventListener("mouseup", barMouseup);
+			windowElement.current.addEventListener("mousedown", windowMousedown);
 		}
 
 		return () => {
 			if (windowBarElement.current !== null && windowElement.current !== null) {
 				windowBarElement.current.removeEventListener("pointermove", move);
-				windowElement.current.removeEventListener("mousedown", mousedown);
+				windowElement.current.removeEventListener("mousedown", windowMousedown);
+				windowBarElement.current.removeEventListener("mousedown", barMousedown);
+				windowBarElement.current.removeEventListener("mouseup", barMouseup);
 			}
 		};
 	}, [$openAppSortList, isMaxWindow]);
@@ -152,6 +164,14 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 			}
 		};
 
+		const resizebarMousedown = () => {
+			document.body.dataset.userSelect = "none";
+		};
+
+		const resizebarMouseup = () => {
+			document.body.dataset.userSelect = "";
+		};
+
 		if (
 			topResizeElement.current !== null &&
 			bottomResizeElement.current !== null &&
@@ -170,6 +190,24 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 			bottomLeftResizeElement.current.addEventListener("pointermove", bottomLeftResize);
 			topRightResizeElement.current.addEventListener("pointermove", topRightResize);
 			topLeftResizeElement.current.addEventListener("pointermove", topLeftResize);
+
+			rightResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+			leftResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+			topResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+			bottomResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+			bottomRightResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+			bottomLeftResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+			topRightResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+			topLeftResizeElement.current.addEventListener("mousedown", resizebarMousedown);
+
+			rightResizeElement.current.addEventListener("mouseup", resizebarMouseup);
+			leftResizeElement.current.addEventListener("mouseup", resizebarMouseup);
+			topResizeElement.current.addEventListener("mouseup", resizebarMouseup);
+			bottomResizeElement.current.addEventListener("mouseup", resizebarMouseup);
+			bottomRightResizeElement.current.addEventListener("mouseup", resizebarMouseup);
+			bottomLeftResizeElement.current.addEventListener("mouseup", resizebarMouseup);
+			topRightResizeElement.current.addEventListener("mouseup", resizebarMouseup);
+			topLeftResizeElement.current.addEventListener("mouseup", resizebarMouseup);
 		}
 
 		return () => {
@@ -191,6 +229,24 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 				bottomLeftResizeElement.current.removeEventListener("pointermove", bottomLeftResize);
 				topRightResizeElement.current.removeEventListener("pointermove", topRightResize);
 				topLeftResizeElement.current.removeEventListener("pointermove", topLeftResize);
+
+				rightResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+				leftResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+				topResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+				bottomResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+				bottomRightResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+				bottomLeftResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+				topRightResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+				topLeftResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
+
+				rightResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
+				leftResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
+				topResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
+				bottomResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
+				bottomRightResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
+				bottomLeftResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
+				topRightResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
+				topLeftResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
 			}
 		};
 	}, []);
