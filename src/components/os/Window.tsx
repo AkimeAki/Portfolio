@@ -323,8 +323,8 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					animation-iteration-count: 1;
 					animation-duration: 200ms;
 					animation-fill-mode: forwards;
-					transition-duration: 200ms;
-					transition-property: translate;
+					transition-duration: 400ms;
+					transition-property: translate, scale;
 
 					@keyframes view-window {
 						0% {
@@ -347,6 +347,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 				$minimizeWindowList.includes(id)
 					? css`
 							translate: 0 100vh;
+							scale: 0;
 						`
 					: ""
 			].join(" ")}
