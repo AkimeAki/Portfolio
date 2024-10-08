@@ -28,6 +28,10 @@ export const appList: {
 	[key: string]: {
 		title: string;
 		pageTitle: string;
+		image: {
+			isPixel: boolean;
+			path: string;
+		};
 		component: () => React.JSX.Element;
 		resize: boolean;
 		changeHistory: boolean;
@@ -42,6 +46,10 @@ export const appList: {
 	portfolio: {
 		title: "作ったもの",
 		pageTitle: `作ったもの - ${pageTitle}`,
+		image: {
+			isPixel: true,
+			path: "/app/picaxe.png"
+		},
 		component: Portfolio,
 		resize: true,
 		changeHistory: true,
@@ -50,6 +58,10 @@ export const appList: {
 	faq: {
 		title: "FAQ",
 		pageTitle: `FAQ - ${pageTitle}`,
+		image: {
+			isPixel: true,
+			path: "/app/ghost.png"
+		},
 		component: Faq,
 		resize: true,
 		changeHistory: true,
@@ -58,6 +70,10 @@ export const appList: {
 	profile: {
 		title: "プロフィール",
 		pageTitle: `プロフィール - ${pageTitle}`,
+		image: {
+			isPixel: false,
+			path: "/app/aki.png"
+		},
 		component: Profile,
 		resize: true,
 		changeHistory: true,
@@ -66,6 +82,10 @@ export const appList: {
 	teto: {
 		title: "🥖おすすめテト",
 		pageTitle: "🥖おすすめテト",
+		image: {
+			isPixel: true,
+			path: "/app/teto.png"
+		},
 		component: Teto,
 		resize: false,
 		changeHistory: false,
@@ -79,6 +99,10 @@ export const appList: {
 	furina: {
 		title: "💧フリーナはかわいい",
 		pageTitle: "💧フリーナはかわいい",
+		image: {
+			isPixel: true,
+			path: "/app/furina.png"
+		},
 		component: Furina,
 		resize: false,
 		changeHistory: false,
@@ -92,6 +116,10 @@ export const appList: {
 	twitter: {
 		title: "Twitter",
 		pageTitle: "Twitter",
+		image: {
+			isPixel: false,
+			path: "/app/twitter.png"
+		},
 		component: Twitter,
 		resize: false,
 		changeHistory: false,
@@ -105,6 +133,10 @@ export const appList: {
 	misskeyio: {
 		title: "Misskey.io",
 		pageTitle: "Misskey.io",
+		image: {
+			isPixel: false,
+			path: "/app/misskey.png"
+		},
 		component: MisskeyIo,
 		resize: false,
 		changeHistory: false,
@@ -118,6 +150,10 @@ export const appList: {
 	bluesky: {
 		title: "Bluesky",
 		pageTitle: "Bluesky",
+		image: {
+			isPixel: false,
+			path: "/app/bluesky.png"
+		},
 		component: Bluesky,
 		resize: false,
 		changeHistory: false,

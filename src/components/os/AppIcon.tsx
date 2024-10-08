@@ -12,13 +12,14 @@ interface Props {
 }
 
 export default function ({ children, id, imgSrc, href, isPixel = false }: Props) {
-	const { openWindow } = useWindow();
+	const { openWindow, releaseMinimizedWindow } = useWindow();
 
 	return (
 		<div
 			onClick={() => {
 				if (id !== undefined) {
 					openWindow(id);
+					releaseMinimizedWindow(id);
 				}
 
 				if (href !== undefined) {

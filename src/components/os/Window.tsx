@@ -1,6 +1,6 @@
 "use client";
 
-import { pinWindowList, isTouch, openAppSortList } from "@/atom";
+import { pinWindowList, isTouch, openAppSortList, minimizeWindowList } from "@/atom";
 import useWindow from "@/lib/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
@@ -33,9 +33,10 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 	const bottomLeftResizeElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
 	const [isMaxWindow, setIsMaxWindow] = useState<boolean>(false);
-	const { openWindow, closeWindow, pinWindow, unpinWindow } = useWindow();
+	const { openWindow, closeWindow, pinWindow, unpinWindow, minimizeWindow } = useWindow();
 	const $pinWindowList = useStore(pinWindowList);
 	const [windowList, setWindowList] = useState<string[]>([]);
+	const $minimizeWindowList = useStore(minimizeWindowList);
 
 	useEffect(() => {
 		if ($isTouch) {
@@ -317,9 +318,13 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					position: absolute;
 					top: 0;
 					left: 0;
+					transform: scale(0);
 					animation-name: view-window;
 					animation-iteration-count: 1;
 					animation-duration: 200ms;
+					animation-fill-mode: forwards;
+					transition-duration: 200ms;
+					transition-property: translate;
 
 					@keyframes view-window {
 						0% {
@@ -337,6 +342,11 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 							left: 0 !important;
 							width: 100% !important;
 							height: calc(100% - 70px) !important;
+						`
+					: "",
+				$minimizeWindowList.includes(id)
+					? css`
+							translate: 0 100vh;
 						`
 					: ""
 			].join(" ")}
@@ -534,6 +544,38 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 								margin-right: 10px;
 							`}
 						>
+							<div
+								onClick={() => {
+									minimizeWindow(id);
+								}}
+								style={{ display: $isTouch ? "none" : "flex" }}
+								className={css`
+									align-items: center;
+									justify-content: center;
+									position: relative;
+									width: 27px;
+									height: 27px;
+									border-radius: 50%;
+
+									&:before {
+										display: block;
+										content: "";
+										width: 13px;
+										height: 13px;
+										border-bottom-color: #91797d;
+										border-bottom-style: solid;
+										border-bottom-width: 2px;
+									}
+
+									&:hover {
+										background-color: #91797d;
+
+										&:before {
+											border-color: white;
+										}
+									}
+								`}
+							/>
 							{viewPinButton && (
 								<div
 									onClick={() => {

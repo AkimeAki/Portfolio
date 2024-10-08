@@ -5,6 +5,7 @@ import TaskbarIcon from "@/components/os/TaskbarIcon";
 import TaskbarClock from "@/components/os/TaskbarClock";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
+import MinimizedApps from "@/components/os/MinimizedApps";
 
 export default function () {
 	const $osLoading = useStore(osLoading);
@@ -120,6 +121,7 @@ export default function () {
 						alt={"GitHubのアイコン"}
 						href="https://github.com/AkimeAki"
 					/>
+					<MinimizedApps />
 				</div>
 				<TaskbarClock />
 			</div>

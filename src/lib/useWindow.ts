@@ -1,6 +1,6 @@
 "use client";
 
-import { pinWindowList, openAppSortList } from "@/atom";
+import { pinWindowList, openAppSortList, minimizeWindowList } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { appList, sortList } from "@/lib/app-select";
 import { pageTitle } from "@/lib/seo";
@@ -8,6 +8,7 @@ import { pageTitle } from "@/lib/seo";
 export default function () {
 	const $openAppSortList = useStore(openAppSortList);
 	const $pinWindowList = useStore(pinWindowList);
+	const $minimizeWindowList = useStore(minimizeWindowList);
 
 	const openWindow = (id: string, isChangeHistory: boolean = true) => {
 		if (appList[id].changeHistory) {
@@ -75,5 +76,33 @@ export default function () {
 		openAppSortList.set(resetAppList);
 	};
 
-	return { openWindow, closeWindow, pinWindow, unpinWindow };
+	const minimizeWindow = (id: string) => {
+		let result = [...$minimizeWindowList];
+
+		if (!result.includes(id)) {
+			result.push(id);
+		} else {
+			result = result.filter((item) => {
+				return item !== id;
+			});
+
+			result = [...result, id];
+		}
+
+		minimizeWindowList.set(result);
+	};
+
+	const releaseMinimizedWindow = (id: string) => {
+		let result = [...$minimizeWindowList];
+
+		if (result.includes(id)) {
+			result = result.filter((item) => {
+				return item !== id;
+			});
+		}
+
+		minimizeWindowList.set(result);
+	};
+
+	return { openWindow, closeWindow, pinWindow, unpinWindow, minimizeWindow, releaseMinimizedWindow };
 }
