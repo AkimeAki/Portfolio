@@ -30,6 +30,7 @@ export default () => {
 				].join(" ")}
 				href="https://twitter.com/Akime_Aki?ref_src=twsrc%5Etfw"
 				data-chrome="noheader nofooter"
+				data-theme="dark"
 			>
 				読込中...
 			</a>

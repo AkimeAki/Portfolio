@@ -456,28 +456,20 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 				/>
 			</div>
 			<div
-				className={[
-					css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						border-left: 4px solid #e5d3cc;
-						border-right: 4px solid #e5d3cc;
-						border-bottom: 4px solid #e5d3cc;
-						user-select: text;
-						pointer-events: auto;
-						box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
-						border-radius: 10px;
-						overflow: hidden;
-					`,
-					isMaxWindow
-						? css`
-								border-radius: 0;
-							`
-						: ""
-				].join(" ")}
+				className={css`
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-left: 4px solid #060303;
+					border-right: 4px solid #060303;
+					border-bottom: 4px solid #060303;
+					user-select: text;
+					pointer-events: auto;
+					box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
+					overflow: hidden;
+				`}
 			>
 				<div
 					className={css`
@@ -486,7 +478,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 						left: 0;
 						width: 100%;
 						height: 100%;
-						background-color: #ffffff;
+						background-color: #220000;
 						opacity: 0.95;
 					`}
 				/>
@@ -506,7 +498,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 						className={css`
 							position: relative;
 							height: 50px;
-							background-color: #e5d3cc;
+							background-color: #060303;
 							display: flex;
 							justify-content: space-between;
 							user-select: none;
@@ -658,7 +650,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 													display: block;
 													width: 6px;
 													height: 24px;
-													border: 2px solid #e5d3cc;
+													border: 2px solid #060303;
 													z-index: 1;
 												`,
 												"slash-pin"
@@ -787,6 +779,10 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 							flex: 1;
 							overflow: auto;
 							container-type: inline-size;
+
+							* {
+								color: #f3f3f3;
+							}
 						`}
 					>
 						{children}
