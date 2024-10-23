@@ -23,7 +23,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 
 					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 					// @ts-expect-error
-					dataLayer.push({ event: "app-click", appId: id });
+					dataLayer.push({ event: "app-click", appId: id, url: null });
 				}
 
 				if (href !== undefined) {
@@ -31,7 +31,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 
 					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 					// @ts-expect-error
-					dataLayer.push({ event: "app-click", url: href });
+					dataLayer.push({ event: "app-click", appId: null, url: href });
 				}
 			}}
 			className={css`
