@@ -32,6 +32,14 @@ export default function ({ children }: Props) {
 						__html: 'document.body.dataset.script="valid";'
 					}}
 				/>
+				<noscript>
+					<iframe
+						src="https://www.googletagmanager.com/ns.html?id=GTM-KGV4LZWH"
+						height="0"
+						width="0"
+						style={{ display: "none", visibility: "hidden" }}
+					></iframe>
+				</noscript>
 				<KumaRegistry>
 					<>
 						<CheckUserAgent />
