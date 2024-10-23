@@ -126,7 +126,7 @@ export default function ({ notFound = false }: Props) {
 							background-color: black;
 
 							animation-name: loading-bg-out;
-							animation-duration: 8s;
+							animation-duration: 4s;
 							animation-delay: 1500ms;
 							animation-fill-mode: forwards;
 							animation-timing-function: linear;
