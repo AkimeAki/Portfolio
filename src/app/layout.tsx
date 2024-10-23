@@ -11,7 +11,12 @@ interface Props {
 export default function ({ children }: Props) {
 	return (
 		<html lang="ja">
-			<body>
+			<body data-script="invalid">
+				<script
+					dangerouslySetInnerHTML={{
+						__html: 'document.body.dataset.script="valid";'
+					}}
+				/>
 				<KumaRegistry>
 					<>
 						<CheckUserAgent />
