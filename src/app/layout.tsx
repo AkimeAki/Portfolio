@@ -12,7 +12,7 @@ export default function ({ children }: Props) {
 	return (
 		<html lang="ja">
 			<head>
-				{process.env.NODE_ENV === "production" && process.env.MAINTENANCE === "false" && (
+				{process.env.NODE_ENV === "production" && (
 					<>
 						<script
 							dangerouslySetInnerHTML={{
