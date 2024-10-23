@@ -20,10 +20,18 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 				if (id !== undefined) {
 					openWindow(id);
 					releaseMinimizedWindow(id);
+
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-expect-error
+					dataLayer.push({ event: "app-click", appId: id });
 				}
 
 				if (href !== undefined) {
 					window.open(href, "_blank");
+
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-expect-error
+					dataLayer.push({ event: "app-click", url: href });
 				}
 			}}
 			className={css`
