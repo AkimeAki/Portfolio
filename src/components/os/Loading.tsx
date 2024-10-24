@@ -207,238 +207,214 @@ export default function ({ notFound = false }: Props) {
 							}
 						`}
 					/>
-					{notFound && (
-						<div
-							className={css`
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-								background-color: black;
-								opacity: 0;
-
-								animation-name: loading-bg-out-error;
-								animation-duration: 3s;
-								animation-delay: 1500ms;
-								animation-fill-mode: forwards;
-								animation-timing-function: linear;
-							`}
-						/>
-					)}
-					{!notFound && (
-						<div
-							className={css`
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-								background-color: black;
-								opacity: 0;
-
-								@media (scripting: none) {
-									animation-name: loading-bg-out-error;
-								}
-								animation-duration: 3s;
-								animation-delay: 1500ms;
-								animation-fill-mode: forwards;
-								animation-timing-function: linear;
-							`}
-						/>
-					)}
 					<div
-						className={css`
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%, -50%);
-							padding: 7px 40px;
-							background-color: rgba(0, 0, 0, 0.678);
-						`}
+						className={[
+							css`
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+								text-align: center;
+								transition-duration: 2s;
+								transition-delay: 1s;
+								transition-property: filter, opacity;
+								transition-timing-function: ease-out;
+							`,
+							!imageLoading && !fontsLoading && !twitterLoading
+								? css`
+										filter: blur(10px);
+										opacity: 0;
+									`
+								: ""
+						].join(" ")}
 					>
 						<div
 							className={css`
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 0;
-								height: 2px;
-								background-color: #c72a4d;
-
-								animation-name: welcome-border-top;
-								animation-duration: 200ms;
-								animation-delay: 400ms;
-								animation-fill-mode: forwards;
-								animation-timing-function: linear;
-
-								@keyframes welcome-border-top {
-									100% {
-										width: 100%;
-									}
-								}
+								position: relative;
+								display: inline-block;
+								padding: 7px 40px;
+								background-color: rgba(0, 0, 0, 0.678);
 							`}
-						/>
+						>
+							<div
+								className={css`
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 0;
+									height: 2px;
+									background-color: #c72a4d;
+
+									animation-name: welcome-border-top;
+									animation-duration: 200ms;
+									animation-delay: 400ms;
+									animation-fill-mode: forwards;
+									animation-timing-function: linear;
+
+									@keyframes welcome-border-top {
+										100% {
+											width: 100%;
+										}
+									}
+								`}
+							/>
+							<div
+								className={css`
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 2px;
+									height: 0;
+									background-color: #c72a4d;
+
+									animation-name: welcome-border-left;
+									animation-duration: 200ms;
+									animation-delay: 400ms;
+									animation-fill-mode: forwards;
+									animation-timing-function: linear;
+
+									@keyframes welcome-border-left {
+										100% {
+											height: 100%;
+										}
+									}
+								`}
+							/>
+							<div
+								className={css`
+									position: absolute;
+									bottom: 0;
+									left: 0;
+									width: 0;
+									height: 2px;
+									background-color: #c72a4d;
+
+									animation-name: welcome-border-bottom;
+									animation-duration: 200ms;
+									animation-delay: 600ms;
+									animation-fill-mode: forwards;
+									animation-timing-function: linear;
+
+									@keyframes welcome-border-bottom {
+										100% {
+											width: 100%;
+										}
+									}
+								`}
+							/>
+							<div
+								className={css`
+									position: absolute;
+									top: 0;
+									right: 0;
+									width: 2px;
+									height: 0;
+									background-color: #c72a4d;
+
+									animation-name: welcome-border-right;
+									animation-duration: 200ms;
+									animation-delay: 600ms;
+									animation-fill-mode: forwards;
+									animation-timing-function: linear;
+
+									@keyframes welcome-border-right {
+										100% {
+											height: 100%;
+										}
+									}
+								`}
+							/>
+							<span
+								className={css`
+									opacity: 0;
+									animation-name: welcome-view;
+									animation-duration: 70ms;
+									animation-delay: 1000ms;
+									animation-fill-mode: forwards;
+									animation-iteration-count: 5;
+									animation-timing-function: linear;
+									font-size: 18px;
+
+									span {
+										white-space: nowrap;
+										font-weight: normal !important;
+									}
+
+									@keyframes welcome-view {
+										100% {
+											opacity: 1;
+										}
+									}
+								`}
+							>
+								Welcome
+							</span>
+						</div>
+
 						<div
 							className={css`
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 2px;
-								height: 0;
-								background-color: #c72a4d;
-
-								animation-name: welcome-border-left;
-								animation-duration: 200ms;
-								animation-delay: 400ms;
-								animation-fill-mode: forwards;
-								animation-timing-function: linear;
-
-								@keyframes welcome-border-left {
-									100% {
-										height: 100%;
-									}
-								}
-							`}
-						/>
-						<div
-							className={css`
-								position: absolute;
-								bottom: 0;
-								left: 0;
-								width: 0;
-								height: 2px;
-								background-color: #c72a4d;
-
-								animation-name: welcome-border-bottom;
-								animation-duration: 200ms;
-								animation-delay: 600ms;
-								animation-fill-mode: forwards;
-								animation-timing-function: linear;
-
-								@keyframes welcome-border-bottom {
-									100% {
-										width: 100%;
-									}
-								}
-							`}
-						/>
-						<div
-							className={css`
-								position: absolute;
-								top: 0;
-								right: 0;
-								width: 2px;
-								height: 0;
-								background-color: #c72a4d;
-
-								animation-name: welcome-border-right;
-								animation-duration: 200ms;
-								animation-delay: 600ms;
-								animation-fill-mode: forwards;
-								animation-timing-function: linear;
-
-								@keyframes welcome-border-right {
-									100% {
-										height: 100%;
-									}
-								}
-							`}
-						/>
-						<span
-							className={css`
+								position: relative;
+								margin-top: 40px;
+								width: 300px;
+								height: 40px;
+								padding: 5px;
+								border: 1px solid #c72a4d;
 								opacity: 0;
-								animation-name: welcome-view;
+
 								animation-duration: 70ms;
-								animation-delay: 1000ms;
+								animation-delay: 200ms;
 								animation-fill-mode: forwards;
 								animation-iteration-count: 5;
 								animation-timing-function: linear;
-								font-size: 18px;
+								animation-name: progress-view;
 
-								span {
-									white-space: nowrap;
-									font-weight: normal !important;
-								}
-
-								@keyframes welcome-view {
+								@keyframes progress-view {
 									100% {
 										opacity: 1;
 									}
 								}
 							`}
 						>
-							Welcome
-						</span>
-					</div>
-
-					<div
-						className={css`
-							position: absolute;
-							top: calc(50% + 70px);
-							left: 50%;
-							transform: translate(-50%, -50%);
-							width: 300px;
-							height: 40px;
-							padding: 5px;
-							border: 1px solid #c72a4d;
-							opacity: 0;
-
-							animation-duration: 70ms;
-							animation-delay: 200ms;
-							animation-fill-mode: forwards;
-							animation-iteration-count: 5;
-							animation-timing-function: linear;
-							animation-name: progress-view;
-
-							@keyframes progress-view {
-								100% {
-									opacity: 1;
-								}
-							}
-						`}
-					>
-						<div
-							className={css`
-								width: 100%;
-								height: 100%;
-								border: 1px solid #c72a4d;
-							`}
-						>
 							<div
-								style={{
-									width: notFound
-										? undefined
-										: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 288 + "px"
-								}}
-								className={[
-									css`
-										position: relative;
-										width: 0;
-										max-width: 288px;
-										height: 100%;
-										transition-duration: 600ms;
-										transition-property: width;
-										transition-timing-function: ease-out;
+								className={css`
+									width: 100%;
+									height: 100%;
+									border: 1px solid #c72a4d;
+								`}
+							>
+								<div
+									style={{
+										width: notFound
+											? undefined
+											: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 286 + "px"
+									}}
+									className={[
+										css`
+											position: relative;
+											width: 0;
+											max-width: 286px;
+											height: 100%;
+											transition-duration: 600ms;
+											transition-property: width;
+											transition-timing-function: ease-out;
 
-										&:before,
-										&:after {
-											display: block;
-											content: "";
-											position: absolute;
-											top: 2px;
-											left: 2px;
-											width: calc(100% - 4px);
-											height: calc(100% - 4px);
-											background-color: #caf8af;
-										}
+											&:before,
+											&:after {
+												display: block;
+												content: "";
+												position: absolute;
+												top: 2px;
+												left: 2px;
+												width: calc(100% - 4px);
+												height: calc(100% - 4px);
+												background-color: #caf8af;
+											}
 
-										&:before {
-											filter: brightness(110%) blur(3px);
-										}
-									`,
-									notFound
-										? css`
+											&:before {
+												filter: brightness(110%) blur(3px);
+											}
+
+											@media (scripting: none) {
 												animation-duration: 1s;
 												animation-delay: 250ms;
 												animation-fill-mode: forwards;
@@ -475,81 +451,183 @@ export default function ({ notFound = false }: Props) {
 														}
 													}
 												}
-											`
-										: ""
-								].join(" ")}
-							/>
-						</div>
-						<span
-							className={[
-								css`
+											}
+										`,
+										notFound
+											? css`
+													animation-duration: 1s;
+													animation-delay: 250ms;
+													animation-fill-mode: forwards;
+													animation-iteration-count: 1;
+													animation-timing-function: linear;
+													animation-name: error-progress;
+
+													@keyframes error-progress {
+														70% {
+															width: calc(100% / 4);
+														}
+
+														100% {
+															width: 100%;
+														}
+													}
+
+													&:before,
+													&:after {
+														animation-duration: 1s;
+														animation-delay: 250ms;
+														animation-fill-mode: forwards;
+														animation-iteration-count: 1;
+														animation-timing-function: linear;
+														animation-name: error-progress-color;
+
+														@keyframes error-progress-color {
+															70% {
+																background-color: #caf8af;
+															}
+
+															100% {
+																background-color: #c72a4d;
+															}
+														}
+													}
+												`
+											: ""
+									].join(" ")}
+								/>
+							</div>
+							<span
+								className={css`
 									position: absolute;
 									top: 50%;
 									left: 50%;
 									transform: translate(-50%, -50%);
+
 									span {
 										white-space: nowrap;
-										font-size: 14px;
 										color: #f0425a;
 										font-weight: normal !important;
 									}
-								`,
-								notFound
-									? css`
-											span {
-												animation-duration: 1s;
-												animation-delay: 250ms;
+								`}
+							>
+								{notFound && (
+									<>
+										<span
+											className={css`
+												animation-duration: 0s;
+												animation-delay: 950ms;
 												animation-fill-mode: forwards;
 												animation-iteration-count: 1;
-												animation-timing-function: linear;
-												animation-name: error-progress-message-color;
+												animation-name: notfound-message-hide;
+												font-size: 14px;
+												color: #f0425a;
 
-												@keyframes error-progress-message-color {
-													95% {
-														color: #f0425a;
-													}
-
+												@keyframes notfound-message-hide {
 													100% {
+														font-size: 0;
 														color: white;
 													}
 												}
+											`}
+										>
+											Network Checking
+										</span>
+										<span
+											className={css`
+												animation-duration: 0s;
+												animation-delay: 950ms;
+												animation-fill-mode: forwards;
+												animation-iteration-count: 1;
+												animation-name: notfound-message-view;
+												font-size: 0;
+												color: #f0425a;
+
+												@keyframes notfound-message-view {
+													100% {
+														font-size: 14px;
+														color: white;
+													}
+												}
+											`}
+										>
+											Not Found
+										</span>
+									</>
+								)}
+								{!notFound && (
+									<>
+										<span
+											className={css`
+												animation-duration: 0s;
+												animation-delay: 950ms;
+												animation-fill-mode: forwards;
+												animation-iteration-count: 1;
+												animation-name: notfound-message-hide;
+												font-size: 14px;
+												color: #f0425a;
+
+												@media (scripting: enabled) {
+													display: none;
+												}
+
+												@keyframes notfound-message-hide {
+													100% {
+														font-size: 0;
+														color: white;
+													}
+												}
+											`}
+										>
+											Network Checking
+										</span>
+										<span
+											className={css`
+												animation-duration: 0s;
+												animation-delay: 950ms;
+												animation-fill-mode: forwards;
+												animation-iteration-count: 1;
+												animation-name: notfound-message-view;
+												font-size: 0;
+												color: #f0425a;
+
+												@media (scripting: enabled) {
+													display: none;
+												}
+
+												@keyframes notfound-message-view {
+													100% {
+														font-size: 14px;
+														color: white;
+													}
+												}
+											`}
+										>
+											Script Error
+										</span>
+									</>
+								)}
+								{!notFound && (
+									<span
+										className={css`
+											font-size: 14px;
+											@media (scripting: none) {
+												display: none;
 											}
-										`
-									: ""
-							].join(" ")}
-						>
-							{notFound && <span>Not Found</span>}
-							{!notFound && (
-								<span
-									className={css`
-										@media (scripting: enabled) {
-											display: none;
-										}
-									`}
-								>
-									Script Error
-								</span>
-							)}
-							{!notFound && (
-								<span
-									className={css`
-										@media (scripting: none) {
-											display: none;
-										}
-									`}
-								>
-									{!networkChecked
-										? "Network Checking"
-										: fontsLoading
-											? "Fonts Loading"
-											: imageLoading
-												? "Images Loading"
-												: twitterLoading
-													? "Widgets Loading"
-													: "Ready"}
-								</span>
-							)}
-						</span>
+										`}
+									>
+										{!networkChecked
+											? "Network Checking"
+											: fontsLoading
+												? "Fonts Loading"
+												: imageLoading
+													? "Images Loading"
+													: twitterLoading
+														? "Widgets Loading"
+														: "Ready"}
+									</span>
+								)}
+							</span>
+						</div>
 					</div>
 					{twitterLoading && ready && (
 						<div
