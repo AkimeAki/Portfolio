@@ -478,7 +478,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 						left: 0;
 						width: 100%;
 						height: 100%;
-						background-color: #220000;
+						background-color: #363636;
 						opacity: 0.95;
 					`}
 				/>
@@ -782,7 +782,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 
 							@layer base {
 								* {
-									color: #f3f3f3;
+									color: #cfcfcf;
 								}
 							}
 						`}

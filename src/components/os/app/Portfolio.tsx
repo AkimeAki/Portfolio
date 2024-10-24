@@ -16,7 +16,12 @@ export default function () {
 		>
 			<PortfolioArea
 				title={"アレルギーナビ（制作中）"}
-				description={<p>アレルギーの方向けのアレルゲン情報サイトです。</p>}
+				description={
+					<>
+						<p>アレルギーの方向けのアレルゲン情報サイトです。</p>
+						<p>みんなでアレルギー情報を持ち寄りましょう。飲食店のみんな、アレルギー対応忘れないでね。</p>
+					</>
+				}
 				href="https://allergy-navi.com/"
 			>
 				<img
@@ -28,7 +33,12 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"どっとや"}
-				description={<p>ドット絵の素材配布サイトです。</p>}
+				description={
+					<>
+						<p>ドット絵の素材配布サイトです。</p>
+						<p>ドット屋さんってことです。無料ですけど。</p>
+					</>
+				}
 				href="https://pixel.gives/"
 			>
 				<img
@@ -41,9 +51,12 @@ export default function () {
 			<PortfolioArea
 				title={"SimpleV"}
 				description={
-					<p>
-						配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
-					</p>
+					<>
+						<p>
+							配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
+						</p>
+						<p>これであなたもVTuberのVくらいにはなれましたね。</p>
+					</>
 				}
 				href="https://simple-v.aki.wtf/"
 			>
@@ -56,7 +69,14 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"カーソルを追従する四角いの"}
-				description={<p>マウスの後ろから四角いのが付いてくるChrome拡張機能です。</p>}
+				description={
+					<>
+						<p>マウスの後ろから四角いのが付いてくるChrome拡張機能です。重いので入れないほうが良いです。</p>
+						<p>
+							よほど自分のPCにスペックがあって、Googleのサーバーと張り合える自信があっても入れないほうが良いです。
+						</p>
+					</>
+				}
 				href="https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
@@ -69,7 +89,12 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"拡張子を変更して画像を保存"}
-				description={<p>画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。</p>}
+				description={
+					<>
+						<p>画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。</p>
+						<p>便利です。</p>
+					</>
+				}
 				href="https://chromewebstore.google.com/detail/kinldkcfdohpgpedpglhcfjenoaklhkk"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
@@ -82,7 +107,15 @@ export default function () {
 			</PortfolioArea>
 			<PortfolioArea
 				title={"Google Apps Script製ページ用印刷"}
-				description={<p>Google Apps Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。</p>}
+				description={
+					<>
+						<p>
+							Google Apps
+							Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。ニッチな層を指してます。
+						</p>
+						<p>君だよ君、会社でGAS製サイトを作って印刷して皆に配る必要がある君だよ。</p>
+					</>
+				}
 				href="https://chromewebstore.google.com/detail/gacknebdjgldkfjibmbkkdbkihomoiaj"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
@@ -94,57 +127,12 @@ export default function () {
 				/>
 			</PortfolioArea>
 			<PortfolioArea
-				title={"YouTube用エンディング1"}
-				description={<p>Adobe Premiere ProとAdobe After Effectsを使用しました。</p>}
-			>
-				<iframe
-					className={css`
-						width: 100%;
-						aspect-ratio: 16/9;
-					`}
-					src="https://www.youtube.com/embed/AzuWH9S4jRk?si=INpmJPgza2PxDvkC&amp;start=23"
-					title="YouTube video player"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerPolicy="strict-origin-when-cross-origin"
-					allowFullScreen
-				/>
-			</PortfolioArea>
-			<PortfolioArea
-				title={"ニコニコ動画用エンディング"}
-				description={<p>Adobe Premiere ProとAdobe After Effectsを使用しました。</p>}
-			>
-				<iframe
-					className={css`
-						width: 100%;
-						aspect-ratio: 16/9;
-					`}
-					src="https://www.youtube.com/embed/9-wqOhxLYyw?si=mtzggzLUcGhl3ojI&amp;start=23"
-					title="YouTube video player"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerPolicy="strict-origin-when-cross-origin"
-					allowFullScreen
-				/>
-			</PortfolioArea>
-			<PortfolioArea title={"YouTube用エンディング2"} description={<p>AviUtlで作成しました。</p>}>
-				<iframe
-					className={css`
-						width: 100%;
-						aspect-ratio: 16/9;
-					`}
-					src="https://www.youtube.com/embed/bxIPbOl98f0?si=FFl5yrfdjUGUClgY"
-					title="YouTube video player"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerPolicy="strict-origin-when-cross-origin"
-					allowFullScreen
-				/>
-			</PortfolioArea>
-			<PortfolioArea
 				title={"DevContainer Install Local Extensions"}
 				description={
 					<>
 						<p>Dev Containerを使った時にローカルの拡張機能全部使いてぇよって人におすすめの拡張機能です。</p>
 						<p>
-							開発コンテナにローカルにインストールされている拡張機能をインストールする設定「dev.containers.defaultExtensionsIfInstalledLocally」に自動的にローカルにインストールされている全ての拡張機能を設定します。
+							開発コンテナにローカルにインストールされている拡張機能をインストールする設定「dev.containers.defaultExtensionsIfInstalledLocally」に自動的にローカルにインストールされている全ての拡張機能を設定します。この機能、、、デフォで良くないか？
 						</p>
 					</>
 				}

@@ -34,6 +34,18 @@ export default function ({ title, description, children, href, buttonTitle = "ã‚
 				<h3
 					className={css`
 						font-size: 20px;
+						position: relative;
+
+						&:before {
+							display: block;
+							content: "";
+							width: 100%;
+							height: 2px;
+							background-color: #cfcfcf;
+							position: absolute;
+							bottom: 0;
+							left: 0;
+						}
 					`}
 				>
 					{title}
