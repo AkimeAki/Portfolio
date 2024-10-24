@@ -21,17 +21,17 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 					openWindow(id);
 					releaseMinimizedWindow(id);
 
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-expect-error
-					dataLayer.push({ event: "app-click", appId: id, url: null });
+					if (process.env.NODE_ENV === "production") {
+						window.dataLayer.push({ event: "app-click", appId: id, url: null });
+					}
 				}
 
 				if (href !== undefined) {
 					window.open(href, "_blank");
 
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-expect-error
-					dataLayer.push({ event: "app-click", appId: null, url: href });
+					if (process.env.NODE_ENV === "production") {
+						window.dataLayer.push({ event: "app-click", appId: null, url: href });
+					}
 				}
 			}}
 			className={css`

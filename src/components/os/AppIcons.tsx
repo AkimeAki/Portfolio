@@ -2,11 +2,12 @@
 
 import { css } from "@kuma-ui/core";
 import AppIcon from "@/components/os/AppIcon";
-import { osLoading } from "@/atom";
+import { isTwitterWidgetValid, osLoading } from "@/atom";
 import { useStore } from "@nanostores/react";
 
 export default function () {
 	const $osLoading = useStore(osLoading);
+	const $isTwitterWidgetValid = useStore(isTwitterWidgetValid);
 
 	return (
 		<div
@@ -76,9 +77,11 @@ export default function () {
 			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
 				FAQ
 			</AppIcon>
-			<AppIcon id="twitter" imgSrc="/app/twitter.png">
-				Twitter
-			</AppIcon>
+			{$isTwitterWidgetValid && (
+				<AppIcon id="twitter" imgSrc="/app/twitter.png">
+					Twitter
+				</AppIcon>
+			)}
 			{/* <AppIcon id="misskeyio" imgSrc="/app/misskey.png">
 				Misskey.io
 			</AppIcon> */}

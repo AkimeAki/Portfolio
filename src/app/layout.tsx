@@ -26,12 +26,7 @@ export default function ({ children }: Props) {
 					</>
 				)}
 			</head>
-			<body data-script="invalid">
-				<script
-					dangerouslySetInnerHTML={{
-						__html: 'document.body.dataset.script="valid";'
-					}}
-				/>
+			<body>
 				<noscript>
 					<iframe
 						src="https://www.googletagmanager.com/ns.html?id=GTM-KGV4LZWH"

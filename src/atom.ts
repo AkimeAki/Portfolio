@@ -17,3 +17,5 @@ export const minimizeWindowList = atom<string[]>([]);
 export const osLoading = atom<boolean>(true);
 
 export const isTouch = atom<boolean>(isTouchDevice());
+
+export const isTwitterWidgetValid = atom<boolean>(false);

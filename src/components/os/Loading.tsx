@@ -1,6 +1,6 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { isTwitterWidgetValid, osLoading } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
@@ -16,6 +16,7 @@ export default function ({ notFound = false }: Props) {
 	const [ready, setReady] = useState(false);
 	const [networkChecked, setNetworkChecked] = useState<boolean>(false);
 	const [loadProgress, setLoadProgress] = useState<number>(0);
+	const [twitterLoading, setTwitterLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -29,8 +30,64 @@ export default function ({ notFound = false }: Props) {
 		if (ready) {
 			setNetworkChecked(true);
 			setLoadProgress((prev) => {
-				return prev + 100 / 3;
+				return prev + 100 / 4;
 			});
+		}
+	}, [ready]);
+
+	useEffect(() => {
+		if (ready) {
+			let timer: null | NodeJS.Timeout = null;
+			let observer: null | MutationObserver = null;
+
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			if ((window as any).twttr !== undefined && (window as any).twttr.widgets !== undefined) {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				(window as any).twttr.widgets.load();
+			}
+
+			const twitterLoadingWidgetElement = document.querySelector<HTMLDivElement>("#twitter-loading-widget");
+			if (twitterLoadingWidgetElement !== null) {
+				observer = new MutationObserver(() => {
+					const widgetElement =
+						twitterLoadingWidgetElement.querySelector<HTMLDivElement>(".twitter-timeline");
+					if (widgetElement !== null) {
+						if (widgetElement.offsetHeight > 0) {
+							setTwitterLoading(false);
+							setLoadProgress((prev) => {
+								return prev + 100 / 4;
+							});
+
+							if (observer !== null) {
+								observer.disconnect();
+							}
+
+							if (timer !== null) {
+								clearTimeout(timer);
+							}
+
+							if (widgetElement.offsetHeight > 600) {
+								isTwitterWidgetValid.set(true);
+							}
+						}
+					}
+				});
+
+				observer.observe(twitterLoadingWidgetElement, {
+					childList: true, // 子ノードの変化を監視
+					subtree: true // 子孫ノードも監視対象に含める
+				});
+			}
+
+			timer = setTimeout(() => {
+				setTwitterLoading(false);
+				setLoadProgress((prev) => {
+					return prev + 100 / 4;
+				});
+				if (observer !== null) {
+					observer.disconnect();
+				}
+			}, 5000);
 		}
 	}, [ready]);
 
@@ -63,7 +120,7 @@ export default function ({ notFound = false }: Props) {
 			setTimeout(() => {
 				setImageLoading(false);
 				setLoadProgress((prev) => {
-					return prev + 100 / 3;
+					return prev + 100 / 4;
 				});
 			}, 500);
 		};
@@ -79,7 +136,7 @@ export default function ({ notFound = false }: Props) {
 				setTimeout(() => {
 					setFontsLoading(false);
 					setLoadProgress((prev) => {
-						return prev + 100 / 3;
+						return prev + 100 / 4;
 					});
 				}, 500);
 			});
@@ -87,12 +144,12 @@ export default function ({ notFound = false }: Props) {
 	}, [ready]);
 
 	useEffect(() => {
-		if (!imageLoading && !fontsLoading) {
+		if (!imageLoading && !fontsLoading && !twitterLoading) {
 			setTimeout(() => {
 				osLoading.set(false);
 			}, 3000);
 		}
-	}, [imageLoading, fontsLoading]);
+	}, [imageLoading, fontsLoading, twitterLoading]);
 
 	return (
 		<>
@@ -133,7 +190,7 @@ export default function ({ notFound = false }: Props) {
 
 							@keyframes loading-bg-out {
 								100% {
-									opacity: 0.4;
+									opacity: 0;
 								}
 							}
 						`}
@@ -178,7 +235,7 @@ export default function ({ notFound = false }: Props) {
 								background-color: black;
 								opacity: 0;
 
-								body[data-script="invalid"] & {
+								@media (scripting: none) {
 									animation-name: loading-bg-out-error;
 								}
 								animation-duration: 3s;
@@ -327,7 +384,7 @@ export default function ({ notFound = false }: Props) {
 											animation-timing-function: linear;
 											font-size: 18px;
 
-											body[data-script="invalid"] & {
+											@media (scripting: none) {
 												animation-name: welcome-hide;
 											}
 
@@ -348,7 +405,7 @@ export default function ({ notFound = false }: Props) {
 											animation-timing-function: linear;
 											font-size: 0;
 
-											body[data-script="invalid"] & {
+											@media (scripting: none) {
 												animation-name: error-view;
 											}
 
@@ -407,96 +464,131 @@ export default function ({ notFound = false }: Props) {
 					</div>
 
 					{!notFound && (
-						<div
-							className={css`
-								position: absolute;
-								top: calc(50% + 70px);
-								left: 50%;
-								transform: translate(-50%, -50%);
-								width: 300px;
-								height: 40px;
-								padding: 5px;
-								border: 1px solid #c72a4d;
-								opacity: 0;
-
-								animation-duration: 70ms;
-								animation-delay: 200ms;
-								animation-fill-mode: forwards;
-								animation-iteration-count: 5;
-								animation-timing-function: linear;
-
-								body[data-script="valid"] & {
-									animation-name: progress-view;
-								}
-
-								@keyframes progress-view {
-									100% {
-										opacity: 1;
-									}
-								}
-							`}
-						>
+						<>
 							<div
 								className={css`
-									width: 100%;
-									height: 100%;
+									position: absolute;
+									top: calc(50% + 70px);
+									left: 50%;
+									transform: translate(-50%, -50%);
+									width: 300px;
+									height: 40px;
+									padding: 5px;
 									border: 1px solid #c72a4d;
+									opacity: 0;
+
+									animation-duration: 70ms;
+									animation-delay: 200ms;
+									animation-fill-mode: forwards;
+									animation-iteration-count: 5;
+									animation-timing-function: linear;
+
+									@media (scripting: enabled) {
+										animation-name: progress-view;
+									}
+
+									@keyframes progress-view {
+										100% {
+											opacity: 1;
+										}
+									}
 								`}
 							>
 								<div
-									style={{ width: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 288 + "px" }}
 									className={css`
-										position: relative;
-										width: 0;
-										max-width: 288px;
+										width: 100%;
 										height: 100%;
-										transition-duration: 600ms;
-										transition-property: width;
-										transition-timing-function: ease-out;
-
-										&:before,
-										&:after {
-											display: block;
-											content: "";
-											position: absolute;
-											top: 2px;
-											left: 2px;
-											width: calc(100% - 4px);
-											height: calc(100% - 4px);
-										}
-
-										&:before {
-											background-color: #caf8af;
-											filter: brightness(110%) blur(3px);
-										}
-
-										&:after {
-											background-color: #caf8af;
-										}
+										border: 1px solid #c72a4d;
 									`}
-								/>
+								>
+									<div
+										style={{
+											width: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 288 + "px"
+										}}
+										className={css`
+											position: relative;
+											width: 0;
+											max-width: 288px;
+											height: 100%;
+											transition-duration: 600ms;
+											transition-property: width;
+											transition-timing-function: ease-out;
+
+											&:before,
+											&:after {
+												display: block;
+												content: "";
+												position: absolute;
+												top: 2px;
+												left: 2px;
+												width: calc(100% - 4px);
+												height: calc(100% - 4px);
+											}
+
+											&:before {
+												background-color: #caf8af;
+												filter: brightness(110%) blur(3px);
+											}
+
+											&:after {
+												background-color: #caf8af;
+											}
+										`}
+									/>
+								</div>
+								<span
+									className={css`
+										position: absolute;
+										top: 50%;
+										left: 50%;
+										transform: translate(-50%, -50%);
+										white-space: nowrap;
+										font-size: 14px;
+										color: #f0425a;
+										font-weight: normal !important;
+									`}
+								>
+									{!networkChecked
+										? "Network Checking"
+										: twitterLoading
+											? "Widgets Loading"
+											: fontsLoading
+												? "Fonts Loading"
+												: imageLoading
+													? "Images Loading"
+													: "Ready"}
+								</span>
 							</div>
-							<span
-								className={css`
-									position: absolute;
-									top: 50%;
-									left: 50%;
-									transform: translate(-50%, -50%);
-									white-space: nowrap;
-									font-size: 14px;
-									color: #f0425a;
-									font-weight: normal !important;
-								`}
-							>
-								{!networkChecked
-									? "Network Checking"
-									: fontsLoading
-										? "Fonts Loading"
-										: imageLoading
-											? "Images Loading"
-											: "Ready"}
-							</span>
-						</div>
+							{twitterLoading && ready && (
+								<div
+									id="twitter-loading-widget"
+									className={css`
+										width: 300px;
+										height: 600px;
+										opacity: 0;
+										user-select: none;
+										pointer-events: none;
+									`}
+								>
+									<a
+										className={[
+											"twitter-timeline",
+											css`
+												text-decoration: none;
+												width: 100%;
+												height: 100%;
+											`
+										].join(" ")}
+										href="https://twitter.com/Akime_Aki?ref_src=twsrc%5Etfw"
+										data-chrome="noheader nofooter"
+										data-theme="dark"
+									>
+										読込中...
+									</a>
+									<script async src="https://platform.twitter.com/widgets.js" />
+								</div>
+							)}
+						</>
 					)}
 				</div>
 			) : (
