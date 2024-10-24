@@ -264,6 +264,7 @@ export default function ({ notFound = false }: Props) {
 							left: 50%;
 							transform: translate(-50%, -50%);
 							padding: 7px 40px;
+							background-color: rgba(0, 0, 0, 0.678);
 						`}
 					>
 						<div
