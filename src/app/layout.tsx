@@ -1,7 +1,6 @@
 import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
 import "@akimeaki/reset-css";
 import "@/global.scss";
-import nullToUndefined from "@akimeaki/null-to-undefined";
 import CheckUserAgent from "@/components/CheckUserAgent";
 
 export const runtime = "edge";
