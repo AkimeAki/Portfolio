@@ -556,10 +556,11 @@ export default function ({ notFound = false }: Props) {
 							id="twitter-loading-widget"
 							className={css`
 								width: 300px;
-								height: 600px;
+								height: 100%;
 								opacity: 0;
 								user-select: none;
 								pointer-events: none;
+								overflow: hidden;
 							`}
 						>
 							<a
