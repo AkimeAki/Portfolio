@@ -780,8 +780,10 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 							overflow: auto;
 							container-type: inline-size;
 
-							* {
-								color: #f3f3f3;
+							@layer base {
+								* {
+									color: #f3f3f3;
+								}
 							}
 						`}
 					>
