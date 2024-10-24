@@ -80,8 +80,8 @@ export const appList: {
 		viewPinButton: false
 	},
 	teto: {
-		title: "🥖おすすめテト",
-		pageTitle: "🥖おすすめテト",
+		title: "🥖おすすめのテト",
+		pageTitle: "🥖おすすめのテト",
 		image: {
 			isPixel: true,
 			path: "/app/teto.png"
@@ -97,8 +97,8 @@ export const appList: {
 		defaultPin: true
 	},
 	furina: {
-		title: "💧フリーナはかわいい",
-		pageTitle: "💧フリーナはかわいい",
+		title: "💧おすすめのフリーナ動画",
+		pageTitle: "💧おすすめのフリーナ動画",
 		image: {
 			isPixel: true,
 			path: "/app/furina.png"
