@@ -53,17 +53,19 @@ export default function ({ notFound = false }: Props) {
 						twitterLoadingWidgetElement.querySelector<HTMLDivElement>(".twitter-timeline");
 					if (widgetElement !== null) {
 						if (widgetElement.offsetHeight > 0) {
-							setTwitterLoading(false);
-							setLoadProgress((prev) => {
-								return prev + 100 / 4;
-							});
+							setTimeout(() => {
+								setTwitterLoading(false);
+								setLoadProgress((prev) => {
+									return prev + 100 / 4;
+								});
+
+								if (timer !== null) {
+									clearTimeout(timer);
+								}
+							}, 500);
 
 							if (observer !== null) {
 								observer.disconnect();
-							}
-
-							if (timer !== null) {
-								clearTimeout(timer);
 							}
 
 							if (widgetElement.offsetHeight > 600) {
@@ -550,12 +552,12 @@ export default function ({ notFound = false }: Props) {
 								>
 									{!networkChecked
 										? "Network Checking"
-										: twitterLoading
-											? "Widgets Loading"
-											: fontsLoading
-												? "Fonts Loading"
-												: imageLoading
-													? "Images Loading"
+										: fontsLoading
+											? "Fonts Loading"
+											: imageLoading
+												? "Images Loading"
+												: twitterLoading
+													? "Widgets Loading"
 													: "Ready"}
 								</span>
 							</div>
