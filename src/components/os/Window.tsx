@@ -348,6 +348,13 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					? css`
 							translate: 0 100vh;
 							scale: 0;
+							user-select: none !important;
+							pointer-events: none !important;
+
+							* {
+								user-select: none !important;
+								pointer-events: none !important;
+							}
 						`
 					: ""
 			].join(" ")}
