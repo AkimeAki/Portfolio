@@ -22,7 +22,12 @@ export default function () {
 			`}
 		>
 			{$minimizeWindowList.map((id) => (
-				<MinimizedAppIcon id={id} iconPath={appList[id].image.path} isPixel={appList[id].image.isPixel} />
+				<MinimizedAppIcon
+					key={id}
+					id={id}
+					iconPath={appList[id].image.path}
+					isPixel={appList[id].image.isPixel}
+				/>
 			))}
 		</div>
 	);

@@ -195,6 +195,16 @@ export default function ({ notFound = false }: Props) {
 									opacity: 0;
 								}
 							}
+
+							@keyframes loading-bg-out-error {
+								99% {
+									opacity: 0;
+								}
+
+								100% {
+									opacity: 1;
+								}
+							}
 						`}
 					/>
 					{notFound && (
@@ -213,16 +223,6 @@ export default function ({ notFound = false }: Props) {
 								animation-delay: 1500ms;
 								animation-fill-mode: forwards;
 								animation-timing-function: linear;
-
-								@keyframes loading-bg-out-error {
-									99% {
-										opacity: 0;
-									}
-
-									100% {
-										opacity: 0.8;
-									}
-								}
 							`}
 						/>
 					)}
@@ -244,16 +244,6 @@ export default function ({ notFound = false }: Props) {
 								animation-delay: 1500ms;
 								animation-fill-mode: forwards;
 								animation-timing-function: linear;
-
-								@keyframes loading-bg-out-error {
-									99% {
-										opacity: 0;
-									}
-
-									100% {
-										opacity: 0.8;
-									}
-								}
 							`}
 						/>
 					)}
@@ -364,6 +354,7 @@ export default function ({ notFound = false }: Props) {
 								animation-fill-mode: forwards;
 								animation-iteration-count: 5;
 								animation-timing-function: linear;
+								font-size: 18px;
 
 								span {
 									white-space: nowrap;
@@ -377,178 +368,174 @@ export default function ({ notFound = false }: Props) {
 								}
 							`}
 						>
-							{!notFound && (
-								<>
-									<span
-										className={css`
-											animation-duration: 0s;
-											animation-delay: 4500ms;
-											animation-fill-mode: forwards;
-											animation-timing-function: linear;
-											font-size: 18px;
-
-											@media (scripting: none) {
-												animation-name: welcome-hide;
-											}
-
-											@keyframes welcome-hide {
-												100% {
-													font-size: 0;
-												}
-											}
-										`}
-									>
-										Welcome
-									</span>
-									<span
-										className={css`
-											animation-duration: 0s;
-											animation-delay: 4500ms;
-											animation-fill-mode: forwards;
-											animation-timing-function: linear;
-											font-size: 0;
-
-											@media (scripting: none) {
-												animation-name: error-view;
-											}
-
-											@keyframes error-view {
-												100% {
-													font-size: 18px;
-												}
-											}
-										`}
-									>
-										Script Error
-									</span>
-								</>
-							)}
-							{notFound && (
-								<>
-									<span
-										className={css`
-											animation-name: welcome-hide;
-											animation-duration: 0s;
-											animation-delay: 4500ms;
-											animation-fill-mode: forwards;
-											animation-timing-function: linear;
-											font-size: 18px;
-
-											@keyframes welcome-hide {
-												100% {
-													font-size: 0;
-												}
-											}
-										`}
-									>
-										Welcome
-									</span>
-									<span
-										className={css`
-											animation-name: notfound-view;
-											animation-duration: 0s;
-											animation-delay: 4500ms;
-											animation-fill-mode: forwards;
-											animation-timing-function: linear;
-											font-size: 0;
-
-											@keyframes notfound-view {
-												100% {
-													font-size: 18px;
-												}
-											}
-										`}
-									>
-										Not Found
-									</span>
-								</>
-							)}
+							Welcome
 						</span>
 					</div>
 
-					{!notFound && (
-						<>
+					<div
+						className={css`
+							position: absolute;
+							top: calc(50% + 70px);
+							left: 50%;
+							transform: translate(-50%, -50%);
+							width: 300px;
+							height: 40px;
+							padding: 5px;
+							border: 1px solid #c72a4d;
+							opacity: 0;
+
+							animation-duration: 70ms;
+							animation-delay: 200ms;
+							animation-fill-mode: forwards;
+							animation-iteration-count: 5;
+							animation-timing-function: linear;
+							animation-name: progress-view;
+
+							@keyframes progress-view {
+								100% {
+									opacity: 1;
+								}
+							}
+						`}
+					>
+						<div
+							className={css`
+								width: 100%;
+								height: 100%;
+								border: 1px solid #c72a4d;
+							`}
+						>
 							<div
-								className={css`
+								style={{
+									width: notFound
+										? undefined
+										: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 288 + "px"
+								}}
+								className={[
+									css`
+										position: relative;
+										width: 0;
+										max-width: 288px;
+										height: 100%;
+										transition-duration: 600ms;
+										transition-property: width;
+										transition-timing-function: ease-out;
+
+										&:before,
+										&:after {
+											display: block;
+											content: "";
+											position: absolute;
+											top: 2px;
+											left: 2px;
+											width: calc(100% - 4px);
+											height: calc(100% - 4px);
+											background-color: #caf8af;
+										}
+
+										&:before {
+											filter: brightness(110%) blur(3px);
+										}
+									`,
+									notFound
+										? css`
+												animation-duration: 1s;
+												animation-delay: 250ms;
+												animation-fill-mode: forwards;
+												animation-iteration-count: 1;
+												animation-timing-function: linear;
+												animation-name: error-progress;
+
+												@keyframes error-progress {
+													70% {
+														width: calc(100% / 4);
+													}
+
+													100% {
+														width: 100%;
+													}
+												}
+
+												&:before,
+												&:after {
+													animation-duration: 1s;
+													animation-delay: 250ms;
+													animation-fill-mode: forwards;
+													animation-iteration-count: 1;
+													animation-timing-function: linear;
+													animation-name: error-progress-color;
+
+													@keyframes error-progress-color {
+														70% {
+															background-color: #caf8af;
+														}
+
+														100% {
+															background-color: #c72a4d;
+														}
+													}
+												}
+											`
+										: ""
+								].join(" ")}
+							/>
+						</div>
+						<span
+							className={[
+								css`
 									position: absolute;
-									top: calc(50% + 70px);
+									top: 50%;
 									left: 50%;
 									transform: translate(-50%, -50%);
-									width: 300px;
-									height: 40px;
-									padding: 5px;
-									border: 1px solid #c72a4d;
-									opacity: 0;
-
-									animation-duration: 70ms;
-									animation-delay: 200ms;
-									animation-fill-mode: forwards;
-									animation-iteration-count: 5;
-									animation-timing-function: linear;
-
-									@media (scripting: enabled) {
-										animation-name: progress-view;
-									}
-
-									@keyframes progress-view {
-										100% {
-											opacity: 1;
-										}
-									}
-								`}
-							>
-								<div
-									className={css`
-										width: 100%;
-										height: 100%;
-										border: 1px solid #c72a4d;
-									`}
-								>
-									<div
-										style={{
-											width: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 288 + "px"
-										}}
-										className={css`
-											position: relative;
-											width: 0;
-											max-width: 288px;
-											height: 100%;
-											transition-duration: 600ms;
-											transition-property: width;
-											transition-timing-function: ease-out;
-
-											&:before,
-											&:after {
-												display: block;
-												content: "";
-												position: absolute;
-												top: 2px;
-												left: 2px;
-												width: calc(100% - 4px);
-												height: calc(100% - 4px);
-											}
-
-											&:before {
-												background-color: #caf8af;
-												filter: brightness(110%) blur(3px);
-											}
-
-											&:after {
-												background-color: #caf8af;
-											}
-										`}
-									/>
-								</div>
-								<span
-									className={css`
-										position: absolute;
-										top: 50%;
-										left: 50%;
-										transform: translate(-50%, -50%);
+									span {
 										white-space: nowrap;
 										font-size: 14px;
 										color: #f0425a;
 										font-weight: normal !important;
+									}
+								`,
+								notFound
+									? css`
+											span {
+												animation-duration: 1s;
+												animation-delay: 250ms;
+												animation-fill-mode: forwards;
+												animation-iteration-count: 1;
+												animation-timing-function: linear;
+												animation-name: error-progress-message-color;
+
+												@keyframes error-progress-message-color {
+													95% {
+														color: #f0425a;
+													}
+
+													100% {
+														color: white;
+													}
+												}
+											}
+										`
+									: ""
+							].join(" ")}
+						>
+							{notFound && <span>Not Found</span>}
+							{!notFound && (
+								<span
+									className={css`
+										@media (scripting: enabled) {
+											display: none;
+										}
+									`}
+								>
+									Script Error
+								</span>
+							)}
+							{!notFound && (
+								<span
+									className={css`
+										@media (scripting: none) {
+											display: none;
+										}
 									`}
 								>
 									{!networkChecked
@@ -561,37 +548,37 @@ export default function ({ notFound = false }: Props) {
 													? "Widgets Loading"
 													: "Ready"}
 								</span>
-							</div>
-							{twitterLoading && ready && (
-								<div
-									id="twitter-loading-widget"
-									className={css`
-										width: 300px;
-										height: 600px;
-										opacity: 0;
-										user-select: none;
-										pointer-events: none;
-									`}
-								>
-									<a
-										className={[
-											"twitter-timeline",
-											css`
-												text-decoration: none;
-												width: 100%;
-												height: 100%;
-											`
-										].join(" ")}
-										href="https://twitter.com/Akime_Aki?ref_src=twsrc%5Etfw"
-										data-chrome="noheader nofooter"
-										data-theme="dark"
-									>
-										読込中...
-									</a>
-									<script async src="https://platform.twitter.com/widgets.js" />
-								</div>
 							)}
-						</>
+						</span>
+					</div>
+					{twitterLoading && ready && (
+						<div
+							id="twitter-loading-widget"
+							className={css`
+								width: 300px;
+								height: 600px;
+								opacity: 0;
+								user-select: none;
+								pointer-events: none;
+							`}
+						>
+							<a
+								className={[
+									"twitter-timeline",
+									css`
+										text-decoration: none;
+										width: 100%;
+										height: 100%;
+									`
+								].join(" ")}
+								href="https://twitter.com/Akime_Aki?ref_src=twsrc%5Etfw"
+								data-chrome="noheader nofooter"
+								data-theme="dark"
+							>
+								読込中...
+							</a>
+							<script async src="https://platform.twitter.com/widgets.js" />
+						</div>
 					)}
 				</div>
 			) : (
