@@ -82,6 +82,9 @@ export default function () {
 					Twitter
 				</AppIcon>
 			)}
+			<AppIcon id="terminal" imgSrc="/app/terminal.png" isPixel>
+				ターミナル
+			</AppIcon>
 			{/* <AppIcon id="misskeyio" imgSrc="/app/misskey.png">
 				Misskey.io
 			</AppIcon> */}

@@ -5,6 +5,7 @@ import Loading from "@/components/os/Loading";
 import SelectArea from "@/components/os/SelectArea";
 import Taskbar from "@/components/os/Taskbar";
 import Touch from "@/components/os/Touch";
+import TwitchBackground from "@/components/os/TwitchBackground";
 import { seoHead } from "@/lib/seo";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
@@ -41,6 +42,7 @@ export default function ({ children }: Props) {
 						background-image: radial-gradient(#555555, #000000);
 					`}
 				>
+					<TwitchBackground />
 					<AkiSignal />
 					<SelectArea />
 					<AppIcons />

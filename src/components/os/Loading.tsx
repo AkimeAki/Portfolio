@@ -116,7 +116,8 @@ export default function ({ notFound = false }: Props) {
 				"/app/bluesky.png",
 				"/app/misskey.png",
 				"/app/furina.png",
-				"/app/teto.png"
+				"/app/teto.png",
+				"/app/terminal.png"
 			];
 			await Promise.all(targetUrls.map((target) => fetch(target)));
 			setTimeout(() => {

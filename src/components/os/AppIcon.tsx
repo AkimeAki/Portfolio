@@ -103,10 +103,11 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 										drop-shadow(0px 0px 1px white);
 								}
 							`,
-							isPixel &&
-								css`
-									image-rendering: pixelated;
-								`
+							isPixel
+								? css`
+										image-rendering: pixelated;
+									`
+								: ""
 						].join(" ")}
 					/>
 				)}

@@ -7,6 +7,7 @@ import Furina from "@/components/os/app/Furina";
 import Twitter from "@/components/os/app/Twitter";
 import MisskeyIo from "@/components/os/app/MisskeyIo";
 import Bluesky from "@/components/os/app/Bluesky";
+import Terminal from "@/components/os/app/Terminal";
 
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
@@ -163,5 +164,17 @@ export const appList: {
 		},
 		viewPinButton: true,
 		defaultPin: false
+	},
+	terminal: {
+		title: "ターミナル",
+		pageTitle: "ターミナル",
+		image: {
+			isPixel: true,
+			path: "/app/terminal.png"
+		},
+		component: Terminal,
+		resize: true,
+		changeHistory: false,
+		viewPinButton: false
 	}
 };
