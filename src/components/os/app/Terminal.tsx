@@ -1,6 +1,7 @@
 "use client";
 
 import { runningCommands } from "@/atom";
+import useWindow from "@/lib/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
@@ -17,6 +18,15 @@ export default () => {
 	const [anchor, setAnchor] = useState<number>(6);
 	const $runningCommands = useStore(runningCommands);
 	const prevToggleEnter = useRef<boolean>(false);
+	const { closeWindow } = useWindow();
+
+	useEffect(() => {
+		if ($runningCommands.includes("exit")) {
+			closeWindow("terminal");
+			const list = [...$runningCommands].filter((c) => c !== "exit");
+			runningCommands.set(list);
+		}
+	}, [$runningCommands]);
 
 	useEffect(() => {
 		document.fonts.ready.then(() => {
@@ -88,10 +98,14 @@ export default () => {
 						selection.anchorOffset < 6) ||
 						selection.anchorNode.parentElement.id !== "input-terminal")
 				) {
-					const range = document.createRange();
-					range.setStart(inputElement.current.childNodes[0], 6);
-					selection.removeAllRanges();
-					selection.addRange(range);
+					try {
+						const range = document.createRange();
+						range.setStart(inputElement.current.childNodes[0], 6);
+						selection.removeAllRanges();
+						selection.addRange(range);
+					} catch (e) {
+						/* empty */
+					}
 				}
 			}
 

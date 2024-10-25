@@ -732,15 +732,7 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 							<div
 								onClick={() => {
 									// 閉じるボタンを押したときの処理
-
 									closeWindow(id);
-
-									if (windowElement.current !== null) {
-										windowElement.current.style.top = "";
-										windowElement.current.style.left = "";
-										windowElement.current.style.width = "";
-										windowElement.current.style.height = "";
-									}
 								}}
 								className={css`
 									position: relative;
