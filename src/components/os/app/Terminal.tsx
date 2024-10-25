@@ -156,6 +156,7 @@ export default () => {
 					ref={inputElement}
 					id="input-terminal"
 					contentEditable={isInputReady ? "true" : "false"}
+					enterKeyHint="done"
 					onInput={(e) => {
 						const text = e.currentTarget.textContent ?? "";
 						if (!/^You\s>\s/.test(text)) {
