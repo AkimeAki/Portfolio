@@ -52,7 +52,6 @@ export default function () {
 						}
 
 						const random = Math.floor(Math.random() * codes.length);
-						console.log(codes, random);
 						for (let i = 0; i < codeUrls.length; i++) {
 							if (codeUrls[i].code === codes[random].code) {
 								codeUrls[i].viewed = true;
@@ -60,10 +59,14 @@ export default function () {
 							}
 						}
 
-						const response = await fetch(codes[random].code);
-						const text = await response.text();
+						try {
+							const response = await fetch(codes[random].code);
+							const text = await response.text();
 
-						setCode(text);
+							setCode(text);
+						} catch (e) {
+							/* empty */
+						}
 					}
 				}
 				await new Promise((resolve) => setTimeout(resolve, 10000));
