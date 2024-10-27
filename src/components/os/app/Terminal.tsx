@@ -30,7 +30,7 @@ export default () => {
 
 	useEffect(() => {
 		document.fonts.ready.then(() => {
-			setTerminalLog("HamaguriShell 0.0.1<br>Error: スマホの入力に不具合が発生しています。<br>");
+			setTerminalLog("HamaguriShell 0.0.1<br>Error: スマホの入力に不具合が発生しています。<br>ㅤ");
 			setTimeout(() => {
 				const text = "You&nbsp;>&nbsp;";
 				setInputText(text);
