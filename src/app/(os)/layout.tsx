@@ -1,5 +1,6 @@
 import AkiSignal from "@/components/os/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
+import CodeBackground from "@/components/os/CodeBackground";
 import ContextMenu from "@/components/os/ContextMenu";
 import Loading from "@/components/os/Loading";
 import SelectArea from "@/components/os/SelectArea";
@@ -42,6 +43,7 @@ export default function ({ children }: Props) {
 						background-image: radial-gradient(#555555, #000000);
 					`}
 				>
+					<CodeBackground />
 					<TwitchBackground />
 					<AkiSignal />
 					<SelectArea />
