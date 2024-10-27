@@ -13,6 +13,7 @@ export default function ({ children }: Props) {
 	return (
 		<html lang="ja">
 			<head>
+				<meta name="theme-color" content="#060303" />
 				{process.env.NODE_ENV === "production" && (
 					<>
 						<script
