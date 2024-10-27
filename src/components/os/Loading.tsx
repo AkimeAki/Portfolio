@@ -56,15 +56,17 @@ export default function ({ notFound = false }: Props) {
 			}
 		}
 
-		if (data.browser === "chrome") {
-			if (data.version < 55) {
-				error = true;
+		if (data.os === "windows") {
+			if (data.browser === "chrome") {
+				if (data.version < 55) {
+					error = true;
+				}
 			}
-		}
 
-		if (data.browser === "firefox") {
-			if (data.version < 59) {
-				error = true;
+			if (data.browser === "firefox") {
+				if (data.version < 59) {
+					error = true;
+				}
 			}
 		}
 
@@ -209,7 +211,7 @@ export default function ({ notFound = false }: Props) {
 		} else {
 			setTimeout(() => {
 				osLoading.set(true);
-			}, 4000);
+			}, 3000);
 		}
 	}, [imageLoading, fontsLoading, twitterLoading, ready]);
 
