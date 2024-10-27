@@ -27,27 +27,31 @@ export default function () {
 
 	useEffect(() => {
 		if (!$osLoading) {
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-expect-error
-			const player = new Twitch.Embed("twitch-embed", {
-				channel: "akime_aki",
-				muted: true,
-				autoplay: true,
-				layout: "video",
-				parent: ["localhost", "aki.wtf"]
-			});
+			try {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-expect-error
+				const player = new Twitch.Embed("twitch-embed", {
+					channel: "akime_aki",
+					muted: true,
+					autoplay: true,
+					layout: "video",
+					parent: ["localhost", "aki.wtf"]
+				});
 
-			const checkStatus = async () => {
-				await new Promise((resolve) => setTimeout(resolve, 1000));
-				const isPaused = player.isPaused() === true ? true : false;
-				if (!isPaused) {
-					await new Promise((resolve) => setTimeout(resolve, 10000));
-				}
-				setIsPaused(isPaused);
-				resize();
-				checkStatus();
-			};
-			void checkStatus();
+				const checkStatus = async () => {
+					await new Promise((resolve) => setTimeout(resolve, 1000));
+					const isPaused = player.isPaused() === true ? true : false;
+					if (!isPaused) {
+						await new Promise((resolve) => setTimeout(resolve, 10000));
+					}
+					setIsPaused(isPaused);
+					resize();
+					checkStatus();
+				};
+				void checkStatus();
+			} catch (e) {
+				/* empty */
+			}
 		}
 	}, [$osLoading]);
 

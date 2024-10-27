@@ -4,6 +4,7 @@ import { isTwitterWidgetValid, osLoading } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
+import { checkUseragent } from "@/lib/check-useragent";
 
 interface Props {
 	notFound?: boolean;
@@ -17,14 +18,68 @@ export default function ({ notFound = false }: Props) {
 	const [networkChecked, setNetworkChecked] = useState<boolean>(false);
 	const [loadProgress, setLoadProgress] = useState<number>(0);
 	const [twitterLoading, setTwitterLoading] = useState<boolean>(true);
+	const [errorMessage, setErrorMessage] = useState<string>("");
 
 	useEffect(() => {
 		setTimeout(() => {
-			if (!notFound) {
+			if (!notFound && errorMessage === "") {
 				setReady(true);
+			} else {
+				setReady(false);
 			}
 		}, 200);
+	}, [notFound, errorMessage]);
+
+	useEffect(() => {
+		if (notFound) {
+			setErrorMessage("Not Found");
+		}
 	}, [notFound]);
+
+	useEffect(() => {
+		const data = checkUseragent();
+		let error = false;
+
+		if (data.os === "ios") {
+			if (data.browser === "safari") {
+				if (data.version < 14.5) {
+					error = true;
+				}
+			}
+		}
+
+		if (data.os === "mac") {
+			if (data.browser === "safari") {
+				if (data.version < 14.1) {
+					error = true;
+				}
+			}
+		}
+
+		if (data.browser === "chrome") {
+			if (data.version < 55) {
+				error = true;
+			}
+		}
+
+		if (data.browser === "firefox") {
+			if (data.version < 59) {
+				error = true;
+			}
+		}
+
+		if (data.browser === "ie") {
+			error = true;
+		}
+
+		if (data.browser === "old-edge") {
+			error = true;
+		}
+
+		if (error) {
+			setErrorMessage("Old Browser");
+		}
+	}, []);
 
 	useEffect(() => {
 		if (ready) {
@@ -147,12 +202,16 @@ export default function ({ notFound = false }: Props) {
 	}, [ready]);
 
 	useEffect(() => {
-		if (!imageLoading && !fontsLoading && !twitterLoading) {
+		if (!imageLoading && !fontsLoading && !twitterLoading && ready) {
 			setTimeout(() => {
 				osLoading.set(false);
 			}, 3000);
+		} else {
+			setTimeout(() => {
+				osLoading.set(true);
+			}, 4000);
 		}
-	}, [imageLoading, fontsLoading, twitterLoading]);
+	}, [imageLoading, fontsLoading, twitterLoading, ready]);
 
 	return (
 		<>
@@ -221,7 +280,7 @@ export default function ({ notFound = false }: Props) {
 								transition-property: filter, opacity;
 								transition-timing-function: ease-out;
 							`,
-							!imageLoading && !fontsLoading && !twitterLoading
+							!imageLoading && !fontsLoading && !twitterLoading && ready
 								? css`
 										filter: blur(10px);
 										opacity: 0;
@@ -385,9 +444,10 @@ export default function ({ notFound = false }: Props) {
 							>
 								<div
 									style={{
-										width: notFound
-											? undefined
-											: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 286 + "px"
+										width:
+											errorMessage !== ""
+												? undefined
+												: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 286 + "px"
 									}}
 									className={[
 										css`
@@ -454,7 +514,7 @@ export default function ({ notFound = false }: Props) {
 												}
 											}
 										`,
-										notFound
+										errorMessage !== ""
 											? css`
 													animation-duration: 1s;
 													animation-delay: 250ms;
@@ -511,7 +571,7 @@ export default function ({ notFound = false }: Props) {
 									}
 								`}
 							>
-								{notFound && (
+								{errorMessage !== "" && (
 									<>
 										<span
 											className={css`
@@ -519,11 +579,11 @@ export default function ({ notFound = false }: Props) {
 												animation-delay: 950ms;
 												animation-fill-mode: forwards;
 												animation-iteration-count: 1;
-												animation-name: notfound-message-hide;
+												animation-name: error-message-hide;
 												font-size: 14px;
 												color: #f0425a;
 
-												@keyframes notfound-message-hide {
+												@keyframes error-message-hide {
 													100% {
 														font-size: 0;
 														color: white;
@@ -539,11 +599,11 @@ export default function ({ notFound = false }: Props) {
 												animation-delay: 950ms;
 												animation-fill-mode: forwards;
 												animation-iteration-count: 1;
-												animation-name: notfound-message-view;
+												animation-name: error-message-view;
 												font-size: 0;
 												color: #f0425a;
 
-												@keyframes notfound-message-view {
+												@keyframes error-message-view {
 													100% {
 														font-size: 14px;
 														color: white;
@@ -551,11 +611,11 @@ export default function ({ notFound = false }: Props) {
 												}
 											`}
 										>
-											Not Found
+											{errorMessage}
 										</span>
 									</>
 								)}
-								{!notFound && (
+								{errorMessage === "" && (
 									<>
 										<span
 											className={css`
@@ -563,7 +623,7 @@ export default function ({ notFound = false }: Props) {
 												animation-delay: 950ms;
 												animation-fill-mode: forwards;
 												animation-iteration-count: 1;
-												animation-name: notfound-message-hide;
+												animation-name: error-message-hide;
 												font-size: 14px;
 												color: #f0425a;
 
@@ -571,7 +631,7 @@ export default function ({ notFound = false }: Props) {
 													display: none;
 												}
 
-												@keyframes notfound-message-hide {
+												@keyframes error-message-hide {
 													100% {
 														font-size: 0;
 														color: white;
@@ -587,7 +647,7 @@ export default function ({ notFound = false }: Props) {
 												animation-delay: 950ms;
 												animation-fill-mode: forwards;
 												animation-iteration-count: 1;
-												animation-name: notfound-message-view;
+												animation-name: error-message-view;
 												font-size: 0;
 												color: #f0425a;
 
@@ -595,7 +655,7 @@ export default function ({ notFound = false }: Props) {
 													display: none;
 												}
 
-												@keyframes notfound-message-view {
+												@keyframes error-message-view {
 													100% {
 														font-size: 14px;
 														color: white;
@@ -607,7 +667,7 @@ export default function ({ notFound = false }: Props) {
 										</span>
 									</>
 								)}
-								{!notFound && (
+								{errorMessage === "" && (
 									<span
 										className={css`
 											font-size: 14px;

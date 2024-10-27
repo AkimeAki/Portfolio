@@ -15,7 +15,7 @@ const codeUrls: {
 	},
 	{
 		viewed: false,
-		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/components/CheckUserAgent.tsx"
+		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/lib/check-useragent.ts"
 	},
 	{
 		viewed: false,
