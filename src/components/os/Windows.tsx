@@ -64,8 +64,11 @@ export default function ({ defaultWindow }: Props) {
 							id={appId}
 							resize={appList[appId].resize}
 							size={appList[appId].size}
+							spSize={appList[appId].spSize}
 							viewPinButton={appList[appId].viewPinButton}
+							defaultPosition={appList[appId].defaultPosition}
 							defaultPin={appList[appId].defaultPin !== undefined ? appList[appId].defaultPin : false}
+							touchWindow={appList[appId].touchWindow !== undefined ? appList[appId].touchWindow : false}
 						>
 							<Component />
 						</Window>

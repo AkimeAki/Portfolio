@@ -15,22 +15,36 @@ interface Props {
 		width: number;
 		height: number;
 	};
+	spSize?: {
+		width: number;
+		height: number;
+	};
 	viewPinButton: boolean;
 	defaultPin: boolean;
+	defaultPosition?: {
+		top?: number;
+		left?: number;
+		right?: number;
+		bottom?: number;
+	};
+	touchWindow: boolean;
 }
 
-export default function ({ title, children, id, resize, size, viewPinButton, defaultPin }: Props) {
+export default function ({
+	title,
+	children,
+	id,
+	resize,
+	size,
+	spSize,
+	viewPinButton,
+	defaultPin,
+	defaultPosition,
+	touchWindow
+}: Props) {
 	const $openAppSortList = useStore(openAppSortList);
 	const windowBarElement = useRef<HTMLDivElement | null>(null);
 	const windowElement = useRef<HTMLDivElement | null>(null);
-	const topResizeElement = useRef<HTMLDivElement | null>(null);
-	const bottomResizeElement = useRef<HTMLDivElement | null>(null);
-	const leftResizeElement = useRef<HTMLDivElement | null>(null);
-	const rightResizeElement = useRef<HTMLDivElement | null>(null);
-	const topRightResizeElement = useRef<HTMLDivElement | null>(null);
-	const topLeftResizeElement = useRef<HTMLDivElement | null>(null);
-	const bottomRightResizeElement = useRef<HTMLDivElement | null>(null);
-	const bottomLeftResizeElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
 	const [isMaxWindow, setIsMaxWindow] = useState<boolean>(false);
 	const { openWindow, closeWindow, pinWindow, unpinWindow, minimizeWindow } = useWindow();
@@ -39,218 +53,12 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 	const $minimizeWindowList = useStore(minimizeWindowList);
 
 	useEffect(() => {
-		if ($isTouch) {
+		if ($isTouch && !touchWindow) {
 			setIsMaxWindow(true);
 		} else {
 			setIsMaxWindow(false);
 		}
 	}, [$isTouch]);
-
-	useEffect(() => {
-		const move = (e: PointerEvent) => {
-			if (
-				e.buttons === 1 &&
-				windowElement.current !== null &&
-				windowBarElement.current !== null &&
-				!isMaxWindow
-			) {
-				windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
-				windowElement.current.style.left = windowElement.current.offsetLeft + e.movementX + "px";
-				windowElement.current.draggable = false;
-				windowBarElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const windowMousedown = () => {
-			openWindow(id);
-		};
-
-		const barMousedown = () => {
-			document.body.dataset.userSelect = "none";
-		};
-
-		const barMouseup = () => {
-			document.body.dataset.userSelect = "";
-		};
-
-		if (windowBarElement.current !== null && windowElement.current !== null) {
-			windowBarElement.current.addEventListener("pointermove", move);
-			windowBarElement.current.addEventListener("mousedown", barMousedown);
-			windowBarElement.current.addEventListener("mouseup", barMouseup);
-			windowElement.current.addEventListener("mousedown", windowMousedown);
-		}
-
-		return () => {
-			if (windowBarElement.current !== null && windowElement.current !== null) {
-				windowBarElement.current.removeEventListener("pointermove", move);
-				windowElement.current.removeEventListener("mousedown", windowMousedown);
-				windowBarElement.current.removeEventListener("mousedown", barMousedown);
-				windowBarElement.current.removeEventListener("mouseup", barMouseup);
-			}
-		};
-	}, [$openAppSortList, isMaxWindow]);
-
-	useEffect(() => {
-		const rightResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && rightResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.width = windowElement.current.offsetWidth + e.movementX + "px";
-				rightResizeElement.current.draggable = false;
-				rightResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const leftResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && leftResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.left = windowElement.current.offsetLeft + e.movementX + "px";
-				windowElement.current.style.width = windowElement.current.offsetWidth - e.movementX + "px";
-				leftResizeElement.current.draggable = false;
-				leftResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const topResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && topResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
-				windowElement.current.style.height = windowElement.current.offsetHeight - e.movementY + "px";
-				topResizeElement.current.draggable = false;
-				topResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const bottomResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && bottomResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.height = windowElement.current.offsetHeight + e.movementY + "px";
-				bottomResizeElement.current.draggable = false;
-				bottomResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const bottomRightResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && bottomRightResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.height = windowElement.current.offsetHeight + e.movementY + "px";
-				windowElement.current.style.width = windowElement.current.offsetWidth + e.movementX + "px";
-				bottomRightResizeElement.current.draggable = false;
-				bottomRightResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const bottomLeftResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && bottomLeftResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.height = windowElement.current.offsetHeight + e.movementY + "px";
-				windowElement.current.style.left = windowElement.current.offsetLeft + e.movementX + "px";
-				windowElement.current.style.width = windowElement.current.offsetWidth - e.movementX + "px";
-				bottomLeftResizeElement.current.draggable = false;
-				bottomLeftResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const topRightResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && topRightResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
-				windowElement.current.style.width = windowElement.current.offsetWidth + e.movementX + "px";
-				windowElement.current.style.height = windowElement.current.offsetHeight - e.movementY + "px";
-				topRightResizeElement.current.draggable = false;
-				topRightResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const topLeftResize = (e: PointerEvent) => {
-			if (e.buttons === 1 && topLeftResizeElement.current !== null && windowElement.current !== null) {
-				windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
-				windowElement.current.style.height = windowElement.current.offsetHeight - e.movementY + "px";
-				windowElement.current.style.left = windowElement.current.offsetLeft + e.movementX + "px";
-				windowElement.current.style.width = windowElement.current.offsetWidth - e.movementX + "px";
-				topLeftResizeElement.current.draggable = false;
-				topLeftResizeElement.current.setPointerCapture(e.pointerId);
-			}
-		};
-
-		const resizebarMousedown = () => {
-			document.body.dataset.userSelect = "none";
-		};
-
-		const resizebarMouseup = () => {
-			document.body.dataset.userSelect = "";
-		};
-
-		if (
-			topResizeElement.current !== null &&
-			bottomResizeElement.current !== null &&
-			leftResizeElement.current !== null &&
-			rightResizeElement.current !== null &&
-			topRightResizeElement.current !== null &&
-			topLeftResizeElement.current !== null &&
-			bottomRightResizeElement.current !== null &&
-			bottomLeftResizeElement.current !== null
-		) {
-			rightResizeElement.current.addEventListener("pointermove", rightResize);
-			leftResizeElement.current.addEventListener("pointermove", leftResize);
-			topResizeElement.current.addEventListener("pointermove", topResize);
-			bottomResizeElement.current.addEventListener("pointermove", bottomResize);
-			bottomRightResizeElement.current.addEventListener("pointermove", bottomRightResize);
-			bottomLeftResizeElement.current.addEventListener("pointermove", bottomLeftResize);
-			topRightResizeElement.current.addEventListener("pointermove", topRightResize);
-			topLeftResizeElement.current.addEventListener("pointermove", topLeftResize);
-
-			rightResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-			leftResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-			topResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-			bottomResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-			bottomRightResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-			bottomLeftResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-			topRightResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-			topLeftResizeElement.current.addEventListener("mousedown", resizebarMousedown);
-
-			rightResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-			leftResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-			topResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-			bottomResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-			bottomRightResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-			bottomLeftResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-			topRightResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-			topLeftResizeElement.current.addEventListener("mouseup", resizebarMouseup);
-		}
-
-		return () => {
-			if (
-				topResizeElement.current !== null &&
-				bottomResizeElement.current !== null &&
-				leftResizeElement.current !== null &&
-				rightResizeElement.current !== null &&
-				topRightResizeElement.current !== null &&
-				topLeftResizeElement.current !== null &&
-				bottomRightResizeElement.current !== null &&
-				bottomLeftResizeElement.current !== null
-			) {
-				rightResizeElement.current.removeEventListener("pointermove", rightResize);
-				leftResizeElement.current.removeEventListener("pointermove", leftResize);
-				topResizeElement.current.removeEventListener("pointermove", topResize);
-				bottomResizeElement.current.removeEventListener("pointermove", bottomResize);
-				bottomRightResizeElement.current.removeEventListener("pointermove", bottomRightResize);
-				bottomLeftResizeElement.current.removeEventListener("pointermove", bottomLeftResize);
-				topRightResizeElement.current.removeEventListener("pointermove", topRightResize);
-				topLeftResizeElement.current.removeEventListener("pointermove", topLeftResize);
-
-				rightResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-				leftResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-				topResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-				bottomResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-				bottomRightResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-				bottomLeftResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-				topRightResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-				topLeftResizeElement.current.removeEventListener("mousedown", resizebarMousedown);
-
-				rightResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-				leftResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-				topResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-				bottomResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-				bottomRightResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-				bottomLeftResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-				topRightResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-				topLeftResizeElement.current.removeEventListener("mouseup", resizebarMouseup);
-			}
-		};
-	}, []);
 
 	useEffect(() => {
 		const nonpinWindowList = $openAppSortList.filter((id) => {
@@ -278,39 +86,58 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 			if (size !== undefined) {
 				width = size.width;
 				height = size.height;
+
+				if (spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
+					width = spSize.width;
+					height = spSize.height;
+				}
 			} else {
 				width = Math.min(window.innerWidth * 0.9, 1300);
 				height = Math.min(window.innerHeight * 0.9 - 70, 700);
 			}
 
-			let top = (window.innerHeight - 70 - height) / 2;
-			let left = (window.innerWidth - width) / 2;
+			let top: number | undefined = (window.innerHeight - 70 - height) / 2;
+			let left: number | undefined = (window.innerWidth - width) / 2;
+			let bottom: number | undefined = undefined;
+			let right: number | undefined = undefined;
 
-			const appWindows = document.querySelectorAll<HTMLDivElement>("[data-app-id]");
-			appWindows.forEach((appWindow) => {
-				if (appWindow.dataset.appId !== id) {
-					const otherWindowTop = Number(appWindow.style.top.replace("px", ""));
-					const otherWindowLeft = Number(appWindow.style.left.replace("px", ""));
-					if (Math.abs(otherWindowTop - top) < 30) {
-						top = otherWindowTop + 30;
-					}
+			if (defaultPosition !== undefined) {
+				top = defaultPosition.top;
+				left = defaultPosition.left;
+				bottom = defaultPosition.bottom;
+				right = defaultPosition.right;
+			} else {
+				const appWindows = document.querySelectorAll<HTMLDivElement>("[data-app-id]");
+				appWindows.forEach((appWindow) => {
+					if (appWindow.dataset.appId !== id) {
+						const otherWindowTop = Number(appWindow.style.top.replace("px", ""));
+						const otherWindowLeft = Number(appWindow.style.left.replace("px", ""));
+						if (Math.abs(otherWindowTop - (top ?? 0)) < 30) {
+							top = otherWindowTop + 30;
+						}
 
-					if (Math.abs(otherWindowLeft - left) < 30) {
-						left = otherWindowLeft + 30;
+						if (Math.abs(otherWindowLeft - (left ?? 0)) < 30) {
+							left = otherWindowLeft + 30;
+						}
 					}
-				}
-			});
+				});
+			}
 
 			windowElement.current.style.width = `${width}px`;
 			windowElement.current.style.height = `${height}px`;
-			windowElement.current.style.top = `${top}px`;
-			windowElement.current.style.left = `${left}px`;
+			windowElement.current.style.top = top === undefined ? "auto" : `${top}px`;
+			windowElement.current.style.left = left === undefined ? "auto" : `${left}px`;
+			windowElement.current.style.bottom = bottom === undefined ? "auto" : `${bottom}px`;
+			windowElement.current.style.right = right === undefined ? "auto" : `${right}px`;
 		}
 	}, []);
 
 	return (
 		<div
 			ref={windowElement}
+			onMouseDown={() => {
+				openWindow(id);
+			}}
 			data-app-id={id}
 			style={{ zIndex: windowList.indexOf(id), display: $openAppSortList.includes(id) ? "block" : "none" }}
 			className={[
@@ -382,7 +209,25 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 				].join(" ")}
 			>
 				<div
-					ref={topResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight - e.movementY + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						top: 0;
 						left: 0;
@@ -392,7 +237,24 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					`}
 				/>
 				<div
-					ref={bottomResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight + e.movementY + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						bottom: 0;
 						left: 0;
@@ -402,7 +264,26 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					`}
 				/>
 				<div
-					ref={leftResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.left =
+									windowElement.current.offsetLeft + e.movementX + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth - e.movementX + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						top: 0;
 						left: 0;
@@ -412,7 +293,24 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					`}
 				/>
 				<div
-					ref={rightResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth + e.movementX + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						top: 0;
 						right: 0;
@@ -422,7 +320,27 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					`}
 				/>
 				<div
-					ref={topRightResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth + e.movementX + "px";
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight - e.movementY + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						top: 0;
 						right: 0;
@@ -432,7 +350,29 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					`}
 				/>
 				<div
-					ref={topLeftResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight - e.movementY + "px";
+								windowElement.current.style.left =
+									windowElement.current.offsetLeft + e.movementX + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth - e.movementX + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						top: 0;
 						left: 0;
@@ -442,7 +382,26 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					`}
 				/>
 				<div
-					ref={bottomRightResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight + e.movementY + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth + e.movementX + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						bottom: 0;
 						right: 0;
@@ -452,7 +411,28 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 					`}
 				/>
 				<div
-					ref={bottomLeftResizeElement}
+					onPointerMove={(e) => {
+						if (document.body.dataset.dragging === "true") {
+							const target = e.target as HTMLDivElement;
+
+							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight + e.movementY + "px";
+								windowElement.current.style.left =
+									windowElement.current.offsetLeft + e.movementX + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth - e.movementX + "px";
+								target.draggable = false;
+								target.setPointerCapture(e.pointerId);
+							}
+						}
+					}}
+					onPointerDown={() => {
+						document.body.dataset.dragging = "true";
+					}}
+					onPointerUp={() => {
+						document.body.dataset.dragging = "";
+					}}
 					className={css`
 						bottom: 0;
 						left: 0;
@@ -502,6 +482,26 @@ export default function ({ title, children, id, resize, size, viewPinButton, def
 				>
 					<div
 						ref={windowBarElement}
+						onPointerMove={(e) => {
+							if (document.body.dataset.dragging === "true") {
+								const target = e.target as HTMLDivElement;
+
+								if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
+									windowElement.current.style.top =
+										windowElement.current.offsetTop + e.movementY + "px";
+									windowElement.current.style.left =
+										windowElement.current.offsetLeft + e.movementX + "px";
+									windowElement.current.draggable = false;
+									target.setPointerCapture(e.pointerId);
+								}
+							}
+						}}
+						onPointerDown={() => {
+							document.body.dataset.dragging = "true";
+						}}
+						onPointerUp={() => {
+							document.body.dataset.dragging = "";
+						}}
 						className={css`
 							position: relative;
 							height: 50px;

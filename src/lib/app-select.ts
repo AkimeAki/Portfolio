@@ -8,6 +8,7 @@ import Twitter from "@/components/os/app/Twitter";
 import MisskeyIo from "@/components/os/app/MisskeyIo";
 import Bluesky from "@/components/os/app/Bluesky";
 import Terminal from "@/components/os/app/Terminal";
+import Intro from "@/components/os/app/Intro";
 
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
@@ -40,8 +41,19 @@ export const appList: {
 			width: number;
 			height: number;
 		};
+		spSize?: {
+			width: number;
+			height: number;
+		};
+		defaultPosition?: {
+			top?: number;
+			left?: number;
+			right?: number;
+			bottom?: number;
+		};
 		viewPinButton: boolean;
 		defaultPin?: boolean;
+		touchWindow?: boolean;
 	};
 } = {
 	portfolio: {
@@ -176,5 +188,31 @@ export const appList: {
 		resize: true,
 		changeHistory: false,
 		viewPinButton: false
+	},
+	intro: {
+		title: "自己紹介.txt",
+		pageTitle: "自己紹介.txt",
+		image: {
+			isPixel: true,
+			path: "/app/aki.png"
+		},
+		component: Intro,
+		resize: true,
+		changeHistory: false,
+		size: {
+			width: 426,
+			height: 240 + 50
+		},
+		spSize: {
+			width: 326,
+			height: 140 + 50
+		},
+		defaultPosition: {
+			bottom: 80,
+			right: 10
+		},
+		viewPinButton: false,
+		defaultPin: false,
+		touchWindow: true
 	}
 };
