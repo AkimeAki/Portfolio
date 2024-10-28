@@ -210,7 +210,11 @@ export default function ({
 			>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -222,11 +226,31 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.top =
+									windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						top: 0;
@@ -238,7 +262,11 @@ export default function ({
 				/>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -249,11 +277,29 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						bottom: 0;
@@ -265,7 +311,11 @@ export default function ({
 				/>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -278,11 +328,31 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.left =
+									windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						top: 0;
@@ -294,7 +364,11 @@ export default function ({
 				/>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -305,11 +379,29 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						top: 0;
@@ -321,7 +413,11 @@ export default function ({
 				/>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -335,11 +431,33 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.top =
+									windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						top: 0;
@@ -351,7 +469,11 @@ export default function ({
 				/>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -367,11 +489,35 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.top =
+									windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.left =
+									windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						top: 0;
@@ -383,7 +529,11 @@ export default function ({
 				/>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -396,11 +546,31 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						bottom: 0;
@@ -412,7 +582,11 @@ export default function ({
 				/>
 				<div
 					onPointerMove={(e) => {
-						if (document.body.dataset.dragging === "true") {
+						if (
+							document.body.dataset.dragging === "true" &&
+							(document.body.dataset.browser !== "firefox" ||
+								(document.body.dataset.browser === "firefox" && !$isTouch))
+						) {
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -427,11 +601,33 @@ export default function ({
 							}
 						}
 					}}
+					onTouchMove={(e) => {
+						if (
+							document.body.dataset.dragging === "true" &&
+							document.body.dataset.browser === "firefox" &&
+							$isTouch
+						) {
+							const touch = e.touches[0];
+
+							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+								windowElement.current.style.height =
+									windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.left =
+									windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.width =
+									windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.draggable = false;
+							}
+
+							setPreviousTouch(touch);
+						}
+					}}
 					onPointerDown={() => {
 						document.body.dataset.dragging = "true";
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
+						setPreviousTouch(null);
 					}}
 					className={css`
 						bottom: 0;
@@ -523,6 +719,7 @@ export default function ({
 						}}
 						onPointerUp={() => {
 							document.body.dataset.dragging = "";
+							setPreviousTouch(null);
 						}}
 						className={css`
 							position: relative;
