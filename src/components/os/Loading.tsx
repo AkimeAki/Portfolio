@@ -56,7 +56,7 @@ export default function ({ notFound = false }: Props) {
 			}
 		}
 
-		if (data.os === "windows") {
+		if (data.os === "windows" || data.os === "mac") {
 			if (data.browser === "chrome") {
 				if (data.version < 55) {
 					error = true;
@@ -65,6 +65,20 @@ export default function ({ notFound = false }: Props) {
 
 			if (data.browser === "firefox") {
 				if (data.version < 59) {
+					error = true;
+				}
+			}
+		}
+
+		if (data.os === "android") {
+			if (data.browser === "chrome") {
+				if (data.version < 55) {
+					error = true;
+				}
+			}
+
+			if (data.browser === "firefox") {
+				if (data.version < 79) {
 					error = true;
 				}
 			}

@@ -105,7 +105,7 @@ export default function () {
 			}}
 			className={css`
 				position: absolute;
-				white-space: pre-wrap;
+				white-space: pre;
 				user-select: none;
 				pointer-events: none;
 				top: 100%;

@@ -43,7 +43,6 @@ export default function ({
 	touchWindow
 }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
-	const windowBarElement = useRef<HTMLDivElement | null>(null);
 	const windowElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
 	const [isMaxWindow, setIsMaxWindow] = useState<boolean>(false);
@@ -51,6 +50,7 @@ export default function ({
 	const $pinWindowList = useStore(pinWindowList);
 	const [windowList, setWindowList] = useState<string[]>([]);
 	const $minimizeWindowList = useStore(minimizeWindowList);
+	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
 
 	useEffect(() => {
 		if ($isTouch && !touchWindow) {
@@ -481,9 +481,12 @@ export default function ({
 					`}
 				>
 					<div
-						ref={windowBarElement}
 						onPointerMove={(e) => {
-							if (document.body.dataset.dragging === "true") {
+							if (
+								document.body.dataset.dragging === "true" &&
+								(document.body.dataset.browser !== "firefox" ||
+									(document.body.dataset.browser === "firefox" && !$isTouch))
+							) {
 								const target = e.target as HTMLDivElement;
 
 								if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
@@ -494,6 +497,25 @@ export default function ({
 									windowElement.current.draggable = false;
 									target.setPointerCapture(e.pointerId);
 								}
+							}
+						}}
+						onTouchMove={(e) => {
+							if (
+								document.body.dataset.dragging === "true" &&
+								document.body.dataset.browser === "firefox" &&
+								$isTouch
+							) {
+								const touch = e.touches[0];
+
+								if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
+									windowElement.current.style.top =
+										windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
+									windowElement.current.style.left =
+										windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
+									windowElement.current.draggable = false;
+								}
+
+								setPreviousTouch(touch);
 							}
 						}}
 						onPointerDown={() => {

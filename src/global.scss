@@ -20,14 +20,6 @@
 		font-size: 18px;
 		line-height: 1.6;
 		color: #777777;
-
-		body[data-browser-type="chromium"] & {
-			font-weight: bold;
-		}
-
-		body[data-user-dragging="none"] & {
-			user-select: none !important;
-		}
 	}
 
 	#wrapper {
@@ -38,5 +30,25 @@
 
 	body {
 		touch-action: none;
+
+		* {
+			touch-action: none !important;
+		}
+	}
+
+	body[data-browser-type="chromium"] {
+		font-weight: bold;
+
+		* {
+			font-weight: bold;
+		}
+	}
+
+	body[data-user-dragging="true"] {
+		user-select: none !important;
+
+		* {
+			user-select: none !important;
+		}
 	}
 }
