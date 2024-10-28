@@ -27,7 +27,7 @@ export const checkUseragent = () => {
 		data.browser = "safari";
 		data.type = "safari";
 
-		const match = agent.match(/Version\/([0-9]+\.[0-9]+)/);
+		const match = agent.match(/version\/([0-9]+\.[0-9]+)/);
 		if (match !== null) {
 			data.version = Number(match[1]);
 		}
