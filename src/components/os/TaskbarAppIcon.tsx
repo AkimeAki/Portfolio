@@ -45,6 +45,8 @@ export default function ({ href, alt, iconPath, text = "" }: Props) {
 						display: block;
 						width: 100%;
 						height: 100%;
+						user-select: none;
+						pointer-events: none;
 					`}
 				/>
 			</a>

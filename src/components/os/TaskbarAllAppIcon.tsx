@@ -75,6 +75,7 @@ export default function () {
 						gap: 20px;
 						transform: translateY(calc(100% + 100px));
 						border: 2px solid #75182c;
+						overflow-y: scroll;
 						transition-duration: 200ms;
 						transition-property: transform, opacity;
 
@@ -164,6 +165,12 @@ export default function () {
 						text="BOOTH"
 					/>
 					<TaskbarAppIcon
+						href="https://suzuri.jp/Aki___"
+						iconPath="/icon/suzuri.png"
+						alt="SUZURI"
+						text="SUZURI"
+					/>
+					<TaskbarAppIcon
 						href="https://fiicen.jp/field/Akii"
 						iconPath="/icon/fiicen.png"
 						alt="Fiicen"
@@ -226,6 +233,8 @@ export default function () {
 						width: 32px;
 						height: 32px;
 						image-rendering: pixelated;
+						user-select: none;
+						pointer-events: none;
 					`}
 				/>
 			</div>
