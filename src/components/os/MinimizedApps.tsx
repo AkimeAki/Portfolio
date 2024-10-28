@@ -15,10 +15,6 @@ export default function () {
 				display: flex;
 				gap: 10px;
 				margin-left: 20px;
-
-				@media (max-width: 720px) {
-					display: none;
-				}
 			`}
 		>
 			{$minimizeWindowList.map((id) => (

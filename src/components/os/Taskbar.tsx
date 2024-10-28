@@ -3,6 +3,7 @@
 import { osLoading } from "@/atom";
 import TaskbarIcon from "@/components/os/TaskbarIcon";
 import TaskbarClock from "@/components/os/TaskbarClock";
+import TaskbarAllAppIcon from "@/components/os/TaskbarAllAppIcon";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import MinimizedApps from "@/components/os/MinimizedApps";
@@ -100,28 +101,73 @@ export default function () {
 						}
 					`}
 				>
-					<TaskbarIcon iconPath="/icon/x.png" alt={"Xのアイコン"} href="https://x.com/Akime_Aki" />
-					<TaskbarIcon
-						iconPath="/icon/youtube.png"
-						alt={"YouTubeのアイコン"}
-						href="https://www.youtube.com/@AkimeAki"
-					/>
-					<TaskbarIcon
-						iconPath="/icon/twitch.png"
-						alt={"Twitchのアイコン"}
-						href="https://twitch.tv/Akime_Aki"
-					/>
-					<TaskbarIcon
-						iconPath="/icon/niconico.png"
-						alt={"ニコニコ動画のアイコン"}
-						href="https://www.nicovideo.jp/user/98282698"
-					/>
-					<TaskbarIcon
-						iconPath="/icon/github.png"
-						alt={"GitHubのアイコン"}
-						href="https://github.com/AkimeAki"
-					/>
-					<MinimizedApps />
+					<span
+						className={css`
+							@media (max-width: 720px) {
+								order: 3;
+							}
+						`}
+					>
+						<TaskbarAllAppIcon />
+					</span>
+					<span
+						className={css`
+							order: 1;
+						`}
+					>
+						<TaskbarIcon iconPath="/icon/x.png" alt={"Xのアイコン"} href="https://x.com/Akime_Aki" />
+					</span>
+					<span
+						className={css`
+							order: 2;
+						`}
+					>
+						<TaskbarIcon
+							iconPath="/icon/youtube.png"
+							alt={"YouTube"}
+							href="https://www.youtube.com/@AkimeAki"
+						/>
+					</span>
+					<span
+						className={css`
+							order: 4;
+						`}
+					>
+						<TaskbarIcon iconPath="/icon/twitch.png" alt={"Twitch"} href="https://twitch.tv/Akime_Aki" />
+					</span>
+					<span
+						className={css`
+							order: 5;
+
+							@media (max-width: 720px) {
+								display: none;
+							}
+						`}
+					>
+						<TaskbarIcon
+							iconPath="/icon/niconico.png"
+							alt={"ニコニコ動画"}
+							href="https://www.nicovideo.jp/user/98282698"
+						/>
+					</span>
+					<span
+						className={css`
+							order: 6;
+						`}
+					>
+						<TaskbarIcon iconPath="/icon/github.png" alt={"GitHub"} href="https://github.com/AkimeAki" />
+					</span>
+					<span
+						className={css`
+							order: 7;
+
+							@media (max-width: 720px) {
+								display: none;
+							}
+						`}
+					>
+						<MinimizedApps />
+					</span>
 				</div>
 				<TaskbarClock />
 			</div>

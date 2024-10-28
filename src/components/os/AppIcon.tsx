@@ -1,7 +1,9 @@
 "use client";
 
+import { osLoading } from "@/atom";
 import useWindow from "@/lib/useWindow";
 import { css } from "@kuma-ui/core";
+import { useStore } from "@nanostores/react";
 
 interface Props {
 	children: React.ReactNode;
@@ -13,6 +15,7 @@ interface Props {
 
 export default function ({ children, id, imgSrc, href, isPixel = false }: Props) {
 	const { openWindow, releaseMinimizedWindow } = useWindow();
+	const $osLoading = useStore(osLoading);
 
 	return (
 		<div
@@ -34,36 +37,55 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 					}
 				}
 			}}
-			className={css`
-				display: flex;
-				gap: 3px;
-				flex-direction: column;
-				align-items: center;
-				width: 150px;
-				border-style: solid;
-				border-color: transparent;
-				border-width: 1px;
-				background-color: transparent;
-				padding: 2px;
-				transition-duration: 200ms;
-				transition-property: bodrer-color, background-color;
+			className={[
+				css`
+					display: flex;
+					gap: 3px;
+					flex-direction: column;
+					align-items: center;
+					width: 150px;
+					border-style: solid;
+					border-color: transparent;
+					border-width: 1px;
+					background-color: transparent;
+					pointer-events: none;
+					padding: 2px;
+					transition-duration: 200ms;
+					transition-property: bodrer-color, background-color;
 
-				@media (hover: hover) {
-					&:hover {
-						border-color: #d8fa8e88;
-						background-color: #d8fa8e55;
+					@media (hover: hover) {
+						&:hover {
+							border-color: #d8fa8e88;
+							background-color: #d8fa8e55;
 
-						.app-icon-name {
-							color: white;
+							.app-icon-name {
+								color: white;
+							}
 						}
 					}
-				}
 
-				@media (max-width: 720px) {
-					width: auto;
-					gap: 6px;
-				}
-			`}
+					@media (max-width: 720px) {
+						width: auto;
+						gap: 6px;
+					}
+				`,
+				!$osLoading
+					? css`
+							animation-duration: 70ms;
+							animation-delay: 1200ms;
+							animation-fill-mode: forwards;
+							animation-iteration-count: 1;
+							animation-timing-function: linear;
+							animation-name: viewed-app-icon;
+
+							@keyframes viewed-app-icon {
+								100% {
+									pointer-events: all;
+								}
+							}
+						`
+					: ""
+			].join(" ")}
 		>
 			<div
 				className={css`

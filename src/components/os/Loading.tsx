@@ -190,6 +190,10 @@ export default function ({ notFound = false }: Props) {
 				"/app/teto.png",
 				"/app/terminal.png"
 			];
+			for (let i = 1; i <= 36; i++) {
+				targetUrls.push(`/emoji/${i}.png`);
+			}
+
 			await Promise.all(targetUrls.map((target) => fetch(target)));
 			setTimeout(() => {
 				setImageLoading(false);

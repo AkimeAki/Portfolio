@@ -35,7 +35,6 @@ export default function () {
 				@keyframes appicon-signal {
 					100% {
 						opacity: 1;
-						pointer-events: all;
 					}
 				}
 
