@@ -14,6 +14,7 @@ export default function ({ children }: Props) {
 		<html lang="ja">
 			<head>
 				<meta name="theme-color" content="#060303" />
+				<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
 				{process.env.NODE_ENV === "production" && (
 					<>
 						<script
