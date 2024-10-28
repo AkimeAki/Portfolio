@@ -139,7 +139,7 @@ export default function ({ notFound = false }: Props) {
 								observer.disconnect();
 							}
 
-							if (widgetElement.offsetHeight > 600) {
+							if (widgetElement.offsetHeight > 2000) {
 								isTwitterWidgetValid.set(true);
 							}
 						}
