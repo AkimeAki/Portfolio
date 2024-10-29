@@ -42,7 +42,7 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "ios") {
 			if (data.browser === "safari") {
-				if (data.version < 14.5) {
+				if (data.version < 17) {
 					error = true;
 				}
 			}
@@ -50,7 +50,7 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "mac") {
 			if (data.browser === "safari") {
-				if (data.version < 14.1) {
+				if (data.version < 17) {
 					error = true;
 				}
 			}
@@ -58,13 +58,13 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "windows" || data.os === "mac") {
 			if (data.browser === "chrome") {
-				if (data.version < 55) {
+				if (data.version < 120) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "firefox") {
-				if (data.version < 59) {
+				if (data.version < 113) {
 					error = true;
 				}
 			}
@@ -72,7 +72,7 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "android") {
 			if (data.browser === "chrome") {
-				if (data.version < 55) {
+				if (data.version < 130) {
 					error = true;
 				}
 			}
