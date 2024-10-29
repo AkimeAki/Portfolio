@@ -73,7 +73,7 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "android") {
 			if (data.browser === "chrome") {
-				if (data.version < 130) {
+				if (data.version < 120) {
 					error = true;
 				}
 			}
