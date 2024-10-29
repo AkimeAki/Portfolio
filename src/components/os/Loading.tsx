@@ -83,6 +83,12 @@ export default function ({ notFound = false }: Props) {
 					error = true;
 				}
 			}
+
+			if (data.browser === "opera") {
+				if (data.version < 80) {
+					error = true;
+				}
+			}
 		}
 
 		if (data.browser === "ie") {
