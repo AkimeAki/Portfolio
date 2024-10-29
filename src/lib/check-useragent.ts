@@ -16,6 +16,13 @@ export const checkUseragent = () => {
 	} else if (agent.includes("edg")) {
 		data.browser = "edge";
 		data.type = "chromium";
+	} else if (agent.includes("kiwi chrome")) {
+		data.browser = "kiwi";
+		data.type = "chromium";
+		const match = agent.match(/chrome\/([0-9]+\.[0-9]+)/);
+		if (match !== null) {
+			data.version = Number(match[1]);
+		}
 	} else if (agent.includes("chrome")) {
 		data.browser = "chrome";
 		data.type = "chromium";
