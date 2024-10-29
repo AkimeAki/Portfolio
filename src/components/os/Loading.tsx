@@ -19,6 +19,7 @@ export default function ({ notFound = false }: Props) {
 	const [loadProgress, setLoadProgress] = useState<number>(0);
 	const [twitterLoading, setTwitterLoading] = useState<boolean>(true);
 	const [errorMessage, setErrorMessage] = useState<string>("");
+	const [userAgent, setUserAgent] = useState<string>("");
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -93,7 +94,9 @@ export default function ({ notFound = false }: Props) {
 		}
 
 		if (error) {
-			setErrorMessage("Old Browser");
+			setErrorMessage("Not Supported😿");
+			const agent = window.navigator.userAgent.toLowerCase();
+			setUserAgent(agent);
 		}
 	}, []);
 
@@ -255,6 +258,32 @@ export default function ({ notFound = false }: Props) {
 						}
 					`}
 				>
+					<span
+						className={css`
+							position: absolute;
+							bottom: 0;
+							width: 100%;
+							left: 0;
+							animation-duration: 0s;
+							animation-delay: 950ms;
+							animation-fill-mode: forwards;
+							animation-iteration-count: 1;
+							animation-name: useragent-view;
+							font-size: 10px;
+							opacity: 0;
+							color: #f0425a;
+							user-select: none;
+							pointer-events: none;
+
+							@keyframes useragent-view {
+								100% {
+									opacity: 1;
+								}
+							}
+						`}
+					>
+						{userAgent}
+					</span>
 					<div
 						className={css`
 							position: absolute;
