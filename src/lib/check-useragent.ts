@@ -16,7 +16,7 @@ export const checkUseragent = () => {
 	} else if (agent.includes("edg")) {
 		data.browser = "edge";
 		data.type = "chromium";
-	} else if (agent.includes("kiwi chrome")) {
+	} else if (agent.includes("kiwi")) {
 		data.browser = "kiwi";
 		data.type = "chromium";
 		const match = agent.match(/chrome\/([0-9]+\.[0-9]+)/);
