@@ -44,8 +44,8 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "ios") {
 			if (data.browser === "safari") {
-				// flex gap
-				if (data.version < 14.5) {
+				// toSorted
+				if (data.version < 16) {
 					error = true;
 				}
 			}
@@ -53,8 +53,8 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "mac") {
 			if (data.browser === "safari") {
-				// flex gap
-				if (data.version < 14.1) {
+				// toSorted
+				if (data.version < 16) {
 					error = true;
 				}
 			}
