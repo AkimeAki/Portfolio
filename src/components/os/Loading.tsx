@@ -20,6 +20,7 @@ export default function ({ notFound = false }: Props) {
 	const [twitterLoading, setTwitterLoading] = useState<boolean>(true);
 	const [errorMessage, setErrorMessage] = useState<string>("");
 	const [userAgent, setUserAgent] = useState<string>("");
+	const [browser, setBrowser] = useState<string>("");
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -43,8 +44,8 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "ios") {
 			if (data.browser === "safari") {
+				// flex gap
 				if (data.version < 14.5) {
-					// flex gap
 					error = true;
 				}
 			}
@@ -52,8 +53,8 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "mac") {
 			if (data.browser === "safari") {
+				// flex gap
 				if (data.version < 14.1) {
-					// flex gap
 					error = true;
 				}
 			}
@@ -61,22 +62,22 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "windows" || data.os === "mac") {
 			if (data.browser === "chrome") {
-				if (data.version < 84) {
-					// flex gap
+				// flex gap
+				if (data.version < 784) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "firefox") {
+				// flex gap
 				if (data.version < 63) {
-					// flex gap
 					error = true;
 				}
 			}
 
 			if (data.browser === "opera") {
+				// flex gap
 				if (data.version < 70) {
-					// flex gap
 					error = true;
 				}
 			}
@@ -84,22 +85,29 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "android") {
 			if (data.browser === "chrome") {
+				// flex gap
 				if (data.version < 84) {
-					// flex gap
 					error = true;
 				}
 			}
 
 			if (data.browser === "firefox") {
+				// flex gap
 				if (data.version < 63) {
-					// flex gap
 					error = true;
 				}
 			}
 
 			if (data.browser === "opera") {
+				// flex gap
 				if (data.version < 60) {
-					// flex gap
+					error = true;
+				}
+			}
+
+			if (data.browser === "samsung") {
+				// flex gap
+				if (data.version < 14) {
 					error = true;
 				}
 			}
@@ -117,6 +125,7 @@ export default function ({ notFound = false }: Props) {
 			setErrorMessage("Not Supported😿");
 			const agent = window.navigator.userAgent.toLowerCase();
 			setUserAgent(agent);
+			setBrowser(`${data.os} ${data.browser} ${data.version}`);
 		}
 	}, []);
 
@@ -289,11 +298,14 @@ export default function ({ notFound = false }: Props) {
 							animation-fill-mode: forwards;
 							animation-iteration-count: 1;
 							animation-name: useragent-view;
-							font-size: 10px;
 							opacity: 0;
-							color: #f0425a;
 							user-select: none;
 							pointer-events: none;
+
+							div {
+								color: #f0425a;
+								font-size: 8px;
+							}
 
 							@keyframes useragent-view {
 								100% {
@@ -302,7 +314,8 @@ export default function ({ notFound = false }: Props) {
 							}
 						`}
 					>
-						{userAgent}
+						<div>{browser}</div>
+						<div>{userAgent}</div>
 					</span>
 					<div
 						className={css`

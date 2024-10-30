@@ -30,6 +30,13 @@ export const checkUseragent = () => {
 		if (match !== null) {
 			data.version = Number(match[1]);
 		}
+	} else if (agent.includes("samsungbrowser")) {
+		data.browser = "samsung";
+		data.type = "chromium";
+		const match = agent.match(/samsungbrowser\/([0-9]+\.[0-9]+)/);
+		if (match !== null) {
+			data.version = Number(match[1]);
+		}
 	} else if (agent.includes("chrome")) {
 		data.browser = "chrome";
 		data.type = "chromium";
