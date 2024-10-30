@@ -43,7 +43,8 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "ios") {
 			if (data.browser === "safari") {
-				if (data.version < 17) {
+				if (data.version < 14.5) {
+					// flex gap
 					error = true;
 				}
 			}
@@ -51,7 +52,8 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "mac") {
 			if (data.browser === "safari") {
-				if (data.version < 17) {
+				if (data.version < 14.1) {
+					// flex gap
 					error = true;
 				}
 			}
@@ -59,13 +61,22 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "windows" || data.os === "mac") {
 			if (data.browser === "chrome") {
-				if (data.version < 120) {
+				if (data.version < 84) {
+					// flex gap
 					error = true;
 				}
 			}
 
 			if (data.browser === "firefox") {
-				if (data.version < 113) {
+				if (data.version < 63) {
+					// flex gap
+					error = true;
+				}
+			}
+
+			if (data.browser === "opera") {
+				if (data.version < 70) {
+					// flex gap
 					error = true;
 				}
 			}
@@ -73,19 +84,22 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "android") {
 			if (data.browser === "chrome") {
-				if (data.version < 120) {
+				if (data.version < 84) {
+					// flex gap
 					error = true;
 				}
 			}
 
 			if (data.browser === "firefox") {
-				if (data.version < 79) {
+				if (data.version < 63) {
+					// flex gap
 					error = true;
 				}
 			}
 
 			if (data.browser === "opera") {
-				if (data.version < 80) {
+				if (data.version < 60) {
+					// flex gap
 					error = true;
 				}
 			}
@@ -498,6 +512,7 @@ export default function ({ notFound = false }: Props) {
 								`}
 							>
 								<div
+									id="loading-progress"
 									style={{
 										width:
 											errorMessage !== ""
@@ -528,45 +543,6 @@ export default function ({ notFound = false }: Props) {
 
 											&:before {
 												filter: brightness(110%) blur(3px);
-											}
-
-											@media (scripting: none) {
-												animation-duration: 1s;
-												animation-delay: 250ms;
-												animation-fill-mode: forwards;
-												animation-iteration-count: 1;
-												animation-timing-function: linear;
-												animation-name: error-progress;
-
-												@keyframes error-progress {
-													70% {
-														width: calc(100% / 4);
-													}
-
-													100% {
-														width: 100%;
-													}
-												}
-
-												&:before,
-												&:after {
-													animation-duration: 1s;
-													animation-delay: 250ms;
-													animation-fill-mode: forwards;
-													animation-iteration-count: 1;
-													animation-timing-function: linear;
-													animation-name: error-progress-color;
-
-													@keyframes error-progress-color {
-														70% {
-															background-color: #caf8af;
-														}
-
-														100% {
-															background-color: #c72a4d;
-														}
-													}
-												}
 											}
 										`,
 										errorMessage !== ""
@@ -611,6 +587,52 @@ export default function ({ notFound = false }: Props) {
 											: ""
 									].join(" ")}
 								/>
+								<noscript>
+									<style
+										dangerouslySetInnerHTML={{
+											__html: /* scss */ `
+											#loading-progress {
+												animation-duration: 1s;
+												animation-delay: 250ms;
+												animation-fill-mode: forwards;
+												animation-iteration-count: 1;
+												animation-timing-function: linear;
+												animation-name: error-progress;
+
+												@keyframes error-progress {
+													70% {
+														width: calc(100% / 4);
+													}
+
+													100% {
+														width: 100%;
+													}
+												}
+
+												&:before,
+												&:after {
+													animation-duration: 1s;
+													animation-delay: 250ms;
+													animation-fill-mode: forwards;
+													animation-iteration-count: 1;
+													animation-timing-function: linear;
+													animation-name: error-progress-color;
+
+													@keyframes error-progress-color {
+														70% {
+															background-color: #caf8af;
+														}
+
+														100% {
+															background-color: #c72a4d;
+														}
+													}
+												}
+											}
+										`
+										}}
+									/>
+								</noscript>
 							</div>
 							<span
 								className={css`
@@ -671,7 +693,7 @@ export default function ({ notFound = false }: Props) {
 									</>
 								)}
 								{errorMessage === "" && (
-									<>
+									<noscript>
 										<span
 											className={css`
 												animation-duration: 0s;
@@ -681,10 +703,6 @@ export default function ({ notFound = false }: Props) {
 												animation-name: error-message-hide;
 												font-size: 14px;
 												color: #f0425a;
-
-												@media (scripting: enabled) {
-													display: none;
-												}
 
 												@keyframes error-message-hide {
 													100% {
@@ -706,10 +724,6 @@ export default function ({ notFound = false }: Props) {
 												font-size: 0;
 												color: #f0425a;
 
-												@media (scripting: enabled) {
-													display: none;
-												}
-
 												@keyframes error-message-view {
 													100% {
 														font-size: 14px;
@@ -720,27 +734,38 @@ export default function ({ notFound = false }: Props) {
 										>
 											Script Error
 										</span>
-									</>
+									</noscript>
 								)}
 								{errorMessage === "" && (
-									<span
-										className={css`
-											font-size: 14px;
-											@media (scripting: none) {
-												display: none;
-											}
-										`}
-									>
-										{!networkChecked
-											? "Network Checking"
-											: fontsLoading
-												? "Fonts Loading"
-												: imageLoading
-													? "Images Loading"
-													: twitterLoading
-														? "Widgets Loading"
-														: "Ready"}
-									</span>
+									<>
+										<span
+											id="loading-message"
+											className={css`
+												font-size: 14px;
+											`}
+										>
+											{!networkChecked
+												? "Network Checking"
+												: fontsLoading
+													? "Fonts Loading"
+													: imageLoading
+														? "Images Loading"
+														: twitterLoading
+															? "Widgets Loading"
+															: "Ready"}
+										</span>
+										<noscript>
+											<style
+												dangerouslySetInnerHTML={{
+													__html: /* scss */ `
+														#loading-message {
+															display: none;
+														}
+													`
+												}}
+											/>
+										</noscript>
+									</>
 								)}
 							</span>
 						</div>
