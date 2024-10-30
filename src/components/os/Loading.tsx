@@ -63,7 +63,7 @@ export default function ({ notFound = false }: Props) {
 		if (data.os === "windows" || data.os === "mac") {
 			if (data.browser === "chrome") {
 				// flex gap
-				if (data.version < 784) {
+				if (data.version < 84) {
 					error = true;
 				}
 			}
