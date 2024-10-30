@@ -132,6 +132,7 @@ export default () => {
 					user-select: none;
 					pointer-events: none;
 					font-family: CascadiaMonoNF;
+					font-weight: normal;
 					overflow: hidden;
 					width: 0;
 					height: 0;
@@ -149,9 +150,11 @@ export default () => {
 					padding: 5px;
 
 					font-family: CascadiaMonoNF;
+					font-weight: normal;
 
 					* {
 						font-family: CascadiaMonoNF;
+						font-weight: normal;
 					}
 				`}
 			>
