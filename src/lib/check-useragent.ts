@@ -16,10 +16,14 @@ export const checkUseragent = () => {
 	} else if (agent.includes("edg")) {
 		data.browser = "edge";
 		data.type = "chromium";
-	} else if (agent.includes("kiwi")) {
-		data.browser = "kiwi";
+		const match = agent.match(/edg\/([0-9]+\.[0-9]+)/);
+		if (match !== null) {
+			data.version = Number(match[1]);
+		}
+	} else if (agent.includes("edga")) {
+		data.browser = "edge";
 		data.type = "chromium";
-		const match = agent.match(/chrome\/([0-9]+\.[0-9]+)/);
+		const match = agent.match(/edga\/([0-9]+\.[0-9]+)/);
 		if (match !== null) {
 			data.version = Number(match[1]);
 		}

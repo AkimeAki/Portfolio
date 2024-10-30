@@ -81,6 +81,13 @@ export default function ({ notFound = false }: Props) {
 					error = true;
 				}
 			}
+
+			if (data.browser === "edge") {
+				// flex gap
+				if (data.version < 84) {
+					error = true;
+				}
+			}
 		}
 
 		if (data.os === "android") {
@@ -108,6 +115,13 @@ export default function ({ notFound = false }: Props) {
 			if (data.browser === "samsung") {
 				// flex gap
 				if (data.version < 14) {
+					error = true;
+				}
+			}
+
+			if (data.browser === "edge") {
+				// flex gap
+				if (data.version < 84) {
 					error = true;
 				}
 			}
