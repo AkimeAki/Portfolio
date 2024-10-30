@@ -17,6 +17,9 @@ export const checkUseragent = () => {
 		if (match !== null) {
 			data.version = Number(match[1]);
 		}
+	} else if (agent.includes("edge")) {
+		data.browser = "old-edge";
+		data.type = "edge";
 	} else if (agent.includes("edg")) {
 		data.browser = "edge";
 		data.type = "chromium";
@@ -24,9 +27,6 @@ export const checkUseragent = () => {
 		if (match !== null) {
 			data.version = Number(match[1]);
 		}
-	} else if (agent.includes("edge")) {
-		data.browser = "old-edge";
-		data.type = "edge";
 	} else if (agent.includes("opr")) {
 		data.browser = "opera";
 		data.type = "chromium";
