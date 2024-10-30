@@ -292,12 +292,14 @@ export default function ({ notFound = false }: Props) {
 						z-index: calc(infinity - 1);
 						user-select: none;
 						pointer-events: none;
+						box-sizing: border-box; // 非対応ブラウザ用
 
 						* {
 							color: white;
 							font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック",
 								"Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Verdana, Meiryo;
 							font-weight: normal;
+							box-sizing: border-box; // 非対応ブラウ
 						}
 					`}
 				>
