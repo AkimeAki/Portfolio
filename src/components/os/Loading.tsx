@@ -62,29 +62,29 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "windows" || data.os === "mac") {
 			if (data.browser === "chrome") {
-				// flex gap
-				if (data.version < 84) {
+				// toSorted
+				if (data.version < 110) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "firefox") {
-				// flex gap
-				if (data.version < 63) {
+				// toSorted
+				if (data.version < 115) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "opera") {
-				// flex gap
-				if (data.version < 70) {
+				// toSorted
+				if (data.version < 96) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "edge") {
-				// flex gap
-				if (data.version < 84) {
+				// toSorted
+				if (data.version < 110) {
 					error = true;
 				}
 			}
@@ -92,36 +92,36 @@ export default function ({ notFound = false }: Props) {
 
 		if (data.os === "android") {
 			if (data.browser === "chrome") {
-				// flex gap
-				if (data.version < 84) {
+				// toSorted
+				if (data.version < 110) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "firefox") {
-				// flex gap
-				if (data.version < 63) {
+				// toSorted
+				if (data.version < 115) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "opera") {
-				// flex gap
-				if (data.version < 60) {
+				// toSorted
+				if (data.version < 74) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "samsung") {
-				// flex gap
-				if (data.version < 14) {
+				// toSorted
+				if (data.version < 21) {
 					error = true;
 				}
 			}
 
 			if (data.browser === "edge") {
-				// flex gap
-				if (data.version < 84) {
+				// toSorted
+				if (data.version < 110) {
 					error = true;
 				}
 			}
