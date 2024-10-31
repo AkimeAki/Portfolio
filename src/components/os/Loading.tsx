@@ -306,6 +306,17 @@ export default function ({ notFound = false }: Props) {
 					<span
 						className={css`
 							position: absolute;
+							opacity: 0;
+							user-select: none;
+							pointer-events: none;
+							font-family: "BestTenCRT" !important;
+						`}
+					>
+						a
+					</span>
+					<span
+						className={css`
+							position: absolute;
 							bottom: 0;
 							width: 100%;
 							left: 0;
