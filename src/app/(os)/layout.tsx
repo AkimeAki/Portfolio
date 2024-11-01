@@ -1,11 +1,11 @@
 import AkiSignal from "@/components/os/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
 import CodeBackground from "@/components/os/CodeBackground";
-import ContextMenu from "@/components/os/ContextMenu";
+import ContextMenu from "@/components/ContextMenu";
 import Loading from "@/components/os/Loading";
 import SelectArea from "@/components/os/SelectArea";
 import Taskbar from "@/components/os/Taskbar";
-import Touch from "@/components/os/Touch";
+import Touch from "@/components/Touch";
 import TwitchBackground from "@/components/os/TwitchBackground";
 import { seoHead } from "@/lib/seo";
 import { css } from "@kuma-ui/core";
