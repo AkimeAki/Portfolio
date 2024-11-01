@@ -130,6 +130,7 @@ export default function () {
 
 	return (
 		<div
+			id="select-area"
 			ref={targetAreaElement}
 			className={css`
 				position: absolute;

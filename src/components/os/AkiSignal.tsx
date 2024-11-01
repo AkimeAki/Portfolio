@@ -14,7 +14,13 @@ export default function () {
 
 	useEffect(() => {
 		const click = (e: MouseEvent) => {
-			if (animation && signalElement.current !== null && !$isTouch && $openAppSortList.length === 0) {
+			if (
+				e.target !== null &&
+				(e.target as HTMLElement).id === "select-area" &&
+				animation &&
+				signalElement.current !== null &&
+				!$isTouch
+			) {
 				const canvas = document.createElement("canvas");
 				const ctx = canvas.getContext("2d");
 				const image = signalElement.current;
