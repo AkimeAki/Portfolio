@@ -43,7 +43,8 @@ export default function () {
 				e.buttons === 1 &&
 				selectAreaElement.current !== null &&
 				targetAreaElement.current !== null &&
-				!$isTouch
+				!$isTouch &&
+				document.body.dataset.dragging === "true"
 			) {
 				if (e.offsetX - startX > 0 && e.offsetY - startY > 0) {
 					setSelectArea(
