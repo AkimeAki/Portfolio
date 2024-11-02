@@ -176,7 +176,12 @@ export default function () {
 						alt="Fiicen"
 						text="Fiicen"
 					/>
-					<TaskbarAppIcon href="https://pixiv.net/" iconPath="/icon/pixiv.png" alt="pixiv" text="pixiv" />
+					<TaskbarAppIcon
+						href="https://www.pixiv.net/users/64086928"
+						iconPath="/icon/pixiv.png"
+						alt="pixiv"
+						text="pixiv"
+					/>
 					<TaskbarAppIcon
 						href="https://www.hoyolab.com/accountCenter/postList?id=8411789"
 						iconPath="/icon/hoyolab.png"
