@@ -152,6 +152,7 @@ export default function ({
 					animation-fill-mode: forwards;
 					transition-duration: 400ms;
 					transition-property: translate, scale;
+					animation-timing-function: steps(5, start);
 
 					@keyframes view-window {
 						0% {
@@ -186,6 +187,54 @@ export default function ({
 					: ""
 			].join(" ")}
 		>
+			<div
+				className={css`
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+
+					border: 5px solid #75182c;
+
+					animation-name: hide-window-frame;
+					animation-duration: 0s;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-delay: 400ms;
+
+					@keyframes hide-window-frame {
+						100% {
+							display: none;
+						}
+					}
+				`}
+			>
+				<div
+					className={css`
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+
+						background-color: #ad2b46;
+						opacity: 0;
+
+						animation-name: view-window-frame-bg;
+						animation-duration: 150ms;
+						animation-fill-mode: forwards;
+						animation-iteration-count: 8;
+						animation-delay: 50ms;
+
+						@keyframes view-window-frame-bg {
+							100% {
+								opacity: 0.1;
+							}
+						}
+					`}
+				/>
+			</div>
 			<div
 				className={[
 					css`
@@ -652,6 +701,19 @@ export default function ({
 					pointer-events: auto;
 					box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
 					overflow: hidden;
+
+					animation-name: view-window-content;
+					animation-duration: 0s;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 1;
+					animation-delay: 400ms;
+					opacity: 0;
+
+					@keyframes view-window-content {
+						100% {
+							opacity: 1;
+						}
+					}
 				`}
 			>
 				<div

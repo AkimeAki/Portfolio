@@ -17,7 +17,6 @@ export default function () {
 
 	useEffect(() => {
 		const click = (e: MouseEvent) => {
-			console.log(e);
 			if (buttonElement.current !== null && e.target !== null && areaElement.current !== null) {
 				const target = e.target as HTMLElement;
 				if (!(areaElement.current.contains(target) || buttonElement.current.contains(target))) {
@@ -36,6 +35,7 @@ export default function () {
 	}, [isOpen]);
 
 	useEffect(() => {
+		let enableRandam = true;
 		const images: string[] = [];
 		for (let i = 1; i <= 36; i++) {
 			images.push(`/emoji/${i}.png`);
@@ -45,13 +45,19 @@ export default function () {
 			const random = Math.floor(Math.random() * images.length);
 			setImagePath(images[random]);
 			await new Promise((resolve) => setTimeout(resolve, 1000));
-			changeImage();
+			if (enableRandam) {
+				changeImage();
+			}
 		};
 
-		if (ready) {
+		if (ready && !isOpen) {
 			changeImage();
 		}
-	}, [ready]);
+
+		return () => {
+			enableRandam = false;
+		};
+	}, [ready, isOpen]);
 
 	return (
 		<>
@@ -78,6 +84,7 @@ export default function () {
 						overflow-y: scroll;
 						transition-duration: 200ms;
 						transition-property: transform, opacity;
+						transition-timing-function: steps(5, start);
 
 						@media (max-width: 720px) {
 							top: 0;

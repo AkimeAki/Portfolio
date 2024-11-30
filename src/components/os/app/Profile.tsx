@@ -199,24 +199,6 @@ export default function () {
 						</tr>
 					</tbody>
 				</table>
-				<h4>大好き</h4>
-				<table>
-					<tbody>
-						<tr>
-							<th>CSS in JS</th>
-							<td>
-								<div>
-									<ColorLabel bgColor="#c966b9" color="#ffda6c">
-										Emotion
-									</ColorLabel>
-									<ColorLabel bgColor="#9bbee8" color="black">
-										Kuma UI
-									</ColorLabel>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
 				<h3>映像系スキル</h3>
 				<h4>それなりに分からない</h4>
 				<table>
