@@ -401,8 +401,7 @@ export default function ({ notFound = false }: Props) {
 							className={css`
 								position: relative;
 								display: inline-block;
-								padding: 7px 40px;
-								background-color: rgba(0, 0, 0, 0.678);
+								padding: 7px 50px;
 							`}
 						>
 							<div
@@ -502,7 +501,8 @@ export default function ({ notFound = false }: Props) {
 									animation-fill-mode: forwards;
 									animation-iteration-count: 5;
 									animation-timing-function: linear;
-									font-size: 18px;
+									font-size: 16px;
+									color: #f0425a;
 
 									span {
 										white-space: nowrap;

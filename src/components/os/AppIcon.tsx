@@ -43,7 +43,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 					gap: 3px;
 					flex-direction: column;
 					align-items: center;
-					width: 150px;
+					width: 140px;
 					border-style: solid;
 					border-color: transparent;
 					border-width: 1px;
@@ -90,8 +90,8 @@ export default function ({ children, id, imgSrc, href, isPixel = false }: Props)
 			<div
 				className={css`
 					position: relative;
-					width: 80px;
-					height: 80px;
+					width: 60px;
+					height: 60px;
 					flex-shrink: 0;
 					pointer-events: none;
 

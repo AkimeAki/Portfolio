@@ -19,7 +19,8 @@ export default function () {
 				height: calc(100% - 70px);
 				display: flex;
 				flex-direction: column;
-				gap: 30px;
+				column-gap: 15px;
+				row-gap: 20px;
 				flex-wrap: wrap;
 				padding: 10px;
 				user-select: none;
