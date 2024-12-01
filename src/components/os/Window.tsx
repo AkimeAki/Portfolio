@@ -151,8 +151,9 @@ export default function ({
 					animation-duration: 200ms;
 					animation-fill-mode: forwards;
 					transition-duration: 400ms;
-					transition-property: translate, scale;
+					transition-property: translate, scale, opacity;
 					animation-timing-function: steps(5, start);
+					transition-timing-function: steps(10, start);
 
 					@keyframes view-window {
 						0% {
@@ -178,6 +179,7 @@ export default function ({
 							scale: 0;
 							user-select: none !important;
 							pointer-events: none !important;
+							opacity: 0;
 
 							* {
 								user-select: none !important;
@@ -706,7 +708,7 @@ export default function ({
 					animation-duration: 0s;
 					animation-fill-mode: forwards;
 					animation-iteration-count: 1;
-					animation-delay: 400ms;
+					animation-delay: 250ms;
 					opacity: 0;
 
 					@keyframes view-window-content {
