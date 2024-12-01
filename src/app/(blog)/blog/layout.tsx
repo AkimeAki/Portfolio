@@ -96,11 +96,12 @@ export default function ({ children }: Props) {
 					}
 				`}
 			>
+				<Link href="/">aki.wtf</Link>
 				<Link href="/blog/categories/allergy-navi">
 					アレルギーナビ{" "}
 					<br
 						className={css`
-							@media (min-width: 500px) {
+							@media (min-width: 600px) {
 								display: none;
 							}
 						`}
