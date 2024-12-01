@@ -6,12 +6,22 @@ import { notFound } from "next/navigation";
 import "@/styles/blog/post.scss";
 import PostList from "@/components/blog/organisms/PostList";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 interface Props {
 	params: {
 		id: string;
 	};
+}
+
+export async function generateStaticParams(): Promise<{ id: string }[]> {
+	const posts = (await getListAllContents<Blog>("blogs")).filter((post) => {
+		return post.category !== undefined;
+	});
+
+	return posts.map((post) => ({
+		id: post.id
+	}));
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {

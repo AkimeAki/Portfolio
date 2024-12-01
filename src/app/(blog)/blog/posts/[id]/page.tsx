@@ -9,12 +9,20 @@ import "@/styles/blog/post.scss";
 import RichContents from "@/components/blog/molecules/RichContents";
 import { css } from "@kuma-ui/core";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 interface Props {
 	params: {
 		id: string;
 	};
+}
+
+export async function generateStaticParams(): Promise<{ id: string }[]> {
+	const posts = await getListAllContents<Blog>("blogs");
+
+	return posts.map((post) => ({
+		id: post.id
+	}));
 }
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {

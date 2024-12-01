@@ -20,7 +20,34 @@ interface Props {
 
 export default function ({ children }: Props) {
 	return (
-		<>
+		<div
+			className={css`
+				position: relative;
+				width: 100%;
+				height: 100%;
+
+				* {
+					font-family: "BestTenCRT";
+					font-size: 18px;
+					line-height: 1.6;
+					color: #777777;
+					font-variant-ligatures: none;
+				}
+
+				touch-action: none;
+				overscroll-behavior-y: none;
+
+				body[data-user-dragging="true"] & {
+					user-select: none !important;
+
+					* {
+						user-select: none !important;
+					}
+				}
+
+				background-color: #060303;
+			`}
+		>
 			<Loading />
 			<Touch />
 			<ContextMenu />
@@ -63,6 +90,6 @@ export default function ({ children }: Props) {
 				</div>
 				<Taskbar />
 			</div>
-		</>
+		</div>
 	);
 }
