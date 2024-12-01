@@ -1,7 +1,8 @@
 import { formatDate } from "@/libs/format-date";
 import { Blog } from "@/types/blog";
-import { css, Link } from "@kuma-ui/core";
+import { css } from "@kuma-ui/core";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
+import Link from "next/link";
 
 interface Props {
 	posts: (Blog & MicroCMSContentId & MicroCMSDate)[];
