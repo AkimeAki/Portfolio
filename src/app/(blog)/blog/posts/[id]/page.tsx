@@ -5,7 +5,6 @@ import { metaHead } from "@/libs/meta";
 import { notFound } from "next/navigation";
 import { JSDOM } from "jsdom";
 import { codeToHtml } from "shiki";
-import "@/styles/blog/post.scss";
 import RichContents from "@/components/blog/molecules/RichContents";
 import { css } from "@kuma-ui/core";
 

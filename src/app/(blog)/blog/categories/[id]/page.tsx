@@ -3,7 +3,6 @@ import { Blog, Category } from "@/types/blog";
 import { Metadata } from "next";
 import { metaHead } from "@/libs/meta";
 import { notFound } from "next/navigation";
-import "@/styles/blog/post.scss";
 import PostList from "@/components/blog/organisms/PostList";
 
 export const dynamic = "force-static";
