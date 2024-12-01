@@ -2,7 +2,7 @@
 
 import { osLoading } from "@/atom";
 import Windows from "@/components/os/Windows";
-import useWindow from "@/lib/useWindow";
+import useWindow from "@/libs/useWindow";
 import { useStore } from "@nanostores/react";
 import { useEffect } from "react";
 

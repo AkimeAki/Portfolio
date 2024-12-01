@@ -1,4 +1,4 @@
-import useWindow from "@/lib/useWindow";
+import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 
 interface Props {

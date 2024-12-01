@@ -1,6 +1,6 @@
 "use client";
 
-import { checkUseragent } from "@/lib/check-useragent";
+import { checkUseragent } from "@/libs/check-useragent";
 import { useEffect } from "react";
 
 export default function () {

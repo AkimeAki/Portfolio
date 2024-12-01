@@ -2,10 +2,10 @@
 
 import Window from "@/components/os/Window";
 import { openAppSortList, osLoading } from "@/atom";
-import { appList } from "@/lib/app-select";
+import { appList } from "@/libs/app-select";
 import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
-import useWindow from "@/lib/useWindow";
+import useWindow from "@/libs/useWindow";
 
 interface Props {
 	defaultWindow?: string;

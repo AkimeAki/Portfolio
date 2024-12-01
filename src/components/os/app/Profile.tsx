@@ -2,7 +2,7 @@
 
 import { isTouch } from "@/atom";
 import ColorLabel from "@/components/ColorLabel";
-import useWindow from "@/lib/useWindow";
+import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 

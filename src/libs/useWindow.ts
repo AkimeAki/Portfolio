@@ -2,8 +2,8 @@
 
 import { pinWindowList, openAppSortList, minimizeWindowList } from "@/atom";
 import { useStore } from "@nanostores/react";
-import { appList, sortList } from "@/lib/app-select";
-import { pageTitle } from "@/lib/seo";
+import { appList, sortList } from "@/libs/app-select";
+import { pageTitle } from "@/libs/meta";
 
 export default function () {
 	const $openAppSortList = useStore(openAppSortList);
@@ -53,19 +53,21 @@ export default function () {
 		pinWindowList.set(result);
 	};
 
-	const closeWindow = (closeId: string) => {
+	const closeWindow = (closeId: string, isChangeHistory: boolean = true) => {
 		// 閉じたいウィンドウ以外のウィンドウリスト（履歴変更するもののみ）
 		const resetAppChangeHistoryList = $openAppSortList.filter((id) => {
 			return id !== closeId && appList[id].changeHistory;
 		});
 
-		if (resetAppChangeHistoryList.length === 0) {
-			// 開くアプリがないとき
-			history.pushState({}, "", "/");
-			document.title = pageTitle;
-		} else {
-			history.pushState({}, "", `/${resetAppChangeHistoryList[0]}`);
-			document.title = appList[resetAppChangeHistoryList[0]].pageTitle;
+		if (isChangeHistory) {
+			if (resetAppChangeHistoryList.length === 0) {
+				// 開くアプリがないとき
+				history.pushState({}, "", "/");
+				document.title = pageTitle;
+			} else {
+				history.pushState({}, "", `/${resetAppChangeHistoryList[0]}`);
+				document.title = appList[resetAppChangeHistoryList[0]].pageTitle;
+			}
 		}
 
 		// 閉じたいウィンドウ以外のウィンドウリスト（すべて）

@@ -4,7 +4,7 @@ import { isTwitterWidgetValid, osLoading } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
-import { checkUseragent } from "@/lib/check-useragent";
+import { checkUseragent } from "@/libs/check-useragent";
 
 interface Props {
 	notFound?: boolean;
@@ -271,10 +271,6 @@ export default function ({ notFound = false }: Props) {
 		if (!imageLoading && !fontsLoading && !twitterLoading && ready) {
 			setTimeout(() => {
 				osLoading.set(false);
-			}, 3000);
-		} else {
-			setTimeout(() => {
-				osLoading.set(true);
 			}, 3000);
 		}
 	}, [imageLoading, fontsLoading, twitterLoading, ready]);

@@ -4,14 +4,17 @@ interface Props {
 	title?: string;
 	description?: string;
 	isFullTitle?: boolean;
+	canonicalPath?: string;
 }
 
 export const pageTitle = "彩季.AkiOS";
+const siteUrl = process.env.SITE_ROOT_URL ?? "";
 
-export const seoHead = ({
+export const metaHead = ({
 	title,
 	isFullTitle = false,
-	description = "彩季のポートフォリオサイトです。"
+	description = "彩季のポートフォリオサイトです。",
+	canonicalPath
 }: Props): Metadata => {
 	let metaTitle = pageTitle;
 	if (title !== undefined) {
@@ -25,7 +28,7 @@ export const seoHead = ({
 	return {
 		title: metaTitle,
 		description,
-		authors: { name: "彩季", url: "https://aki.wtf" },
+		authors: { name: "彩季", url: siteUrl },
 		generator: "nextjs",
 		keywords: ["彩季"],
 		creator: "彩季",
@@ -36,15 +39,18 @@ export const seoHead = ({
 			description,
 			siteName: pageTitle,
 			images: {
-				url: "https://aki.wtf/favicon.png"
+				url: `${siteUrl}/favicon.png`
 			}
 		},
 		twitter: {
 			card: "summary",
 			site: "@Akime_Aki",
 			creator: "@Akime_Aki",
-			images: "https://aki.wtf/favicon.png"
+			images: `${siteUrl}/favicon.png`
 		},
-		icons: "https://aki.wtf/favicon.ico"
+		icons: `${siteUrl}/favicon.ico`,
+		alternates: {
+			canonical: canonicalPath !== undefined ? `${siteUrl}${canonicalPath}` : undefined
+		}
 	};
 };

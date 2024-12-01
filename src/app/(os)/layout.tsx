@@ -7,11 +7,12 @@ import SelectArea from "@/components/os/SelectArea";
 import Taskbar from "@/components/os/Taskbar";
 import Touch from "@/components/Touch";
 import TwitchBackground from "@/components/os/TwitchBackground";
-import { seoHead } from "@/lib/seo";
+import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
+import "@/styles/os/global.scss";
 
-export const metadata: Metadata = seoHead({});
+export const metadata: Metadata = metaHead({});
 
 interface Props {
 	children: React.ReactNode;

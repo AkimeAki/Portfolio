@@ -4,10 +4,14 @@ import { css } from "@kuma-ui/core";
 import AppIcon from "@/components/os/AppIcon";
 import { isTwitterWidgetValid, osLoading } from "@/atom";
 import { useStore } from "@nanostores/react";
+import { useRouter } from "next/navigation";
+import useWindow from "@/libs/useWindow";
 
 export default function () {
 	const $osLoading = useStore(osLoading);
 	const $isTwitterWidgetValid = useStore(isTwitterWidgetValid);
+	const router = useRouter();
+	const { closeWindow } = useWindow();
 
 	return (
 		<div
@@ -59,7 +63,17 @@ export default function () {
 			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/aki-coffee.png" isPixel>
 				日常ブログ
 			</AppIcon>
-			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/blog.png" isPixel>
+			<AppIcon
+				id="blog"
+				imgSrc="/app/blog.png"
+				onClick={async () => {
+					await new Promise((resolve) => setTimeout(resolve, 1500));
+					router.push("/blog");
+					await new Promise((resolve) => setTimeout(resolve, 300));
+					closeWindow("blog", false);
+				}}
+				isPixel
+			>
 				技術ブログ
 			</AppIcon>
 			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.png">

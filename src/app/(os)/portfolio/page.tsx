@@ -1,10 +1,10 @@
 import Windows from "@/components/os/Windows";
-import { seoHead } from "@/lib/seo";
+import { metaHead } from "@/libs/meta";
 import { Metadata } from "next";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = seoHead({
+export const metadata: Metadata = metaHead({
 	title: "作ったもの",
 	description: "彩季が作ったものを置いています。"
 });

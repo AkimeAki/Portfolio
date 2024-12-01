@@ -4,7 +4,7 @@ import { css } from "@kuma-ui/core";
 import MinimizedAppIcon from "@/components/os/MinimizedAppIcon";
 import { useStore } from "@nanostores/react";
 import { minimizeWindowList } from "@/atom";
-import { appList } from "@/lib/app-select";
+import { appList } from "@/libs/app-select";
 
 export default function () {
 	const $minimizeWindowList = useStore(minimizeWindowList);

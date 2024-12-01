@@ -1,6 +1,5 @@
 import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
 import "@akimeaki/reset-css";
-import "@/global.scss";
 import CheckUserAgent from "@/components/CheckUserAgent";
 
 interface Props {
@@ -13,6 +12,8 @@ export default function ({ children }: Props) {
 			<head>
 				<meta name="theme-color" content="#060303" />
 				<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+				<link rel="sitemap" href="/sitemap.xml" />
+				<script type="text/javascript" src="https://cdn.iframe.ly/embed.js" />
 				{process.env.NODE_ENV === "production" && (
 					<>
 						<script

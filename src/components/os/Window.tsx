@@ -1,7 +1,7 @@
 "use client";
 
 import { pinWindowList, isTouch, openAppSortList, minimizeWindowList } from "@/atom";
-import useWindow from "@/lib/useWindow";
+import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
@@ -787,7 +787,7 @@ export default function ({
 						}}
 						className={css`
 							position: relative;
-							height: 50px;
+							height: 45px;
 							background-color: #060303;
 							display: flex;
 							justify-content: space-between;

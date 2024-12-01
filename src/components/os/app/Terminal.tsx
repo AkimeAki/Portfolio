@@ -1,8 +1,8 @@
 "use client";
 
 import { runningCommands } from "@/atom";
-import { checkUseragent } from "@/lib/check-useragent";
-import useWindow from "@/lib/useWindow";
+import { checkUseragent } from "@/libs/check-useragent";
+import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";

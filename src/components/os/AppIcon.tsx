@@ -1,7 +1,7 @@
 "use client";
 
 import { osLoading } from "@/atom";
-import useWindow from "@/lib/useWindow";
+import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 
@@ -11,15 +11,20 @@ interface Props {
 	imgSrc?: string;
 	href?: string;
 	isPixel?: boolean;
+	onClick?: () => void;
 }
 
-export default function ({ children, id, imgSrc, href, isPixel = false }: Props) {
+export default function ({ children, id, imgSrc, href, isPixel = false, onClick }: Props) {
 	const { openWindow, releaseMinimizedWindow } = useWindow();
 	const $osLoading = useStore(osLoading);
 
 	return (
 		<div
 			onClick={() => {
+				if (onClick !== undefined) {
+					onClick();
+				}
+
 				if (id !== undefined) {
 					openWindow(id);
 					releaseMinimizedWindow(id);
