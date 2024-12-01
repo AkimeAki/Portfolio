@@ -1,3 +1,4 @@
+import { blogTitle } from "@/define";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
@@ -5,7 +6,12 @@ import Link from "next/link";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = metaHead({});
+export const metadata: Metadata = metaHead({
+	title: blogTitle,
+	isFullTitle: true,
+	description:
+		"孅いエンジニアが書いている技術メインブログです。備忘録的な感じで書いてるので間違ってるかもしれませんがお許しを。"
+});
 
 interface Props {
 	children: React.ReactNode;
@@ -39,6 +45,10 @@ export default function ({ children }: Props) {
 					user-select: none;
 					display: flex;
 					justify-content: center;
+
+					@media (prefers-color-scheme: dark) {
+						background-color: #216135;
+					}
 				`}
 			>
 				<Link href="/blog">
@@ -61,6 +71,10 @@ export default function ({ children }: Props) {
 
 					background-color: #f0425a;
 
+					@media (prefers-color-scheme: dark) {
+						background-color: #216135;
+					}
+
 					a {
 						display: block;
 						padding: 15px 0;
@@ -73,6 +87,10 @@ export default function ({ children }: Props) {
 						&:hover {
 							background-color: #82ef92;
 							color: inherit;
+
+							@media (prefers-color-scheme: dark) {
+								background-color: #572229;
+							}
 						}
 					}
 				`}

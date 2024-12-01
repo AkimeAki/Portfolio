@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { metaHead } from "@/libs/meta";
 import { notFound } from "next/navigation";
 import PostList from "@/components/blog/organisms/PostList";
+import { blogTitle } from "@/define";
 
 export const dynamic = "force-static";
 
@@ -31,8 +32,9 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 	}
 
 	return metaHead({
-		title: category.name,
-		description: category.name,
+		title: `${category.name}カテゴリー`,
+		description: `${category.name}カテゴリーの記事一覧です。`,
+		baseTitle: blogTitle,
 		canonicalPath: `/blog/posts/categories/${category.id}`
 	});
 };

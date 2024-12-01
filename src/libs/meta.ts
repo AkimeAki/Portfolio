@@ -4,6 +4,7 @@ interface Props {
 	title?: string;
 	description?: string;
 	isFullTitle?: boolean;
+	baseTitle?: string;
 	canonicalPath?: string;
 }
 
@@ -13,15 +14,16 @@ const siteUrl = process.env.SITE_ROOT_URL ?? "";
 export const metaHead = ({
 	title,
 	isFullTitle = false,
-	description = "彩季のポートフォリオサイトです。",
-	canonicalPath
+	description = "彩季のサイトです。",
+	canonicalPath,
+	baseTitle = pageTitle
 }: Props): Metadata => {
 	let metaTitle = pageTitle;
 	if (title !== undefined) {
 		if (isFullTitle) {
 			metaTitle = title;
 		} else {
-			metaTitle = `${title} - ${pageTitle}`;
+			metaTitle = `${title} - ${baseTitle}`;
 		}
 	}
 

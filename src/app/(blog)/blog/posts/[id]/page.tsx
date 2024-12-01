@@ -7,6 +7,7 @@ import { JSDOM } from "jsdom";
 import { codeToHtml } from "shiki";
 import RichContents from "@/components/blog/molecules/RichContents";
 import { css } from "@kuma-ui/core";
+import { blogTitle } from "@/define";
 
 export const dynamic = "force-static";
 
@@ -33,9 +34,16 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 		notFound();
 	}
 
+	const contentsDom = new JSDOM(post.contents);
+
+	const body = contentsDom.window.document.querySelector("body");
+	const contents = body !== null ? body.textContent ?? "" : "";
+	const description = contents.substring(0, 80) + "...";
+
 	return metaHead({
 		title: post.title,
-		description: post.title,
+		description: description,
+		baseTitle: blogTitle,
 		canonicalPath: `/blog/posts/${post.id}`
 	});
 };
