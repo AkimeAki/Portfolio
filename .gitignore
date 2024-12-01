@@ -3,4 +3,5 @@
 /dist/
 /.next/
 /.vercel/
+/.wrangler/
 /.kuma/

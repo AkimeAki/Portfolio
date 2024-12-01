@@ -3,8 +3,6 @@ import "@akimeaki/reset-css";
 import "@/global.scss";
 import CheckUserAgent from "@/components/CheckUserAgent";
 
-export const runtime = "edge";
-
 interface Props {
 	children: React.ReactNode;
 }

@@ -6,7 +6,7 @@ import useWindow from "@/lib/useWindow";
 import { useStore } from "@nanostores/react";
 import { useEffect } from "react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 export default function () {
 	const { openWindow } = useWindow();
