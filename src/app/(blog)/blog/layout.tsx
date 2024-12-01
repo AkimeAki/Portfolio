@@ -17,6 +17,7 @@ export default function ({ children }: Props) {
 			className={css`
 				font-family: "Noto Sans JP", sans-serif;
 				color: white;
+				background-color: #eeeeee;
 
 				* {
 					font-family: "Noto Sans JP", sans-serif;
@@ -25,8 +26,6 @@ export default function ({ children }: Props) {
 						color: white;
 					}
 				}
-
-				background-color: #eeeeee;
 
 				@media (prefers-color-scheme: dark) {
 					background-color: #363636;
