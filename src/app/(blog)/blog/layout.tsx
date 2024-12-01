@@ -2,7 +2,6 @@ import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
 import Link from "next/link";
-import "@/styles/blog/global.scss";
 
 export const dynamic = "force-static";
 

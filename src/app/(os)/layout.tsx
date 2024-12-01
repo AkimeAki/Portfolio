@@ -10,7 +10,6 @@ import TwitchBackground from "@/components/os/TwitchBackground";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
-import "@/styles/os/global.scss";
 
 export const metadata: Metadata = metaHead({});
 

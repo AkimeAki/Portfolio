@@ -1,5 +1,6 @@
 import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
 import "@akimeaki/reset-css";
+import "@/styles/global.scss";
 import CheckUserAgent from "@/components/CheckUserAgent";
 
 interface Props {
