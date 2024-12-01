@@ -66,11 +66,13 @@ export default function () {
 			<AppIcon
 				id="blog"
 				imgSrc="/app/blog.png"
-				onClick={async () => {
-					await new Promise((resolve) => setTimeout(resolve, 1500));
-					router.push("/blog");
-					await new Promise((resolve) => setTimeout(resolve, 300));
-					closeWindow("blog", false);
+				onClick={() => {
+					setTimeout(() => {
+						router.push("/blog");
+						setTimeout(() => {
+							closeWindow("blog", false);
+						}, 300);
+					}, 1500);
 				}}
 				isPixel
 			>
