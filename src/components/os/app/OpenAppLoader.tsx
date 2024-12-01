@@ -10,7 +10,7 @@ export default () => {
 		setTimeout(() => {
 			const id = setInterval(() => {
 				setProgress((prev) => {
-					const p = (prev += 10);
+					const p = (prev += 100 / 5);
 
 					if (p >= 100) {
 						clearInterval(id);
