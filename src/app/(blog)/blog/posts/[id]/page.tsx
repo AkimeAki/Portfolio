@@ -9,7 +9,7 @@ import "@/styles/blog/post.scss";
 import RichContents from "@/components/blog/molecules/RichContents";
 import { css } from "@kuma-ui/core";
 
-export const dynamic = "force-static";
+export const runtime = "edge";
 
 interface Props {
 	params: {

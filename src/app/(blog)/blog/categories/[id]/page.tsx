@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import "@/styles/blog/post.scss";
 import PostList from "@/components/blog/organisms/PostList";
 
-export const dynamic = "force-static";
+export const runtime = "edge";
 
 interface Props {
 	params: {
