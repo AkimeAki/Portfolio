@@ -56,6 +56,17 @@ export default function ({ posts, title }: Props) {
 							&:hover {
 								box-shadow: 0 0 5px #ff9a9a;
 							}
+
+							@media (prefers-color-scheme: dark) {
+								box-shadow: 0 0 3px #222222;
+								background-color: #202020;
+							}
+
+							@media (prefers-color-scheme: dark) {
+								&:hover {
+									box-shadow: 0 0 3px #216135;
+								}
+							}
 						`}
 					>
 						<img
