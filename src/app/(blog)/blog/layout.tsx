@@ -24,6 +24,7 @@ export default function ({ children }: Props) {
 				font-family: "Noto Sans JP", sans-serif;
 				color: white;
 				background-color: #eeeeee;
+				min-height: 100%;
 
 				* {
 					font-family: "Noto Sans JP", sans-serif;
