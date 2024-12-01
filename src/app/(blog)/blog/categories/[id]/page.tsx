@@ -15,12 +15,10 @@ interface Props {
 }
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
-	const posts = (await getListAllContents<Blog>("blogs")).filter((post) => {
-		return post.category !== undefined;
-	});
+	const categories = await getListAllContents<Category>("categories");
 
-	return posts.map((post) => ({
-		id: post.id
+	return categories.map((category) => ({
+		id: category.id
 	}));
 }
 
