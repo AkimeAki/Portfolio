@@ -1,5 +1,3 @@
-import { getListAllContents } from "@/libs/microcms";
-import { Blog } from "@/types/blog";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -9,19 +7,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 	const staticList = [
 		{
-			url: `/`
+			url: siteUrl
+		},
+		{
+			url: `${siteUrl}/profile`
+		},
+		{
+			url: `${siteUrl}/portfolio`
 		}
 	];
 
-	const blogList = (await getListAllContents<Blog>("blogs"))
-		.map((post) => {
-			return [
-				{
-					url: `${siteUrl}/blog/posts/${post.id}`
-				}
-			];
-		})
-		.flat();
-
-	return [...staticList, ...blogList];
+	return [...staticList];
 }
