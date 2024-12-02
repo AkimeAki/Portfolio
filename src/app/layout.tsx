@@ -25,6 +25,11 @@ export default function ({ children }: Props) {
 									})(window,document,'script','dataLayer','GTM-KGV4LZWH');`
 							}}
 						/>
+						<script
+							async
+							src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6914867149724943"
+							crossOrigin="anonymous"
+						></script>
 					</>
 				)}
 			</head>
