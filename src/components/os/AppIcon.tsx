@@ -35,8 +35,6 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 				}
 
 				if (href !== undefined) {
-					window.open(href, "_blank");
-
 					if (process.env.NODE_ENV === "production") {
 						window.dataLayer.push({ event: "app-click", appId: null, url: href });
 					}
@@ -44,6 +42,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 			}}
 			className={[
 				css`
+					position: relative;
 					display: flex;
 					gap: 3px;
 					flex-direction: column;
@@ -195,6 +194,20 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 			>
 				{children}
 			</span>
+			{href !== undefined && (
+				<a
+					href={href}
+					target="_blank"
+					className={css`
+						position: absolute;
+						top: 0;
+						left: 0%;
+						width: 100%;
+						height: 100%;
+						cursor: default;
+					`}
+				/>
+			)}
 		</div>
 	);
 }
