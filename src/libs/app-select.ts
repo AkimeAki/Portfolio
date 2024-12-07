@@ -96,7 +96,7 @@ export const appList: {
 		title: "🥖おすすめのテト",
 		pageTitle: "🥖おすすめのテト",
 		image: {
-			isPixel: true,
+			isPixel: false,
 			path: "/app/teto.png"
 		},
 		component: Teto,
