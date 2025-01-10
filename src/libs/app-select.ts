@@ -104,7 +104,7 @@ export const appList: {
 		changeHistory: false,
 		size: {
 			width: 426,
-			height: 240 + 50
+			height: 240
 		},
 		viewPinButton: true,
 		defaultPin: true
@@ -121,7 +121,7 @@ export const appList: {
 		changeHistory: false,
 		size: {
 			width: 426,
-			height: 240 + 50
+			height: 240
 		},
 		viewPinButton: true,
 		defaultPin: true

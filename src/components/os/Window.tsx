@@ -30,6 +30,8 @@ interface Props {
 	touchWindow: boolean;
 }
 
+const windowHeaderHeight = 45;
+
 export default function ({
 	title,
 	children,
@@ -85,14 +87,14 @@ export default function ({
 
 			if (size !== undefined) {
 				width = size.width;
-				height = size.height;
+				height = size.height + windowHeaderHeight;
 
 				if (spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
 					width = spSize.width;
 					height = spSize.height;
 				}
 			} else {
-				width = Math.min(window.innerWidth * 0.9, 1300);
+				width = Math.min(window.innerWidth * 0.9, 1000);
 				height = Math.min(window.innerHeight * 0.9 - 70, 700);
 			}
 
@@ -785,9 +787,9 @@ export default function ({
 							document.body.dataset.dragging = "";
 							setPreviousTouch(null);
 						}}
+						style={{ height: windowHeaderHeight + "px" }}
 						className={css`
 							position: relative;
-							height: 45px;
 							background-color: #060303;
 							display: flex;
 							justify-content: space-between;
@@ -1064,7 +1066,7 @@ export default function ({
 
 							@layer base {
 								* {
-									color: #cfcfcf;
+									color: #cbcbcb;
 								}
 							}
 						`}

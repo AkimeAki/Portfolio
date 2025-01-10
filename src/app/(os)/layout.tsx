@@ -25,12 +25,18 @@ export default function ({ children }: Props) {
 				width: 100%;
 				height: 100%;
 
-				* {
-					font-family: "BestTenCRT";
-					font-size: 18px;
-					line-height: 1.6;
-					color: #777777;
-					font-variant-ligatures: none;
+				@layer base {
+					* {
+						font-family: "BestTenCRT";
+						font-size: 18px;
+						line-height: 1.6;
+						color: #777777;
+						font-variant-ligatures: none;
+					}
+
+					rt {
+						text-align: center;
+					}
 				}
 
 				touch-action: none;

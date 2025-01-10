@@ -139,6 +139,14 @@ export default function () {
 					flex-direction: column;
 					align-items: flex-start;
 
+					& > div {
+						display: flex;
+						flex-direction: column;
+						gap: 10px;
+						align-items: flex-start;
+						width: 100%;
+					}
+
 					table {
 						width: 100%;
 
@@ -169,70 +177,74 @@ export default function () {
 				`}
 			>
 				<h3>開発系スキル</h3>
-				<h4>よく使う</h4>
-				<table>
-					<tbody>
-						<tr>
-							<th>言語</th>
-							<td>
-								<div>
-									<ColorLabel bgColor="#3774bd" color="white">
-										TypeScript
-									</ColorLabel>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<h4>苦手</h4>
-				<table>
-					<tbody>
-						<tr>
-							<th>言語</th>
-							<td>
-								<div>
-									<ColorLabel bgColor="white" color="#b0182f">
-										Japanese
-									</ColorLabel>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div>
+					<h4>よく使う</h4>
+					<table>
+						<tbody>
+							<tr>
+								<th>言語</th>
+								<td>
+									<div>
+										<ColorLabel bgColor="#3774bd" color="white">
+											TypeScript
+										</ColorLabel>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h4>苦手</h4>
+					<table>
+						<tbody>
+							<tr>
+								<th>言語</th>
+								<td>
+									<div>
+										<ColorLabel bgColor="white" color="#b0182f">
+											Japanese
+										</ColorLabel>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<h3>映像系スキル</h3>
-				<h4>それなりに分からない</h4>
-				<table>
-					<tbody>
-						<tr>
-							<th>動画編集ソフト</th>
-							<td>
-								<div>
-									<ColorLabel bgColor="#010100" color="white">
-										AviUtl
-									</ColorLabel>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<h4>どちらかというとできない</h4>
-				<table>
-					<tbody>
-						<tr>
-							<th>動画編集ソフト</th>
-							<td>
-								<div>
-									<ColorLabel bgColor="#030056" color="#9593f3">
-										Adobe Premiere Pro
-									</ColorLabel>
-									<ColorLabel bgColor="#030056" color="#9693f3">
-										Adobe After Effect
-									</ColorLabel>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div>
+					<h4>それなりに分からない</h4>
+					<table>
+						<tbody>
+							<tr>
+								<th>動画編集ソフト</th>
+								<td>
+									<div>
+										<ColorLabel bgColor="#010100" color="white">
+											AviUtl
+										</ColorLabel>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h4>どちらかというとできない</h4>
+					<table>
+						<tbody>
+							<tr>
+								<th>動画編集ソフト</th>
+								<td>
+									<div>
+										<ColorLabel bgColor="#030056" color="#9593f3">
+											Adobe Premiere Pro
+										</ColorLabel>
+										<ColorLabel bgColor="#030056" color="#9693f3">
+											Adobe After Effect
+										</ColorLabel>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	);
