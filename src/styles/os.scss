@@ -1,3 +1,7 @@
 body {
 	overscroll-behavior-y: none;
+
+	* {
+		overscroll-behavior-y: none;
+	}
 }
