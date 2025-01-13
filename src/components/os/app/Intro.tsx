@@ -20,10 +20,13 @@ export default () => {
 
 	useEffect(() => {
 		const showText = async () => {
-			for (let i = 0; i < introFullText.length; i++) {
+			const segmenter = new Intl.Segmenter("ja-JP");
+			const introTextList = Array.from(segmenter.segment(introFullText));
+
+			for (let i = 0; i < introTextList.length; i++) {
 				let text = "";
 				for (let j = 0; j <= i; j++) {
-					text += introFullText[j];
+					text += introTextList[j].segment;
 				}
 
 				await new Promise((resolve) => setTimeout(resolve, 100));
