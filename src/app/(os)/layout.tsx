@@ -11,6 +11,7 @@ import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
 import "@/styles/os.scss";
+import PixelWrapper from "@/components/os/PixelWrapper";
 
 export const metadata: Metadata = metaHead({});
 
@@ -79,6 +80,7 @@ export default function ({ children }: Props) {
 					<TwitchBackground />
 					<AkiSignal />
 					<SelectArea />
+					<PixelWrapper />
 					<AppIcons />
 					<div
 						className={css`
