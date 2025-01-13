@@ -91,7 +91,7 @@ export default function ({
 
 				if (spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
 					width = spSize.width;
-					height = spSize.height;
+					height = spSize.height + windowHeaderHeight;
 				}
 			} else {
 				width = Math.min(window.innerWidth * 0.9, 1000);
