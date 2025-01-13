@@ -1,6 +1,6 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { isTouch, osLoading } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -18,6 +18,8 @@ interface Props {
 export default function ({ opacity, top, left, right, bottom, width, height }: Props) {
 	const $osLoading = useStore(osLoading);
 	const [animationDelay, setAnimationDelay] = useState<number>(1200);
+	const $isTouch = useStore(isTouch);
+	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
 
 	useEffect(() => {
 		const random = Math.floor(Math.random() * (1800 - 1200) + 1200);
@@ -58,11 +60,29 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 			onPointerMove={(e) => {
 				const target = e.target as HTMLDivElement;
 
-				if (e.buttons === 1) {
-					target.style.top = target.offsetTop + e.movementY + "px";
-					target.style.left = target.offsetLeft + e.movementX + "px";
-					target.draggable = false;
-					target.setPointerCapture(e.pointerId);
+				if (
+					document.body.dataset.browser !== "firefox" ||
+					(document.body.dataset.browser === "firefox" && !$isTouch)
+				) {
+					if (e.buttons === 1) {
+						target.style.top = target.offsetTop + e.movementY + "px";
+						target.style.left = target.offsetLeft + e.movementX + "px";
+						target.draggable = false;
+						target.setPointerCapture(e.pointerId);
+					}
+				}
+			}}
+			onTouchMove={(e) => {
+				if (document.body.dataset.browser === "firefox" && $isTouch) {
+					const touch = e.touches[0];
+					if (previousTouch !== null) {
+						const target = touch.target as HTMLDivElement;
+						target.style.top = target.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
+						target.style.left = target.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
+						target.draggable = false;
+					}
+
+					setPreviousTouch(touch);
 				}
 			}}
 			onPointerDown={(e) => {
@@ -72,6 +92,7 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 			onPointerUp={(e) => {
 				const target = e.target as HTMLDivElement;
 				target.style.filter = `opacity(${opacity})`;
+				setPreviousTouch(null);
 			}}
 		/>
 	);
