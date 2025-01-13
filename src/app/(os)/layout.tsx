@@ -13,6 +13,7 @@ import { Metadata } from "next";
 import "@/styles/os.scss";
 import PixelWrapper from "@/components/os/background/PixelWrapper";
 import NewVideo from "@/components/os/background/NewVideo";
+import Galaxy from "@/components/os/background/Galaxy";
 
 export const metadata: Metadata = metaHead({});
 
@@ -82,6 +83,7 @@ export default function ({ children }: Props) {
 					<AkiSignal />
 					<SelectArea />
 					<NewVideo />
+					<Galaxy />
 					<PixelWrapper />
 					<AppIcons />
 					<div

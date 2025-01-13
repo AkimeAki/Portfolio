@@ -25,6 +25,7 @@
 		"@types/react": "18",
 		"@types/react-dom": "18",
 		"@types/sanitize-html": "2.13.0",
+		"@types/three": "0.172.0",
 		"jsdom": "25.0.1",
 		"nanostores": "0.11.2",
 		"next": "14.2.6",
@@ -33,6 +34,7 @@
 		"sanitize-html": "2.13.1",
 		"sass": "1.63.6",
 		"shiki": "1.24.0",
+		"three": "0.172.0",
 		"typescript": "5",
 		"vercel": "39.1.1"
 	},
