@@ -1,9 +1,9 @@
 "use client";
 
 import { osLoading } from "@/atom";
-import TaskbarIcon from "@/components/os/TaskbarIcon";
-import TaskbarClock from "@/components/os/TaskbarClock";
-import TaskbarAllAppIcon from "@/components/os/TaskbarAllAppIcon";
+import TaskbarIcon from "@/components/os/taskbar/TaskbarIcon";
+import TaskbarClock from "@/components/os/taskbar/TaskbarClock";
+import TaskbarAllAppIcon from "@/components/os/taskbar/TaskbarAllAppIcon";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import MinimizedApps from "@/components/os/MinimizedApps";

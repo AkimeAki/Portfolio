@@ -2,7 +2,7 @@
 
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef, useState } from "react";
-import TaskbarAppIcon from "@/components/os/TaskbarAppIcon";
+import TaskbarAppIcon from "@/components/os/taskbar/TaskbarAppIcon";
 
 export default function () {
 	const [imagePath, setImagePath] = useState<string>("/emoji/1.png");
@@ -164,6 +164,12 @@ export default function () {
 						iconPath="/icon/misskeyio.png"
 						alt="Misskey.io"
 						text="Blueskyと同じ"
+					/>
+					<TaskbarAppIcon
+						href="https://mixi.social/@Akii"
+						iconPath="/icon/mixi2.png"
+						alt="mixi2"
+						text="mixi2"
 					/>
 					<TaskbarAppIcon
 						href="https://a-k-i.booth.pm/"

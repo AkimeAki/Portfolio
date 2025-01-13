@@ -4,7 +4,7 @@ import CodeBackground from "@/components/os/CodeBackground";
 import ContextMenu from "@/components/ContextMenu";
 import Loading from "@/components/os/Loading";
 import SelectArea from "@/components/os/SelectArea";
-import Taskbar from "@/components/os/Taskbar";
+import Taskbar from "@/components/os/taskbar/Taskbar";
 import Touch from "@/components/Touch";
 import TwitchBackground from "@/components/os/TwitchBackground";
 import { metaHead } from "@/libs/meta";
