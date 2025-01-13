@@ -179,6 +179,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 						margin-bottom: 10px;
 						transition-duration: 200ms;
 						transition-property: color;
+						color: #c9c9c9;
 
 						@media (max-width: 720px) {
 							margin-bottom: 0;
