@@ -9,6 +9,7 @@ import MisskeyIo from "@/components/os/app/MisskeyIo";
 import Bluesky from "@/components/os/app/Bluesky";
 import Terminal from "@/components/os/app/Terminal";
 import Intro from "@/components/os/app/Intro";
+import NewVideo from "@/components/os/app/NewVideo";
 
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
@@ -210,6 +211,28 @@ export const appList: {
 		defaultPosition: {
 			bottom: 80,
 			right: 10
+		},
+		viewPinButton: false,
+		defaultPin: false,
+		touchWindow: true
+	},
+	newVideo: {
+		title: "新しい動画 (1).mp4",
+		pageTitle: "新しい動画 (1).mp4",
+		image: {
+			isPixel: true,
+			path: "/app/aki.png"
+		},
+		component: NewVideo,
+		resize: false,
+		changeHistory: false,
+		size: {
+			width: 320,
+			height: 180
+		},
+		defaultPosition: {
+			top: 40,
+			right: 300
 		},
 		viewPinButton: false,
 		defaultPin: false,

@@ -16,6 +16,12 @@ export default function () {
 		if (!$osLoading) {
 			setTimeout(() => {
 				openWindow("intro", false);
+
+				if (!window.matchMedia("(max-width: 950px)").matches) {
+					setTimeout(() => {
+						openWindow("newVideo", false);
+					}, 200);
+				}
 			}, 1000);
 		}
 	}, [$osLoading]);

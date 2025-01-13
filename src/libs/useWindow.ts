@@ -11,10 +11,12 @@ export default function () {
 	const $minimizeWindowList = useStore(minimizeWindowList);
 
 	const openWindow = (id: string, isChangeHistory: boolean = true) => {
+		const list = openAppSortList.get();
+
 		if (appList[id].changeHistory) {
 			if (isChangeHistory) {
-				const sortResult = sortList(id, $openAppSortList);
-				if (JSON.stringify(sortResult) !== JSON.stringify($openAppSortList)) {
+				const sortResult = sortList(id, list);
+				if (JSON.stringify(sortResult) !== JSON.stringify(list)) {
 					history.pushState({}, "", `/${id}`);
 				}
 			}
@@ -22,7 +24,7 @@ export default function () {
 			document.title = appList[id].pageTitle;
 		}
 
-		openAppSortList.set(sortList(id, $openAppSortList));
+		openAppSortList.set(sortList(id, list));
 	};
 
 	const pinWindow = (id: string) => {
