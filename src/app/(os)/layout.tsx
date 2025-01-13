@@ -1,17 +1,18 @@
-import AkiSignal from "@/components/os/AkiSignal";
+import AkiSignal from "@/components/os/background/AkiSignal";
 import AppIcons from "@/components/os/AppIcons";
-import CodeBackground from "@/components/os/CodeBackground";
+import CodeBackground from "@/components/os/background/CodeBackground";
 import ContextMenu from "@/components/ContextMenu";
 import Loading from "@/components/os/Loading";
-import SelectArea from "@/components/os/SelectArea";
+import SelectArea from "@/components/os/background/SelectArea";
 import Taskbar from "@/components/os/taskbar/Taskbar";
 import Touch from "@/components/Touch";
-import TwitchBackground from "@/components/os/TwitchBackground";
+import TwitchBackground from "@/components/os/background/TwitchBackground";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
 import "@/styles/os.scss";
-import PixelWrapper from "@/components/os/PixelWrapper";
+import PixelWrapper from "@/components/os/background/PixelWrapper";
+import NewVideo from "@/components/os/background/NewVideo";
 
 export const metadata: Metadata = metaHead({});
 
@@ -80,6 +81,7 @@ export default function ({ children }: Props) {
 					<TwitchBackground />
 					<AkiSignal />
 					<SelectArea />
+					<NewVideo />
 					<PixelWrapper />
 					<AppIcons />
 					<div

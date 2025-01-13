@@ -1,4 +1,4 @@
-import AkiSignal from "@/components/os/AkiSignal";
+import AkiSignal from "@/components/os/background/AkiSignal";
 import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
 import Loading from "@/components/os/Loading";

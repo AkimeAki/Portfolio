@@ -1,7 +1,7 @@
 "use client";
 
 import { css } from "@kuma-ui/core";
-import PixelBlock from "@/components/os/PixelBlock";
+import PixelBlock from "@/components/os/background/PixelBlock";
 
 export default function () {
 	return (
