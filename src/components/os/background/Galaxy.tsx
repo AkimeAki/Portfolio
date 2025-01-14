@@ -82,12 +82,17 @@ export default function () {
 
 				// ひよこ惑星
 				const hiyokoPlanet = new Planet(scene);
-				hiyokoPlanet.load("models/hiyoko.glb");
+				hiyokoPlanet.load("models/hiyoko.glb", -20, 20);
+
+				// ピグリン惑星
+				const piglinPlanet = new Planet(scene);
+				piglinPlanet.load("models/piglin.glb", -20, 5);
 
 				const tick = (): void => {
 					renderer.clear();
 
-					hiyokoPlanet.tracking(orbit1, 0.0005);
+					hiyokoPlanet.tracking(orbit1, 0.0005, -3, -2);
+					piglinPlanet.tracking(orbit2, 0.001, 4, -2);
 
 					// カメラ
 					camera.position.copy(new THREE.Vector3(0, 30, 50));

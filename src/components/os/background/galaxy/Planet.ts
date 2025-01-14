@@ -14,10 +14,10 @@ export class Planet {
 		this.mesh = null;
 	}
 
-	tracking(orbit: Orbit, speed: number) {
+	tracking(orbit: Orbit, speed: number, x: number, y: number) {
 		const point = orbit.curve.getPointAt(this.moveTime);
 		if (this.mesh !== null) {
-			this.mesh.position.set(point.x, point.y, point.z);
+			this.mesh.position.set(point.x + x, point.y + y, point.z);
 
 			this.moveTime += speed;
 			if (this.moveTime > 1) {
@@ -26,12 +26,12 @@ export class Planet {
 		}
 	}
 
-	async load(modelPath: string) {
+	async load(modelPath: string, radX: number, radY: number) {
 		const loader = new GLTFLoader();
 		const model = await loader.loadAsync(modelPath);
 		model.scene.scale.set(10, 10, 10);
-		model.scene.rotation.x = THREE.MathUtils.degToRad(-20);
-		model.scene.rotation.z = THREE.MathUtils.degToRad(20);
+		model.scene.rotation.x = THREE.MathUtils.degToRad(radX);
+		model.scene.rotation.z = THREE.MathUtils.degToRad(radY);
 		model.scene.rotation.y = THREE.MathUtils.degToRad(180);
 		model.scene.traverse(function (node) {
 			node.castShadow = true;
