@@ -150,6 +150,42 @@ export default function () {
 					src="/portfolio/devcontainer-local.png"
 				/>
 			</PortfolioArea>
+			<PortfolioArea
+				title={"Kawaii Piglin"}
+				description={
+					<>
+						<p>Minecraft: Java Edition用の3Dリソースパックです。ピグリンがかわいくなります。</p>
+						<p>ピグリンがかわいいね。</p>
+					</>
+				}
+				href="https://a-k-i.booth.pm/items/4469914"
+				buttonTitle={"BOOTHでダウンロードする"}
+			>
+				<img
+					className={css`
+						max-width: 100%;
+					`}
+					src="/portfolio/piglin.jpg"
+				/>
+			</PortfolioArea>
+			<PortfolioArea
+				title={"Kawaii Piglin"}
+				description={
+					<>
+						<p>Minecraft: Java Edition用の3Dリソースパックです。トライデントが紙飛行機になります。</p>
+						<p>飛ばせ</p>
+					</>
+				}
+				href="https://a-k-i.booth.pm/items/4470965"
+				buttonTitle={"BOOTHでダウンロードする"}
+			>
+				<img
+					className={css`
+						max-width: 100%;
+					`}
+					src="/portfolio/trident.jpg"
+				/>
+			</PortfolioArea>
 		</div>
 	);
 }
