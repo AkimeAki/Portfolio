@@ -15,11 +15,11 @@ export default function () {
 				const random = Math.floor(Math.random() * (10000 - 5000) + 5000);
 
 				if (glitchElement.current !== null) {
-					glitchElement.current.style.display = "block";
+					glitchElement.current.style.opacity = "1";
 
 					setTimeout(() => {
 						if (glitchElement.current !== null) {
-							glitchElement.current.style.display = "none";
+							glitchElement.current.style.opacity = "0";
 						}
 					}, 500);
 				}
@@ -122,11 +122,14 @@ export default function () {
 						width: 100%;
 						height: 100%;
 						mix-blend-mode: color-dodge;
+						touch-action: none;
 					`}
 					src="/effect/noise.mp4"
 					autoPlay
 					loop
 					muted
+					preload="no"
+					playsInline
 				/>
 				<video
 					className={css`
@@ -136,12 +139,15 @@ export default function () {
 						width: 100%;
 						height: 100%;
 						mix-blend-mode: exclusion;
+						touch-action: none;
 					`}
 					ref={glitchElement}
 					src="/effect/glitch.mp4"
 					autoPlay
 					loop
 					muted
+					preload="no"
+					playsInline
 				/>
 			</div>
 		</div>
