@@ -71,7 +71,7 @@ export default function () {
 				className={css`
 					position: fixed;
 					bottom: 90px;
-					left: 124px;
+					left: 184px;
 					opacity: 0;
 					user-select: none;
 					pointer-events: none;
@@ -80,7 +80,7 @@ export default function () {
 					z-index: 999999;
 
 					@media (max-width: 720px) {
-						left: calc(50% + 43px);
+						left: calc(50% + 104px);
 						transform: translateX(-50%);
 					}
 

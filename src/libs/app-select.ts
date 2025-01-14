@@ -202,7 +202,7 @@ export const appList: {
 		changeHistory: false,
 		size: {
 			width: 426,
-			height: 240
+			height: 220
 		},
 		spSize: {
 			width: 326,
