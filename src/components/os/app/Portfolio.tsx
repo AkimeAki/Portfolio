@@ -8,10 +8,14 @@ export default function () {
 				padding: 30px;
 				display: flex;
 				flex-direction: column;
-				gap: 80px;
+				gap: 150px;
 				max-width: 1000px;
 				width: 100%;
 				margin: 0 auto;
+
+				@container (max-width: 900px) {
+					gap: 80px;
+				}
 			`}
 		>
 			<PortfolioArea

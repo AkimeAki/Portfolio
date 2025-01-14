@@ -16,7 +16,7 @@ export default function () {
 				display: flex;
 				gap: 50px;
 				flex-direction: column;
-				padding: 20px;
+				padding: 30px;
 				max-width: 1000px;
 				width: 100%;
 				margin: 0 auto;
