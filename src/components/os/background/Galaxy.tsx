@@ -161,10 +161,16 @@ export default function () {
 				}}
 				className={css`
 					position: absolute;
-					bottom: 140px;
+					bottom: 20vh;
 					right: 570px;
 					width: 280px;
 					height: 150px;
+
+					@media (min-width: 1600px) {
+						transform: scale(1.3);
+						bottom: 25vh;
+						right: 700px;
+					}
 
 					@media (max-width: 720px) {
 						bottom: 300px;
