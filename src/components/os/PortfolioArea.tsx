@@ -53,6 +53,10 @@ export default function ({ title, description, children, href, buttonTitle = "ã‚
 				<div
 					className={css`
 						word-break: break-all;
+						p {
+							font-size: 16px;
+						}
+
 						p:not(:last-child) {
 							margin-bottom: 10px;
 						}

@@ -5,10 +5,10 @@ export default function () {
 	return (
 		<div
 			className={css`
-				padding: 20px;
+				padding: 30px;
 				display: flex;
 				flex-direction: column;
-				gap: 30px;
+				gap: 80px;
 				max-width: 1000px;
 				width: 100%;
 				margin: 0 auto;
