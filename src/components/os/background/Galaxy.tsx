@@ -167,7 +167,7 @@ export default function () {
 					height: 150px;
 
 					@media (max-width: 720px) {
-						bottom: 370px;
+						bottom: 300px;
 						right: -80px;
 						filter: opacity(0.8);
 					}
