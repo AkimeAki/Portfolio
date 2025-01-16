@@ -12,7 +12,6 @@ import GlitchWrapper from "@/components/os/GlitchWrapper";
 export default function () {
 	const $osLoading = useStore(osLoading);
 	const canvasElement = useRef<HTMLCanvasElement>(null);
-	const glitchElement = useRef<HTMLVideoElement>(null);
 
 	useEffect(() => {
 		if (!$osLoading) {
@@ -123,26 +122,6 @@ export default function () {
 				// リサイズ
 				onResize();
 			}
-
-			const glitch = () => {
-				const random = Math.floor(Math.random() * (10000 - 5000) + 5000);
-
-				if (glitchElement.current !== null) {
-					glitchElement.current.style.opacity = "1";
-
-					setTimeout(() => {
-						if (glitchElement.current !== null) {
-							glitchElement.current.style.opacity = "0";
-						}
-					}, 500);
-				}
-
-				setTimeout(() => {
-					glitch();
-				}, random);
-			};
-
-			glitch();
 		}
 	}, [$osLoading]);
 
