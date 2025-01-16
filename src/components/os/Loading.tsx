@@ -213,11 +213,11 @@ export default function ({ notFound = false }: Props) {
 	useEffect(() => {
 		const getLoadingData = async () => {
 			const targetUrls = [
-				"/icon/github.png",
-				"/icon/niconico.png",
-				"/icon/twitch.png",
-				"/icon/x.png",
-				"/icon/youtube.png",
+				"/icon/github.webp",
+				"/icon/niconico.webp",
+				"/icon/twitch.webp",
+				"/icon/x.webp",
+				"/icon/youtube.webp",
 				"/aki-signal.png",
 				"/aki.png",
 				"/app/ghost.png",

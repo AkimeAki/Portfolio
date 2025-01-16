@@ -141,7 +141,7 @@ export default function () {
 						`}
 					>
 						<TaskbarAppIcon
-							iconPath="/icon/niconico.png"
+							iconPath="/icon/niconico.webp"
 							alt={"ニコニコ動画"}
 							href="https://www.nicovideo.jp/user/98282698"
 							text="ニコニコ動画"
@@ -149,59 +149,59 @@ export default function () {
 					</span>
 					<TaskbarAppIcon
 						href="https://bsky.app/profile/aki.wtf"
-						iconPath="/icon/bluesky.png"
+						iconPath="/icon/bluesky.webp"
 						alt="Bluesky"
 						text="Bluesky"
 					/>
 					<TaskbarAppIcon
 						href="https://misskey.io/@_aki"
-						iconPath="/icon/misskeyio.png"
+						iconPath="/icon/misskeyio.webp"
 						alt="Misskey.io"
 						text="Misskey.io"
 					/>
 					<TaskbarAppIcon
 						href="https://misskey.io/@aki.wtf@bsky.brid.gy"
-						iconPath="/icon/misskeyio.png"
+						iconPath="/icon/misskeyio.webp"
 						alt="Misskey.io"
 						text="Blueskyと同じ"
 					/>
 					<TaskbarAppIcon
 						href="https://mixi.social/@Akii"
-						iconPath="/icon/mixi2.png"
+						iconPath="/icon/mixi2.webp"
 						alt="mixi2"
 						text="mixi2"
 					/>
 					<TaskbarAppIcon
 						href="https://a-k-i.booth.pm/"
-						iconPath="/icon/booth.png"
+						iconPath="/icon/booth.webp"
 						alt="BOOTH"
 						text="BOOTH"
 					/>
 					<TaskbarAppIcon
 						href="https://suzuri.jp/Aki___"
-						iconPath="/icon/suzuri.png"
+						iconPath="/icon/suzuri.webp"
 						alt="SUZURI"
 						text="SUZURI"
 					/>
 					<TaskbarAppIcon
 						href="https://fiicen.jp/field/Akii"
-						iconPath="/icon/fiicen.png"
+						iconPath="/icon/fiicen.webp"
 						alt="Fiicen"
 						text="Fiicen"
 					/>
 					<TaskbarAppIcon
 						href="https://www.pixiv.net/users/64086928"
-						iconPath="/icon/pixiv.png"
+						iconPath="/icon/pixiv.webp"
 						alt="pixiv"
 						text="pixiv"
 					/>
 					<TaskbarAppIcon
 						href="https://www.hoyolab.com/accountCenter/postList?id=8411789"
-						iconPath="/icon/hoyolab.png"
+						iconPath="/icon/hoyolab.webp"
 						alt="HoYoLab"
 						text="HoYoLab"
 					/>
-					{/* <TaskbarAppIcon href="https://bsky.app/profile/aki.wtf" iconPath="/icon/discord.png" alt="Discord" /> */}
+					{/* <TaskbarAppIcon href="https://bsky.app/profile/aki.wtf" iconPath="/icon/discord.webp" alt="Discord" /> */}
 				</div>
 			</div>
 			<div

@@ -115,7 +115,7 @@ export default function () {
 							order: 1;
 						`}
 					>
-						<TaskbarIcon iconPath="/icon/x.png" alt={"Xのアイコン"} href="https://x.com/Akime_Aki" />
+						<TaskbarIcon iconPath="/icon/x.webp" alt={"Xのアイコン"} href="https://x.com/Akime_Aki" />
 					</span>
 					<span
 						className={css`
@@ -123,7 +123,7 @@ export default function () {
 						`}
 					>
 						<TaskbarIcon
-							iconPath="/icon/youtube.png"
+							iconPath="/icon/youtube.webp"
 							alt={"YouTube"}
 							href="https://www.youtube.com/@AkimeAki"
 						/>
@@ -133,7 +133,7 @@ export default function () {
 							order: 4;
 						`}
 					>
-						<TaskbarIcon iconPath="/icon/twitch.png" alt={"Twitch"} href="https://twitch.tv/Akime_Aki" />
+						<TaskbarIcon iconPath="/icon/twitch.webp" alt={"Twitch"} href="https://twitch.tv/Akime_Aki" />
 					</span>
 					<span
 						className={css`
@@ -145,7 +145,7 @@ export default function () {
 						`}
 					>
 						<TaskbarIcon
-							iconPath="/icon/niconico.png"
+							iconPath="/icon/niconico.webp"
 							alt={"ニコニコ動画"}
 							href="https://www.nicovideo.jp/user/98282698"
 						/>
@@ -155,7 +155,7 @@ export default function () {
 							order: 6;
 						`}
 					>
-						<TaskbarIcon iconPath="/icon/github.png" alt={"GitHub"} href="https://github.com/AkimeAki" />
+						<TaskbarIcon iconPath="/icon/github.webp" alt={"GitHub"} href="https://github.com/AkimeAki" />
 					</span>
 					<span
 						className={css`
