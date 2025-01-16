@@ -7,18 +7,17 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Planet } from "@/components/os/background/galaxy/Planet";
 import { Orbit } from "@/components/os/background/galaxy/Orbit";
+import GlitchWrapper from "@/components/os/GlitchWrapper";
 
 export default function () {
 	const $osLoading = useStore(osLoading);
-	const wrapperElement = useRef<HTMLDivElement>(null);
 	const canvasElement = useRef<HTMLCanvasElement>(null);
 	const glitchElement = useRef<HTMLVideoElement>(null);
 
 	useEffect(() => {
-		if ($osLoading) {
-			if (canvasElement.current !== null && wrapperElement.current !== null) {
+		if (!$osLoading) {
+			if (canvasElement.current !== null) {
 				const canvas = canvasElement.current;
-				const wrapper = wrapperElement.current;
 
 				const renderer = new THREE.WebGLRenderer({
 					canvas,
@@ -108,8 +107,8 @@ export default function () {
 
 				const onResize = (): void => {
 					// サイズを取得
-					const width = wrapper.offsetWidth;
-					const height = wrapper.offsetHeight + 80;
+					const width = 280;
+					const height = 150 + 80;
 
 					// レンダラーのサイズ調整
 					renderer.setPixelRatio(window.devicePixelRatio);
@@ -159,8 +158,7 @@ export default function () {
 				pointer-events: none;
 			`}
 		>
-			<div
-				ref={wrapperElement}
+			<GlitchWrapper
 				style={{
 					animationName: $osLoading ? "" : "galaxy-signal"
 				}}
@@ -254,7 +252,7 @@ export default function () {
 					preload="no"
 					playsInline
 				/>
-			</div>
+			</GlitchWrapper>
 		</div>
 	);
 }

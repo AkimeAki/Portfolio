@@ -3,35 +3,10 @@
 import { osLoading } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import { useEffect, useRef } from "react";
+import GlitchWrapper from "@/components/os/GlitchWrapper";
 
 export default function () {
 	const $osLoading = useStore(osLoading);
-	const glitchElement = useRef<HTMLVideoElement>(null);
-
-	useEffect(() => {
-		if ($osLoading) {
-			const glitch = () => {
-				const random = Math.floor(Math.random() * (10000 - 5000) + 5000);
-
-				if (glitchElement.current !== null) {
-					glitchElement.current.style.opacity = "1";
-
-					setTimeout(() => {
-						if (glitchElement.current !== null) {
-							glitchElement.current.style.opacity = "0";
-						}
-					}, 500);
-				}
-
-				setTimeout(() => {
-					glitch();
-				}, random);
-			};
-
-			glitch();
-		}
-	}, [$osLoading]);
 
 	return (
 		<div
@@ -45,7 +20,7 @@ export default function () {
 				pointer-events: none;
 			`}
 		>
-			<div
+			<GlitchWrapper
 				style={{
 					animationName: $osLoading ? "" : "new-video-signal"
 				}}
@@ -53,8 +28,6 @@ export default function () {
 					position: absolute;
 					top: 40px;
 					right: 300px;
-					width: 100%;
-					height: 100%;
 					width: 320px;
 					height: 180px;
 
@@ -114,42 +87,7 @@ export default function () {
 						border: none;
 					`}
 				/>
-				<video
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						mix-blend-mode: color-dodge;
-						touch-action: none;
-					`}
-					src="/effect/noise.mp4"
-					autoPlay
-					loop
-					muted
-					preload="no"
-					playsInline
-				/>
-				<video
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						mix-blend-mode: exclusion;
-						touch-action: none;
-					`}
-					ref={glitchElement}
-					src="/effect/glitch.mp4"
-					autoPlay
-					loop
-					muted
-					preload="no"
-					playsInline
-				/>
-			</div>
+			</GlitchWrapper>
 		</div>
 	);
 }

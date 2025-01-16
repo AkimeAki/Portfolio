@@ -14,6 +14,7 @@ import "@/styles/os.scss";
 import PixelWrapper from "@/components/os/background/PixelWrapper";
 import NewVideo from "@/components/os/background/NewVideo";
 import Galaxy from "@/components/os/background/Galaxy";
+import NewPicture from "@/components/os/background/NewPicture";
 
 export const metadata: Metadata = metaHead({});
 
@@ -82,6 +83,7 @@ export default function ({ children }: Props) {
 					<TwitchBackground />
 					<AkiSignal />
 					<SelectArea />
+					<NewPicture />
 					<NewVideo />
 					<Galaxy />
 					<PixelWrapper />
