@@ -217,41 +217,6 @@ export default function () {
 						height: 100% !important;
 					`}
 				/>
-				<video
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						mix-blend-mode: color-dodge;
-						touch-action: none;
-					`}
-					src="/effect/noise.mp4"
-					autoPlay
-					loop
-					muted
-					preload="no"
-					playsInline
-				/>
-				<video
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						mix-blend-mode: exclusion;
-						touch-action: none;
-					`}
-					ref={glitchElement}
-					src="/effect/glitch.mp4"
-					autoPlay
-					loop
-					muted
-					preload="no"
-					playsInline
-				/>
 			</GlitchWrapper>
 		</div>
 	);
