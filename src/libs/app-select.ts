@@ -85,7 +85,7 @@ export const appList: {
 		pageTitle: `プロフィール - ${pageTitle}`,
 		image: {
 			isPixel: false,
-			path: "/app/aki.png"
+			path: "/app/aki.webp"
 		},
 		component: Profile,
 		resize: true,
@@ -194,7 +194,7 @@ export const appList: {
 		pageTitle: "自己紹介.txt",
 		image: {
 			isPixel: true,
-			path: "/app/aki.png"
+			path: "/app/aki.webp"
 		},
 		component: Intro,
 		resize: true,

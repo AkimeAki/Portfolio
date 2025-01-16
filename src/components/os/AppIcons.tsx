@@ -50,7 +50,7 @@ export default function () {
 				}
 			`}
 		>
-			<AppIcon id="profile" imgSrc="/app/aki.png">
+			<AppIcon id="profile" imgSrc="/app/aki.webp">
 				プロフィール
 			</AppIcon>
 			<AppIcon id="portfolio" imgSrc="/app/picaxe.png" isPixel>
@@ -62,7 +62,7 @@ export default function () {
 			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/blog.png" isPixel>
 				技術ブログ
 			</AppIcon>
-			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.png">
+			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.webp">
 				アレルギーナビ
 			</AppIcon>
 			<AppIcon href="https://pixel.gives/" imgSrc="/app/dotya.png" isPixel>

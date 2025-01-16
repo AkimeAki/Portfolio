@@ -32,7 +32,7 @@ export default function () {
 					className={css`
 						width: 100%;
 					`}
-					src="/portfolio/allergy-navi.png"
+					src="/portfolio/allergy-navi.webp"
 				/>
 			</PortfolioArea>
 			<PortfolioArea
