@@ -65,7 +65,7 @@ export default function () {
 				className={css`
 					position: absolute;
 					top: 180px;
-					right: 750px;
+					right: 720px;
 					width: 100px;
 					aspect-ratio: 1/1;
 
