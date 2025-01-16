@@ -95,6 +95,20 @@ export default function () {
 						width: 100%;
 						height: 100%;
 						object-fit: none;
+						filter: brightness(110%) blur(2px);
+						transform: scale(1.02);
+					`}
+				/>
+				<img
+					src={imageList[imageNum]}
+					style={{ imageRendering: isPixel ? "pixelated" : undefined }}
+					className={css`
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						object-fit: none;
 					`}
 				/>
 			</GlitchWrapper>
