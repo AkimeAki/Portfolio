@@ -78,6 +78,12 @@ export default function () {
 					animation-timing-function: linear;
 					opacity: 0;
 
+					@media (max-width: 811px) {
+						top: auto;
+						bottom: 440px;
+						right: 180px;
+					}
+
 					@keyframes new-picture-signal {
 						100% {
 							opacity: 1;
