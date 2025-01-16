@@ -131,7 +131,7 @@ export const appList: {
 		pageTitle: "Twitter",
 		image: {
 			isPixel: false,
-			path: "/app/twitter.png"
+			path: "/app/twitter.webp"
 		},
 		component: Twitter,
 		resize: false,
@@ -165,7 +165,7 @@ export const appList: {
 		pageTitle: "Bluesky",
 		image: {
 			isPixel: false,
-			path: "/app/bluesky.png"
+			path: "/app/bluesky.webp"
 		},
 		component: Bluesky,
 		resize: false,

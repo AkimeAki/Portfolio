@@ -78,7 +78,7 @@ export default function () {
 				FAQ
 			</AppIcon>
 			{$isTwitterWidgetValid && (
-				<AppIcon id="twitter" imgSrc="/app/twitter.png">
+				<AppIcon id="twitter" imgSrc="/app/twitter.webp">
 					Twitter
 				</AppIcon>
 			)}
@@ -88,7 +88,7 @@ export default function () {
 			{/* <AppIcon id="misskeyio" imgSrc="/app/misskey.png">
 				Misskey.io
 			</AppIcon> */}
-			{/* <AppIcon id="bluesky" imgSrc="/app/bluesky.png">
+			{/* <AppIcon id="bluesky" imgSrc="/app/bluesky.webp">
 				Bluesky
 			</AppIcon> */}
 		</div>
