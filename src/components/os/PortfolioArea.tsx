@@ -77,8 +77,6 @@ export default function ({
 			</div>
 			<div
 				className={css`
-					max-width: 500px;
-					width: 100%;
 					word-break: break-all;
 					p {
 						font-size: 16px;
