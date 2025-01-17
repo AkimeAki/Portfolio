@@ -1,6 +1,6 @@
 "use client";
 
-import { isTwitterWidgetValid, osLoading } from "@/atom";
+import { osLoading } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
@@ -10,6 +10,8 @@ interface Props {
 	notFound?: boolean;
 }
 
+const perLoad = 3;
+
 export default function ({ notFound = false }: Props) {
 	const $osLoading = useStore(osLoading);
 	const [imageLoading, setImageLoading] = useState<boolean>(true);
@@ -17,7 +19,6 @@ export default function ({ notFound = false }: Props) {
 	const [ready, setReady] = useState(false);
 	const [networkChecked, setNetworkChecked] = useState<boolean>(false);
 	const [loadProgress, setLoadProgress] = useState<number>(0);
-	const [twitterLoading, setTwitterLoading] = useState<boolean>(true);
 	const [errorMessage, setErrorMessage] = useState<string>("");
 	const [userAgent, setUserAgent] = useState<string>("");
 	const [browser, setBrowser] = useState<string>("");
@@ -147,66 +148,8 @@ export default function ({ notFound = false }: Props) {
 		if (ready) {
 			setNetworkChecked(true);
 			setLoadProgress((prev) => {
-				return prev + 100 / 4;
+				return prev + 100 / perLoad;
 			});
-		}
-	}, [ready]);
-
-	useEffect(() => {
-		if (ready) {
-			let timer: null | NodeJS.Timeout = null;
-			let observer: null | MutationObserver = null;
-
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			if ((window as any).twttr !== undefined && (window as any).twttr.widgets !== undefined) {
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				(window as any).twttr.widgets.load();
-			}
-
-			const twitterLoadingWidgetElement = document.querySelector<HTMLDivElement>("#twitter-loading-widget");
-			if (twitterLoadingWidgetElement !== null) {
-				observer = new MutationObserver(() => {
-					const widgetElement =
-						twitterLoadingWidgetElement.querySelector<HTMLDivElement>(".twitter-timeline");
-					if (widgetElement !== null) {
-						if (widgetElement.offsetHeight > 0) {
-							setTimeout(() => {
-								setTwitterLoading(false);
-								setLoadProgress((prev) => {
-									return prev + 100 / 4;
-								});
-
-								if (timer !== null) {
-									clearTimeout(timer);
-								}
-							}, 500);
-
-							if (observer !== null) {
-								observer.disconnect();
-							}
-
-							if (widgetElement.offsetHeight > 2000) {
-								isTwitterWidgetValid.set(true);
-							}
-						}
-					}
-				});
-
-				observer.observe(twitterLoadingWidgetElement, {
-					childList: true, // 子ノードの変化を監視
-					subtree: true // 子孫ノードも監視対象に含める
-				});
-			}
-
-			timer = setTimeout(() => {
-				setTwitterLoading(false);
-				setLoadProgress((prev) => {
-					return prev + 100 / 4;
-				});
-				if (observer !== null) {
-					observer.disconnect();
-				}
-			}, 5000);
 		}
 	}, [ready]);
 
@@ -244,7 +187,7 @@ export default function ({ notFound = false }: Props) {
 			setTimeout(() => {
 				setImageLoading(false);
 				setLoadProgress((prev) => {
-					return prev + 100 / 4;
+					return prev + 100 / perLoad;
 				});
 			}, 500);
 		};
@@ -260,7 +203,7 @@ export default function ({ notFound = false }: Props) {
 				setTimeout(() => {
 					setFontsLoading(false);
 					setLoadProgress((prev) => {
-						return prev + 100 / 4;
+						return prev + 100 / perLoad;
 					});
 				}, 500);
 			});
@@ -268,12 +211,12 @@ export default function ({ notFound = false }: Props) {
 	}, [ready]);
 
 	useEffect(() => {
-		if (!imageLoading && !fontsLoading && !twitterLoading && ready) {
+		if (!imageLoading && !fontsLoading && ready) {
 			setTimeout(() => {
 				osLoading.set(false);
 			}, 3000);
 		}
-	}, [imageLoading, fontsLoading, twitterLoading, ready]);
+	}, [imageLoading, fontsLoading, ready]);
 
 	return (
 		<>
@@ -385,7 +328,7 @@ export default function ({ notFound = false }: Props) {
 								transition-property: filter, opacity;
 								transition-timing-function: ease-out;
 							`,
-							!imageLoading && !fontsLoading && !twitterLoading && ready
+							!imageLoading && !fontsLoading && ready
 								? css`
 										filter: blur(10px);
 										opacity: 0;
@@ -786,9 +729,7 @@ export default function ({ notFound = false }: Props) {
 													? "Fonts Loading"
 													: imageLoading
 														? "Images Loading"
-														: twitterLoading
-															? "Widgets Loading"
-															: "Ready"}
+														: "Ready"}
 										</span>
 										<noscript>
 											<style
@@ -806,36 +747,6 @@ export default function ({ notFound = false }: Props) {
 							</span>
 						</div>
 					</div>
-					{twitterLoading && ready && (
-						<div
-							id="twitter-loading-widget"
-							className={css`
-								width: 300px;
-								height: 100%;
-								opacity: 0;
-								user-select: none;
-								pointer-events: none;
-								overflow: hidden;
-							`}
-						>
-							<a
-								className={[
-									"twitter-timeline",
-									css`
-										text-decoration: none;
-										width: 100%;
-										height: 100%;
-									`
-								].join(" ")}
-								href="https://twitter.com/Akime_Aki?ref_src=twsrc%5Etfw"
-								data-chrome="noheader nofooter"
-								data-theme="dark"
-							>
-								読込中...
-							</a>
-							<script async src="https://platform.twitter.com/widgets.js" />
-						</div>
-					)}
 				</div>
 			) : (
 				<></>
