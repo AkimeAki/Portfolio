@@ -16,6 +16,13 @@ export default function () {
 	const $osLoading = useStore(osLoading);
 	const [imageNum, setImageNum] = useState<number>(0);
 	const [isPixel, setIsPixel] = useState<boolean>(true);
+	const [ready, setReady] = useState<boolean>(false);
+
+	useEffect(() => {
+		if (!$osLoading) {
+			setReady(true);
+		}
+	}, [$osLoading]);
 
 	useEffect(() => {
 		if (/_pixel\.[^.]+$/.test(imageList[imageNum])) {
@@ -41,15 +48,15 @@ export default function () {
 			}, 2000);
 		};
 
-		if (!$osLoading) {
+		if (ready) {
 			setImage();
 		}
-	}, [$osLoading]);
+	}, [ready]);
 
 	return (
 		<GlitchWrapper
 			style={{
-				animationName: $osLoading ? "" : "new-picture-signal"
+				animationName: ready ? "new-picture-signal" : ""
 			}}
 			className={css`
 				position: absolute;
@@ -92,7 +99,7 @@ export default function () {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					object-fit: none;
+					object-fit: cover;
 					filter: brightness(110%) blur(2px);
 					transform: scale(1.02);
 				`}
@@ -106,7 +113,7 @@ export default function () {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					object-fit: none;
+					object-fit: cover;
 				`}
 			/>
 		</GlitchWrapper>

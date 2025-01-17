@@ -24,9 +24,16 @@ const resize = () => {
 export default function () {
 	const $osLoading = useStore(osLoading);
 	const [isPaused, setIsPaused] = useState<boolean>(true);
+	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (!$osLoading) {
+			setReady(true);
+		}
+	}, [$osLoading]);
+
+	useEffect(() => {
+		if (ready) {
 			try {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-expect-error
@@ -53,7 +60,7 @@ export default function () {
 				/* empty */
 			}
 		}
-	}, [$osLoading]);
+	}, [ready]);
 
 	useEffect(() => {
 		window.addEventListener("resize", resize);

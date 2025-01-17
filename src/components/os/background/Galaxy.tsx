@@ -3,7 +3,7 @@
 import { osLoading } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Planet } from "@/components/os/background/galaxy/Planet";
 import { Orbit } from "@/components/os/background/galaxy/Orbit";
@@ -12,9 +12,16 @@ import GlitchWrapper from "@/components/os/GlitchWrapper";
 export default function () {
 	const $osLoading = useStore(osLoading);
 	const canvasElement = useRef<HTMLCanvasElement>(null);
+	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (!$osLoading) {
+			setReady(true);
+		}
+	}, [$osLoading]);
+
+	useEffect(() => {
+		if (ready) {
 			if (canvasElement.current !== null) {
 				const canvas = canvasElement.current;
 
@@ -123,12 +130,12 @@ export default function () {
 				onResize();
 			}
 		}
-	}, [$osLoading]);
+	}, [ready]);
 
 	return (
 		<GlitchWrapper
 			style={{
-				animationName: $osLoading ? "" : "galaxy-signal"
+				animationName: ready ? "galaxy-signal" : ""
 			}}
 			className={css`
 				position: absolute;

@@ -4,14 +4,22 @@ import { osLoading } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import GlitchWrapper from "@/components/os/GlitchWrapper";
+import { useEffect, useState } from "react";
 
 export default function () {
 	const $osLoading = useStore(osLoading);
+	const [ready, setReady] = useState<boolean>(false);
+
+	useEffect(() => {
+		if (!$osLoading) {
+			setReady(true);
+		}
+	}, [$osLoading]);
 
 	return (
 		<GlitchWrapper
 			style={{
-				animationName: $osLoading ? "" : "new-video-signal"
+				animationName: ready ? "new-video-signal" : ""
 			}}
 			className={css`
 				position: absolute;
@@ -50,7 +58,7 @@ export default function () {
 			`}
 		>
 			<iframe
-				src="https://www.youtube.com/embed/?list=UUHV3Taosn76pn9_ip1u7Zkg&loop=1&autoplay=1&mute=1"
+				src="https://www.youtube.com/embed/?list=UUHV3Taosn76pn9_ip1u7Zkg&loop=1&autoplay=1&mute=1&rel=0&controls=0&playsinline=1"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen
 				className={css`
@@ -66,7 +74,7 @@ export default function () {
 				`}
 			/>
 			<iframe
-				src="https://www.youtube.com/embed/?list=UUHV3Taosn76pn9_ip1u7Zkg&loop=1&autoplay=1&mute=1"
+				src="https://www.youtube.com/embed/?list=UUHV3Taosn76pn9_ip1u7Zkg&loop=1&autoplay=1&mute=1&rel=0&controls=0&playsinline=1"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen
 				className={css`

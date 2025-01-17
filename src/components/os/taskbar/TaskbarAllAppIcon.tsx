@@ -201,7 +201,6 @@ export default function () {
 						alt="HoYoLab"
 						text="HoYoLab"
 					/>
-					{/* <TaskbarAppIcon href="https://bsky.app/profile/aki.wtf" iconPath="/icon/discord.webp" alt="Discord" /> */}
 				</div>
 			</div>
 			<div

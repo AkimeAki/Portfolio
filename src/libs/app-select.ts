@@ -4,9 +4,6 @@ import { pageTitle } from "@/libs/meta";
 import Profile from "@/components/os/app/Profile";
 import Teto from "@/components/os/app/Teto";
 import Furina from "@/components/os/app/Furina";
-import Twitter from "@/components/os/app/Twitter";
-import MisskeyIo from "@/components/os/app/MisskeyIo";
-import Bluesky from "@/components/os/app/Bluesky";
 import Terminal from "@/components/os/app/Terminal";
 import Intro from "@/components/os/app/Intro";
 
@@ -125,57 +122,6 @@ export const appList: {
 		},
 		viewPinButton: true,
 		defaultPin: true
-	},
-	twitter: {
-		title: "Twitter",
-		pageTitle: "Twitter",
-		image: {
-			isPixel: false,
-			path: "/app/twitter.webp"
-		},
-		component: Twitter,
-		resize: false,
-		changeHistory: false,
-		size: {
-			width: 350,
-			height: 550
-		},
-		viewPinButton: true,
-		defaultPin: false
-	},
-	misskeyio: {
-		title: "Misskey.io",
-		pageTitle: "Misskey.io",
-		image: {
-			isPixel: false,
-			path: "/app/misskey.png"
-		},
-		component: MisskeyIo,
-		resize: false,
-		changeHistory: false,
-		size: {
-			width: 350,
-			height: 550
-		},
-		viewPinButton: true,
-		defaultPin: false
-	},
-	bluesky: {
-		title: "Bluesky",
-		pageTitle: "Bluesky",
-		image: {
-			isPixel: false,
-			path: "/app/bluesky.webp"
-		},
-		component: Bluesky,
-		resize: false,
-		changeHistory: false,
-		size: {
-			width: 350,
-			height: 550
-		},
-		viewPinButton: true,
-		defaultPin: false
 	},
 	terminal: {
 		title: "ターミナル",

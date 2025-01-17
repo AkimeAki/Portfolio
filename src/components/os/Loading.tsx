@@ -171,12 +171,6 @@ export default function ({ notFound = false }: Props) {
 				"/app/simplev.png",
 				"/app/allergy-navi.webp",
 				"/app/dotya.png",
-				"/app/kagarinosu.png",
-				"/app/twitter.webp",
-				"/app/bluesky.webp",
-				"/app/misskey.png",
-				"/app/furina.png",
-				"/app/teto.png",
 				"/app/terminal.png"
 			];
 			for (let i = 1; i <= 36; i++) {
