@@ -47,77 +47,68 @@ export default function () {
 	}, [$osLoading]);
 
 	return (
-		<div
+		<GlitchWrapper
+			style={{
+				animationName: $osLoading ? "" : "new-picture-signal"
+			}}
 			className={css`
 				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
+				top: 180px;
+				right: 720px;
+				width: 100px;
+				aspect-ratio: 1/1;
+
 				user-select: none;
 				pointer-events: none;
+
+				filter: brightness(80%);
+
+				animation-duration: 70ms;
+				animation-fill-mode: forwards;
+				animation-delay: 1600ms;
+				animation-iteration-count: 5;
+				animation-timing-function: linear;
+				opacity: 0;
+
+				@media (max-width: 811px) {
+					top: auto;
+					bottom: 440px;
+					right: 180px;
+				}
+
+				@keyframes new-picture-signal {
+					100% {
+						opacity: 1;
+					}
+				}
 			`}
 		>
-			<GlitchWrapper
-				style={{
-					animationName: $osLoading ? "" : "new-picture-signal"
-				}}
+			<img
+				src={imageList[imageNum]}
+				style={{ imageRendering: isPixel ? "pixelated" : undefined }}
 				className={css`
 					position: absolute;
-					top: 180px;
-					right: 720px;
-					width: 100px;
-					aspect-ratio: 1/1;
-
-					filter: brightness(80%);
-
-					animation-duration: 70ms;
-					animation-fill-mode: forwards;
-					animation-delay: 1600ms;
-					animation-iteration-count: 5;
-					animation-timing-function: linear;
-					opacity: 0;
-
-					@media (max-width: 811px) {
-						top: auto;
-						bottom: 440px;
-						right: 180px;
-					}
-
-					@keyframes new-picture-signal {
-						100% {
-							opacity: 1;
-						}
-					}
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					object-fit: none;
+					filter: brightness(110%) blur(2px);
+					transform: scale(1.02);
 				`}
-			>
-				<img
-					src={imageList[imageNum]}
-					style={{ imageRendering: isPixel ? "pixelated" : undefined }}
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						object-fit: none;
-						filter: brightness(110%) blur(2px);
-						transform: scale(1.02);
-					`}
-				/>
-				<img
-					src={imageList[imageNum]}
-					style={{ imageRendering: isPixel ? "pixelated" : undefined }}
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						object-fit: none;
-					`}
-				/>
-			</GlitchWrapper>
-		</div>
+			/>
+			<img
+				src={imageList[imageNum]}
+				style={{ imageRendering: isPixel ? "pixelated" : undefined }}
+				className={css`
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					object-fit: none;
+				`}
+			/>
+		</GlitchWrapper>
 	);
 }

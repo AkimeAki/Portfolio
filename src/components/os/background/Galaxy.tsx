@@ -126,77 +126,68 @@ export default function () {
 	}, [$osLoading]);
 
 	return (
-		<div
+		<GlitchWrapper
+			style={{
+				animationName: $osLoading ? "" : "galaxy-signal"
+			}}
 			className={css`
 				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
+				bottom: 20vh;
+				right: 570px;
+				width: 280px;
+				height: 150px;
+
 				user-select: none;
 				pointer-events: none;
+
+				@media (min-width: 1600px) {
+					transform: scale(1.3);
+					bottom: 25vh;
+					right: 700px;
+				}
+
+				@media (max-width: 720px) {
+					bottom: 300px;
+					right: -80px;
+					filter: opacity(0.8);
+				}
+
+				animation-duration: 70ms;
+				animation-fill-mode: forwards;
+				animation-delay: 1700ms;
+				animation-iteration-count: 5;
+				animation-timing-function: linear;
+				opacity: 0;
+
+				@keyframes galaxy-signal {
+					100% {
+						opacity: 1;
+					}
+				}
 			`}
 		>
-			<GlitchWrapper
-				style={{
-					animationName: $osLoading ? "" : "galaxy-signal"
-				}}
+			<div
 				className={css`
 					position: absolute;
-					bottom: 20vh;
-					right: 570px;
-					width: 280px;
-					height: 150px;
-
-					@media (min-width: 1600px) {
-						transform: scale(1.3);
-						bottom: 25vh;
-						right: 700px;
-					}
-
-					@media (max-width: 720px) {
-						bottom: 300px;
-						right: -80px;
-						filter: opacity(0.8);
-					}
-
-					animation-duration: 70ms;
-					animation-fill-mode: forwards;
-					animation-delay: 1700ms;
-					animation-iteration-count: 5;
-					animation-timing-function: linear;
-					opacity: 0;
-
-					@keyframes galaxy-signal {
-						100% {
-							opacity: 1;
-						}
-					}
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: black;
+					filter: brightness(110%) blur(2px);
+					transform: scale(1.02);
 				`}
-			>
-				<div
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						background-color: black;
-						filter: brightness(110%) blur(2px);
-						transform: scale(1.02);
-					`}
-				/>
-				<canvas
-					ref={canvasElement}
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100% !important;
-						height: 100% !important;
-					`}
-				/>
-			</GlitchWrapper>
-		</div>
+			/>
+			<canvas
+				ref={canvasElement}
+				className={css`
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100% !important;
+					height: 100% !important;
+				`}
+			/>
+		</GlitchWrapper>
 	);
 }

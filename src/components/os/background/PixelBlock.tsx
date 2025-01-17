@@ -44,7 +44,6 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 				background-color: #ad2b46;
 				border: 2px solid #75182c;
 				user-select: none;
-				pointer-events: auto;
 				animation-duration: 70ms;
 				animation-fill-mode: forwards;
 				animation-iteration-count: 5;

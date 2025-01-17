@@ -12,179 +12,95 @@ export default function () {
 				max-width: 1000px;
 				width: 100%;
 				margin: 0 auto;
-
-				@container (max-width: 900px) {
-					gap: 80px;
-				}
 			`}
 		>
 			<PortfolioArea
 				title={"アレルギーナビ（制作中）"}
-				description={
-					<>
-						<p>アレルギーの方向けのアレルゲン情報サイトです。</p>
-						<p>みんなでアレルギー情報を持ち寄りましょう。飲食店のみんな、アレルギー対応忘れないでね。</p>
-					</>
-				}
+				iconSrc="/portfolio/allergy-navi.png"
 				href="https://allergy-navi.com/"
 			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src="/portfolio/allergy-navi.png"
-				/>
+				<p>アレルギーの方向けのアレルゲン情報サイトです。</p>
+				<p>みんなでアレルギー情報を持ち寄りましょう。飲食店のみんな、アレルギー対応忘れないでね。</p>
 			</PortfolioArea>
-			<PortfolioArea
-				title={"どっとや"}
-				description={
-					<>
-						<p>ドット絵の素材配布サイトです。</p>
-						<p>ドット屋さんってことです。無料ですけど。</p>
-					</>
-				}
-				href="https://pixel.gives/"
-			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src="/portfolio/dotya.png"
-				/>
+			<PortfolioArea title={"どっとや"} iconSrc="/portfolio/dotya.png" href="https://pixel.gives/">
+				<p>ドット絵の素材配布サイトです。</p>
+				<p>ドット屋さんってことです。無料ですけど。</p>
 			</PortfolioArea>
-			<PortfolioArea
-				title={"SimpleV"}
-				description={
-					<>
-						<p>
-							配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
-						</p>
-						<p>これであなたもVTuberのVくらいにはなれましたね。</p>
-					</>
-				}
-				href="https://simple-v.aki.wtf/"
-			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src="/portfolio/simplev.png"
-				/>
+			<PortfolioArea title={"SimpleV"} href="https://simple-v.aki.wtf/">
+				<p>
+					配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
+				</p>
+				<p>これであなたもVTuberのVくらいにはなれましたね。</p>
 			</PortfolioArea>
 			<PortfolioArea
 				title={"カーソルを追従する四角いの"}
-				description={
-					<>
-						<p>マウスの後ろから四角いのが付いてくるChrome拡張機能です。重いので入れないほうが良いです。</p>
-						<p>
-							よほど自分のPCにスペックがあって、Googleのサーバーと張り合える自信があっても入れないほうが良いです。
-						</p>
-					</>
-				}
+				iconSrc="/portfolio/rectangle-follows-cursor.png"
 				href="https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src="/portfolio/rectangle-follows-cursor.png"
-				/>
+				<p>マウスの後ろから四角いのが付いてくるChrome拡張機能です。重いので入れないほうが良いです。</p>
+				<p>
+					よほど自分のPCにスペックがあって、Googleのサーバーと張り合える自信があっても入れないほうが良いです。
+				</p>
 			</PortfolioArea>
 			<PortfolioArea
 				title={"拡張子を変更して画像を保存"}
-				description={
-					<>
-						<p>画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。</p>
-						<p>便利です。</p>
-					</>
-				}
+				iconSrc="/portfolio/change-format.png"
 				href="https://chromewebstore.google.com/detail/kinldkcfdohpgpedpglhcfjenoaklhkk"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src="/portfolio/change-format.png"
-				/>
+				<p>画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。</p>
+				<p>便利です。</p>
 			</PortfolioArea>
 			<PortfolioArea
 				title={"Google Apps Script製ページ用印刷"}
-				description={
-					<>
-						<p>
-							Google Apps
-							Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。ニッチな層を指してます。
-						</p>
-						<p>君だよ君、会社でGAS製サイトを作って印刷して皆に配る必要がある君だよ。</p>
-					</>
-				}
+				iconSrc="/portfolio/gas-print.png"
 				href="https://chromewebstore.google.com/detail/gacknebdjgldkfjibmbkkdbkihomoiaj"
 				buttonTitle={"Chrome ウェブストアで見る"}
 			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src="/portfolio/gas-print.png"
-				/>
+				<p>
+					Google Apps
+					Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。ニッチな層を指してます。
+				</p>
+				<p>君だよ君、会社でGAS製サイトを作って印刷して皆に配る必要がある君だよ。</p>
 			</PortfolioArea>
 			<PortfolioArea
 				title={"DevContainer Install Local Extensions"}
-				description={
-					<>
-						<p>Dev Containerを使った時にローカルの拡張機能全部使いてぇよって人におすすめの拡張機能です。</p>
-						<p>
-							開発コンテナにローカルにインストールされている拡張機能をインストールする設定「dev.containers.defaultExtensionsIfInstalledLocally」に自動的にローカルにインストールされている全ての拡張機能を設定します。この機能、、、デフォで良くないか？
-						</p>
-					</>
-				}
+				iconSrc="/portfolio/devcontainer-local.png"
 				href="https://marketplace.visualstudio.com/items?itemName=AkimeAki.devcontainer-install-local-extensions"
 				buttonTitle={"Visual Studio Marketplaceで見る"}
 			>
-				<img
-					className={css`
-						width: 100%;
-					`}
-					src="/portfolio/devcontainer-local.png"
-				/>
+				<p>Dev Containerを使った時にローカルの拡張機能全部使いてぇよって人におすすめの拡張機能です。</p>
+				<p>
+					開発コンテナにローカルにインストールされている拡張機能をインストールする設定「dev.containers.defaultExtensionsIfInstalledLocally」に自動的にローカルにインストールされている全ての拡張機能を設定します。この機能、、、デフォで良くないか？
+				</p>
 			</PortfolioArea>
 			<PortfolioArea
 				title={"Kawaii Piglin"}
-				description={
-					<>
-						<p>Minecraft: Java Edition用の3Dリソースパックです。ピグリンがかわいくなります。</p>
-						<p>ピグリンがかわいいね。</p>
-					</>
-				}
+				iconSrc="/portfolio/piglin.jpg"
 				href="https://a-k-i.booth.pm/items/4469914"
 				buttonTitle={"BOOTHでダウンロードする"}
 			>
-				<img
-					className={css`
-						max-width: 100%;
-					`}
-					src="/portfolio/piglin.jpg"
-				/>
+				<p>Minecraft: Java Edition用の3Dリソースパックです。ピグリンがかわいくなります。</p>
+				<p>ピグリンがかわいいね。</p>
 			</PortfolioArea>
 			<PortfolioArea
-				title={"Kawaii Piglin"}
-				description={
-					<>
-						<p>Minecraft: Java Edition用の3Dリソースパックです。トライデントが紙飛行機になります。</p>
-						<p>飛ばせ</p>
-					</>
-				}
+				title={"Paper Airplane Trident"}
+				iconSrc="/portfolio/trident.jpg"
 				href="https://a-k-i.booth.pm/items/4470965"
 				buttonTitle={"BOOTHでダウンロードする"}
 			>
-				<img
-					className={css`
-						max-width: 100%;
-					`}
-					src="/portfolio/trident.jpg"
-				/>
+				<p>Minecraft: Java Edition用の3Dリソースパックです。トライデントが紙飛行機になります。</p>
+				<p>飛ばせ</p>
+			</PortfolioArea>
+			<PortfolioArea
+				title={"Thread Keeper"}
+				href="https://discord.com/oauth2/authorize?client_id=1302954112668798996&permissions=17179869184&integration_type=0&scope=bot"
+				buttonTitle={"Discordサーバーに導入する"}
+				iconSrc="/portfolio/threadkeeper.webp"
+			>
+				<p>Discordサーバーのスレッドを常にアクティブにし続けるBotです。</p>
+				<p>君のスレッドを守りたい。</p>
 			</PortfolioArea>
 		</div>
 	);
