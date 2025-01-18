@@ -211,7 +211,7 @@ export default function () {
 				height: 100%;
 				overflow-y: scroll;
 
-				@media (max-width: 720px) {
+				@container (max-width: 720px) {
 					padding: 12px;
 				}
 			`}
