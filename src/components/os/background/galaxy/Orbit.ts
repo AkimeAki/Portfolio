@@ -15,7 +15,6 @@ export class Orbit {
 		const material = new THREE.LineBasicMaterial({ transparent: true, color: 0xffffff, opacity: 0 });
 		// const material = new THREE.LineBasicMaterial({ color: 0xffffff });
 		this.mesh = new THREE.LineLoop(geometry, material);
-		this.mesh;
 
 		this.scene.add(this.mesh);
 
