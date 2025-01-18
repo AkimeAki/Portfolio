@@ -26,12 +26,26 @@ export class Planet {
 		}
 	}
 
-	async load(modelPath: string, radX: number, radY: number) {
+	rotate(rotatePx: number, directionX: 1 | -1, directionY: 1 | -1, directionZ: 1 | -1) {
+		if (this.mesh !== null) {
+			this.mesh.rotation.x = THREE.MathUtils.degToRad(
+				THREE.MathUtils.radToDeg(this.mesh.rotation.x) + rotatePx * directionX
+			);
+			this.mesh.rotation.y = THREE.MathUtils.degToRad(
+				THREE.MathUtils.radToDeg(this.mesh.rotation.y) + rotatePx * directionY
+			);
+			this.mesh.rotation.z = THREE.MathUtils.degToRad(
+				THREE.MathUtils.radToDeg(this.mesh.rotation.z) + rotatePx * directionZ
+			);
+		}
+	}
+
+	async load(modelPath: string) {
 		const loader = new GLTFLoader();
 		const model = await loader.loadAsync(modelPath);
 		model.scene.scale.set(10, 10, 10);
-		model.scene.rotation.x = THREE.MathUtils.degToRad(radX);
-		model.scene.rotation.z = THREE.MathUtils.degToRad(radY);
+		model.scene.rotation.x = THREE.MathUtils.degToRad(0);
+		model.scene.rotation.z = THREE.MathUtils.degToRad(0);
 		model.scene.rotation.y = THREE.MathUtils.degToRad(180);
 		model.scene.traverse(function (node) {
 			node.castShadow = true;

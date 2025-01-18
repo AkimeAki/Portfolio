@@ -12,8 +12,10 @@ export class Orbit {
 		this.points = new THREE.Path().absarc(0, 0, 2, 0, Math.PI * 2).getPoints(90);
 		this.curve = new THREE.CatmullRomCurve3(this.points.map((p) => new THREE.Vector3(p.x * 5, 0, p.y * 5)));
 		const geometry = new THREE.BufferGeometry().setFromPoints(this.points);
-		const material = new THREE.LineBasicMaterial({ color: 0xffffff });
+		const material = new THREE.LineBasicMaterial({ transparent: true, color: 0xffffff, opacity: 0 });
+		// const material = new THREE.LineBasicMaterial({ color: 0xffffff });
 		this.mesh = new THREE.LineLoop(geometry, material);
+		this.mesh;
 
 		this.scene.add(this.mesh);
 

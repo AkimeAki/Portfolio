@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Planet } from "@/components/os/background/galaxy/Planet";
 import { Orbit } from "@/components/os/background/galaxy/Orbit";
-import GlitchWrapper from "@/components/os/GlitchWrapper";
 import { cx } from "@/libs/merge-kuma";
 
 export default function () {
@@ -28,10 +27,11 @@ export default function () {
 
 				const renderer = new THREE.WebGLRenderer({
 					canvas,
-					// alpha: true, // 透明度を有効化
+					alpha: true, // 透明度を有効化
 					antialias: false // 表面を滑らかにする
 				});
 				renderer.autoClear = false;
+				renderer.setClearColor(0x000000, 0);
 
 				// 影 OFF
 				renderer.shadowMap.enabled = true;
@@ -71,38 +71,40 @@ export default function () {
 				// カメラ
 				const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 				camera.rotation.order = "ZYX"; // なぜか縦を動かすと斜めに傾くのでそれ防止
-				camera.position.z = 10;
-				camera.position.y = 10;
+				camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 				const orbit1 = new Orbit(scene);
 				const orbit2 = new Orbit(scene);
-				const orbit3 = new Orbit(scene);
-				const orbit4 = new Orbit(scene);
-				const orbit5 = new Orbit(scene);
+				// const orbit3 = new Orbit(scene);
+				// const orbit4 = new Orbit(scene);
+				// const orbit5 = new Orbit(scene);
 				orbit1.changePoints(0, 0, 2);
 				orbit2.changePoints(0, 0, 4);
-				orbit3.changePoints(0, 0, 6);
-				orbit4.changePoints(0, 0, 8);
-				orbit5.changePoints(0, 0, 10);
-				orbit5.changeRotation(10, 10, 0);
+				// orbit3.changePoints(0, 0, 6);
+				// orbit4.changePoints(0, 0, 8);
+				// orbit5.changePoints(0, 0, 10);
+				// orbit5.changeRotation(10, 10, 0);
 
 				// ひよこ惑星
 				const hiyokoPlanet = new Planet(scene);
-				hiyokoPlanet.load("models/hiyoko.glb", -20, 20);
+				hiyokoPlanet.load("models/hiyoko.glb");
 
 				// ピグリン惑星
 				const piglinPlanet = new Planet(scene);
-				piglinPlanet.load("models/piglin.glb", -20, 5);
+				// piglinPlanet.load("models/piglin.glb", -20, 5);
+				piglinPlanet.load("models/piglin.glb");
 
 				const tick = (): void => {
 					renderer.clear();
 
 					hiyokoPlanet.tracking(orbit1, 0.0005, -3, -2);
-					piglinPlanet.tracking(orbit2, 0.001, 4, -2);
+					// piglinPlanet.tracking(orbit2, 0.001, 4, -2);
+					hiyokoPlanet.rotate(0.07, 1, -1, -1);
+					piglinPlanet.tracking(orbit2, 0.001, 0, 0);
+					piglinPlanet.rotate(0.1, 1, 1, 1);
 
 					// カメラ
-					camera.position.copy(new THREE.Vector3(0, 30, 50));
-					camera.lookAt(new THREE.Vector3(0, -5, 0));
+					camera.position.copy(new THREE.Vector3((window.innerWidth / 3) * 0.1, 10, 50));
 
 					// カメラを指定
 					renderer.render(scene, camera);
@@ -114,12 +116,11 @@ export default function () {
 
 				const onResize = (): void => {
 					// サイズを取得
-					const width = 280;
-					const height = 150 + 80;
+					const width = window.innerWidth;
+					const height = window.innerHeight;
 
 					// レンダラーのサイズ調整
 					renderer.setPixelRatio(window.devicePixelRatio);
-					// galaxy.renderer.setSize(width / 10, height / 10);
 					renderer.setSize(width, height);
 
 					// カメラのアスペクト比を正す
@@ -129,34 +130,24 @@ export default function () {
 
 				// リサイズ
 				onResize();
+				window.addEventListener("resize", onResize);
 			}
 		}
 	}, [ready]);
 
 	return (
-		<GlitchWrapper
+		<canvas
+			ref={canvasElement}
 			className={cx(
 				css`
 					position: absolute;
-					bottom: 20vh;
-					right: 570px;
-					width: 280px;
-					height: 150px;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
 
 					user-select: none;
 					pointer-events: none;
-
-					@media (min-width: 1600px) {
-						transform: scale(1.3);
-						bottom: 25vh;
-						right: 700px;
-					}
-
-					@media (max-width: 720px) {
-						bottom: 300px;
-						right: -80px;
-						filter: opacity(0.8);
-					}
 
 					animation-duration: 70ms;
 					animation-fill-mode: forwards;
@@ -176,29 +167,6 @@ export default function () {
 						animation-name: galaxy-signal;
 					`
 			)}
-		>
-			<div
-				className={css`
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background-color: black;
-					filter: brightness(110%) blur(2px);
-					transform: scale(1.02);
-				`}
-			/>
-			<canvas
-				ref={canvasElement}
-				className={css`
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100% !important;
-					height: 100% !important;
-				`}
-			/>
-		</GlitchWrapper>
+		/>
 	);
 }
