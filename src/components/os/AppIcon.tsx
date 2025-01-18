@@ -1,6 +1,7 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { osReady } from "@/atom";
+import { cx } from "@/libs/merge-kuma";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
@@ -16,7 +17,7 @@ interface Props {
 
 export default function ({ children, id, imgSrc, href, isPixel = false, onClick }: Props) {
 	const { openWindow, releaseMinimizedWindow } = useWindow();
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 
 	return (
 		<div
@@ -40,7 +41,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 					}
 				}
 			}}
-			className={[
+			className={cx(
 				css`
 					position: relative;
 					display: flex;
@@ -73,23 +74,22 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 						gap: 6px;
 					}
 				`,
-				!$osLoading
-					? css`
-							animation-duration: 70ms;
-							animation-delay: 1200ms;
-							animation-fill-mode: forwards;
-							animation-iteration-count: 1;
-							animation-timing-function: linear;
-							animation-name: viewed-app-icon;
+				$osReady &&
+					css`
+						animation-duration: 70ms;
+						animation-delay: 1200ms;
+						animation-fill-mode: forwards;
+						animation-iteration-count: 1;
+						animation-timing-function: linear;
+						animation-name: viewed-app-icon;
 
-							@keyframes viewed-app-icon {
-								100% {
-									pointer-events: all;
-								}
+						@keyframes viewed-app-icon {
+							100% {
+								pointer-events: all;
 							}
-						`
-					: ""
-			].join(" ")}
+						}
+					`
+			)}
 		>
 			<div
 				className={css`
@@ -195,20 +195,23 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 			>
 				{children}
 			</span>
-			{href !== undefined && (
-				<a
-					href={href}
-					target="_blank"
-					className={css`
-						position: absolute;
-						top: 0;
-						left: 0%;
-						width: 100%;
-						height: 100%;
-						cursor: default;
-					`}
-				/>
-			)}
+			<a
+				href={href ?? `/${id}`}
+				onClick={(e) => {
+					if (href === undefined) {
+						e.preventDefault();
+					}
+				}}
+				target={href !== undefined ? "_blank" : "_self"}
+				className={css`
+					position: absolute;
+					top: 0;
+					left: 0%;
+					width: 100%;
+					height: 100%;
+					cursor: default;
+				`}
+			/>
 		</div>
 	);
 }

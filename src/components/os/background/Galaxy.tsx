@@ -1,6 +1,6 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { osReady } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
@@ -8,17 +8,18 @@ import * as THREE from "three";
 import { Planet } from "@/components/os/background/galaxy/Planet";
 import { Orbit } from "@/components/os/background/galaxy/Orbit";
 import GlitchWrapper from "@/components/os/GlitchWrapper";
+import { cx } from "@/libs/merge-kuma";
 
 export default function () {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 	const canvasElement = useRef<HTMLCanvasElement>(null);
 	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (!$osLoading) {
+		if ($osReady && !ready) {
 			setReady(true);
 		}
-	}, [$osLoading]);
+	}, [$osReady, ready]);
 
 	useEffect(() => {
 		if (ready) {
@@ -134,44 +135,47 @@ export default function () {
 
 	return (
 		<GlitchWrapper
-			style={{
-				animationName: ready ? "galaxy-signal" : ""
-			}}
-			className={css`
-				position: absolute;
-				bottom: 20vh;
-				right: 570px;
-				width: 280px;
-				height: 150px;
+			className={cx(
+				css`
+					position: absolute;
+					bottom: 20vh;
+					right: 570px;
+					width: 280px;
+					height: 150px;
 
-				user-select: none;
-				pointer-events: none;
+					user-select: none;
+					pointer-events: none;
 
-				@media (min-width: 1600px) {
-					transform: scale(1.3);
-					bottom: 25vh;
-					right: 700px;
-				}
-
-				@media (max-width: 720px) {
-					bottom: 300px;
-					right: -80px;
-					filter: opacity(0.8);
-				}
-
-				animation-duration: 70ms;
-				animation-fill-mode: forwards;
-				animation-delay: 1700ms;
-				animation-iteration-count: 5;
-				animation-timing-function: linear;
-				opacity: 0;
-
-				@keyframes galaxy-signal {
-					100% {
-						opacity: 1;
+					@media (min-width: 1600px) {
+						transform: scale(1.3);
+						bottom: 25vh;
+						right: 700px;
 					}
-				}
-			`}
+
+					@media (max-width: 720px) {
+						bottom: 300px;
+						right: -80px;
+						filter: opacity(0.8);
+					}
+
+					animation-duration: 70ms;
+					animation-fill-mode: forwards;
+					animation-delay: 1700ms;
+					animation-iteration-count: 5;
+					animation-timing-function: linear;
+					opacity: 0;
+
+					@keyframes galaxy-signal {
+						100% {
+							opacity: 1;
+						}
+					}
+				`,
+				ready &&
+					css`
+						animation-name: galaxy-signal;
+					`
+			)}
 		>
 			<div
 				className={css`

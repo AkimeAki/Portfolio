@@ -1,20 +1,20 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { osReady } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import GlitchWrapper from "@/components/os/GlitchWrapper";
 import { useEffect, useState } from "react";
 
 export default function () {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (!$osLoading) {
+		if ($osReady && !ready) {
 			setReady(true);
 		}
-	}, [$osLoading]);
+	}, [$osReady]);
 
 	return (
 		<GlitchWrapper

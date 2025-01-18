@@ -178,6 +178,12 @@ export default function () {
 						text="BOOTH"
 					/>
 					<TaskbarAppIcon
+						href="https://steamcommunity.com/id/Aki___/myworkshopfiles/"
+						iconPath="/icon/steam.webp"
+						alt="Steamワークショップ"
+						text="Steam ﾜｰｸｼｮｯﾌﾟ"
+					/>
+					<TaskbarAppIcon
 						href="https://suzuri.jp/Aki___"
 						iconPath="/icon/suzuri.webp"
 						alt="SUZURI"

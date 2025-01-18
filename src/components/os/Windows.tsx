@@ -1,7 +1,7 @@
 "use client";
 
 import Window from "@/components/os/Window";
-import { openAppSortList, osLoading } from "@/atom";
+import { openAppSortList, osReady } from "@/atom";
 import { appList } from "@/libs/app-select";
 import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
@@ -12,10 +12,11 @@ interface Props {
 }
 
 export default function ({ defaultWindow }: Props) {
+	const $osReady = useStore(osReady);
 	const { openWindow } = useWindow();
 	const $openAppSortList = useStore(openAppSortList);
-	const $osLoading = useStore(osLoading);
-	const [loading, setLoading] = useState<boolean>(true);
+	const [mixOpenAppList, setMixOpenAppList] = useState<string[]>(defaultWindow !== undefined ? [defaultWindow] : []);
+	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (defaultWindow !== undefined) {
@@ -44,36 +45,28 @@ export default function ({ defaultWindow }: Props) {
 	}, [$openAppSortList]);
 
 	useEffect(() => {
-		if (!$osLoading) {
+		if ($osReady) {
 			setTimeout(() => {
-				setLoading(false);
-			}, 1200);
+				setReady(true);
+			}, 2500);
 		}
-	}, [$osLoading]);
+	}, [$osReady]);
+
+	useEffect(() => {
+		setMixOpenAppList($openAppSortList);
+	}, [$openAppSortList]);
 
 	return (
 		<>
-			{!loading &&
-				$openAppSortList.toSorted().map((appId) => {
-					const Component = appList[appId].component;
+			{mixOpenAppList.toSorted().map((appId) => {
+				const Component = appList[appId].component;
 
-					return (
-						<Window
-							key={appId}
-							title={appList[appId].title}
-							id={appId}
-							resize={appList[appId].resize}
-							size={appList[appId].size}
-							spSize={appList[appId].spSize}
-							viewPinButton={appList[appId].viewPinButton}
-							defaultPosition={appList[appId].defaultPosition}
-							defaultPin={appList[appId].defaultPin !== undefined ? appList[appId].defaultPin : false}
-							touchWindow={appList[appId].touchWindow !== undefined ? appList[appId].touchWindow : false}
-						>
-							<Component />
-						</Window>
-					);
-				})}
+				return (
+					<Window key={appId} id={appId} appData={appList[appId]} ready={ready}>
+						<Component />
+					</Window>
+				);
+			})}
 		</>
 	);
 }

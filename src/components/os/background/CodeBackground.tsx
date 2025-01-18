@@ -1,6 +1,6 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { osReady } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
@@ -24,12 +24,19 @@ const codeUrls: {
 ];
 
 export default function () {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 	const element = useRef<HTMLDivElement | null>(null);
 	const [code, setCode] = useState<string>("");
+	const [ready, setReady] = useState(false);
 
 	useEffect(() => {
-		if (!$osLoading) {
+		if ($osReady && !ready) {
+			setReady(true);
+		}
+	}, [$osReady]);
+
+	useEffect(() => {
+		if (ready) {
 			const getCode = async () => {
 				if (element.current !== null) {
 					if (element.current.dataset.display !== "true") {
@@ -70,7 +77,7 @@ export default function () {
 			};
 			void getCode();
 		}
-	}, [$osLoading]);
+	}, [ready]);
 
 	useEffect(() => {
 		if (code !== "") {

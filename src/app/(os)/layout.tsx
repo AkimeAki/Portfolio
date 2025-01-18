@@ -34,9 +34,12 @@ export default function ({ children }: Props) {
 					* {
 						font-family: "BestTenCRT";
 						font-size: 18px;
-						line-height: 1.6;
 						color: #777777;
 						font-variant-ligatures: none;
+					}
+
+					p {
+						line-height: 1.6;
 					}
 
 					rt {
@@ -88,19 +91,7 @@ export default function ({ children }: Props) {
 					<Galaxy />
 					<PixelWrapper />
 					<AppIcons />
-					<div
-						className={css`
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							user-select: none;
-							pointer-events: none;
-						`}
-					>
-						{children}
-					</div>
+					{children}
 				</div>
 				<Taskbar />
 			</div>

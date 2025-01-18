@@ -2,52 +2,66 @@
 
 import { css } from "@kuma-ui/core";
 import AppIcon from "@/components/os/AppIcon";
-import { osLoading } from "@/atom";
+import { osReady } from "@/atom";
 import { useStore } from "@nanostores/react";
+import { cx } from "@/libs/merge-kuma";
+import { useEffect, useState } from "react";
 
 export default function () {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
+	const [ready, setReady] = useState<boolean>(false);
+
+	useEffect(() => {
+		if ($osReady && !ready) {
+			setReady(true);
+		}
+	}, [$osReady, ready]);
 
 	return (
 		<div
-			style={{ animationName: $osLoading ? "" : "appicon-signal" }}
-			className={css`
-				position: absolute;
-				top: 0;
-				left: 0;
-				height: calc(100% - 70px);
-				display: flex;
-				flex-direction: column;
-				column-gap: 15px;
-				row-gap: 20px;
-				flex-wrap: wrap;
-				padding: 10px;
-				user-select: none;
-				pointer-events: none;
-				opacity: 0;
+			className={cx(
+				css`
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: calc(100% - 70px);
+					display: flex;
+					flex-direction: column;
+					column-gap: 15px;
+					row-gap: 20px;
+					flex-wrap: wrap;
+					padding: 10px;
+					user-select: none;
+					pointer-events: none;
+					opacity: 0;
 
-				animation-duration: 70ms;
-				animation-delay: 1200ms;
-				animation-fill-mode: forwards;
-				animation-iteration-count: 5;
-				animation-timing-function: linear;
+					animation-duration: 70ms;
+					animation-delay: 1200ms;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 5;
+					animation-timing-function: linear;
 
-				@keyframes appicon-signal {
-					100% {
-						opacity: 1;
+					@keyframes appicon-signal {
+						100% {
+							opacity: 1;
+						}
 					}
-				}
 
-				@media (max-width: 720px) {
-					display: grid;
-					grid-template-columns: 1fr 1fr 1fr 1fr;
-					gap: 0;
-					width: 100%;
-					height: auto;
-					row-gap: 10px;
-					padding: 30px 0;
-				}
-			`}
+					@media (max-width: 720px) {
+						display: grid;
+						grid-template-columns: 1fr 1fr 1fr 1fr;
+						gap: 0;
+						width: 100%;
+						height: auto;
+						row-gap: 10px;
+						padding: 30px 0;
+					}
+				`,
+				ready &&
+					css`
+						animation-name: appicon-signal;
+					`
+			)}
 		>
 			<AppIcon id="profile" imgSrc="/app/aki.webp">
 				プロフィール

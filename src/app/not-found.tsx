@@ -1,7 +1,6 @@
 import AkiSignal from "@/components/os/background/AkiSignal";
 import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
-import Loading from "@/components/os/Loading";
 
 export const metadata: Metadata = {
 	title: "ページが見つかりませんでした"
@@ -10,7 +9,6 @@ export const metadata: Metadata = {
 export default function (): JSX.Element {
 	return (
 		<>
-			<Loading notFound />
 			<div
 				className={css`
 					position: relative;

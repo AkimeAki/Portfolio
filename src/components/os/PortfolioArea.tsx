@@ -6,6 +6,7 @@ interface Props {
 	href?: string;
 	buttonTitle?: string;
 	iconSrc?: string;
+	inCharge?: string;
 }
 
 export default function ({
@@ -13,7 +14,8 @@ export default function ({
 	children,
 	href,
 	buttonTitle = "アクセスする",
-	iconSrc
+	iconSrc,
+	inCharge
 }: React.PropsWithChildren<Props>) {
 	return (
 		<div
@@ -23,6 +25,10 @@ export default function ({
 				flex-direction: column;
 				width: 100%;
 				gap: 20px;
+
+				* {
+					font-family: "BestTenCRT", "ArkPixel12ZHCN", "FusionPixel10KO";
+				}
 			`}
 		>
 			<div
@@ -46,7 +52,7 @@ export default function ({
 						display: flex;
 						flex-direction: column;
 						align-items: flex-start;
-						gap: 10px;
+						gap: 15px;
 					`}
 				>
 					<h3
@@ -63,11 +69,12 @@ export default function ({
 							target="_blank"
 							className={css`
 								display: table;
-								padding: 5px 10px 7px 10px;
+								padding: 7px 10px 10px;
 								color: white;
 								background-color: #f64357;
 								text-decoration: none;
 								font-size: 14px;
+								user-select: none;
 							`}
 						>
 							{buttonTitle}
@@ -87,6 +94,7 @@ export default function ({
 					}
 				`}
 			>
+				{inCharge !== "" && <p>担当：{inCharge}</p>}
 				{children}
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { osReady } from "@/atom";
 import TaskbarIcon from "@/components/os/taskbar/TaskbarIcon";
 import TaskbarClock from "@/components/os/taskbar/TaskbarClock";
 import TaskbarAllAppIcon from "@/components/os/taskbar/TaskbarAllAppIcon";
@@ -9,11 +9,11 @@ import { useStore } from "@nanostores/react";
 import MinimizedApps from "@/components/os/MinimizedApps";
 
 export default function () {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 
 	return (
 		<div
-			style={{ animationName: $osLoading ? "" : "taskbar-signal" }}
+			style={{ animationName: !$osReady ? "" : "taskbar-signal" }}
 			className={css`
 				position: absolute;
 				bottom: 0;
@@ -39,7 +39,7 @@ export default function () {
 			`}
 		>
 			<div
-				style={{ animationName: $osLoading ? "" : "taskbar-view" }}
+				style={{ animationName: !$osReady ? "" : "taskbar-view" }}
 				className={css`
 					position: absolute;
 					top: 0;

@@ -1,12 +1,13 @@
 "use client";
 
-import { isTouch, openAppSortList, osLoading } from "@/atom";
+import { isTouch, openAppSortList, osReady } from "@/atom";
+import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
 
 export default function () {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 	const [animation, setAnimation] = useState<boolean>(true);
 	const signalElement = useRef<HTMLImageElement | null>(null);
 	const $isTouch = useStore(isTouch);
@@ -87,37 +88,49 @@ export default function () {
 				src="/aki-signal.png"
 				ref={signalElement}
 				alt={"でっかい彩季"}
-				style={{ animationName: $osLoading ? "" : animation ? "aki-signal" : "" }}
-				className={css`
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					width: 80vmin;
-					opacity: 0;
-					image-rendering: pixelated;
-					animation-duration: 70ms;
-					animation-fill-mode: forwards;
-					animation-iteration-count: 5;
-					animation-timing-function: linear;
-					filter: brightness(110%) blur(3px);
-				`}
+				className={cx(
+					css`
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						width: 80vmin;
+						opacity: 0;
+						image-rendering: pixelated;
+						animation-duration: 70ms;
+						animation-fill-mode: forwards;
+						animation-iteration-count: 5;
+						animation-timing-function: linear;
+						filter: brightness(110%) blur(3px);
+					`,
+					$osReady &&
+						animation &&
+						css`
+							animation-name: aki-signal;
+						`
+				)}
 			/>
 			<img
 				src="/aki-signal.png"
 				alt={"でっかい彩季"}
-				style={{ animationName: $osLoading ? "" : animation ? "aki-signal" : "" }}
-				className={css`
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					width: 80vmin;
-					opacity: 0;
-					image-rendering: pixelated;
-					animation-duration: 70ms;
-					animation-fill-mode: forwards;
-					animation-iteration-count: 8;
-					animation-timing-function: linear;
-				`}
+				className={cx(
+					css`
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						width: 80vmin;
+						opacity: 0;
+						image-rendering: pixelated;
+						animation-duration: 70ms;
+						animation-fill-mode: forwards;
+						animation-iteration-count: 8;
+						animation-timing-function: linear;
+					`,
+					$osReady &&
+						animation &&
+						css`
+							animation-name: aki-signal;
+						`
+				)}
 			/>
 		</div>
 	);

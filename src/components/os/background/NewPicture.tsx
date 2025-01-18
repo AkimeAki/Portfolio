@@ -1,6 +1,6 @@
 "use client";
 
-import { osLoading } from "@/atom";
+import { osReady } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import GlitchWrapper from "@/components/os/GlitchWrapper";
@@ -13,16 +13,16 @@ const imageList = [
 ];
 
 export default function () {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 	const [imageNum, setImageNum] = useState<number>(0);
 	const [isPixel, setIsPixel] = useState<boolean>(true);
 	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (!$osLoading) {
+		if ($osReady) {
 			setReady(true);
 		}
-	}, [$osLoading]);
+	}, [$osReady]);
 
 	useEffect(() => {
 		if (/_pixel\.[^.]+$/.test(imageList[imageNum])) {

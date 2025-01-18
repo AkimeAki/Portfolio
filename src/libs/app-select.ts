@@ -23,39 +23,41 @@ export const sortList = (id: string, list: string[]) => {
 	return result;
 };
 
-export const appList: {
-	[key: string]: {
-		title: string;
-		pageTitle: string;
-		image: {
-			isPixel: boolean;
-			path: string;
-		};
-		component: () => React.JSX.Element;
-		resize: boolean;
-		changeHistory: boolean;
-		size?: {
-			width: number;
-			height: number;
-		};
-		spSize?: {
-			width: number;
-			height: number;
-		};
-		defaultPosition?: {
-			top?: number;
-			left?: number;
-			right?: number;
-			bottom?: number;
-		};
-		viewPinButton: boolean;
-		defaultPin?: boolean;
-		touchWindow?: boolean;
+export interface AppData {
+	title: string;
+	pageTitle: string;
+	image: {
+		isPixel: boolean;
+		path: string;
 	};
+	component: () => React.JSX.Element;
+	resize: boolean;
+	changeHistory: boolean;
+	size?: {
+		width: number;
+		height: number;
+	};
+	spSize?: {
+		width: number;
+		height: number;
+	};
+	defaultPosition?: {
+		top?: number;
+		left?: number;
+		right?: number;
+		bottom?: number;
+	};
+	viewPinButton: boolean;
+	defaultPin?: boolean;
+	touchWindow?: boolean;
+}
+
+export const appList: {
+	[key: string]: AppData;
 } = {
 	portfolio: {
 		title: "作ったもの",
-		pageTitle: `作ったもの - ${pageTitle}`,
+		pageTitle: `作ったもの・お手伝いなど - ${pageTitle}`,
 		image: {
 			isPixel: true,
 			path: "/app/picaxe.png"
@@ -94,7 +96,7 @@ export const appList: {
 		pageTitle: "🥖おすすめのテト",
 		image: {
 			isPixel: false,
-			path: "/app/teto.png"
+			path: "/app/teto.webp"
 		},
 		component: Teto,
 		resize: false,

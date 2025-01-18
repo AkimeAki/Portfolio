@@ -1,6 +1,7 @@
 "use client";
 
-import { isTouch, osLoading } from "@/atom";
+import { isTouch, osReady } from "@/atom";
+import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -16,15 +17,24 @@ interface Props {
 }
 
 export default function ({ opacity, top, left, right, bottom, width, height }: Props) {
-	const $osLoading = useStore(osLoading);
+	const $osReady = useStore(osReady);
 	const [animationDelay, setAnimationDelay] = useState<number>(1200);
 	const $isTouch = useStore(isTouch);
 	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
+	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		const random = Math.floor(Math.random() * (1800 - 1200) + 1200);
-		setAnimationDelay(random);
-	}, [$osLoading]);
+		if ($osReady && !ready) {
+			setReady(true);
+		}
+	}, [$osReady]);
+
+	useEffect(() => {
+		if (ready) {
+			const random = Math.floor(Math.random() * (1800 - 1200) + 1200);
+			setAnimationDelay(random);
+		}
+	}, [ready]);
 
 	return (
 		<div
@@ -36,26 +46,31 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 				bottom,
 				width,
 				height,
-				animationName: $osLoading ? "" : "pixelblock-signal",
 				animationDelay: `${animationDelay}ms`
 			}}
-			className={css`
-				position: absolute;
-				background-color: #ad2b46;
-				border: 2px solid #75182c;
-				user-select: none;
-				animation-duration: 70ms;
-				animation-fill-mode: forwards;
-				animation-iteration-count: 5;
-				animation-timing-function: linear;
-				opacity: 0;
+			className={cx(
+				css`
+					position: absolute;
+					background-color: #ad2b46;
+					border: 2px solid #75182c;
+					user-select: none;
+					animation-duration: 70ms;
+					animation-fill-mode: forwards;
+					animation-iteration-count: 5;
+					animation-timing-function: linear;
+					opacity: 0;
 
-				@keyframes pixelblock-signal {
-					100% {
-						opacity: 1;
+					@keyframes pixelblock-signal {
+						100% {
+							opacity: 1;
+						}
 					}
-				}
-			`}
+				`,
+				ready &&
+					css`
+						animation-name: pixelblock-signal;
+					`
+			)}
 			onPointerMove={(e) => {
 				const target = e.target as HTMLDivElement;
 

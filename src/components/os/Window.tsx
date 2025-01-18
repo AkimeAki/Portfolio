@@ -1,49 +1,23 @@
 "use client";
 
 import { pinWindowList, isTouch, openAppSortList, minimizeWindowList } from "@/atom";
+import { AppData } from "@/libs/app-select";
+import { cx } from "@/libs/merge-kuma";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
-	title: string;
 	children: React.ReactNode;
 	id: string;
-	resize: boolean;
-	size?: {
-		width: number;
-		height: number;
-	};
-	spSize?: {
-		width: number;
-		height: number;
-	};
-	viewPinButton: boolean;
-	defaultPin: boolean;
-	defaultPosition?: {
-		top?: number;
-		left?: number;
-		right?: number;
-		bottom?: number;
-	};
-	touchWindow: boolean;
+	appData: AppData;
+	ready?: boolean;
 }
 
 const windowHeaderHeight = 45;
 
-export default function ({
-	title,
-	children,
-	id,
-	resize,
-	size,
-	spSize,
-	viewPinButton,
-	defaultPin,
-	defaultPosition,
-	touchWindow
-}: Props) {
+export default function ({ children, id, appData, ready = true }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
 	const windowElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
@@ -55,7 +29,7 @@ export default function ({
 	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
 
 	useEffect(() => {
-		if ($isTouch && !touchWindow) {
+		if ($isTouch && !appData.touchWindow) {
 			setIsMaxWindow(true);
 		} else {
 			setIsMaxWindow(false);
@@ -75,23 +49,23 @@ export default function ({
 	}, [$openAppSortList, $pinWindowList]);
 
 	useEffect(() => {
-		if (defaultPin) {
+		if (appData.defaultPin) {
 			pinWindow(id);
 		}
-	}, [defaultPin]);
+	}, []);
 
 	useEffect(() => {
 		if (windowElement.current !== null) {
 			let width = 0;
 			let height = 0;
 
-			if (size !== undefined) {
-				width = size.width;
-				height = size.height + windowHeaderHeight;
+			if (appData.size !== undefined) {
+				width = appData.size.width;
+				height = appData.size.height + windowHeaderHeight;
 
-				if (spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
-					width = spSize.width;
-					height = spSize.height + windowHeaderHeight;
+				if (appData.spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
+					width = appData.spSize.width;
+					height = appData.spSize.height + windowHeaderHeight;
 				}
 			} else {
 				width = Math.min(window.innerWidth * 0.9, 1000);
@@ -103,11 +77,11 @@ export default function ({
 			let bottom: number | undefined = undefined;
 			let right: number | undefined = undefined;
 
-			if (defaultPosition !== undefined) {
-				top = defaultPosition.top;
-				left = defaultPosition.left;
-				bottom = defaultPosition.bottom;
-				right = defaultPosition.right;
+			if (appData.defaultPosition !== undefined) {
+				top = appData.defaultPosition.top;
+				left = appData.defaultPosition.left;
+				bottom = appData.defaultPosition.bottom;
+				right = appData.defaultPosition.right;
 			} else {
 				const appWindows = document.querySelectorAll<HTMLDivElement>("[data-app-id]");
 				appWindows.forEach((appWindow) => {
@@ -141,14 +115,13 @@ export default function ({
 				openWindow(id);
 			}}
 			data-app-id={id}
-			style={{ zIndex: windowList.indexOf(id), display: $openAppSortList.includes(id) ? "block" : "none" }}
-			className={[
+			style={{ zIndex: windowList.indexOf(id) }}
+			className={cx(
 				css`
 					position: absolute;
 					top: 0;
 					left: 0;
 					transform: scale(0);
-					animation-name: view-window;
 					animation-iteration-count: 1;
 					animation-duration: 200ms;
 					animation-fill-mode: forwards;
@@ -167,80 +140,92 @@ export default function ({
 						}
 					}
 				`,
-				isMaxWindow
-					? css`
-							top: 0 !important;
-							left: 0 !important;
-							width: 100% !important;
-							height: calc(100% - 70px) !important;
-						`
-					: "",
-				$minimizeWindowList.includes(id)
-					? css`
-							translate: 0 100vh;
-							scale: 0;
+				ready &&
+					css`
+						animation-name: view-window;
+					`,
+				isMaxWindow &&
+					css`
+						top: 0 !important;
+						left: 0 !important;
+						width: 100% !important;
+						height: calc(100% - 70px) !important;
+					`,
+				$minimizeWindowList.includes(id) &&
+					css`
+						translate: 0 100vh;
+						scale: 0;
+						user-select: none !important;
+						pointer-events: none !important;
+						opacity: 0;
+
+						* {
 							user-select: none !important;
 							pointer-events: none !important;
-							opacity: 0;
-
-							* {
-								user-select: none !important;
-								pointer-events: none !important;
-							}
-						`
-					: ""
-			].join(" ")}
+						}
+					`
+			)}
 		>
 			<div
-				className={css`
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-
-					border: 5px solid #75182c;
-
-					animation-name: hide-window-frame;
-					animation-duration: 0s;
-					animation-fill-mode: forwards;
-					animation-iteration-count: 1;
-					animation-delay: 400ms;
-
-					@keyframes hide-window-frame {
-						100% {
-							display: none;
-						}
-					}
-				`}
-			>
-				<div
-					className={css`
+				className={cx(
+					css`
 						position: absolute;
 						top: 0;
 						left: 0;
 						width: 100%;
 						height: 100%;
 
-						background-color: #ad2b46;
-						opacity: 0;
+						border: 5px solid #75182c;
 
-						animation-name: view-window-frame-bg;
-						animation-duration: 150ms;
+						animation-duration: 0s;
 						animation-fill-mode: forwards;
-						animation-iteration-count: 8;
-						animation-delay: 50ms;
+						animation-iteration-count: 1;
+						animation-delay: 400ms;
 
-						@keyframes view-window-frame-bg {
+						@keyframes hide-window-frame {
 							100% {
-								opacity: 0.1;
+								display: none;
 							}
 						}
-					`}
+					`,
+					ready &&
+						css`
+							animation-name: hide-window-frame;
+						`
+				)}
+			>
+				<div
+					className={cx(
+						css`
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+
+							background-color: #ad2b46;
+							opacity: 0;
+
+							animation-duration: 150ms;
+							animation-fill-mode: forwards;
+							animation-iteration-count: 8;
+							animation-delay: 50ms;
+
+							@keyframes view-window-frame-bg {
+								100% {
+									opacity: 0.1;
+								}
+							}
+						`,
+						ready &&
+							css`
+								animation-name: view-window-frame-bg;
+							`
+					)}
 				/>
 			</div>
 			<div
-				className={[
+				className={cx(
 					css`
 						position: absolute;
 						top: 0;
@@ -254,12 +239,11 @@ export default function ({
 							pointer-events: all;
 						}
 					`,
-					isMaxWindow || !resize
-						? css`
-								display: none;
-							`
-						: ""
-				].join(" ")}
+					(isMaxWindow || !appData.resize) &&
+						css`
+							display: none;
+						`
+				)}
 			>
 				<div
 					onPointerMove={(e) => {
@@ -692,33 +676,38 @@ export default function ({
 				/>
 			</div>
 			<div
-				className={css`
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					border-left: 4px solid #060303;
-					border-right: 4px solid #060303;
-					border-bottom: 4px solid #060303;
-					user-select: text;
-					pointer-events: auto;
-					box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
-					overflow: hidden;
+				className={cx(
+					css`
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-left: 4px solid #060303;
+						border-right: 4px solid #060303;
+						border-bottom: 4px solid #060303;
+						user-select: text;
+						pointer-events: auto;
+						box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.36);
+						overflow: hidden;
 
-					animation-name: view-window-content;
-					animation-duration: 0s;
-					animation-fill-mode: forwards;
-					animation-iteration-count: 1;
-					animation-delay: 250ms;
-					opacity: 0;
+						animation-duration: 0s;
+						animation-fill-mode: forwards;
+						animation-iteration-count: 1;
+						animation-delay: 250ms;
+						opacity: 0;
 
-					@keyframes view-window-content {
-						100% {
-							opacity: 1;
+						@keyframes view-window-content {
+							100% {
+								opacity: 1;
+							}
 						}
-					}
-				`}
+					`,
+					ready &&
+						css`
+							animation-name: view-window-content;
+						`
+				)}
 			>
 				<div
 					className={css`
@@ -804,6 +793,21 @@ export default function ({
 								margin-left: 10px;
 							`}
 						>
+							<img
+								src={appData.image.path}
+								className={cx(
+									css`
+										height: 100%;
+										aspect-ratio: 1/1;
+										padding: 7px;
+									`,
+									appData.image.isPixel &&
+										css`
+											image-rendering: pixelated;
+										`
+								)}
+								alt={appData.title}
+							/>
 							<h2
 								className={css`
 									line-height: 1;
@@ -817,7 +821,7 @@ export default function ({
 									}
 								`}
 							>
-								{title}
+								{appData.title}
 							</h2>
 						</div>
 						<div
@@ -861,7 +865,7 @@ export default function ({
 									}
 								`}
 							/>
-							{viewPinButton && (
+							{appData.viewPinButton && (
 								<div
 									onClick={() => {
 										if (!$isTouch) {
@@ -951,7 +955,7 @@ export default function ({
 									)}
 								</div>
 							)}
-							{resize && (
+							{appData.resize && (
 								<div
 									onClick={() => {
 										if (!$isTouch) {

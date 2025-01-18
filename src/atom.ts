@@ -14,7 +14,7 @@ export const openAppSortList = atom<string[]>([]);
 export const pinWindowList = atom<string[]>([]);
 export const minimizeWindowList = atom<string[]>([]);
 
-export const osLoading = atom<boolean>(true);
+export const osReady = atom<boolean>(false);
 
 export const isTouch = atom<boolean>(isTouchDevice());
 
