@@ -14,9 +14,7 @@ export default function () {
 
 	useEffect(() => {
 		if ($osReady) {
-			setTimeout(() => {
-				openWindow("intro", false);
-			}, 1000);
+			openWindow("intro", false);
 		}
 	}, [$osReady]);
 

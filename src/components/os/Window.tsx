@@ -224,6 +224,9 @@ export default function ({ children, id, appData, ready = true }: Props) {
 					)}
 				/>
 			</div>
+			{/*
+				MARK: ↓↓↓ リサイズエリア ↓↓↓
+			*/}
 			<div
 				className={cx(
 					css`
@@ -282,18 +285,20 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
 						setPreviousTouch(null);
 					}}
 					className={css`
-						top: 0;
+						top: -5px;
 						left: 0;
 						width: 100%;
-						height: 10px;
+						height: 15px;
 						cursor: ns-resize;
 					`}
 				/>
@@ -331,18 +336,20 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
 						setPreviousTouch(null);
 					}}
 					className={css`
-						bottom: 0;
+						bottom: -5px;
 						left: 0;
 						width: 100%;
-						height: 10px;
+						height: 15px;
 						cursor: ns-resize;
 					`}
 				/>
@@ -384,8 +391,10 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
@@ -393,8 +402,8 @@ export default function ({ children, id, appData, ready = true }: Props) {
 					}}
 					className={css`
 						top: 0;
-						left: 0;
-						width: 10px;
+						left: -5px;
+						width: 15px;
 						height: 100%;
 						cursor: ew-resize;
 					`}
@@ -433,8 +442,10 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
@@ -442,8 +453,8 @@ export default function ({ children, id, appData, ready = true }: Props) {
 					}}
 					className={css`
 						top: 0;
-						right: 0;
-						width: 10px;
+						right: -5px;
+						width: 15px;
 						height: 100%;
 						cursor: ew-resize;
 					`}
@@ -489,18 +500,20 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
 						setPreviousTouch(null);
 					}}
 					className={css`
-						top: 0;
-						right: 0;
-						width: 15px;
-						height: 15px;
+						top: -5px;
+						right: -5px;
+						width: 20px;
+						height: 20px;
 						cursor: nesw-resize;
 					`}
 				/>
@@ -549,18 +562,20 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
 						setPreviousTouch(null);
 					}}
 					className={css`
-						top: 0;
-						left: 0;
-						width: 15px;
-						height: 15px;
+						top: -5px;
+						left: -5px;
+						width: 20px;
+						height: 20px;
 						cursor: nwse-resize;
 					`}
 				/>
@@ -602,18 +617,20 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
 						setPreviousTouch(null);
 					}}
 					className={css`
-						bottom: 0;
-						right: 0;
-						width: 15px;
-						height: 15px;
+						bottom: -5px;
+						right: -5px;
+						width: 20px;
+						height: 20px;
 						cursor: nwse-resize;
 					`}
 				/>
@@ -659,22 +676,27 @@ export default function ({ children, id, appData, ready = true }: Props) {
 							setPreviousTouch(touch);
 						}
 					}}
-					onPointerDown={() => {
+					onPointerDown={(e) => {
 						document.body.dataset.dragging = "true";
+						const target = e.target as HTMLDivElement;
+						target.setPointerCapture(e.pointerId);
 					}}
 					onPointerUp={() => {
 						document.body.dataset.dragging = "";
 						setPreviousTouch(null);
 					}}
 					className={css`
-						bottom: 0;
-						left: 0;
-						width: 15px;
-						height: 15px;
+						bottom: -5px;
+						left: -5px;
+						width: 20px;
+						height: 20px;
 						cursor: nesw-resize;
 					`}
 				/>
 			</div>
+			{/*
+				MARK: ↑↑↑ リサイズエリア ↑↑↑
+			*/}
 			<div
 				className={cx(
 					css`
