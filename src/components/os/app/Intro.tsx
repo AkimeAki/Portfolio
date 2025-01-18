@@ -60,6 +60,7 @@ export default () => {
 				word-break: break-all;
 				padding: 5px 10px;
 				cursor: text;
+				line-height: 1.6;
 
 				* {
 					background-color: #f0eef4;
@@ -67,6 +68,7 @@ export default () => {
 					white-space: pre-wrap;
 					word-break: break-all;
 					cursor: text;
+					line-height: 1.6;
 				}
 
 				@media (max-width: 720px) {
