@@ -48,7 +48,7 @@ export default function ({ defaultWindow }: Props) {
 		if ($osReady) {
 			setTimeout(() => {
 				setReady(true);
-			}, 2500);
+			}, 2200);
 		}
 	}, [$osReady]);
 
