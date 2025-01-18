@@ -24,7 +24,7 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		if ($osReady && !ready) {
+		if ($osReady) {
 			setReady(true);
 		}
 	}, [$osReady]);

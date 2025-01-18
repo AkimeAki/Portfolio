@@ -236,11 +236,14 @@ export default function () {
 									border-radius: 99px;
 									background-color: #060303;
 									cursor: pointer;
-									padding: 1px 15px 5px;
 									white-space: nowrap;
 									font-size: 15px;
 									padding: 6px 15px 10px;
 									user-select: none;
+
+									body[data-browser="android"] & {
+										padding: 6px 15px 8px;
+									}
 								`,
 								selectCategory === category &&
 									css`

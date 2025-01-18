@@ -5,6 +5,7 @@ import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import GlitchWrapper from "@/components/os/GlitchWrapper";
 import { useEffect, useState } from "react";
+import { cx } from "@/libs/merge-kuma";
 
 const imageList = [
 	"https://r2.aki.wtf/paint/teto1.png",
@@ -92,7 +93,6 @@ export default function () {
 		>
 			<img
 				src={imageList[imageNum]}
-				style={{ imageRendering: isPixel ? "pixelated" : undefined }}
 				className={css`
 					position: absolute;
 					top: 0;
@@ -106,15 +106,20 @@ export default function () {
 			/>
 			<img
 				src={imageList[imageNum]}
-				style={{ imageRendering: isPixel ? "pixelated" : undefined }}
-				className={css`
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-				`}
+				className={cx(
+					css`
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					`,
+					isPixel &&
+						css`
+							image-rendering: pixelated;
+						`
+				)}
 			/>
 		</GlitchWrapper>
 	);

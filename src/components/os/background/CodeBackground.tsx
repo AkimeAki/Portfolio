@@ -30,7 +30,7 @@ export default function () {
 	const [ready, setReady] = useState(false);
 
 	useEffect(() => {
-		if ($osReady && !ready) {
+		if ($osReady) {
 			setReady(true);
 		}
 	}, [$osReady]);

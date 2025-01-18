@@ -16,10 +16,10 @@ export default function () {
 	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		if ($osReady && !ready) {
+		if ($osReady) {
 			setReady(true);
 		}
-	}, [$osReady, ready]);
+	}, [$osReady]);
 
 	useEffect(() => {
 		if (ready) {

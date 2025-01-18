@@ -1,10 +1,10 @@
 "use client";
 
 import { css } from "@kuma-ui/core";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function () {
-	const [nowTime, setNowTime] = useState<string>("");
+	const element = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const id = setInterval(() => {
@@ -17,7 +17,9 @@ export default function () {
 			const nowMin = ("00" + nowDate.getMinutes()).slice(-2);
 			const nowSec = ("00" + nowDate.getSeconds()).slice(-2);
 
-			setNowTime(`${nowYear}/${nowMonth}/${nowDay}\n${nowHour}:${nowMin}:${nowSec}`);
+			if (element.current !== null) {
+				element.current.innerHTML = `${nowYear}/${nowMonth}/${nowDay}\n${nowHour}:${nowMin}:${nowSec}`;
+			}
 		}, 1000);
 
 		return () => {
@@ -27,6 +29,7 @@ export default function () {
 
 	return (
 		<div
+			ref={element}
 			className={css`
 				position: absolute;
 				top: 50%;
@@ -44,8 +47,6 @@ export default function () {
 					display: none;
 				}
 			`}
-		>
-			{nowTime}
-		</div>
+		/>
 	);
 }
