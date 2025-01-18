@@ -241,7 +241,7 @@ export default function () {
 									padding: 6px 15px 10px;
 									user-select: none;
 
-									body[data-browser="android"] & {
+									body[data-os="android"] & {
 										padding: 6px 15px 8px;
 									}
 								`,
