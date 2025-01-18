@@ -210,6 +210,10 @@ export default function () {
 				padding: 30px;
 				height: 100%;
 				overflow-y: scroll;
+
+				@media (max-width: 720px) {
+					padding: 12px;
+				}
 			`}
 		>
 			<div
