@@ -20,7 +20,7 @@ const portfolioList: ({
 	content: ReactNode;
 } & Portfolio)[] = [
 	{
-		title: "アレルギーナビ（制作中）",
+		title: "アレルギーナビ",
 		iconSrc: "/portfolio/allergy-navi.png",
 		href: "https://allergy-navi.com/",
 		inCharge: "開発",
@@ -59,6 +59,31 @@ const portfolioList: ({
 					配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
 				</p>
 				<p>これであなたもVTuberのVくらいにはなれましたね。</p>
+			</>
+		)
+	},
+	{
+		title: "ポートフォリオ（このサイト）",
+		href: "https://aki.wtf/",
+		inCharge: "開発",
+		category: "ウェブサイト",
+		tools: ["typescript", "nextjs", "kumaui", "pages"],
+		content: (
+			<>
+				<p>このサイトです。ポートフォリオ作ってみました。</p>
+				<p>めっちゃ凝ったよ！楽しんで！</p>
+			</>
+		)
+	},
+	{
+		title: "某バンドのHP",
+		inCharge: "開発",
+		category: "ウェブサイト",
+		tools: ["javascript", "php", "wordpress", "starrental"],
+		content: (
+			<>
+				<p>とあるバンドのHPをWordPressでテーマ作成から作りました。</p>
+				<p>（諸事情でURLの公開はしたくないので、個別でお問い合わせしてくれれば教えます。）</p>
 			</>
 		)
 	},
@@ -282,6 +307,30 @@ const portfolioList: ({
 				></iframe>
 			</>
 		)
+	},
+	{
+		title: "知人のHP Astro化",
+		inCharge: "開発",
+		category: "ウェブサイト",
+		tools: ["typescript", "astro"],
+		content: (
+			<>
+				<p>知人のHPをAstro化したり、若干処理回収したりしました。</p>
+				<p>（URLは秘密です♡）</p>
+			</>
+		)
+	},
+	{
+		title: "某MinecraftサーバーのHP",
+		inCharge: "開発",
+		category: "ウェブサイト",
+		tools: ["javascript", "php", "wordpress", "starrental"],
+		content: (
+			<>
+				<p>とあるMinecraftサーバーのHPをWordPressテーマから作成してました。</p>
+				<p>サーバーは無くなりました...😿</p>
+			</>
+		)
 	}
 ];
 
@@ -340,11 +389,11 @@ export default function () {
 									cursor: pointer;
 									white-space: nowrap;
 									font-size: 15px;
-									padding: 6px 15px 10px;
+									padding: 6px 13px 10px 15px;
 									user-select: none;
 
 									body[data-os="android"] & {
-										padding: 6px 15px 8px;
+										padding: 6px 13px 8px 15px;
 									}
 								`,
 								selectCategory === category &&

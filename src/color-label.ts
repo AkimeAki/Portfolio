@@ -103,5 +103,25 @@ export const toolColorList = {
 		name: "Cloudflare Workers",
 		bgColor: "#e6822d",
 		color: "#000000"
+	},
+	pages: {
+		name: "Cloudflare Pages",
+		bgColor: "#e6822d",
+		color: "#000000"
+	},
+	wordpress: {
+		name: "WordPress",
+		bgColor: "#3f57e4",
+		color: "#ffffff"
+	},
+	php: {
+		name: "PHP",
+		bgColor: "#7377aa",
+		color: "#000000"
+	},
+	starrental: {
+		name: "スターレンタルサーバー",
+		bgColor: "#309be5",
+		color: "#ffffff"
 	}
 };

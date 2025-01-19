@@ -13,7 +13,7 @@ export default function ({ children, bgColor, color }: Props) {
 			className={css`
 				display: inline-block;
 				font-size: 16px;
-				padding: 2px 10px 6px;
+				padding: 2px 8px 6px 10px;
 				border-radius: 6px;
 				line-height: 1;
 
