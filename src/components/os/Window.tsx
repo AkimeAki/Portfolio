@@ -98,13 +98,13 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						const otherWindowTop = Number(appWindow.style.top.replace("px", ""));
 						const otherWindowLeft = Number(appWindow.style.left.replace("px", ""));
 						if (Math.abs(otherWindowTop - (top ?? 0)) < 30) {
-							top += 30;
+							top += 32;
 							i = 0;
 							continue;
 						}
 
 						if (Math.abs(otherWindowLeft - (left ?? 0)) < 30) {
-							left += +30;
+							left += 32;
 							i = 0;
 							continue;
 						}
