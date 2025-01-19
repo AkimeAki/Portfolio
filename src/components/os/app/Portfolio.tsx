@@ -228,6 +228,32 @@ const portfolioList: ({
 		)
 	},
 	{
+		title: "孅いウェブエンジニアブログ",
+		iconSrc: "/portfolio/kayowai.png",
+		href: "https://blog.aki.wtf/",
+		inCharge: "開発",
+		category: "ウェブサイト",
+		tools: ["typescript", "astro", "microcms", "workers"],
+		content: (
+			<>
+				<p>自分の技術ブログです。</p>
+				<p>技術に関する備忘録書いてます。</p>
+			</>
+		)
+	},
+	{
+		title: "Aki Coffee☕ - AIが背景画像を生成するブログ",
+		href: "https://coffee.aki.wtf/",
+		inCharge: "開発",
+		category: "ウェブサイト",
+		tools: ["typescript", "astro", "microcms", "workers", "chatgpt"],
+		content: (
+			<>
+				<p>たまに更新する自分の日常ブログです。背景画像が面白いです。</p>
+			</>
+		)
+	},
+	{
 		title: "YouTubeチャンネルのエンディング",
 		iconSrc: "/portfolio/youtube.png",
 		href: "https://www.youtube.com/watch?v=AzuWH9S4jRk",
@@ -237,7 +263,7 @@ const portfolioList: ({
 		tools: ["premierepro", "aftereffects"],
 		content: (
 			<>
-				<p>YouTubeをイメージしてエンディングを作成しました。</p>
+				<p>YouTubeをイメージして、自分のチャンネルで使うエンディングを作成しました。</p>
 				<iframe
 					src="https://www.youtube.com/embed/AzuWH9S4jRk?start=23"
 					title="YouTube video player"
@@ -264,7 +290,7 @@ const portfolioList: ({
 		tools: ["premierepro", "aftereffects"],
 		content: (
 			<>
-				<p>ニコニコ動画をイメージしてエンディングを作成しました。</p>
+				<p>ニコニコ動画をイメージして、自分のチャンネルで使うエンディングを作成しました。</p>
 				<iframe
 					src="https://www.youtube.com/embed/9-wqOhxLYyw?start=21"
 					title="YouTube video player"
@@ -291,7 +317,7 @@ const portfolioList: ({
 		tools: ["aviutl"],
 		content: (
 			<>
-				<p>YouTubeをイメージしてエンディングを作成しました。2</p>
+				<p>YouTubeをイメージして、自分のチャンネルで使うエンディングを作成しました。2</p>
 				<iframe
 					src="https://www.youtube.com/embed/bxIPbOl98f0?start=0"
 					title="YouTube video player"

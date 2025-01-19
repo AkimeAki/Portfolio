@@ -123,5 +123,10 @@ export const toolColorList = {
 		name: "スターレンタルサーバー",
 		bgColor: "#309be5",
 		color: "#ffffff"
+	},
+	chatgpt: {
+		name: "ChatGPT",
+		bgColor: "#000000",
+		color: "#ffffff"
 	}
 };
