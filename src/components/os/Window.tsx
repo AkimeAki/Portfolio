@@ -17,7 +17,7 @@ interface Props {
 
 const windowHeaderHeight = 45;
 
-export default function ({ children, id, appData, ready = true }: Props) {
+export default function ({ children, id, appData, ready: _ready = true }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
 	const windowElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
@@ -27,6 +27,13 @@ export default function ({ children, id, appData, ready = true }: Props) {
 	const [windowList, setWindowList] = useState<string[]>([]);
 	const $minimizeWindowList = useStore(minimizeWindowList);
 	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
+	const [ready, setReady] = useState<boolean>(false);
+
+	useEffect(() => {
+		if (_ready) {
+			setReady(true);
+		}
+	}, [_ready]);
 
 	useEffect(() => {
 		if ($isTouch && !appData.touchWindow) {
@@ -55,7 +62,7 @@ export default function ({ children, id, appData, ready = true }: Props) {
 	}, []);
 
 	useEffect(() => {
-		if (windowElement.current !== null) {
+		if (windowElement.current !== null && ready) {
 			let width = 0;
 			let height = 0;
 
@@ -84,19 +91,31 @@ export default function ({ children, id, appData, ready = true }: Props) {
 				right = appData.defaultPosition.right;
 			} else {
 				const appWindows = document.querySelectorAll<HTMLDivElement>("[data-app-id]");
-				appWindows.forEach((appWindow) => {
+				let i = 0;
+				for (;;) {
+					const appWindow = Array.from(appWindows)[i];
 					if (appWindow.dataset.appId !== id) {
 						const otherWindowTop = Number(appWindow.style.top.replace("px", ""));
 						const otherWindowLeft = Number(appWindow.style.left.replace("px", ""));
 						if (Math.abs(otherWindowTop - (top ?? 0)) < 30) {
-							top = otherWindowTop + 30;
+							top += 30;
+							i = 0;
+							continue;
 						}
 
 						if (Math.abs(otherWindowLeft - (left ?? 0)) < 30) {
-							left = otherWindowLeft + 30;
+							left += +30;
+							i = 0;
+							continue;
 						}
 					}
-				});
+
+					i++;
+
+					if (i >= Array.from(appWindows).length) {
+						break;
+					}
+				}
 			}
 
 			windowElement.current.style.width = `${width}px`;
@@ -106,7 +125,7 @@ export default function ({ children, id, appData, ready = true }: Props) {
 			windowElement.current.style.bottom = bottom === undefined ? "auto" : `${bottom}px`;
 			windowElement.current.style.right = right === undefined ? "auto" : `${right}px`;
 		}
-	}, []);
+	}, [ready]);
 
 	return (
 		<div
