@@ -485,7 +485,7 @@ export default function () {
 								return selectCategory === "全て" || selectCategory === portfolio.category;
 							}).length
 						}
-						/{portfolioList.length}件
+						/{portfolioList.length} 件
 					</p>
 				</div>
 			</div>
