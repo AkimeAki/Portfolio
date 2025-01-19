@@ -1,7 +1,6 @@
 "use client";
 
 import { isTouch } from "@/atom";
-import ColorLabel from "@/components/ColorLabel";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
@@ -77,7 +76,7 @@ export default function () {
 						</ruby>
 					</p>
 					<p>
-						適当にウェブ開発などやってるゆっくり実況者。もしくは、適当にゆっくり実況をやっているウェブエンジニア。
+						適当にウェブ開発などやってるゆっくり実況者。もしくは、適当にゆっくり実況をやっているウェブエンジニアです。
 					</p>
 					<p>
 						<span
@@ -117,6 +116,43 @@ export default function () {
 						</span>
 						が推しです。ここを見た人は推すことをおすすめします。
 					</p>
+					<p>
+						実績や作ったものは 「
+						<span
+							className={css`
+								color: #53f71f;
+								cursor: pointer;
+							`}
+							onClick={() => {
+								openWindow("portfolio");
+							}}
+						>
+							作ったもの
+						</span>
+						」を見てください。依頼などあれば
+						<a
+							href="https://x.com/Akime_Aki"
+							target="_blank"
+							className={css`
+								color: #43c1e7;
+								cursor: pointer;
+								margin: 0 5px;
+								white-space: nowrap;
+							`}
+						>
+							XのDM
+						</a>
+						やメール（
+						<span
+							className={css`
+								font-family: "游ゴシック体", YuGothic, "游ゴシック", "メイリオ", Meiryo,
+									"Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+							`}
+						>
+							contact@mail.aki.wtf
+						</span>
+						）でご連絡ください🙇
+					</p>
 				</div>
 				<div
 					className={css`
@@ -132,119 +168,10 @@ export default function () {
 					/>
 				</div>
 			</div>
-			<div
-				className={css`
-					display: flex;
-					gap: 30px;
-					flex-direction: column;
-					align-items: flex-start;
-
-					& > div {
-						display: flex;
-						flex-direction: column;
-						gap: 10px;
-						align-items: flex-start;
-						width: 100%;
-					}
-
-					table {
-						width: 100%;
-
-						th,
-						td {
-							border-bottom: 2px solid #d0e79f;
-							padding: 10px 0;
-						}
-
-						th {
-							text-align: left;
-							width: 170px;
-
-							@container (max-width: 900px) {
-								width: 120px;
-								font-size: 12px;
-							}
-						}
-
-						td {
-							div {
-								display: flex;
-								flex-wrap: wrap;
-								gap: 5px;
-							}
-						}
-					}
-				`}
-			>
-				<h3>開発系スキル</h3>
-				<div>
-					<h4>よく使う</h4>
-					<table>
-						<tbody>
-							<tr>
-								<th>言語</th>
-								<td>
-									<div>
-										<ColorLabel bgColor="#3774bd" color="white">
-											TypeScript
-										</ColorLabel>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<h4>苦手</h4>
-					<table>
-						<tbody>
-							<tr>
-								<th>言語</th>
-								<td>
-									<div>
-										<ColorLabel bgColor="white" color="#b0182f">
-											Japanese
-										</ColorLabel>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<h3>映像系スキル</h3>
-				<div>
-					<h4>それなりに分からない</h4>
-					<table>
-						<tbody>
-							<tr>
-								<th>動画編集ソフト</th>
-								<td>
-									<div>
-										<ColorLabel bgColor="#010100" color="white">
-											AviUtl
-										</ColorLabel>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<h4>どちらかというとできない</h4>
-					<table>
-						<tbody>
-							<tr>
-								<th>動画編集ソフト</th>
-								<td>
-									<div>
-										<ColorLabel bgColor="#030056" color="#9593f3">
-											Adobe Premiere Pro
-										</ColorLabel>
-										<ColorLabel bgColor="#030056" color="#9693f3">
-											Adobe After Effect
-										</ColorLabel>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+			<div>
+				<p>できること</p>
+				<p>・ウェブ制作</p>
+				<p>・動画編集</p>
 			</div>
 		</div>
 	);
