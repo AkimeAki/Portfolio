@@ -69,7 +69,7 @@ export default function () {
 				// scene.add(new THREE.CameraHelper(directionalLight.shadow.camera));
 
 				// カメラ
-				const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+				const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
 				camera.rotation.order = "ZYX"; // なぜか縦を動かすと斜めに傾くのでそれ防止
 				camera.lookAt(new THREE.Vector3(0, 0, 0));
 
@@ -94,7 +94,20 @@ export default function () {
 				// piglinPlanet.load("models/piglin.glb", -20, 5);
 				piglinPlanet.load("models/piglin.glb");
 
+				const maxFPS = 60;
+				let lastUpdateTime = performance.now();
+
 				const tick = (): void => {
+					requestAnimationFrame(tick);
+					const now = performance.now();
+					const deltaTime = now - lastUpdateTime;
+
+					if (deltaTime < 1000 / maxFPS) {
+						return;
+					}
+
+					lastUpdateTime = now - (deltaTime % (1000 / maxFPS));
+
 					renderer.clear();
 
 					hiyokoPlanet.tracking(orbit1, 0.0005, -3, -2);
@@ -108,8 +121,6 @@ export default function () {
 
 					// カメラを指定
 					renderer.render(scene, camera);
-
-					requestAnimationFrame(tick);
 				};
 
 				tick();
@@ -120,7 +131,8 @@ export default function () {
 					const height = window.innerHeight;
 
 					// レンダラーのサイズ調整
-					renderer.setPixelRatio(window.devicePixelRatio);
+					// renderer.setPixelRatio(window.devicePixelRatio);
+					renderer.setPixelRatio(1);
 					renderer.setSize(width, height);
 
 					// カメラのアスペクト比を正す
