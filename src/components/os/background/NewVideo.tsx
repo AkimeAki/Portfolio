@@ -32,10 +32,9 @@ export default function () {
 				pointer-events: none;
 
 				@media (max-width: 720px) {
-					right: auto;
-					left: -150px;
+					right: -70px;
 					top: auto;
-					bottom: 250px;
+					bottom: 280px;
 					filter: brightness(50%) opacity(0.5);
 				}
 
