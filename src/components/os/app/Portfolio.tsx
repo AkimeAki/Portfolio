@@ -315,7 +315,7 @@ const portfolioList: ({
 		tools: ["typescript", "astro"],
 		content: (
 			<>
-				<p>知人のHPをAstro化したり、若干処理回収したりしました。</p>
+				<p>知人のHPをAstro化したり、若干処理を改修したりしました。</p>
 				<p>（URLは秘密です♡）</p>
 			</>
 		)
