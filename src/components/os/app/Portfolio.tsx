@@ -122,7 +122,7 @@ const portfolioList: {
 		iconSrc: "/portfolio/steam.png",
 		href: "https://steamcommunity.com/sharedfiles/filedetails/?id=2910319000",
 		inCharge: "アニメーション",
-		category: "Steam MOD",
+		category: "動画編集",
 		buttonTitle: "Steam ワークショップで見る",
 		content: (
 			<>
@@ -281,6 +281,7 @@ export default function () {
 								iconSrc={portfolio.iconSrc}
 								href={portfolio.href}
 								inCharge={portfolio.inCharge}
+								buttonTitle={portfolio.buttonTitle}
 							>
 								{portfolio.content}
 							</PortfolioArea>
