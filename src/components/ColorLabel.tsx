@@ -17,6 +17,10 @@ export default function ({ children, bgColor, color }: Props) {
 				border-radius: 6px;
 				line-height: 1;
 
+				@media (max-width: 720px) {
+					font-size: 12px;
+				}
+
 				body[data-os="android"] & {
 					padding: 2px 10px 4px;
 				}

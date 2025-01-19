@@ -71,6 +71,10 @@ export default function ({
 								text-decoration: none;
 								font-size: 14px;
 								user-select: none;
+
+								body[data-os="android"] & {
+									padding: 7px 10px 9px;
+								}
 							`}
 						>
 							{buttonTitle}
@@ -81,10 +85,13 @@ export default function ({
 			<div
 				className={css`
 					word-break: break-all;
-					p {
-						font-size: 16px;
-						* {
+
+					@layer base {
+						p {
 							font-size: 16px;
+							* {
+								font-size: 16px;
+							}
 						}
 					}
 
