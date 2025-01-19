@@ -19,10 +19,14 @@ export default function ({ defaultWindow }: Props) {
 	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (defaultWindow !== undefined) {
-			openWindow(defaultWindow);
+		if (ready) {
+			openWindow("intro", false);
+
+			if (defaultWindow !== undefined) {
+				openWindow(defaultWindow);
+			}
 		}
-	}, []);
+	}, [ready]);
 
 	useEffect(() => {
 		const back = () => {
