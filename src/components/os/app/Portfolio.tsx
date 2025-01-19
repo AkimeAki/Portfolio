@@ -4,22 +4,28 @@ import { css } from "@kuma-ui/core";
 import PortfolioArea from "@/components/os/PortfolioArea";
 import { Fragment, ReactNode, useState } from "react";
 import { cx } from "@/libs/merge-kuma";
+import { toolColorList } from "@/color-label";
 
-const portfolioList: {
+export interface Portfolio {
 	title: string;
 	href?: string;
 	buttonTitle?: string;
 	iconSrc?: string;
 	inCharge?: string;
 	category: string;
+	tools?: (keyof typeof toolColorList)[];
+}
+
+const portfolioList: ({
 	content: ReactNode;
-}[] = [
+} & Portfolio)[] = [
 	{
 		title: "アレルギーナビ（制作中）",
 		iconSrc: "/portfolio/allergy-navi.png",
 		href: "https://allergy-navi.com/",
-		inCharge: "全部",
+		inCharge: "ウェブ開発",
 		category: "ウェブサービス",
+		tools: ["typescript", "nextjs", "kumaui", "coackroachdb", "cloudrun", "workers"],
 		content: (
 			<>
 				<p>アレルギーの方向けのアレルゲン情報サイトです。</p>
@@ -31,8 +37,9 @@ const portfolioList: {
 		title: "どっとや",
 		iconSrc: "/portfolio/dotya.png",
 		href: "https://pixel.gives/",
-		inCharge: "ドット絵制作以外",
+		inCharge: "ウェブ開発",
 		category: "ウェブサービス",
+		tools: ["typescript", "astro", "react", "pandacss", "emotion", "microcms"],
 		content: (
 			<>
 				<p>ドット絵の素材配布サイトです。</p>
@@ -43,8 +50,9 @@ const portfolioList: {
 	{
 		title: "SimpleV",
 		href: "https://simple-v.aki.wtf/",
-		inCharge: "全部",
+		inCharge: "ウェブ開発",
 		category: "ウェブサービス",
+		tools: ["typescript", "astro", "react", "emotion"],
 		content: (
 			<>
 				<p>
@@ -58,9 +66,10 @@ const portfolioList: {
 		title: "カーソルを追従する四角いの",
 		iconSrc: "/portfolio/rectangle-follows-cursor.png",
 		href: "https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn",
-		inCharge: "全部",
+		inCharge: "開発",
 		category: "Chrome 拡張機能",
 		buttonTitle: "Chrome ウェブストアで見る",
+		tools: ["typescript", "react", "mui"],
 		content: (
 			<>
 				<p>マウスの後ろから四角いのが付いてくるChrome拡張機能です。重いので入れないほうが良いです。</p>
@@ -74,9 +83,10 @@ const portfolioList: {
 		title: "拡張子を変更して画像を保存",
 		iconSrc: "/portfolio/change-format.png",
 		href: "https://chromewebstore.google.com/detail/kinldkcfdohpgpedpglhcfjenoaklhkk",
-		inCharge: "全部",
+		inCharge: "開発",
 		category: "Chrome 拡張機能",
 		buttonTitle: "Chrome ウェブストアで見る",
+		tools: ["typescript", "react", "mui"],
 		content: (
 			<>
 				<p>画像の拡張子（フォーマット）を変換した上で保存することができるChrome拡張機能です。</p>
@@ -88,9 +98,10 @@ const portfolioList: {
 		title: "Google Apps Script製ページ用印刷",
 		iconSrc: "/portfolio/gas-print.png",
 		href: "https://chromewebstore.google.com/detail/gacknebdjgldkfjibmbkkdbkihomoiaj",
-		inCharge: "全部",
+		inCharge: "開発",
 		category: "Chrome 拡張機能",
 		buttonTitle: "Chrome ウェブストアで見る",
+		tools: ["javascript"],
 		content: (
 			<>
 				<p>
@@ -105,9 +116,10 @@ const portfolioList: {
 		title: "DevContainer Install Local Extensions",
 		iconSrc: "/portfolio/devcontainer-local.png",
 		href: "https://marketplace.visualstudio.com/items?itemName=AkimeAki.devcontainer-install-local-extensions",
-		inCharge: "全部",
+		inCharge: "開発",
 		category: "VSCode 拡張機能",
 		buttonTitle: "Visual Studio Marketplaceで見る",
+		tools: ["typescript"],
 		content: (
 			<>
 				<p>Dev Containerを使った時にローカルの拡張機能全部使いてぇよって人におすすめの拡張機能です。</p>
@@ -124,6 +136,7 @@ const portfolioList: {
 		inCharge: "アニメーション",
 		category: "動画編集",
 		buttonTitle: "Steam ワークショップで見る",
+		tools: ["aviutl"],
 		content: (
 			<>
 				<p>すずはなさんのコア・バトルページを追加するLibrary Of RuinaのMODです。</p>
@@ -135,9 +148,10 @@ const portfolioList: {
 		title: "Kawaii Piglin",
 		iconSrc: "/portfolio/piglin.jpg",
 		href: "https://a-k-i.booth.pm/items/4469914",
-		inCharge: "全部",
+		inCharge: "モデリング",
 		category: "Minecraft リソースパック",
 		buttonTitle: "BOOTHでダウンロードする",
+		tools: ["cubikstudio"],
 		content: (
 			<>
 				<p>Minecraft: Java Edition用の3Dリソースパックです。ピグリンがかわいくなります。</p>
@@ -149,9 +163,10 @@ const portfolioList: {
 		title: "Paper Airplane Trident",
 		iconSrc: "/portfolio/trident.jpg",
 		href: "https://a-k-i.booth.pm/items/4470965",
-		inCharge: "全部",
+		inCharge: "モデリング",
 		category: "Minecraft リソースパック",
 		buttonTitle: "BOOTHでダウンロードする",
+		tools: ["cubikstudio"],
 		content: (
 			<>
 				<p>Minecraft: Java Edition用の3Dリソースパックです。トライデントが紙飛行機になります。</p>
@@ -163,9 +178,10 @@ const portfolioList: {
 		title: "Thread Keeper",
 		iconSrc: "/portfolio/threadkeeper.webp",
 		href: "https://discord.com/oauth2/authorize?client_id=1302954112668798996&permissions=17179869184&integration_type=0&scope=bot",
-		inCharge: "全部",
+		inCharge: "開発",
 		category: "Discord Bot",
 		buttonTitle: "Discordサーバーに導入する",
+		tools: ["typescript", "discordjs"],
 		content: (
 			<>
 				<p>Discordサーバーのスレッドを常にアクティブにし続けるBotです。</p>
@@ -177,11 +193,93 @@ const portfolioList: {
 		title: "ロゴの規約など収集所",
 		iconSrc: "/portfolio/logo-hiroba.png",
 		href: "https://logo.aki.wtf/",
-		inCharge: "全部",
+		inCharge: "ウェブ開発",
 		category: "ウェブサービス",
+		tools: ["typescript", "astro", "pandacss"],
 		content: (
 			<>
 				<p>ロゴの規約など適当に集めてます。</p>
+			</>
+		)
+	},
+	{
+		title: "YouTubeチャンネルのエンディング",
+		iconSrc: "/portfolio/youtube.png",
+		href: "https://www.youtube.com/watch?v=AzuWH9S4jRk",
+		inCharge: "動画編集",
+		category: "動画編集",
+		buttonTitle: "YouTubeで見る",
+		tools: ["premierepro", "aftereffects"],
+		content: (
+			<>
+				<p>YouTubeをイメージしてエンディングを作成しました。</p>
+				<iframe
+					src="https://www.youtube.com/embed/AzuWH9S4jRk?start=23"
+					title="YouTube video player"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerPolicy="strict-origin-when-cross-origin"
+					allowFullScreen
+					className={css`
+						aspect-ratio: 16/9;
+						border: none;
+						width: 100%;
+						max-width: 560px;
+					`}
+				></iframe>
+			</>
+		)
+	},
+	{
+		title: "ニコニコ動画のエンディング",
+		iconSrc: "/portfolio/niconico.png",
+		href: "https://www.youtube.com/watch?v=9-wqOhxLYyw",
+		inCharge: "動画編集",
+		category: "動画編集",
+		buttonTitle: "YouTubeで見る",
+		tools: ["premierepro", "aftereffects"],
+		content: (
+			<>
+				<p>ニコニコ動画をイメージしてエンディングを作成しました。</p>
+				<iframe
+					src="https://www.youtube.com/embed/9-wqOhxLYyw?start=21"
+					title="YouTube video player"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerPolicy="strict-origin-when-cross-origin"
+					allowFullScreen
+					className={css`
+						aspect-ratio: 16/9;
+						border: none;
+						width: 100%;
+						max-width: 560px;
+					`}
+				></iframe>
+			</>
+		)
+	},
+	{
+		title: "YouTubeチャンネルのエンディング",
+		iconSrc: "/portfolio/youtube.png",
+		href: "https://www.youtube.com/watch?v=bxIPbOl98f0",
+		inCharge: "動画編集",
+		category: "動画編集",
+		buttonTitle: "YouTubeで見る",
+		tools: ["aviutl"],
+		content: (
+			<>
+				<p>YouTubeをイメージしてエンディングを作成しました。2</p>
+				<iframe
+					src="https://www.youtube.com/embed/bxIPbOl98f0?start=0"
+					title="YouTube video player"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerPolicy="strict-origin-when-cross-origin"
+					allowFullScreen
+					className={css`
+						aspect-ratio: 16/9;
+						border: none;
+						width: 100%;
+						max-width: 560px;
+					`}
+				></iframe>
 			</>
 		)
 	}
@@ -275,14 +373,7 @@ export default function () {
 				{portfolioList.map((portfolio, index) => {
 					if (selectCategory === "全て" || selectCategory === portfolio.category) {
 						return (
-							<PortfolioArea
-								key={index}
-								title={portfolio.title}
-								iconSrc={portfolio.iconSrc}
-								href={portfolio.href}
-								inCharge={portfolio.inCharge}
-								buttonTitle={portfolio.buttonTitle}
-							>
+							<PortfolioArea key={index} {...portfolio}>
 								{portfolio.content}
 							</PortfolioArea>
 						);

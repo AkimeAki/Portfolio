@@ -1,13 +1,8 @@
 import Image from "next/image";
 import { css } from "@kuma-ui/core";
-
-interface Props {
-	title: string;
-	href?: string;
-	buttonTitle?: string;
-	iconSrc?: string;
-	inCharge?: string;
-}
+import ColorLabel from "@/components/ColorLabel";
+import { Portfolio } from "@/components/os/app/Portfolio";
+import { toolColorList } from "@/color-label";
 
 export default function ({
 	title,
@@ -15,8 +10,9 @@ export default function ({
 	href,
 	buttonTitle = "アクセスする",
 	iconSrc,
-	inCharge
-}: React.PropsWithChildren<Props>) {
+	inCharge,
+	tools
+}: React.PropsWithChildren<Portfolio>) {
 	return (
 		<div
 			className={css`
@@ -87,6 +83,9 @@ export default function ({
 					word-break: break-all;
 					p {
 						font-size: 16px;
+						* {
+							font-size: 16px;
+						}
 					}
 
 					p:not(:last-child) {
@@ -95,6 +94,30 @@ export default function ({
 				`}
 			>
 				{inCharge !== "" && <p>担当：{inCharge}</p>}
+				{tools !== undefined && (
+					<p>
+						<span>使用ツールなど：</span>
+						<span
+							className={css`
+								display: inline-flex;
+								flex-wrap: wrap;
+								gap: 5px;
+							`}
+						>
+							{tools.map((tool) => {
+								return (
+									<ColorLabel
+										bgColor={toolColorList[tool].bgColor}
+										color={toolColorList[tool].color}
+										key={tool}
+									>
+										{toolColorList[tool].name}
+									</ColorLabel>
+								);
+							})}
+						</span>
+					</p>
+				)}
 				{children}
 			</div>
 		</div>
