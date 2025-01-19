@@ -73,7 +73,7 @@ export default function ({
 								user-select: none;
 
 								body[data-os="android"] & {
-									padding: 7px 10px 9px;
+									padding: 7px 10px 8px;
 								}
 							`}
 						>
