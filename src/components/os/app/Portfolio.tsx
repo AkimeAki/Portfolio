@@ -424,48 +424,70 @@ export default function () {
 			<div
 				className={css`
 					display: flex;
-					flex-wrap: wrap;
-					gap: 10px;
+					flex-direction: column;
+					gap: 5px;
 					max-width: 1000px;
 					width: 100%;
 					margin: 0 auto;
 				`}
 			>
-				{categoryList.map((category) => {
-					return (
-						<div
-							key={category}
-							onClick={() => {
-								if (selectCategory !== category) {
-									setSelectCategory(category);
-								}
-							}}
-							className={cx(
-								css`
-									border-radius: 99px;
-									background-color: #060303;
-									cursor: pointer;
-									white-space: nowrap;
-									font-size: 15px;
-									padding: 6px 13px 10px 15px;
-									user-select: none;
-
-									body[data-os="android"] & {
-										padding: 6px 13px 8px 15px;
+				<div
+					className={css`
+						display: flex;
+						flex-wrap: wrap;
+						gap: 10px;
+					`}
+				>
+					{categoryList.map((category) => {
+						return (
+							<div
+								key={category}
+								onClick={() => {
+									if (selectCategory !== category) {
+										setSelectCategory(category);
 									}
-								`,
-								selectCategory === category &&
+								}}
+								className={cx(
 									css`
-										background-color: #f14159;
-										color: white;
-										cursor: default;
-									`
-							)}
-						>
-							{category}
-						</div>
-					);
-				})}
+										border-radius: 99px;
+										background-color: #060303;
+										cursor: pointer;
+										white-space: nowrap;
+										font-size: 15px;
+										padding: 6px 13px 10px 15px;
+										user-select: none;
+
+										body[data-os="android"] & {
+											padding: 6px 13px 8px 15px;
+										}
+									`,
+									selectCategory === category &&
+										css`
+											background-color: #f14159;
+											color: white;
+											cursor: default;
+										`
+								)}
+							>
+								{category}
+							</div>
+						);
+					})}
+				</div>
+				<div>
+					<p
+						className={css`
+							text-align: right;
+						`}
+					>
+						{
+							portfolioList.filter((portfolio) => {
+								return selectCategory === "全て" || selectCategory === portfolio.category;
+							}).length
+						}
+						/{portfolioList.length}件
+					</p>
+				</div>
 			</div>
 			<div
 				className={css`
