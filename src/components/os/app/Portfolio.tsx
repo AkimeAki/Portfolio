@@ -23,7 +23,7 @@ const portfolioList: ({
 		title: "アレルギーナビ（制作中）",
 		iconSrc: "/portfolio/allergy-navi.png",
 		href: "https://allergy-navi.com/",
-		inCharge: "ウェブ開発",
+		inCharge: "開発",
 		category: "ウェブサービス",
 		tools: ["typescript", "nextjs", "kumaui", "coackroachdb", "cloudrun", "workers"],
 		content: (
@@ -37,7 +37,7 @@ const portfolioList: ({
 		title: "どっとや",
 		iconSrc: "/portfolio/dotya.png",
 		href: "https://pixel.gives/",
-		inCharge: "ウェブ開発",
+		inCharge: "開発",
 		category: "ウェブサービス",
 		tools: ["typescript", "astro", "react", "pandacss", "emotion", "microcms"],
 		content: (
@@ -50,7 +50,7 @@ const portfolioList: ({
 	{
 		title: "SimpleV",
 		href: "https://simple-v.aki.wtf/",
-		inCharge: "ウェブ開発",
+		inCharge: "開発",
 		category: "ウェブサービス",
 		tools: ["typescript", "astro", "react", "emotion"],
 		content: (
@@ -193,7 +193,7 @@ const portfolioList: ({
 		title: "ロゴの規約など収集所",
 		iconSrc: "/portfolio/logo-hiroba.png",
 		href: "https://logo.aki.wtf/",
-		inCharge: "ウェブ開発",
+		inCharge: "開発",
 		category: "ウェブサービス",
 		tools: ["typescript", "astro", "pandacss"],
 		content: (

@@ -11,8 +11,8 @@ export const toolColorList = {
 	},
 	astro: {
 		name: "Astro",
-		bgColor: "#db2d6f",
-		color: "#000000"
+		bgColor: "#000000",
+		color: "#db2d6f"
 	},
 	pandacss: {
 		name: "Panda CSS",
