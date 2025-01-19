@@ -128,5 +128,10 @@ export const toolColorList = {
 		name: "ChatGPT",
 		bgColor: "#000000",
 		color: "#ffffff"
+	},
+	threejs: {
+		name: "Three.js",
+		bgColor: "#f7f7f7",
+		color: "#000000"
 	}
 };

@@ -67,7 +67,7 @@ const portfolioList: ({
 		href: "https://aki.wtf/",
 		inCharge: "開発",
 		category: "ウェブサイト",
-		tools: ["typescript", "nextjs", "kumaui", "pages"],
+		tools: ["typescript", "nextjs", "kumaui", "threejs", "pages"],
 		content: (
 			<>
 				<p>このサイトです。ポートフォリオ作ってみました。</p>
