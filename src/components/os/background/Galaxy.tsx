@@ -98,8 +98,8 @@ export default function () {
 					renderer.clear();
 
 					hiyokoPlanet.tracking(orbit1, 0.0005, -3, -2);
-					// piglinPlanet.tracking(orbit2, 0.001, 4, -2);
 					hiyokoPlanet.rotate(0.07, 1, -1, -1);
+
 					piglinPlanet.tracking(orbit2, 0.001, 0, 0);
 					piglinPlanet.rotate(0.1, 1, 1, 1);
 
