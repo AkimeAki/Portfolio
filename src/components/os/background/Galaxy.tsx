@@ -94,7 +94,7 @@ export default function () {
 				// piglinPlanet.load("models/piglin.glb", -20, 5);
 				piglinPlanet.load("models/piglin.glb");
 
-				const maxFPS = 60;
+				const maxFPS = 30;
 				let lastUpdateTime = performance.now();
 
 				const tick = (): void => {
@@ -110,11 +110,11 @@ export default function () {
 
 					renderer.clear();
 
-					hiyokoPlanet.tracking(orbit1, 0.0005, -3, -2);
-					hiyokoPlanet.rotate(0.07, 1, -1, -1);
+					hiyokoPlanet.tracking(orbit1, 0.001, -3, -2);
+					hiyokoPlanet.rotate(0.14, 1, -1, -1);
 
-					piglinPlanet.tracking(orbit2, 0.001, 0, 0);
-					piglinPlanet.rotate(0.1, 1, 1, 1);
+					piglinPlanet.tracking(orbit2, 0.002, 0, 0);
+					piglinPlanet.rotate(0.2, 1, 1, 1);
 
 					// カメラ
 					camera.position.copy(new THREE.Vector3((window.innerWidth / 3) * 0.1, 10, 50));
