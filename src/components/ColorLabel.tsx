@@ -22,7 +22,7 @@ export default function ({ children, bgColor, color }: Props) {
 				}
 
 				body[data-os="android"] & {
-					padding: 2px 10px 3px;
+					padding: 2px 9px 3px 10px;
 				}
 			`}
 		>
