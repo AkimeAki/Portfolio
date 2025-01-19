@@ -231,7 +231,7 @@ const portfolioList: ({
 		title: "孅いウェブエンジニアブログ",
 		iconSrc: "/portfolio/kayowai.png",
 		href: "https://blog.aki.wtf/",
-		inCharge: "開発",
+		inCharge: "開発, ブログ執筆",
 		category: "ウェブサイト",
 		tools: ["typescript", "astro", "microcms", "workers"],
 		content: (
@@ -244,7 +244,7 @@ const portfolioList: ({
 	{
 		title: "Aki Coffee☕ - AIが背景画像を生成するブログ",
 		href: "https://coffee.aki.wtf/",
-		inCharge: "開発",
+		inCharge: "開発, ブログ執筆",
 		category: "ウェブサイト",
 		tools: ["typescript", "astro", "microcms", "workers", "chatgpt"],
 		content: (
@@ -331,6 +331,38 @@ const portfolioList: ({
 						max-width: 560px;
 					`}
 				></iframe>
+			</>
+		)
+	},
+	{
+		title: "@akimeaki/null-to-undefined",
+		iconSrc: "/portfolio/npm.png",
+		href: "https://www.npmjs.com/package/@akimeaki/null-to-undefined",
+		inCharge: "開発",
+		category: "JavaScriptライブラリ",
+		buttonTitle: "npmで見る",
+		tools: ["typescript"],
+		content: (
+			<>
+				<p>nullをundefinedにするライブラリです。</p>
+				<p>自分用に作ったやつを公開しました。</p>
+			</>
+		)
+	},
+	{
+		title: "@akimeaki/check-browser",
+		iconSrc: "/portfolio/npm.png",
+		href: "https://www.npmjs.com/package/@akimeaki/check-browser",
+		inCharge: "開発",
+		category: "JavaScriptライブラリ",
+		buttonTitle: "npmで見る",
+		tools: ["typescript"],
+		content: (
+			<>
+				<p>
+					ユーザーエージェントからブラウザとブラウザのバージョンとブラウザのタイプとOSを判定するライブラリです。
+				</p>
+				<p>自分用に作ったやつを公開しました。</p>
 			</>
 		)
 	},

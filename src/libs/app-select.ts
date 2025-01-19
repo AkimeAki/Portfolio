@@ -57,7 +57,7 @@ export const appList: {
 } = {
 	portfolio: {
 		title: "作ったもの",
-		pageTitle: `作ったもの・お手伝いなど - ${pageTitle}`,
+		pageTitle: `作ったもの・実績など - ${pageTitle}`,
 		image: {
 			isPixel: true,
 			path: "/app/picaxe.png"
