@@ -102,27 +102,26 @@ export default function ({
 			>
 				{inCharge !== "" && <p>担当：{inCharge}</p>}
 				{tools !== undefined && (
-					<p>
+					<p
+						className={css`
+							display: inline-flex;
+							flex-wrap: wrap;
+							align-items: baseline;
+							gap: 5px;
+						`}
+					>
 						<span>使用ツールなど：</span>
-						<span
-							className={css`
-								display: inline-flex;
-								flex-wrap: wrap;
-								gap: 5px;
-							`}
-						>
-							{tools.map((tool) => {
-								return (
-									<ColorLabel
-										bgColor={toolColorList[tool].bgColor}
-										color={toolColorList[tool].color}
-										key={tool}
-									>
-										{toolColorList[tool].name}
-									</ColorLabel>
-								);
-							})}
-						</span>
+						{tools.map((tool) => {
+							return (
+								<ColorLabel
+									bgColor={toolColorList[tool].bgColor}
+									color={toolColorList[tool].color}
+									key={tool}
+								>
+									{toolColorList[tool].name}
+								</ColorLabel>
+							);
+						})}
 					</p>
 				)}
 				{children}
