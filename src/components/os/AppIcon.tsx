@@ -1,6 +1,7 @@
 "use client";
 
 import { osReady } from "@/atom";
+import { appList } from "@/libs/app-select";
 import { cx } from "@/libs/merge-kuma";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
@@ -196,7 +197,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 				{children}
 			</span>
 			<a
-				href={href ?? `/${id}`}
+				href={href ?? (id !== undefined && appList[id].changeHistory ? `/${id}` : undefined)}
 				onClick={(e) => {
 					if (href === undefined) {
 						e.preventDefault();
