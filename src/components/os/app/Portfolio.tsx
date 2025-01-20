@@ -39,7 +39,7 @@ const portfolioList: ({
 		href: "https://pixel.gives/",
 		inCharge: "開発",
 		category: "ウェブサービス",
-		tools: ["typescript", "astro", "react", "pandacss", "emotion", "microcms"],
+		tools: ["typescript", "astro", "react", "pandacss", "emotion", "microcms", "pages"],
 		content: (
 			<>
 				<p>ドット絵の素材配布サイトです。</p>
@@ -52,7 +52,7 @@ const portfolioList: ({
 		href: "https://simple-v.aki.wtf/",
 		inCharge: "開発",
 		category: "ウェブサービス",
-		tools: ["typescript", "astro", "react", "emotion"],
+		tools: ["typescript", "astro", "react", "emotion", "pages"],
 		content: (
 			<>
 				<p>
@@ -220,7 +220,7 @@ const portfolioList: ({
 		href: "https://logo.aki.wtf/",
 		inCharge: "開発",
 		category: "ウェブサービス",
-		tools: ["typescript", "astro", "pandacss"],
+		tools: ["typescript", "astro", "pandacss", "pages"],
 		content: (
 			<>
 				<p>ロゴの規約など適当に集めてます。</p>
@@ -233,7 +233,7 @@ const portfolioList: ({
 		href: "https://blog.aki.wtf/",
 		inCharge: "開発, ブログ執筆",
 		category: "ウェブサイト",
-		tools: ["typescript", "astro", "microcms", "workers"],
+		tools: ["typescript", "astro", "microcms", "pages"],
 		content: (
 			<>
 				<p>自分の技術ブログです。</p>
@@ -246,7 +246,7 @@ const portfolioList: ({
 		href: "https://coffee.aki.wtf/",
 		inCharge: "開発, ブログ執筆",
 		category: "ウェブサイト",
-		tools: ["typescript", "astro", "microcms", "workers", "chatgpt"],
+		tools: ["typescript", "astro", "microcms", "pages", "chatgpt"],
 		content: (
 			<>
 				<p>たまに更新する自分の日常ブログです。背景画像が面白いです。</p>
