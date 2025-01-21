@@ -204,7 +204,7 @@ export default function () {
 								) {
 									setTimeout(() => {
 										asciiArea.innerHTML = createHtml(textList, "ascii-view");
-									}, 1500);
+									}, 1000);
 
 									unmounted = true;
 									return;
