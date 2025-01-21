@@ -35,7 +35,7 @@ export default function () {
 	}, [isOpen]);
 
 	useEffect(() => {
-		let enableRandam = true;
+		let unmounted = false;
 		const images: string[] = [];
 		for (let i = 1; i <= 36; i++) {
 			images.push(`/emoji/${i}.png`);
@@ -45,7 +45,7 @@ export default function () {
 			const random = Math.floor(Math.random() * images.length);
 			setImagePath(images[random]);
 			await new Promise((resolve) => setTimeout(resolve, 1000));
-			if (enableRandam) {
+			if (!unmounted) {
 				changeImage();
 			}
 		};
@@ -55,7 +55,7 @@ export default function () {
 		}
 
 		return () => {
-			enableRandam = false;
+			unmounted = true;
 		};
 	}, [ready, isOpen]);
 

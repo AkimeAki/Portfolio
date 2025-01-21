@@ -36,6 +36,8 @@ export default function () {
 	}, [$osReady]);
 
 	useEffect(() => {
+		let unmounted = false;
+
 		if (ready) {
 			const getCode = async () => {
 				if (element.current !== null) {
@@ -73,10 +75,16 @@ export default function () {
 					}
 				}
 				await new Promise((resolve) => setTimeout(resolve, 10000));
-				getCode();
+				if (!unmounted) {
+					getCode();
+				}
 			};
 			void getCode();
 		}
+
+		return () => {
+			unmounted = true;
+		};
 	}, [ready]);
 
 	useEffect(() => {

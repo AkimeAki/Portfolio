@@ -87,7 +87,6 @@ export default function () {
 						let oldPositonY = -1;
 						const startTime = new Date().getTime();
 						const tick = (): void => {
-							console.log("aaaaa");
 							if (unmounted) {
 								return;
 							}
