@@ -37,6 +37,18 @@ export class Planet {
 			this.mesh.rotation.z = THREE.MathUtils.degToRad(
 				THREE.MathUtils.radToDeg(this.mesh.rotation.z) + rotatePx * directionZ
 			);
+
+			if (Math.abs(THREE.MathUtils.radToDeg(this.mesh.rotation.x)) >= 360) {
+				this.mesh.rotation.x = 0;
+			}
+
+			if (Math.abs(THREE.MathUtils.radToDeg(this.mesh.rotation.y)) >= 360) {
+				this.mesh.rotation.y = 0;
+			}
+
+			if (Math.abs(THREE.MathUtils.radToDeg(this.mesh.rotation.z)) >= 360) {
+				this.mesh.rotation.z = 0;
+			}
 		}
 	}
 
