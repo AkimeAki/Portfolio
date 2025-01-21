@@ -42,7 +42,7 @@ export default function ({ children }: React.PropsWithChildren) {
 					<h1
 						className={css`
 							font-family: "ArkPixel12ZHCN";
-							font-size: 40px;
+							font-size: 28px;
 							text-align: center;
 						`}
 					>
