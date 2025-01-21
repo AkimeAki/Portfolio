@@ -110,6 +110,7 @@ export default function () {
 					className={css`
 						color: white;
 						font-size: 20px;
+						line-height: 1.6;
 					`}
 				>
 					その他各種SNS（よく使う順）
@@ -117,6 +118,7 @@ export default function () {
 						className={css`
 							font-size: 14px;
 							color: white;
+							line-height: 1.6;
 						`}
 					>
 						まったく使わないのもあるよ
