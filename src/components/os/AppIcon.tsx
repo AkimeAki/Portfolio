@@ -198,8 +198,8 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 			>
 				{children}
 			</span>
-			{(href !== undefined ||
-				(id !== undefined && appList[id].changeHistory ? `/${id}` : undefined) !== undefined) && (
+			{href !== undefined ||
+			(id !== undefined && appList[id].changeHistory ? `/${id}` : undefined) !== undefined ? (
 				<Link
 					href={href ?? (id !== undefined && appList[id].changeHistory ? `/${id}` : "")}
 					onClick={(e) => {
@@ -214,7 +214,18 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 						left: 0%;
 						width: 100%;
 						height: 100%;
-						cursor: default;
+						cursor: pointer;
+					`}
+				/>
+			) : (
+				<span
+					className={css`
+						position: absolute;
+						top: 0;
+						left: 0%;
+						width: 100%;
+						height: 100%;
+						cursor: pointer;
 					`}
 				/>
 			)}
