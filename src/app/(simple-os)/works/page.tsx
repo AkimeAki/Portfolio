@@ -78,6 +78,7 @@ export default function () {
 
 						* {
 							user-select: text;
+							pointer-events: auto;
 						}
 
 						@media (max-width: 950px) {
