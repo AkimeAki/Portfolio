@@ -80,6 +80,9 @@ export default function () {
 						* {
 							user-select: text;
 							pointer-events: auto;
+							opacity: 1;
+							transition-property: opacity;
+							transition-duration: 200ms;
 						}
 
 						@media (max-width: 950px) {
@@ -87,6 +90,12 @@ export default function () {
 							-webkit-transform: scale(0.6, 0.6);
 							bottom: -50px;
 							right: -50px;
+						}
+
+						@media (max-width: 620px) and (max-height: 656px) {
+							* {
+								opacity: 0.4;
+							}
 						}
 					`}
 				>
