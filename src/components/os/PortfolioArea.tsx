@@ -75,6 +75,10 @@ export default function ({
 								body[data-os="android"] & {
 									padding: 7px 10px 8px;
 								}
+
+								body[data-browser="safari"] & {
+									padding: 7px 10px 8px;
+								}
 							`}
 						>
 							{buttonTitle}

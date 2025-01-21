@@ -460,6 +460,10 @@ export default function () {
 										body[data-os="android"] & {
 											padding: 6px 13px 8px 15px;
 										}
+
+										body[data-browser="safari"] & {
+											padding: 6px 13px 8px 15px;
+										}
 									`,
 									selectCategory === category &&
 										css`

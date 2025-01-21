@@ -24,6 +24,10 @@ export default function ({ children, bgColor, color }: Props) {
 				body[data-os="android"] & {
 					padding: 2px 9px 3px 10px;
 				}
+
+				body[data-browser="safari"] & {
+					padding: 2px 9px 3px 10px;
+				}
 			`}
 		>
 			{children}
