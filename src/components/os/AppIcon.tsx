@@ -112,7 +112,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 					}
 				`}
 			>
-				{imgSrc !== undefined && target === "_blank" && (
+				{imgSrc !== undefined && (
 					<img
 						src={imgSrc}
 						className={[
