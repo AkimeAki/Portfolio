@@ -54,7 +54,7 @@ export default function () {
 					}
 
 					asciiArea.innerHTML = createHtml(textList, "ascii-loading");
-					await new Promise((resolve) => setTimeout(resolve, 500));
+					await new Promise((resolve) => setTimeout(resolve, 1000));
 					const style = document.createElement("style");
 
 					const asciiViewDelayMax = 400;
