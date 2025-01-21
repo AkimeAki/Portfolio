@@ -178,6 +178,12 @@ export default function () {
 						text="BOOTH"
 					/>
 					<TaskbarAppIcon
+						href="https://www.npmjs.com/~akimeaki"
+						iconPath="/icon/npm.webp"
+						alt="npm"
+						text="npm"
+					/>
+					<TaskbarAppIcon
 						href="https://steamcommunity.com/id/Aki___/myworkshopfiles/"
 						iconPath="/icon/steam.webp"
 						alt="Steamワークショップ"
