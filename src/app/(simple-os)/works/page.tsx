@@ -84,7 +84,7 @@ export default function () {
 
 						@media (max-width: 950px) {
 							transform: scale(0.6);
-							-webkit-transform: scale(0.6);
+							-webkit-transform: scale(0.6, 0.6);
 							bottom: -50px;
 							right: -50px;
 						}
