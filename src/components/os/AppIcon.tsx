@@ -112,7 +112,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 					}
 				`}
 			>
-				{imgSrc !== undefined && (
+				{imgSrc !== undefined && target === "_blank" && (
 					<img
 						src={imgSrc}
 						className={[
@@ -140,7 +140,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 						].join(" ")}
 					/>
 				)}
-				{href !== undefined && (
+				{href !== undefined && target === "_blank" && (
 					<>
 						<img
 							src="/shortcut.png"
