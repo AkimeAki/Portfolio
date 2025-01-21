@@ -21,6 +21,8 @@ export default function () {
 	}, [$osReady]);
 
 	useEffect(() => {
+		let unmounted = false;
+
 		if (ready) {
 			if (canvasElement.current !== null) {
 				const canvas = canvasElement.current;
@@ -98,6 +100,10 @@ export default function () {
 				let lastUpdateTime = performance.now();
 
 				const tick = (): void => {
+					if (unmounted) {
+						return;
+					}
+
 					requestAnimationFrame(tick);
 					const now = performance.now();
 					const deltaTime = now - lastUpdateTime;
@@ -145,6 +151,10 @@ export default function () {
 				window.addEventListener("resize", onResize);
 			}
 		}
+
+		return () => {
+			unmounted = true;
+		};
 	}, [ready]);
 
 	return (
