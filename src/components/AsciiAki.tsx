@@ -36,6 +36,8 @@ export default function () {
 	}, []);
 
 	useEffect(() => {
+		let unmounted = false;
+
 		if (ready) {
 			(async () => {
 				if (element.current !== null) {
@@ -85,6 +87,10 @@ export default function () {
 						let oldPositonY = -1;
 						const startTime = new Date().getTime();
 						const tick = (): void => {
+							console.log("aaaaa");
+							if (unmounted) {
+								return;
+							}
 							requestAnimationFrame(tick);
 
 							const now = performance.now();
@@ -204,6 +210,10 @@ export default function () {
 				}
 			})();
 		}
+
+		return () => {
+			unmounted = true;
+		};
 	}, [ready]);
 
 	return (
