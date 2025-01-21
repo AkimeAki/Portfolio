@@ -38,24 +38,7 @@ export default function ({ children }: React.PropsWithChildren) {
 							background-color: #060303;
 						}
 
-						body[data-user-dragging="true"] {
-							user-select: none !important;
-						}
-
-						body[data-user-dragging="true"] * {
-							user-select: none !important;
-						}
-					`
-				}}
-			/>
-			<div
-				className={css`
-					position: relative;
-					width: 100%;
-					height: 100%;
-
-					@layer base {
-						body & {
+						@layer base {
 							* {
 								font-family: "BestTenCRT";
 								font-size: 18px;
@@ -71,7 +54,22 @@ export default function ({ children }: React.PropsWithChildren) {
 								text-align: center;
 							}
 						}
-					}
+
+						body[data-user-dragging="true"] {
+							user-select: none !important;
+						}
+
+						body[data-user-dragging="true"] * {
+							user-select: none !important;
+						}
+					`
+				}}
+			/>
+			<div
+				className={css`
+					position: relative;
+					width: 100%;
+					height: 100%;
 				`}
 			>
 				<Loading />
