@@ -33,6 +33,8 @@ export default function () {
 	}, [$osReady]);
 
 	useEffect(() => {
+		let unmounted = false;
+
 		if (ready) {
 			try {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -46,6 +48,10 @@ export default function () {
 				});
 
 				const checkStatus = async () => {
+					if (unmounted) {
+						return;
+					}
+
 					await new Promise((resolve) => setTimeout(resolve, 1000));
 					const isPaused = player.isPaused() === true ? true : false;
 					if (!isPaused) {
@@ -60,6 +66,10 @@ export default function () {
 				/* empty */
 			}
 		}
+
+		return () => {
+			unmounted = true;
+		};
 	}, [ready]);
 
 	useEffect(() => {
