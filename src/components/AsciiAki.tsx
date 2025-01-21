@@ -238,20 +238,24 @@ export default function () {
 
 					.ascii-loading {
 						transform: translateY(-100vh);
+						opacity: 0;
 					}
 
 					.ascii-view {
 						transform: translateY(-100vh);
+						opacity: 0;
 						animation-name: view-ascii;
 					}
 
 					.ascii-ready {
 						transform: translateY(0);
+						opacity: 1;
 					}
 
 					@keyframes view-ascii {
 						100% {
 							transform: translateY(0);
+							opacity: 1;
 						}
 					}
 				`}
