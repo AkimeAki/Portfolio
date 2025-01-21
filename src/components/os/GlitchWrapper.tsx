@@ -18,6 +18,8 @@ export default function ({ children, style, className }: React.PropsWithChildren
 	}, []);
 
 	useEffect(() => {
+		let unmounted = false;
+
 		const glitch = () => {
 			const random = Math.floor(Math.random() * (10000 - 5000) + 5000);
 
@@ -31,6 +33,10 @@ export default function ({ children, style, className }: React.PropsWithChildren
 				}, 500);
 			}
 
+			if (unmounted) {
+				return;
+			}
+
 			setTimeout(() => {
 				glitch();
 			}, random);
@@ -39,6 +45,10 @@ export default function ({ children, style, className }: React.PropsWithChildren
 		if (isReady) {
 			glitch();
 		}
+
+		return () => {
+			unmounted = true;
+		};
 	}, [isReady]);
 
 	return (
