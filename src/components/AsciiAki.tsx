@@ -107,7 +107,7 @@ export default function () {
 							positionX += 1;
 
 							const currentTime = new Date().getTime();
-							if (currentTime - startTime < asciiViewTime + asciiViewDelayMax + 10) {
+							if (currentTime - startTime < asciiViewTime + asciiViewDelayMax + 100) {
 								positionX = 0;
 							}
 
@@ -197,7 +197,7 @@ export default function () {
 								textList.push(textLine);
 							}
 
-							if (currentTime - startTime < asciiViewTime + asciiViewDelayMax + 10) {
+							if (currentTime - startTime < asciiViewTime + asciiViewDelayMax + 100) {
 								if (
 									document.body.dataset.os === "windows" &&
 									document.body.dataset.browserType === "firefox"
