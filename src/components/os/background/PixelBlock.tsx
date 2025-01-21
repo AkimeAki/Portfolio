@@ -75,8 +75,8 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 				const target = e.target as HTMLDivElement;
 
 				if (
-					document.body.dataset.browser !== "firefox" ||
-					(document.body.dataset.browser === "firefox" && !$isTouch)
+					document.body.dataset.browserType !== "firefox" ||
+					(document.body.dataset.browserType === "firefox" && !$isTouch)
 				) {
 					if (e.buttons === 1) {
 						target.style.top = target.offsetTop + e.movementY + "px";
@@ -87,7 +87,7 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 				}
 			}}
 			onTouchMove={(e) => {
-				if (document.body.dataset.browser === "firefox" && $isTouch) {
+				if (document.body.dataset.browserType === "firefox" && $isTouch) {
 					const touch = e.touches[0];
 					if (previousTouch !== null) {
 						const target = touch.target as HTMLDivElement;

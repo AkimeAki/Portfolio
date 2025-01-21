@@ -271,8 +271,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -288,7 +288,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -325,8 +325,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -341,7 +341,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -376,8 +376,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -394,7 +394,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -431,8 +431,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -447,7 +447,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -482,8 +482,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -501,7 +501,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -540,8 +540,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -561,7 +561,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -602,8 +602,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -620,7 +620,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -657,8 +657,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onPointerMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							(document.body.dataset.browser !== "firefox" ||
-								(document.body.dataset.browser === "firefox" && !$isTouch))
+							(document.body.dataset.browserType !== "firefox" ||
+								(document.body.dataset.browserType === "firefox" && !$isTouch))
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -677,7 +677,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					onTouchMove={(e) => {
 						if (
 							document.body.dataset.dragging === "true" &&
-							document.body.dataset.browser === "firefox" &&
+							document.body.dataset.browserType === "firefox" &&
 							$isTouch
 						) {
 							const touch = e.touches[0];
@@ -776,8 +776,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						onPointerMove={(e) => {
 							if (
 								document.body.dataset.dragging === "true" &&
-								(document.body.dataset.browser !== "firefox" ||
-									(document.body.dataset.browser === "firefox" && !$isTouch))
+								(document.body.dataset.browserType !== "firefox" ||
+									(document.body.dataset.browserType === "firefox" && !$isTouch))
 							) {
 								const target = e.target as HTMLDivElement;
 
@@ -794,7 +794,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						onTouchMove={(e) => {
 							if (
 								document.body.dataset.dragging === "true" &&
-								document.body.dataset.browser === "firefox" &&
+								document.body.dataset.browserType === "firefox" &&
 								$isTouch
 							) {
 								const touch = e.touches[0];

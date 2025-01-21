@@ -198,9 +198,28 @@ export default function () {
 							}
 
 							if (currentTime - startTime < asciiViewTime + asciiViewDelayMax + 10) {
+								if (
+									document.body.dataset.os === "windows" &&
+									document.body.dataset.browserType === "firefox"
+								) {
+									setTimeout(() => {
+										asciiArea.innerHTML = createHtml(textList, "ascii-view");
+									}, 1500);
+
+									unmounted = true;
+									return;
+								}
 								asciiArea.innerHTML = createHtml(textList, "ascii-view");
 							} else {
 								asciiArea.innerHTML = createHtml(textList, "ascii-ready");
+							}
+
+							if (
+								document.body.dataset.os === "windows" &&
+								document.body.dataset.browserType === "firefox"
+							) {
+								unmounted = true;
+								return;
 							}
 						};
 
