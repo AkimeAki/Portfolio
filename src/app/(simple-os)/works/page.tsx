@@ -63,6 +63,7 @@ export default function () {
 					top: 0;
 					left: 50%;
 					transform: translateX(-50%);
+					-webkit-transform: translateX(-50%);
 					height: 100%;
 					max-width: 1100px;
 					width: 100%;
