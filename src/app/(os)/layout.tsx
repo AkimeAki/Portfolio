@@ -10,89 +10,104 @@ import TwitchBackground from "@/components/os/background/TwitchBackground";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
-import "@/styles/os.scss";
 import PixelWrapper from "@/components/os/background/PixelWrapper";
 import NewVideo from "@/components/os/background/NewVideo";
 import Galaxy from "@/components/os/background/Galaxy";
 
 export const metadata: Metadata = metaHead({});
 
-interface Props {
-	children: React.ReactNode;
-}
-
-export default function ({ children }: Props) {
+export default function ({ children }: React.PropsWithChildren) {
 	return (
-		<div
-			className={css`
-				position: relative;
-				width: 100%;
-				height: 100%;
+		<>
+			<style
+				dangerouslySetInnerHTML={{
+					__html: /* css */ `
+						html,
+						body {
+							overscroll-behavior-y: contain;
+							overflow: hidden;
 
-				@layer base {
-					* {
-						font-family: "BestTenCRT";
-						font-size: 18px;
-						color: #777777;
-						font-variant-ligatures: none;
-					}
+							* {
+								overscroll-behavior-y: contain;
+							}
+						}
 
-					p {
-						line-height: 1.6;
-					}
+						body {
+							touch-action: none;
+							overscroll-behavior-y: none;
+							background-color: #060303;
+						}
 
-					rt {
-						text-align: center;
-					}
-				}
+						body[data-user-dragging="true"] {
+							user-select: none !important;
+						}
 
-				touch-action: none;
-				overscroll-behavior-y: none;
-
-				body[data-user-dragging="true"] & {
-					user-select: none !important;
-
-					* {
-						user-select: none !important;
-					}
-				}
-
-				background-color: #060303;
-			`}
-		>
-			<Loading />
-			<Touch />
-			<ContextMenu />
+						body[data-user-dragging="true"] * {
+							user-select: none !important;
+						}
+					`
+				}}
+			/>
 			<div
 				className={css`
 					position: relative;
 					width: 100%;
 					height: 100%;
-					overflow: hidden;
+
+					@layer base {
+						body & {
+							* {
+								font-family: "BestTenCRT";
+								font-size: 18px;
+								color: #777777;
+								font-variant-ligatures: none;
+							}
+
+							p {
+								line-height: 1.6;
+							}
+
+							rt {
+								text-align: center;
+							}
+						}
+					}
 				`}
 			>
+				<Loading />
+				<Touch />
+				<ContextMenu />
 				<div
 					className={css`
-						position: absolute;
-						top: 0;
-						left: 0;
+						position: relative;
 						width: 100%;
 						height: 100%;
-						background-image: radial-gradient(#555555, #000000);
+						overflow: hidden;
 					`}
 				>
-					<CodeBackground />
-					<TwitchBackground />
-					<AkiSignal />
-					<Galaxy />
-					<SelectArea />
-					<NewVideo />
-					<PixelWrapper />
-					<AppIcons />
-					{children}
+					<div
+						className={css`
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background-image: radial-gradient(#555555, #000000);
+						`}
+					>
+						<CodeBackground />
+						<TwitchBackground />
+						<AkiSignal />
+						<Galaxy />
+						<SelectArea />
+						<NewVideo />
+						<PixelWrapper />
+						<AppIcons />
+						{children}
+					</div>
+					<Taskbar />
 				</div>
-				<Taskbar />
 			</div>
-		</div>
+		</>
 	);
 }

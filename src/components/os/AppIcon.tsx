@@ -6,6 +6,7 @@ import { cx } from "@/libs/merge-kuma";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
+import Link from "next/link";
 
 interface Props {
 	children: React.ReactNode;
@@ -14,9 +15,10 @@ interface Props {
 	href?: string;
 	isPixel?: boolean;
 	onClick?: () => void;
+	target?: string;
 }
 
-export default function ({ children, id, imgSrc, href, isPixel = false, onClick }: Props) {
+export default function ({ children, id, imgSrc, href, isPixel = false, onClick, target = "_self" }: Props) {
 	const { openWindow, releaseMinimizedWindow } = useWindow();
 	const $osReady = useStore(osReady);
 
@@ -196,23 +198,26 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick 
 			>
 				{children}
 			</span>
-			<a
-				href={href ?? (id !== undefined && appList[id].changeHistory ? `/${id}` : undefined)}
-				onClick={(e) => {
-					if (href === undefined) {
-						e.preventDefault();
-					}
-				}}
-				target={href !== undefined ? "_blank" : "_self"}
-				className={css`
-					position: absolute;
-					top: 0;
-					left: 0%;
-					width: 100%;
-					height: 100%;
-					cursor: default;
-				`}
-			/>
+			{(href !== undefined ||
+				(id !== undefined && appList[id].changeHistory ? `/${id}` : undefined) !== undefined) && (
+				<Link
+					href={href ?? (id !== undefined && appList[id].changeHistory ? `/${id}` : "")}
+					onClick={(e) => {
+						if (href === undefined) {
+							e.preventDefault();
+						}
+					}}
+					target={target}
+					className={css`
+						position: absolute;
+						top: 0;
+						left: 0%;
+						width: 100%;
+						height: 100%;
+						cursor: default;
+					`}
+				/>
+			)}
 		</div>
 	);
 }

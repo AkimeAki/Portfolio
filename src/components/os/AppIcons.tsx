@@ -69,19 +69,19 @@ export default function () {
 			<AppIcon id="portfolio" imgSrc="/app/picaxe.png" isPixel>
 				作ったもの
 			</AppIcon>
-			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/aki-coffee.png" isPixel>
+			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/aki-coffee.png" isPixel target="_blank">
 				日常ブログ
 			</AppIcon>
-			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/blog.png" isPixel>
+			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/blog.png" isPixel target="_blank">
 				技術ブログ
 			</AppIcon>
-			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.webp">
+			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.webp" target="_blank">
 				アレルギーナビ
 			</AppIcon>
-			<AppIcon href="https://pixel.gives/" imgSrc="/app/dotya.png" isPixel>
+			<AppIcon href="https://pixel.gives/" imgSrc="/app/dotya.png" isPixel target="_blank">
 				どっとや
 			</AppIcon>
-			<AppIcon href="https://simple-v.aki.wtf/" imgSrc="/app/simplev.png" isPixel>
+			<AppIcon href="https://simple-v.aki.wtf/" imgSrc="/app/simplev.png" isPixel target="_blank">
 				SimpleV
 			</AppIcon>
 			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
@@ -89,6 +89,9 @@ export default function () {
 			</AppIcon>
 			<AppIcon id="terminal" imgSrc="/app/terminal.png" isPixel>
 				ターミナル
+			</AppIcon>
+			<AppIcon href="/works" imgSrc="/app/works.png" isPixel>
+				制作依頼
 			</AppIcon>
 		</div>
 	);

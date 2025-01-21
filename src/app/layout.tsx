@@ -1,7 +1,7 @@
 import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
 import "@akimeaki/reset-css";
-import "@/styles/font.scss";
 import CheckUserAgent from "@/components/CheckUserAgent";
+import "@/styles/font.scss";
 
 interface Props {
 	children: React.ReactNode;
