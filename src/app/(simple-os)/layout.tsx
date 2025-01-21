@@ -32,66 +32,65 @@ export default function ({ children }: React.PropsWithChildren) {
 			>
 				<header
 					className={css`
+						position: relative;
 						max-width: 1100px;
 						width: 100%;
 						margin: 0 auto;
 						padding: 100px 30px;
 					`}
 				>
-					<div
+					<h1
 						className={css`
-							position: relative;
+							font-family: "ArkPixel12ZHCN";
+							font-size: 40px;
+							text-align: center;
 						`}
 					>
-						<h1
-							className={css`
-								font-family: "ArkPixel12ZHCN";
-								font-size: 40px;
-								text-align: center;
-							`}
-						>
-							彩季
-						</h1>
-						<Link
-							href="/"
-							className={css`
-								display: inline-flex;
-								gap: 5px;
-								position: absolute;
-								top: 50%;
-								left: 0;
-								transform: translateY(-50%);
+						彩季
+					</h1>
+					<Link
+						href="/"
+						className={css`
+							display: inline-flex;
+							gap: 5px;
+							position: absolute;
+							top: 50%;
+							left: 30px;
+							transform: translateY(-50%);
 
+							@media (max-width: 600px) {
+								top: 50px;
+							}
+
+							span {
+								font-family: "BestTenCRT";
+								font-size: 16px;
+							}
+
+							&:hover {
 								span {
-									font-family: "BestTenCRT";
-									font-size: 16px;
+									color: #edf8af;
 								}
 
-								&:hover {
-									span {
-										color: #edf8af;
-									}
-
-									.back-portfolio-arrow {
-										transform: translateX(-10px);
-									}
+								.back-portfolio-arrow {
+									transform: translateX(-10px);
 								}
-							`}
+							}
+						`}
+					>
+						<span
+							className={cx(
+								"back-portfolio-arrow",
+								css`
+									transition-duration: 400ms;
+									transition-property: transform;
+								`
+							)}
 						>
-							<span
-								className={cx(
-									"back-portfolio-arrow",
-									css`
-										transition-duration: 400ms;
-										transition-property: transform;
-									`
-								)}
-							>
-								←
-							</span>
-							<span>ポートフォリオに戻る</span>
-						</Link>
-					</div>
+							←
+						</span>
+						<span>ポートフォリオに戻る</span>
+					</Link>
 				</header>
 				<main
 					className={css`

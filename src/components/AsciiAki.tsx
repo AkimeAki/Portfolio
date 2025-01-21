@@ -207,13 +207,7 @@ export default function () {
 	}, [ready]);
 
 	return (
-		<div
-			className={css`
-				display: flex;
-				flex-direction: column;
-				align-items: flex-end;
-			`}
-		>
+		<div>
 			<div
 				ref={element}
 				style={{ "--ascii-view-time": `${asciiViewTime}ms` } as React.CSSProperties}

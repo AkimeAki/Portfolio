@@ -13,18 +13,15 @@ export const metadata: Metadata = metaHead({
 
 export default function () {
 	return (
-		<div
-			className={css`
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-			`}
-		>
+		<div>
 			<nav
 				className={css`
 					display: flex;
 					align-items: flex-start;
 					flex-direction: column;
 					gap: 30px;
+					position: relative;
+					z-index: 1;
 
 					* {
 						display: flex;
@@ -58,12 +55,40 @@ export default function () {
 			>
 				<Link href="/works/web">ウェブ制作依頼</Link>
 				<Link href="/works/movie">動画編集依頼</Link>
-				<Link href="/works/mc3d">
-					<del>Minecraft 3Dテクスチャ作成依頼</del>
-				</Link>
+				<Link href="/works/mc3d">Minecraft 3Dテクスチャ作成依頼</Link>
 			</nav>
-			<div>
-				<AsciiAki />
+			<div
+				className={css`
+					position: fixed;
+					top: 0;
+					left: 50%;
+					transform: translateX(-50%);
+					height: 100%;
+					max-width: 1100px;
+					width: 100%;
+					user-select: none;
+					pointer-events: none;
+				`}
+			>
+				<div
+					className={css`
+						position: absolute;
+						bottom: 50px;
+						right: 50px;
+
+						* {
+							user-select: text;
+						}
+
+						@media (max-width: 950px) {
+							transform: scale(0.6);
+							bottom: -50px;
+							right: -50px;
+						}
+					`}
+				>
+					<AsciiAki />
+				</div>
 			</div>
 		</div>
 	);
