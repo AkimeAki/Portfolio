@@ -79,8 +79,34 @@ export default function () {
 						canvas.height = asciiHeight;
 						const ctx = canvas.getContext("2d");
 						if (ctx !== null) {
-							const image = await loadImage("/ascii/main.png");
-							const imgAspect = image.naturalWidth / image.naturalHeight;
+							const imageList = [
+								"/ascii/main.webp",
+								"/ascii/surprised.webp",
+								"/ascii/horror.webp",
+								"/ascii/pixel.webp",
+								"/ascii/init.webp",
+								"/ascii/snake.webp"
+							];
+
+							let image = await loadImage(imageList[0]);
+							let imgAspect = image.naturalWidth / image.naturalHeight;
+
+							let i = 1;
+							const changeImage = async () => {
+								await new Promise((resolve) => setTimeout(resolve, 4000));
+
+								image = await loadImage(imageList[i]);
+								imgAspect = image.naturalWidth / image.naturalHeight;
+
+								i++;
+								if (i >= imageList.length) {
+									i = 0;
+								}
+
+								changeImage();
+							};
+
+							changeImage();
 
 							const maxFPS = 30;
 							let lastUpdateTime = performance.now();
