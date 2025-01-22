@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { css } from "@kuma-ui/core";
 import ColorLabel from "@/components/ColorLabel";
 import { Portfolio } from "@/components/os/app/Portfolio";
@@ -33,8 +32,8 @@ export default function ({
 					gap: 20px;
 				`}
 			>
-				<Image
-					src={iconSrc ?? "/no-image.png"}
+				<img
+					src={iconSrc ?? "/portfolio/no-image.webp"}
 					width={80}
 					height={80}
 					alt={title}

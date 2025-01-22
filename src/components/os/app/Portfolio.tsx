@@ -21,7 +21,7 @@ const portfolioList: ({
 } & Portfolio)[] = [
 	{
 		title: "アレルギーナビ",
-		iconSrc: "/portfolio/allergy-navi.png",
+		iconSrc: "/portfolio/allergy-navi.webp",
 		href: "https://allergy-navi.com/",
 		inCharge: "開発",
 		category: "ウェブサービス",
@@ -35,7 +35,7 @@ const portfolioList: ({
 	},
 	{
 		title: "どっとや",
-		iconSrc: "/portfolio/dotya.png",
+		iconSrc: "/portfolio/dotya.webp",
 		href: "https://pixel.gives/",
 		inCharge: "開発",
 		category: "ウェブサービス",
@@ -89,7 +89,7 @@ const portfolioList: ({
 	},
 	{
 		title: "カーソルを追従する四角いの",
-		iconSrc: "/portfolio/rectangle-follows-cursor.png",
+		iconSrc: "/portfolio/rectangle-follows-cursor.webp",
 		href: "https://chromewebstore.google.com/detail/nlfopomlpjjjlafgigcmmkjeaghbbjpn",
 		inCharge: "開発",
 		category: "Chrome 拡張機能",
@@ -106,7 +106,7 @@ const portfolioList: ({
 	},
 	{
 		title: "拡張子を変更して画像を保存",
-		iconSrc: "/portfolio/change-format.png",
+		iconSrc: "/portfolio/change-format.webp",
 		href: "https://chromewebstore.google.com/detail/kinldkcfdohpgpedpglhcfjenoaklhkk",
 		inCharge: "開発",
 		category: "Chrome 拡張機能",
@@ -121,7 +121,7 @@ const portfolioList: ({
 	},
 	{
 		title: "Google Apps Script製ページ用印刷",
-		iconSrc: "/portfolio/gas-print.png",
+		iconSrc: "/portfolio/gas-print.webp",
 		href: "https://chromewebstore.google.com/detail/gacknebdjgldkfjibmbkkdbkihomoiaj",
 		inCharge: "開発",
 		category: "Chrome 拡張機能",
@@ -139,7 +139,7 @@ const portfolioList: ({
 	},
 	{
 		title: "DevContainer Install Local Extensions",
-		iconSrc: "/portfolio/devcontainer-local.png",
+		iconSrc: "/portfolio/devcontainer-local.webp",
 		href: "https://marketplace.visualstudio.com/items?itemName=AkimeAki.devcontainer-install-local-extensions",
 		inCharge: "開発",
 		category: "VSCode 拡張機能",
@@ -156,7 +156,7 @@ const portfolioList: ({
 	},
 	{
 		title: "すずはな / Suzuhana / 스즈히나 / 铃花 (JP/EN/KR/CN)",
-		iconSrc: "/portfolio/steam.png",
+		iconSrc: "/portfolio/steam.webp",
 		href: "https://steamcommunity.com/sharedfiles/filedetails/?id=2910319000",
 		inCharge: "アニメーション",
 		category: "動画編集",
@@ -171,7 +171,7 @@ const portfolioList: ({
 	},
 	{
 		title: "Kawaii Piglin",
-		iconSrc: "/portfolio/piglin.jpg",
+		iconSrc: "/portfolio/piglin.webp",
 		href: "https://a-k-i.booth.pm/items/4469914",
 		inCharge: "モデリング",
 		category: "Minecraft リソースパック",
@@ -186,7 +186,7 @@ const portfolioList: ({
 	},
 	{
 		title: "Paper Airplane Trident",
-		iconSrc: "/portfolio/trident.jpg",
+		iconSrc: "/portfolio/trident.webp",
 		href: "https://a-k-i.booth.pm/items/4470965",
 		inCharge: "モデリング",
 		category: "Minecraft リソースパック",
@@ -216,7 +216,7 @@ const portfolioList: ({
 	},
 	{
 		title: "ロゴの規約など収集所",
-		iconSrc: "/portfolio/logo-hiroba.png",
+		iconSrc: "/portfolio/logo-hiroba.webp",
 		href: "https://logo.aki.wtf/",
 		inCharge: "開発",
 		category: "ウェブサービス",
@@ -229,7 +229,7 @@ const portfolioList: ({
 	},
 	{
 		title: "孅いウェブエンジニアブログ",
-		iconSrc: "/portfolio/kayowai.png",
+		iconSrc: "/portfolio/kayowai.webp",
 		href: "https://blog.aki.wtf/",
 		inCharge: "開発, ブログ執筆",
 		category: "ウェブサイト",
@@ -255,7 +255,7 @@ const portfolioList: ({
 	},
 	{
 		title: "YouTubeチャンネルのエンディング",
-		iconSrc: "/portfolio/youtube.png",
+		iconSrc: "/portfolio/youtube.webp",
 		href: "https://www.youtube.com/watch?v=AzuWH9S4jRk",
 		inCharge: "動画編集",
 		category: "動画編集",
@@ -282,7 +282,7 @@ const portfolioList: ({
 	},
 	{
 		title: "ニコニコ動画のエンディング",
-		iconSrc: "/portfolio/niconico.png",
+		iconSrc: "/portfolio/niconico.webp",
 		href: "https://www.youtube.com/watch?v=9-wqOhxLYyw",
 		inCharge: "動画編集",
 		category: "動画編集",
@@ -309,7 +309,7 @@ const portfolioList: ({
 	},
 	{
 		title: "YouTubeチャンネルのエンディング",
-		iconSrc: "/portfolio/youtube.png",
+		iconSrc: "/portfolio/youtube.webp",
 		href: "https://www.youtube.com/watch?v=bxIPbOl98f0",
 		inCharge: "動画編集",
 		category: "動画編集",
@@ -336,7 +336,7 @@ const portfolioList: ({
 	},
 	{
 		title: "@akimeaki/null-to-undefined",
-		iconSrc: "/portfolio/npm.png",
+		iconSrc: "/portfolio/npm.webp",
 		href: "https://www.npmjs.com/package/@akimeaki/null-to-undefined",
 		inCharge: "開発",
 		category: "JavaScriptライブラリ",
@@ -351,7 +351,7 @@ const portfolioList: ({
 	},
 	{
 		title: "@akimeaki/check-browser",
-		iconSrc: "/portfolio/npm.png",
+		iconSrc: "/portfolio/npm.webp",
 		href: "https://www.npmjs.com/package/@akimeaki/check-browser",
 		inCharge: "開発",
 		category: "JavaScriptライブラリ",
