@@ -259,7 +259,9 @@ export default function () {
 					};
 
 					document.fonts.ready.then(() => {
-						void loadAscii();
+						setTimeout(() => {
+							void loadAscii();
+						}, 1000);
 					});
 				}
 			})();

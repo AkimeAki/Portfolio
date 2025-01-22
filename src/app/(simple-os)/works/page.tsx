@@ -55,7 +55,6 @@ export default function () {
 			>
 				<Link href="/works/web">ウェブ制作依頼</Link>
 				<Link href="/works/movie">動画編集依頼</Link>
-				<Link href="/works/mc3d">Minecraft 3Dテクスチャ作成依頼</Link>
 			</nav>
 			<div
 				className={css`
