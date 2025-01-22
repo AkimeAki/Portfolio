@@ -103,6 +103,10 @@ export default function () {
 									i = 0;
 								}
 
+								if (unmounted) {
+									return;
+								}
+
 								changeImage();
 							};
 
