@@ -83,7 +83,6 @@ export default function () {
 								"/ascii/main.webp",
 								"/ascii/surprised.webp",
 								"/ascii/horror.webp",
-								"/ascii/pixel.webp",
 								"/ascii/init.webp",
 								"/ascii/snake.webp"
 							];

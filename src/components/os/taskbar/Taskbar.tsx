@@ -7,6 +7,8 @@ import TaskbarAllAppIcon from "@/components/os/taskbar/TaskbarAllAppIcon";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import MinimizedApps from "@/components/os/MinimizedApps";
+import { linkList } from "@/data/links";
+import { cx } from "@/libs/merge-kuma";
 
 export default function () {
 	const $osReady = useStore(osReady);
@@ -110,56 +112,38 @@ export default function () {
 					>
 						<TaskbarAllAppIcon />
 					</span>
-					<span
-						className={css`
-							order: 1;
-						`}
-					>
-						<TaskbarIcon iconPath="/icon/x.webp" alt={"Xのアイコン"} href="https://x.com/Akime_Aki" />
-					</span>
-					<span
-						className={css`
-							order: 2;
-						`}
-					>
-						<TaskbarIcon
-							iconPath="/icon/youtube.webp"
-							alt={"YouTube"}
-							href="https://www.youtube.com/@AkimeAki"
-						/>
-					</span>
-					<span
-						className={css`
-							order: 4;
-						`}
-					>
-						<TaskbarIcon iconPath="/icon/twitch.webp" alt={"Twitch"} href="https://twitch.tv/Akime_Aki" />
-					</span>
-					<span
-						className={css`
-							order: 5;
-
-							@media (max-width: 720px) {
-								display: none;
-							}
-						`}
-					>
-						<TaskbarIcon
-							iconPath="/icon/niconico.webp"
-							alt={"ニコニコ動画"}
-							href="https://www.nicovideo.jp/user/98282698"
-						/>
-					</span>
+					{Object.keys(linkList)
+						.filter(
+							(link) =>
+								link === "x" ||
+								link === "youtube" ||
+								link === "twitch" ||
+								link === "niconico" ||
+								link === "github"
+						)
+						.map((link, index) => (
+							<span
+								key={link}
+								style={{ order: index + 1 }}
+								className={cx(
+									link === "niconico" &&
+										css`
+											@media (max-width: 720px) {
+												display: none;
+											}
+										`
+								)}
+							>
+								<TaskbarIcon
+									iconPath={`/icon/${link}.webp`}
+									alt={`${linkList[link].name}`}
+									href={linkList[link].url}
+								/>
+							</span>
+						))}
 					<span
 						className={css`
 							order: 6;
-						`}
-					>
-						<TaskbarIcon iconPath="/icon/github.webp" alt={"GitHub"} href="https://github.com/AkimeAki" />
-					</span>
-					<span
-						className={css`
-							order: 7;
 
 							@media (max-width: 720px) {
 								display: none;

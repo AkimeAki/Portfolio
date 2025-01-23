@@ -3,12 +3,14 @@ import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
 import Link from "next/link";
 import { cx } from "@/libs/merge-kuma";
+import EmojiPath from "@/components/atoms/EmojiPath";
 
 export const metadata: Metadata = metaHead({});
 
 export default function ({ children }: React.PropsWithChildren) {
 	return (
 		<>
+			<EmojiPath />
 			<style
 				dangerouslySetInnerHTML={{
 					__html: /* css */ `
@@ -97,7 +99,7 @@ export default function ({ children }: React.PropsWithChildren) {
 						max-width: 1100px;
 						width: 100%;
 						margin: 0 auto;
-						padding: 0 30px;
+						padding: 0 30px 60px;
 					`}
 				>
 					{children}

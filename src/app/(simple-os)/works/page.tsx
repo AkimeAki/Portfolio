@@ -47,10 +47,6 @@ export default function () {
 							}
 						}
 					}
-
-					del {
-						text-decoration: line-through;
-					}
 				`}
 			>
 				<Link href="/works/web">ウェブ制作依頼</Link>

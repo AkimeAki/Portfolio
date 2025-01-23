@@ -3,6 +3,8 @@
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef, useState } from "react";
 import TaskbarAppIcon from "@/components/os/taskbar/TaskbarAppIcon";
+import { linkList } from "@/data/links";
+import { cx } from "@/libs/merge-kuma";
 
 export default function () {
 	const [imagePath, setImagePath] = useState<string>("/emoji/1.png");
@@ -133,88 +135,39 @@ export default function () {
 						column-gap: 20px;
 					`}
 				>
-					<span
-						className={css`
-							display: none;
+					{Object.keys(linkList)
+						.filter(
+							(link) =>
+								!(
+									link === "x" ||
+									link === "youtube" ||
+									link === "twitch" ||
+									link === "niconico" ||
+									link === "github"
+								)
+						)
+						.map((link) => (
+							<span
+								className={cx(
+									link === "niconico" &&
+										css`
+											display: none;
 
-							@media (max-width: 720px) {
-								display: block;
-							}
-						`}
-					>
-						<TaskbarAppIcon
-							iconPath="/icon/niconico.webp"
-							alt={"ニコニコ動画"}
-							href="https://www.nicovideo.jp/user/98282698"
-							text="ニコニコ動画"
-						/>
-					</span>
-					<TaskbarAppIcon
-						href="https://bsky.app/profile/aki.wtf"
-						iconPath="/icon/bluesky.webp"
-						alt="Bluesky"
-						text="Bluesky"
-					/>
-					<TaskbarAppIcon
-						href="https://misskey.io/@_aki"
-						iconPath="/icon/misskeyio.webp"
-						alt="Misskey.io"
-						text="Misskey.io"
-					/>
-					<TaskbarAppIcon
-						href="https://misskey.io/@aki.wtf@bsky.brid.gy"
-						iconPath="/icon/misskeyio.webp"
-						alt="Misskey.io"
-						text="Blueskyと同じ"
-					/>
-					<TaskbarAppIcon
-						href="https://mixi.social/@Akii"
-						iconPath="/icon/mixi2.webp"
-						alt="mixi2"
-						text="mixi2"
-					/>
-					<TaskbarAppIcon
-						href="https://a-k-i.booth.pm/"
-						iconPath="/icon/booth.webp"
-						alt="BOOTH"
-						text="BOOTH"
-					/>
-					<TaskbarAppIcon
-						href="https://www.npmjs.com/~akimeaki"
-						iconPath="/icon/npm.webp"
-						alt="npm"
-						text="npm"
-					/>
-					<TaskbarAppIcon
-						href="https://steamcommunity.com/id/Aki___/myworkshopfiles/"
-						iconPath="/icon/steam.webp"
-						alt="Steamワークショップ"
-						text="Steam ﾜｰｸｼｮｯﾌﾟ"
-					/>
-					<TaskbarAppIcon
-						href="https://suzuri.jp/Aki___"
-						iconPath="/icon/suzuri.webp"
-						alt="SUZURI"
-						text="SUZURI"
-					/>
-					<TaskbarAppIcon
-						href="https://fiicen.jp/field/Akii"
-						iconPath="/icon/fiicen.webp"
-						alt="Fiicen"
-						text="Fiicen"
-					/>
-					<TaskbarAppIcon
-						href="https://www.pixiv.net/users/64086928"
-						iconPath="/icon/pixiv.webp"
-						alt="pixiv"
-						text="pixiv"
-					/>
-					<TaskbarAppIcon
-						href="https://www.hoyolab.com/accountCenter/postList?id=8411789"
-						iconPath="/icon/hoyolab.webp"
-						alt="HoYoLab"
-						text="HoYoLab"
-					/>
+											@media (max-width: 720px) {
+												display: block;
+											}
+										`
+								)}
+							>
+								<TaskbarAppIcon
+									key={link}
+									iconPath={`/icon/${link}.webp`}
+									alt={`${linkList[link].name}`}
+									text={`${linkList[link].name}`}
+									href={linkList[link].url}
+								/>
+							</span>
+						))}
 				</div>
 			</div>
 			<div
