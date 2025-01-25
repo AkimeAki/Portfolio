@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function () {
 	useEffect(() => {
 		const mouseLeave = () => {
-			if (document.body.dataset.os === "windows" && document.body.dataset.browserType === "firefox") {
+			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
 				return;
 			}
 
@@ -15,7 +15,7 @@ export default function () {
 		};
 
 		const mouseEnter = () => {
-			if (document.body.dataset.os === "windows" && document.body.dataset.browserType === "firefox") {
+			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
 				return;
 			}
 
@@ -46,7 +46,7 @@ export const SetEmojiPath = ({ emojiPath, textPath }: SetEmojiPathProps) => {
 		document.body.dataset.textPath = textPath;
 
 		(() => {
-			if (document.body.dataset.os === "windows" && document.body.dataset.browserType === "firefox") {
+			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
 				return;
 			}
 
