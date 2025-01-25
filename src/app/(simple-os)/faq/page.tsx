@@ -15,7 +15,7 @@ export const metadata: Metadata = metaHead({
 export default function () {
 	return (
 		<>
-			<SetEmojiPath emojiPath="%E2%9D%94" textPath="faq" />
+			<SetEmojiPath path="faq" />
 			<FAQContent />
 		</>
 	);

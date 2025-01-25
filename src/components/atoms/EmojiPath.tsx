@@ -1,5 +1,6 @@
 "use client";
 
+import { emojiPathList } from "@/data/emoji-path";
 import { useEffect } from "react";
 
 export default function () {
@@ -37,13 +38,14 @@ export default function () {
 }
 
 interface SetEmojiPathProps {
-	emojiPath: string;
-	textPath: string;
+	path: string;
 }
-export const SetEmojiPath = ({ emojiPath, textPath }: SetEmojiPathProps) => {
+export const SetEmojiPath = ({ path }: SetEmojiPathProps) => {
 	useEffect(() => {
+		const emojiPath = emojiPathList[path].emoji[0];
+
 		document.body.dataset.emojiPath = emojiPath;
-		document.body.dataset.textPath = textPath;
+		document.body.dataset.textPath = path;
 
 		(() => {
 			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
@@ -57,7 +59,7 @@ export const SetEmojiPath = ({ emojiPath, textPath }: SetEmojiPathProps) => {
 			document.body.dataset.emojiPath = "";
 			document.body.dataset.textPath = "";
 		};
-	}, [emojiPath, textPath]);
+	}, [path]);
 
 	return <></>;
 };
