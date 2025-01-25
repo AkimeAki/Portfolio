@@ -7,8 +7,16 @@ export default function () {
 				padding: 20px;
 			`}
 		>
-			<p>Q. 質問はありますか。</p>
-			<p>A. ありません。</p>
+			<FAQContent />
 		</div>
 	);
 }
+
+export const FAQContent = () => {
+	return (
+		<>
+			<p>Q. 質問はありますか。</p>
+			<p>A. ありません。</p>
+		</>
+	);
+};

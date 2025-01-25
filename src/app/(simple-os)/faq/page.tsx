@@ -1,4 +1,5 @@
-import Windows from "@/components/os/Windows";
+import { SetEmojiPath } from "@/components/atoms/EmojiPath";
+import { FAQContent } from "@/components/os/app/Faq";
 import { appList } from "@/libs/app-select";
 import { metaHead } from "@/libs/meta";
 import { Metadata } from "next";
@@ -12,5 +13,10 @@ export const metadata: Metadata = metaHead({
 });
 
 export default function () {
-	return <Windows defaultWindow="faq" />;
+	return (
+		<>
+			<SetEmojiPath emojiPath="%E2%9D%94" textPath="faq" />
+			<FAQContent />
+		</>
+	);
 }
