@@ -5,12 +5,20 @@ import { useEffect } from "react";
 export default function () {
 	useEffect(() => {
 		const mouseLeave = () => {
+			if (document.body.dataset.os === "windows" && document.body.dataset.browserType === "firefox") {
+				return;
+			}
+
 			if (document.body.dataset.emojiPath !== "" && document.body.dataset.emojiPath !== undefined) {
 				history.replaceState({}, "", `/${document.body.dataset.textPath}`);
 			}
 		};
 
 		const mouseEnter = () => {
+			if (document.body.dataset.os === "windows" && document.body.dataset.browserType === "firefox") {
+				return;
+			}
+
 			if (document.body.dataset.textPath !== "" && document.body.dataset.textPath !== undefined) {
 				history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
 			}
@@ -36,7 +44,14 @@ export const SetEmojiPath = ({ emojiPath, textPath }: SetEmojiPathProps) => {
 	useEffect(() => {
 		document.body.dataset.emojiPath = emojiPath;
 		document.body.dataset.textPath = textPath;
-		history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
+
+		(() => {
+			if (document.body.dataset.os === "windows" && document.body.dataset.browserType === "firefox") {
+				return;
+			}
+
+			history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
+		})();
 
 		return () => {
 			document.body.dataset.emojiPath = "";
