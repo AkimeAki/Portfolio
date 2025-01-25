@@ -91,7 +91,7 @@ export default function ({ children }: React.PropsWithChildren) {
 						>
 							←
 						</span>
-						<span>ポートフォリオに戻る</span>
+						<span>彩季.AkiOS を起動</span>
 					</Link>
 				</header>
 				<main
