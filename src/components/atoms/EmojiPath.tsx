@@ -3,10 +3,25 @@
 import { emojiPathList } from "@/data/emoji-path";
 import { useEffect } from "react";
 
+const pathList = [
+	...Object.values(emojiPathList)
+		.flatMap((p) => p.emoji)
+		.flatMap((e) => [e, encodeURIComponent(e)]),
+	...Object.keys(emojiPathList)
+];
+
 export default function () {
 	useEffect(() => {
+		const getPath = () => {
+			return location.pathname.replaceAll(/[/]{2,}/g, "").replace(/^\//, "");
+		};
+
 		const mouseLeave = () => {
 			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
+				return;
+			}
+
+			if (!pathList.includes(getPath())) {
 				return;
 			}
 
@@ -20,6 +35,10 @@ export default function () {
 				return;
 			}
 
+			if (!pathList.includes(getPath())) {
+				return;
+			}
+
 			if (document.body.dataset.textPath !== "" && document.body.dataset.textPath !== undefined) {
 				history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
 			}
@@ -27,6 +46,10 @@ export default function () {
 
 		const contextmenu = () => {
 			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
+				return;
+			}
+
+			if (!pathList.includes(getPath())) {
 				return;
 			}
 

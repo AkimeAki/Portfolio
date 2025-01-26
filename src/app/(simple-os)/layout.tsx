@@ -54,6 +54,7 @@ export default function ({ children }: React.PropsWithChildren) {
 					</h1>
 					<Link
 						href="/"
+						scroll={false}
 						className={css`
 							display: inline-flex;
 							gap: 5px;

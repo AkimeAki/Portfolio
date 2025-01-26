@@ -15,6 +15,15 @@ export const metadata: Metadata = metaHead({
 export default function () {
 	return (
 		<>
+			<style
+				dangerouslySetInnerHTML={{
+					__html: /* css */ `
+						body {
+							overflow-y: scroll;
+						}
+					`
+				}}
+			/>
 			<SetEmojiPath path="portfolio" />
 			<PortfolioContent />
 		</>
