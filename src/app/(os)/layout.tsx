@@ -13,6 +13,7 @@ import { Metadata } from "next";
 import PixelWrapper from "@/components/os/background/PixelWrapper";
 import NewVideo from "@/components/os/background/NewVideo";
 import Galaxy from "@/components/os/background/Galaxy";
+import LayoutInit from "@/components/LayoutInit";
 
 export const metadata: Metadata = metaHead({});
 
@@ -77,6 +78,7 @@ export default function ({ children }: React.PropsWithChildren) {
 				<Loading />
 				<Touch />
 				<ContextMenu />
+				<LayoutInit type="os" />
 				<div
 					className={css`
 						position: relative;

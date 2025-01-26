@@ -4,31 +4,46 @@ import { isTouch } from "@/atom";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
+import { useRouter } from "next/navigation";
 
 export default function () {
-	const { openWindow } = useWindow();
-	const $isTouch = useStore(isTouch);
-
 	return (
 		<div
 			className={css`
-				display: flex;
-				gap: 50px;
-				flex-direction: column;
 				padding: 30px;
-				max-width: 1000px;
-				width: 100%;
-				margin: 0 auto;
-
-				h3 {
-					display: table;
-					font-size: 18px;
-					color: #e73e6b;
-					background-color: #d0e79a;
-					padding: 5px 25px 7px;
-				}
 			`}
 		>
+			<div
+				className={css`
+					display: flex;
+					gap: 50px;
+					flex-direction: column;
+					max-width: 1000px;
+					width: 100%;
+					margin: 0 auto;
+
+					h3 {
+						display: table;
+						font-size: 18px;
+						color: #e73e6b;
+						background-color: #d0e79a;
+						padding: 5px 25px 7px;
+					}
+				`}
+			>
+				<ProfileContent />
+			</div>
+		</div>
+	);
+}
+
+export const ProfileContent = () => {
+	const { openWindow } = useWindow();
+	const $isTouch = useStore(isTouch);
+	const router = useRouter();
+
+	return (
+		<>
 			<div
 				className={css`
 					display: flex;
@@ -68,6 +83,7 @@ export default function () {
 							<rt
 								className={css`
 									font-size: 10px;
+									text-align: center;
 								`}
 							>
 								アキ
@@ -85,7 +101,7 @@ export default function () {
 								cursor: pointer;
 							`}
 							onClick={() => {
-								if ($isTouch) {
+								if ($isTouch || document.body.dataset.layout !== "os") {
 									window.open(
 										"https://www.youtube.com/watch?v=DkROVPRcceM&list=PLnVoUTTAoKRrI5sgu4NdqiJivv8FZKdci"
 									);
@@ -103,7 +119,7 @@ export default function () {
 								cursor: pointer;
 							`}
 							onClick={() => {
-								if ($isTouch) {
+								if ($isTouch || document.body.dataset.layout !== "os") {
 									window.open(
 										"https://www.youtube.com/watch?v=LLjfal8jCYI&list=PLnVoUTTAoKRrLKI-G9oAymJm_k8RVs_m9"
 									);
@@ -124,7 +140,11 @@ export default function () {
 								cursor: pointer;
 							`}
 							onClick={() => {
-								openWindow("portfolio");
+								if (document.body.dataset.layout !== "os") {
+									router.push("/portfolio");
+								} else {
+									openWindow("portfolio");
+								}
 							}}
 						>
 							作ったもの
@@ -173,6 +193,6 @@ export default function () {
 				<p>・ウェブ制作</p>
 				<p>・動画編集</p>
 			</div>
-		</div>
+		</>
 	);
-}
+};

@@ -404,14 +404,9 @@ const categoryList = [
 ];
 
 export default function () {
-	const [selectCategory, setSelectCategory] = useState<(typeof categoryList)[number]>("全て");
-
 	return (
 		<div
 			className={css`
-				display: flex;
-				flex-direction: column;
-				gap: 50px;
 				padding: 30px;
 				height: 100%;
 				overflow-y: scroll;
@@ -423,12 +418,33 @@ export default function () {
 		>
 			<div
 				className={css`
-					display: flex;
-					flex-direction: column;
-					gap: 5px;
 					max-width: 1000px;
 					width: 100%;
 					margin: 0 auto;
+				`}
+			>
+				<PortfolioContent />
+			</div>
+		</div>
+	);
+}
+
+export const PortfolioContent = () => {
+	const [selectCategory, setSelectCategory] = useState<(typeof categoryList)[number]>("全て");
+
+	return (
+		<div
+			className={css`
+				display: flex;
+				flex-direction: column;
+				gap: 50px;
+			`}
+		>
+			<div
+				className={css`
+					display: flex;
+					flex-direction: column;
+					gap: 5px;
 				`}
 			>
 				<div
@@ -454,14 +470,18 @@ export default function () {
 										cursor: pointer;
 										white-space: nowrap;
 										font-size: 15px;
-										padding: 6px 13px 10px 15px;
+										padding: 6px 13px;
 										user-select: none;
 
-										body[data-os="android"] & {
+										body[data-layout="os"] & {
+											padding: 6px 13px 10px 15px;
+										}
+
+										body[data-layout="os"][data-os="android"] & {
 											padding: 6px 13px 8px 15px;
 										}
 
-										body[data-browser="safari"] & {
+										body[data-layout="os"][data-browser="safari"] & {
 											padding: 6px 13px 8px 15px;
 										}
 									`,
@@ -498,9 +518,6 @@ export default function () {
 					display: flex;
 					flex-direction: column;
 					gap: 150px;
-					max-width: 1000px;
-					width: 100%;
-					margin: 0 auto;
 				`}
 			>
 				{portfolioList.map((portfolio, index) => {
@@ -517,4 +534,4 @@ export default function () {
 			</div>
 		</div>
 	);
-}
+};

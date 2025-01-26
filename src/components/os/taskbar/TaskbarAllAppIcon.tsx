@@ -148,6 +148,7 @@ export default function () {
 						)
 						.map((link) => (
 							<span
+								key={link}
 								className={cx(
 									link === "niconico" &&
 										css`
@@ -160,7 +161,6 @@ export default function () {
 								)}
 							>
 								<TaskbarAppIcon
-									key={link}
 									iconPath={`/icon/${link}.webp`}
 									alt={`${linkList[link].name}`}
 									text={`${linkList[link].name}`}

@@ -8,5 +8,11 @@ export const emojiPathList: {
 	},
 	faq: {
 		emoji: ["❔", "❔️"]
+	},
+	portfolio: {
+		emoji: ["⛏", "⛏️"]
+	},
+	profile: {
+		emoji: ["👻"]
 	}
 };

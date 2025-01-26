@@ -21,8 +21,10 @@ export default function ({
 				width: 100%;
 				gap: 20px;
 
-				* {
-					font-family: "BestTenCRT", "ArkPixel12ZHCN", "FusionPixel10KO";
+				body[data-layout="os"] & {
+					* {
+						font-family: "BestTenCRT", "ArkPixel12ZHCN", "FusionPixel10KO";
+					}
 				}
 			`}
 		>
@@ -64,18 +66,22 @@ export default function ({
 							target="_blank"
 							className={css`
 								display: table;
-								padding: 7px 10px 10px;
 								color: white;
 								background-color: #f64357;
 								text-decoration: none;
 								font-size: 14px;
 								user-select: none;
+								padding: 7px 10px;
 
-								body[data-os="android"] & {
+								body[data-layout="os"] & {
+									padding: 7px 10px 10px;
+								}
+
+								body[data-layout="os"][data-os="android"] & {
 									padding: 7px 10px 8px;
 								}
 
-								body[data-browser="safari"] & {
+								body[data-layout="os"][data-browser="safari"] & {
 									padding: 7px 10px 8px;
 								}
 							`}

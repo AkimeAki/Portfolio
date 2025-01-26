@@ -25,12 +25,24 @@ export default function () {
 			}
 		};
 
+		const contextmenu = () => {
+			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
+				return;
+			}
+
+			if (document.body.dataset.emojiPath !== "" && document.body.dataset.emojiPath !== undefined) {
+				history.replaceState({}, "", `/${document.body.dataset.textPath}`);
+			}
+		};
+
 		document.body.addEventListener("mouseleave", mouseLeave);
 		document.body.addEventListener("mouseenter", mouseEnter);
+		window.addEventListener("contextmenu", contextmenu);
 
 		return () => {
 			document.body.removeEventListener("mouseleave", mouseLeave);
 			document.body.removeEventListener("mouseenter", mouseEnter);
+			window.removeEventListener("contextmenu", contextmenu);
 		};
 	}, []);
 

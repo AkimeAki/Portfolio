@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { cx } from "@/libs/merge-kuma";
 import EmojiPath from "@/components/atoms/EmojiPath";
+import LayoutInit from "@/components/LayoutInit";
 
 export const metadata: Metadata = metaHead({});
 
@@ -11,6 +12,7 @@ export default function ({ children }: React.PropsWithChildren) {
 	return (
 		<>
 			<EmojiPath />
+			<LayoutInit type="simple-os" />
 			<style
 				dangerouslySetInnerHTML={{
 					__html: /* css */ `

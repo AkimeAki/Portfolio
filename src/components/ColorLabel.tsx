@@ -13,7 +13,7 @@ export default function ({ children, bgColor, color }: Props) {
 			className={css`
 				display: inline-block;
 				font-size: 16px;
-				padding: 2px 8px 6px 10px;
+				padding: 3px 8px;
 				border-radius: 6px;
 				line-height: 1;
 
@@ -21,11 +21,15 @@ export default function ({ children, bgColor, color }: Props) {
 					font-size: 12px;
 				}
 
-				body[data-os="android"] & {
+				body[data-layout="os"] & {
+					padding: 2px 8px 6px 10px;
+				}
+
+				body[data-layout="os"][data-os="android"] & {
 					padding: 2px 9px 3px 10px;
 				}
 
-				body[data-browser="safari"] & {
+				body[data-layout="os"][data-browser="safari"] & {
 					padding: 2px 9px 3px 10px;
 				}
 			`}
