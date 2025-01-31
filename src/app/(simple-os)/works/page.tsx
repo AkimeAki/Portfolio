@@ -1,4 +1,3 @@
-import AsciiAki from "@/components/AsciiAki";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
@@ -52,51 +51,6 @@ export default function () {
 				<Link href="/works/web">ウェブ制作依頼</Link>
 				<Link href="/works/movie">動画編集依頼</Link>
 			</nav>
-			<div
-				className={css`
-					position: fixed;
-					top: 0;
-					left: 50%;
-					transform: translateX(-50%);
-					-webkit-transform: translateX(-50%);
-					height: 100%;
-					max-width: 1100px;
-					width: 100%;
-					user-select: none;
-					pointer-events: none;
-				`}
-			>
-				<div
-					className={css`
-						position: absolute;
-						bottom: 50px;
-						right: 50px;
-
-						* {
-							user-select: text;
-							pointer-events: auto;
-							opacity: 1;
-							transition-property: opacity;
-							transition-duration: 200ms;
-						}
-
-						@media (max-width: 950px) {
-							transform: scale(0.6);
-							-webkit-transform: scale(0.6, 0.6);
-							bottom: -50px;
-							right: -50px;
-						}
-
-						@media (max-width: 620px) and (max-height: 656px) {
-							* {
-								opacity: 0.4;
-							}
-						}
-					`}
-				>
-					<AsciiAki />
-				</div>
-			</div>
 		</div>
 	);
 }
