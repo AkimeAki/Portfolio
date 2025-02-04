@@ -117,6 +117,10 @@ export default function () {
 							let oldPositonY = -1;
 							const startTime = new Date().getTime();
 							const tick = (): void => {
+								if (document.body.dataset.os === "ios") {
+									return;
+								}
+
 								if (unmounted) {
 									return;
 								}
@@ -272,7 +276,13 @@ export default function () {
 	}, [ready]);
 
 	return (
-		<div>
+		<div
+			className={css`
+				body[data-os="ios"] & {
+					display: none;
+				}
+			`}
+		>
 			<div
 				ref={element}
 				style={{ "--ascii-view-time": `${asciiViewTime}ms` } as React.CSSProperties}
