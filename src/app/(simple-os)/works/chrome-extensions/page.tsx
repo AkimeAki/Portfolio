@@ -4,10 +4,15 @@ import { Metadata } from "next";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = metaHead({
-	title: "動画編集依頼",
+	title: "Chrome拡張機能制作依頼",
 	description: "彩季です。"
 });
 
 export default function () {
-	return <div>準備中</div>;
+	return (
+		<div>
+			<p>専用のChrome拡張機能を作ります。</p>
+			<p>準備中</p>
+		</div>
+	);
 }

@@ -61,7 +61,7 @@ export default function ({ children }: React.PropsWithChildren) {
 							gap: 5px;
 							position: absolute;
 							top: 50%;
-							left: 30px;
+							left: 10px;
 							transform: translateY(-50%);
 
 							@media (max-width: 600px) {
@@ -79,7 +79,8 @@ export default function ({ children }: React.PropsWithChildren) {
 								}
 
 								.back-portfolio-arrow {
-									transform: translateX(-10px);
+									transform: translateX(-5px);
+									opacity: 1;
 								}
 							}
 						`}
@@ -88,8 +89,9 @@ export default function ({ children }: React.PropsWithChildren) {
 							className={cx(
 								"back-portfolio-arrow",
 								css`
+									opacity: 0;
 									transition-duration: 400ms;
-									transition-property: transform;
+									transition-property: transform, opacity;
 								`
 							)}
 						>
