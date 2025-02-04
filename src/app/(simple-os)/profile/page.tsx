@@ -3,6 +3,7 @@ import { ProfileContent } from "@/components/os/app/Profile";
 import { appList } from "@/libs/app-select";
 import { metaHead } from "@/libs/meta";
 import { Metadata } from "next";
+import { css } from "@kuma-ui/core";
 
 export const dynamic = "force-static";
 
@@ -16,7 +17,13 @@ export default function () {
 	return (
 		<>
 			<SetEmojiPath path="profile" />
-			<ProfileContent />
+			<div
+				className={css`
+					container-type: inline-size;
+				`}
+			>
+				<ProfileContent />
+			</div>
 		</>
 	);
 }
