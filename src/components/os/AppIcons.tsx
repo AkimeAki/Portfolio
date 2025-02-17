@@ -90,9 +90,6 @@ export default function () {
 			<AppIcon id="terminal" imgSrc="/app/terminal.png" isPixel>
 				ターミナル
 			</AppIcon>
-			<AppIcon href="/works" imgSrc="/app/works.png" isPixel>
-				制作依頼
-			</AppIcon>
 		</div>
 	);
 }
