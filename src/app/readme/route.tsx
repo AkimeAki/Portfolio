@@ -56,7 +56,9 @@ export async function GET() {
 	return new Response(body, {
 		status: 200,
 		headers: {
-			"Content-Type": "image/svg+xml"
+			"Content-Type": "image/svg+xml",
+			"Cache-Control": "no-cache,no-store,must-revalidate,max-age=0",
+			Pragma: "no-cache"
 		}
 	});
 }
