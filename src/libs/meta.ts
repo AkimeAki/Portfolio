@@ -6,6 +6,7 @@ interface Props {
 	isFullTitle?: boolean;
 	baseTitle?: string;
 	canonicalPath?: string;
+	noindex?: boolean;
 }
 
 export const pageTitle = "彩季.AkiOS";
@@ -16,7 +17,8 @@ export const metaHead = ({
 	isFullTitle = false,
 	description = "彩季のサイトです。",
 	canonicalPath,
-	baseTitle = pageTitle
+	baseTitle = pageTitle,
+	noindex = false
 }: Props): Metadata => {
 	let metaTitle = pageTitle;
 	if (title !== undefined) {
@@ -53,6 +55,9 @@ export const metaHead = ({
 		icons: `${siteUrl}/favicon.ico`,
 		alternates: {
 			canonical: canonicalPath !== undefined ? `${siteUrl}${canonicalPath}` : undefined
+		},
+		robots: {
+			index: !noindex
 		}
 	};
 };
