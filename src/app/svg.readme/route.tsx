@@ -45,8 +45,8 @@ function SVG({ 格言 }: Props) {
 export async function GET() {
 	const りあくと = (await import("react-dom/server")).default;
 	const 格言s = [
-		"キリンって冷静に見るとなんか変🤣",
-		"味噌汁飲んだ後に味噌汁作ると、味噌汁がまた飲める😮",
+		"キリンって冷静に見るとなんか変だよな",
+		"味噌汁飲んだ後に味噌汁作ると、味噌汁がまた飲めるぞ！",
 		'人に道聞かれすぎて "道" になっちまうよ…'
 	];
 	const 神様の言う通り = Math.floor(Math.random() * 格言s.length);
