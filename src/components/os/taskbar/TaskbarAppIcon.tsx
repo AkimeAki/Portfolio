@@ -56,12 +56,13 @@ export default function ({ href, alt, iconPath, text = "" }: Props) {
 					bottom: -20px;
 					left: 50%;
 					transform: translateX(-50%);
-					white-space: nowrap;
+					white-space: pre;
 					color: white;
 					font-size: 10px;
+					text-align: center;
 				`}
 			>
-				{text}
+				{text.replaceAll(" ", "\n")}
 			</span>
 		</div>
 	);
