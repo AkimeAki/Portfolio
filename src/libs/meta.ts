@@ -33,7 +33,7 @@ export const metaHead = ({
 		title: metaTitle,
 		description,
 		authors: { name: "彩季", url: siteUrl },
-		generator: "nextjs",
+		generator: "Next.js",
 		keywords: ["彩季"],
 		creator: "彩季",
 		openGraph: {
