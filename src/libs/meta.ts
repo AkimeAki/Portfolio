@@ -43,14 +43,14 @@ export const metaHead = ({
 			description,
 			siteName: pageTitle,
 			images: {
-				url: `${siteUrl}/favicon.png`
+				url: `${siteUrl}/wp-content/uploads/2000/8/32/favicon.png`
 			}
 		},
 		twitter: {
 			card: "summary",
 			site: "@Akime_Aki",
 			creator: "@Akime_Aki",
-			images: `${siteUrl}/favicon.png`
+			images: `${siteUrl}/wp-content/uploads/2000/8/32/favicon.png`
 		},
 		icons: `${siteUrl}/favicon.ico`,
 		alternates: {
