@@ -1,4 +1,3 @@
-import { appList } from "@/libs/app-select";
 import { metaHead, pageTitle } from "@/libs/meta";
 import { Metadata } from "next";
 import { css } from "@kuma-ui/core";
@@ -6,9 +5,10 @@ import { css } from "@kuma-ui/core";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = metaHead({
-	title: appList["profile"].pageTitle,
+	title: `ログイン ‹ ${pageTitle} — WordPress`,
 	isFullTitle: true,
-	description: `ログイン ‹ ${pageTitle} — WordPress`
+	description: "",
+	noindex: true
 });
 
 export default function () {
