@@ -2,6 +2,7 @@ import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
 import "@akimeaki/reset-css";
 import CheckUserAgent from "@/components/CheckUserAgent";
 import "@/styles/font.scss";
+import ChangeGenerator from "@/components/ChangeGenerator";
 
 interface Props {
 	children: React.ReactNode;
@@ -46,6 +47,7 @@ export default function ({ children }: Props) {
 				<KumaRegistry>
 					<>
 						<CheckUserAgent />
+						<ChangeGenerator />
 						{children}
 					</>
 				</KumaRegistry>
