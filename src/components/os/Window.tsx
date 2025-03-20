@@ -131,7 +131,10 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 		<div
 			ref={windowElement}
 			onMouseDown={() => {
-				openWindow(id);
+				const list = openAppSortList.get();
+				if (list[list.length - 1] !== id) {
+					openWindow(id);
+				}
 			}}
 			data-app-id={id}
 			style={{ zIndex: windowList.indexOf(id) }}
