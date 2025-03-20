@@ -163,6 +163,11 @@ export default function () {
 						background-color: #ed3256;
 						border-bottom: 2px solid #bb2a4a;
 						opacity: 0.7;
+						display: none;
+
+						@media (max-width: 720px) {
+							display: block;
+						}
 					`}
 				/>
 				<TaskbarClock />
