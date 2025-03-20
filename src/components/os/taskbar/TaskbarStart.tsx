@@ -91,6 +91,7 @@ export default memo(function () {
 						@media (max-width: 720px) {
 							top: 0;
 							left: 0;
+							padding: calc(20px + 26px) 20px 20px;
 							bottom: auto;
 							max-width: 100%;
 							width: 100%;
