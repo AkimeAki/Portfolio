@@ -1,12 +1,12 @@
 "use client";
 
 import { css } from "@kuma-ui/core";
-import { useEffect, useRef, useState } from "react";
-import TaskbarAppIcon from "@/components/os/taskbar/TaskbarAppIcon";
+import { memo, useEffect, useRef, useState } from "react";
+import TaskbarStartIcon from "@/components/os/taskbar/TaskbarStartIcon";
 import { linkList } from "@/data/links";
 import { cx } from "@/libs/merge-kuma";
 
-export default function () {
+export default memo(function () {
 	const [imagePath, setImagePath] = useState<string>("/emoji/1.png");
 	const [ready, setReady] = useState<boolean>(false);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -160,7 +160,7 @@ export default function () {
 										`
 								)}
 							>
-								<TaskbarAppIcon
+								<TaskbarStartIcon
 									iconPath={`/icon/${link}.webp`}
 									alt={`${linkList[link].name}`}
 									text={`${linkList[link].name}`}
@@ -224,4 +224,4 @@ export default function () {
 			</div>
 		</>
 	);
-}
+});

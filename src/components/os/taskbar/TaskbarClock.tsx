@@ -44,7 +44,12 @@ export default function () {
 				z-index: calc(infinity - 1);
 
 				@media (max-width: 720px) {
-					display: none;
+					position: fixed;
+					top: 3px;
+					left: 50%;
+					transform: translateX(-50%);
+					white-space: nowrap;
+					text-align: center;
 				}
 			`}
 		/>

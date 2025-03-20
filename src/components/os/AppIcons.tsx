@@ -48,6 +48,7 @@ export default function () {
 					}
 
 					@media (max-width: 720px) {
+						top: 26px;
 						display: grid;
 						grid-template-columns: 1fr 1fr 1fr 1fr;
 						gap: 0;

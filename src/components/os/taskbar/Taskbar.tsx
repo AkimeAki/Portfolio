@@ -3,7 +3,7 @@
 import { osReady } from "@/atom";
 import TaskbarIcon from "@/components/os/taskbar/TaskbarIcon";
 import TaskbarClock from "@/components/os/taskbar/TaskbarClock";
-import TaskbarAllAppIcon from "@/components/os/taskbar/TaskbarAllAppIcon";
+import TaskbarStart from "@/components/os/taskbar/TaskbarStart";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import MinimizedApps from "@/components/os/MinimizedApps";
@@ -110,7 +110,7 @@ export default function () {
 							}
 						`}
 					>
-						<TaskbarAllAppIcon />
+						<TaskbarStart />
 					</span>
 					{Object.keys(linkList)
 						.filter(
@@ -153,6 +153,18 @@ export default function () {
 						<MinimizedApps />
 					</span>
 				</div>
+				<div
+					className={css`
+						position: fixed;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 26px;
+						background-color: #ed3256;
+						border-bottom: 2px solid #bb2a4a;
+						opacity: 0.7;
+					`}
+				/>
 				<TaskbarClock />
 			</div>
 		</div>
