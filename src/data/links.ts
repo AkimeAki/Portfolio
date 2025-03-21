@@ -60,10 +60,6 @@ export const linkList: {
 		name: "Fiicen",
 		url: "https://fiicen.jp/field/Akii"
 	},
-	pixiv: {
-		name: "pixiv",
-		url: "https://www.pixiv.net/users/64086928"
-	},
 	hoyolab: {
 		name: "HoYoLab",
 		url: "https://www.hoyolab.com/accountCenter/postList?id=8411789"
