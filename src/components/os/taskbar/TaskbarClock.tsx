@@ -50,7 +50,6 @@ export default function () {
 					transform: translateX(-50%);
 					white-space: nowrap;
 					text-align: center;
-					z-index: 0;
 
 					body[data-os="android"] & {
 						top: 4px;

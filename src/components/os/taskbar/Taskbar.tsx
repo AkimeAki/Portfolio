@@ -164,7 +164,6 @@ export default function () {
 						border-bottom: 2px solid #bb2a4a;
 						opacity: 0.7;
 						display: none;
-						z-index: -1;
 
 						@media (max-width: 720px) {
 							display: block;

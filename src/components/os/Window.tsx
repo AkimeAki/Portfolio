@@ -172,6 +172,11 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						left: 0 !important;
 						width: 100% !important;
 						height: calc(100% - 70px) !important;
+
+						@media (max-width: 720px) {
+							top: 26px !important;
+							height: calc(100% - 96px) !important;
+						}
 					`,
 				$minimizeWindowList.includes(id) &&
 					css`
