@@ -34,6 +34,7 @@ export default function ({ children }: Props) {
 						></script>
 					</>
 				)}
+				{process.env.SCAN === "true" && <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />}
 			</head>
 			<body>
 				<noscript>

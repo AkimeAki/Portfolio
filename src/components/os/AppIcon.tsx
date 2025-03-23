@@ -1,6 +1,6 @@
 "use client";
 
-import { osReady } from "@/atom";
+import { minimizeWindowList, openAppSortList, osReady } from "@/atom";
 import { appList } from "@/libs/app-select";
 import { cx } from "@/libs/merge-kuma";
 import useWindow from "@/libs/useWindow";
@@ -30,8 +30,15 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 				}
 
 				if (id !== undefined) {
-					openWindow(id);
-					releaseMinimizedWindow(id);
+					const list = openAppSortList.get();
+					if (list[list.length - 1] !== id) {
+						openWindow(id);
+					}
+
+					const minimizedList = minimizeWindowList.get();
+					if (minimizedList.includes(id)) {
+						releaseMinimizedWindow(id);
+					}
 
 					if (process.env.NODE_ENV === "production") {
 						window.dataLayer.push({ event: "app-click", appId: id, url: null });
