@@ -50,6 +50,7 @@ const portfolioList: ({
 	{
 		title: "SimpleV",
 		href: "https://simple-v.aki.wtf/",
+		iconSrc: "/portfolio/simplev.webp",
 		inCharge: "開発",
 		category: "ウェブサービス",
 		tools: ["typescript", "astro", "react", "emotion", "pages"],

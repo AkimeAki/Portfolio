@@ -168,7 +168,7 @@ export default function ({ notFound = false }: Props) {
 				"/app/blog.png",
 				"/app/aki.webp",
 				"/app/picaxe.png",
-				"/app/simplev.png",
+				"/app/simplev.webp",
 				"/app/allergy-navi.webp",
 				"/app/dotya.png",
 				"/app/terminal.png"

@@ -82,7 +82,7 @@ export default function () {
 			<AppIcon href="https://pixel.gives/" imgSrc="/app/dotya.png" isPixel target="_blank">
 				どっとや
 			</AppIcon>
-			<AppIcon href="https://simple-v.aki.wtf/" imgSrc="/app/simplev.png" isPixel target="_blank">
+			<AppIcon href="https://simple-v.aki.wtf/" imgSrc="/app/simplev.webp" target="_blank">
 				SimpleV
 			</AppIcon>
 			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
