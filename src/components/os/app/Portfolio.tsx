@@ -470,7 +470,7 @@ export const PortfolioContent = () => {
 										cursor: pointer;
 										white-space: nowrap;
 										font-size: 15px;
-										padding: 6px 13px;
+										padding: 6px 13px 5px;
 										user-select: none;
 
 										body[data-layout="os"] & {
