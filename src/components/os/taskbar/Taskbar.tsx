@@ -9,6 +9,54 @@ import { useStore } from "@nanostores/react";
 import MinimizedApps from "@/components/os/MinimizedApps";
 import { linkList } from "@/data/links";
 import { cx } from "@/libs/merge-kuma";
+import { memo } from "react";
+
+const TaskbarIconMemo = memo(() => {
+	return (
+		<>
+			{Object.keys(linkList)
+				.filter(
+					(link) =>
+						link === "x" ||
+						link === "youtube" ||
+						link === "twitch" ||
+						link === "niconico" ||
+						link === "github"
+				)
+				.map((link, index) => (
+					<span
+						key={link}
+						style={{ order: index + 1 }}
+						className={cx(
+							link === "niconico" &&
+								css`
+									@media (max-width: 720px) {
+										display: none;
+									}
+								`
+						)}
+					>
+						<TaskbarIcon
+							iconPath={`/icon/${link}.webp`}
+							alt={`${linkList[link].name}`}
+							href={linkList[link].url}
+						/>
+					</span>
+				))}
+			<span
+				className={css`
+					order: 6;
+
+					@media (max-width: 720px) {
+						display: none;
+					}
+				`}
+			>
+				<MinimizedApps />
+			</span>
+		</>
+	);
+});
 
 export default function () {
 	const $osReady = useStore(osReady);
@@ -112,46 +160,7 @@ export default function () {
 					>
 						<TaskbarStart />
 					</span>
-					{Object.keys(linkList)
-						.filter(
-							(link) =>
-								link === "x" ||
-								link === "youtube" ||
-								link === "twitch" ||
-								link === "niconico" ||
-								link === "github"
-						)
-						.map((link, index) => (
-							<span
-								key={link}
-								style={{ order: index + 1 }}
-								className={cx(
-									link === "niconico" &&
-										css`
-											@media (max-width: 720px) {
-												display: none;
-											}
-										`
-								)}
-							>
-								<TaskbarIcon
-									iconPath={`/icon/${link}.webp`}
-									alt={`${linkList[link].name}`}
-									href={linkList[link].url}
-								/>
-							</span>
-						))}
-					<span
-						className={css`
-							order: 6;
-
-							@media (max-width: 720px) {
-								display: none;
-							}
-						`}
-					>
-						<MinimizedApps />
-					</span>
+					<TaskbarIconMemo />
 				</div>
 				<div
 					className={css`
