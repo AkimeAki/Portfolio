@@ -15,7 +15,7 @@ export const metadata: Metadata = metaHead({
 export default function () {
 	return (
 		<>
-			<SetEmojiPath path="faq" />
+			<SetEmojiPath path="links" />
 			<div
 				className={css`
 					display: flex;

@@ -53,16 +53,17 @@ export default function ({ href, alt, iconPath, text = "" }: Props) {
 			<span
 				className={css`
 					position: absolute;
-					bottom: -20px;
+					top: 50px;
 					left: 50%;
 					transform: translateX(-50%);
 					white-space: pre;
 					color: white;
 					font-size: 10px;
 					text-align: center;
+					line-height: 1.3;
 				`}
 			>
-				{text.replaceAll(" ", "\n")}
+				{text}
 			</span>
 		</div>
 	);

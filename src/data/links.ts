@@ -33,7 +33,7 @@ export const linkList: {
 		url: "https://misskey.io/@_aki"
 	},
 	bskyMisskey: {
-		name: "Blueskyと同じ",
+		name: "Bridgy Fed\n（内容はBlueskyと同じ）",
 		url: "https://misskey.io/@aki.wtf@bsky.brid.gy"
 	},
 	mixi2: {
@@ -49,7 +49,7 @@ export const linkList: {
 		url: "https://www.npmjs.com/~akimeaki"
 	},
 	steam: {
-		name: "Steam ワークショップ",
+		name: "Steam\nワークショップ",
 		url: "https://steamcommunity.com/id/Aki___/myworkshopfiles/"
 	},
 	suzuri: {
