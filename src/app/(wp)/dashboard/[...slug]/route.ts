@@ -6,5 +6,5 @@ export const runtime = "edge";
 export const GET = async (): Promise<void> => {
 	await new Promise((resolve) => setTimeout(resolve, 700));
 
-	redirect("/wp-login.php?redirect_to=https://aki.wtf/wp-admin&reauth=1");
+	redirect("/wp-login.php?redirect_to=https://shikiiro.net/wp-admin&reauth=1");
 };

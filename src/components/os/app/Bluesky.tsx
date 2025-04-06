@@ -22,7 +22,7 @@ export default () => {
 			<script
 				async
 				src="https://bst.heion.net/timeline.js"
-				data-handle="aki.wtf"
+				data-handle="shikiiro.net"
 				data-theme="light"
 				data-width="420"
 				data-height="500"

@@ -73,7 +73,7 @@ export default function () {
 			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/aki-coffee.png" isPixel target="_blank">
 				日常ブログ
 			</AppIcon>
-			<AppIcon href="https://blog.aki.wtf/" imgSrc="/app/blog.png" isPixel target="_blank">
+			<AppIcon href="https://blog.shikiiro.net/" imgSrc="/app/blog.png" isPixel target="_blank">
 				技術ブログ
 			</AppIcon>
 			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.webp" target="_blank">

@@ -65,7 +65,7 @@ const portfolioList: ({
 	},
 	{
 		title: "ポートフォリオ（このサイト）",
-		href: "https://aki.wtf/",
+		href: "https://shikiiro.net/",
 		inCharge: "開発",
 		category: "ウェブサイト",
 		tools: ["typescript", "nextjs", "kumaui", "threejs", "pages"],
@@ -231,7 +231,7 @@ const portfolioList: ({
 	{
 		title: "孅いウェブエンジニアブログ",
 		iconSrc: "/portfolio/kayowai.webp",
-		href: "https://blog.aki.wtf/",
+		href: "https://blog.shikiiro.net/",
 		inCharge: "開発, ブログ執筆",
 		category: "ウェブサイト",
 		tools: ["typescript", "astro", "microcms", "pages"],

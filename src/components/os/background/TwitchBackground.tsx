@@ -44,7 +44,7 @@ export default function () {
 					muted: true,
 					autoplay: true,
 					layout: "video",
-					parent: ["localhost", "aki.wtf"]
+					parent: ["localhost", "shikiiro.net"]
 				});
 
 				const checkStatus = async () => {
