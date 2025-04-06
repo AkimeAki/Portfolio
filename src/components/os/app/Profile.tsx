@@ -169,7 +169,7 @@ export const ProfileContent = () => {
 									"Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 							`}
 						>
-							contact@mail.aki.wtf
+							contact@shikiiro.net
 						</span>
 						）でご連絡ください🙇
 					</p>
