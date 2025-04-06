@@ -49,7 +49,7 @@ const portfolioList: ({
 	},
 	{
 		title: "SimpleV",
-		href: "https://simple-v.aki.wtf/",
+		href: "https://simple-v.shikiiro.net/",
 		iconSrc: "/portfolio/simplev.webp",
 		inCharge: "開発",
 		category: "ウェブサービス",
@@ -218,7 +218,7 @@ const portfolioList: ({
 	{
 		title: "ロゴの規約など収集所",
 		iconSrc: "/portfolio/logo-hiroba.webp",
-		href: "https://logo.aki.wtf/",
+		href: "https://logo.shikiiro.net/",
 		inCharge: "開発",
 		category: "ウェブサービス",
 		tools: ["typescript", "astro", "pandacss", "pages"],
@@ -244,7 +244,7 @@ const portfolioList: ({
 	},
 	{
 		title: "Aki Coffee☕ - AIが背景画像を生成するブログ",
-		href: "https://coffee.aki.wtf/",
+		href: "https://coffee.shikiiro.net/",
 		inCharge: "開発, ブログ執筆",
 		category: "ウェブサイト",
 		tools: ["typescript", "astro", "microcms", "pages", "chatgpt"],

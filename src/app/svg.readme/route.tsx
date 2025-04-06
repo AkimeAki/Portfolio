@@ -13,7 +13,7 @@ function SVG({ 格言 }: Props) {
 					__html: /* css */ `
 						@font-face {
 							font-family: "BestTenCRT";
-							src: url("https://r2.aki.wtf/BestTen-CRT.otf");
+							src: url("https://r2.shikiiro.net/BestTen-CRT.otf");
 						}
 
 						#顔 {

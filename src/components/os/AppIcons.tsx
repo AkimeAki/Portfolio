@@ -70,7 +70,7 @@ export default function () {
 			<AppIcon id="portfolio" imgSrc="/app/picaxe.png" isPixel>
 				作ったもの
 			</AppIcon>
-			<AppIcon href="https://coffee.aki.wtf/" imgSrc="/app/aki-coffee.png" isPixel target="_blank">
+			<AppIcon href="https://coffee.shikiiro.net/" imgSrc="/app/aki-coffee.png" isPixel target="_blank">
 				日常ブログ
 			</AppIcon>
 			<AppIcon href="https://blog.shikiiro.net/" imgSrc="/app/blog.png" isPixel target="_blank">
@@ -82,7 +82,7 @@ export default function () {
 			<AppIcon href="https://pixel.gives/" imgSrc="/app/dotya.png" isPixel target="_blank">
 				どっとや
 			</AppIcon>
-			<AppIcon href="https://simple-v.aki.wtf/" imgSrc="/app/simplev.webp" target="_blank">
+			<AppIcon href="https://simple-v.shikiiro.net/" imgSrc="/app/simplev.webp" target="_blank">
 				SimpleV
 			</AppIcon>
 			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
