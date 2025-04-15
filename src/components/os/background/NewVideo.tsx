@@ -56,20 +56,17 @@ export default function () {
 				}
 			`}
 		>
-			<iframe
-				src="https://www.youtube.com/embed/?list=UUHV3Taosn76pn9_ip1u7Zkg&loop=1&autoplay=1&mute=1&rel=0&controls=0&playsinline=1"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				allowFullScreen
+			<div
 				className={css`
 					position: absolute;
 					top: 0;
 					left: 0;
 					width: 100%;
 					height: 100%;
-					aspect-ratio: 16/9;
-					border: none;
+					aspect-ratio: 16 / 9;
 					filter: brightness(110%) blur(5px);
 					transform: scale(1.02);
+					background-color: rgb(255, 255, 255, 0.13);
 				`}
 			/>
 			<iframe
