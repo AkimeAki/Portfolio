@@ -75,8 +75,9 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 				const target = e.target as HTMLDivElement;
 
 				if (
-					document.body.dataset.browserType !== "firefox" ||
-					(document.body.dataset.browserType === "firefox" && !$isTouch)
+					(document.body.dataset.browserType !== "firefox" ||
+						(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+					e.isPrimary
 				) {
 					if (e.buttons === 1) {
 						target.style.top = target.offsetTop + e.movementY + "px";

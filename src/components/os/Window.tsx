@@ -280,7 +280,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -334,7 +335,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -385,7 +387,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -440,7 +443,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -491,7 +495,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -549,7 +554,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -611,7 +617,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -666,7 +673,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						if (
 							document.body.dataset.dragging === "true" &&
 							(document.body.dataset.browserType !== "firefox" ||
-								(document.body.dataset.browserType === "firefox" && !$isTouch))
+								(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+							e.isPrimary
 						) {
 							const target = e.target as HTMLDivElement;
 
@@ -785,7 +793,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							if (
 								document.body.dataset.dragging === "true" &&
 								(document.body.dataset.browserType !== "firefox" ||
-									(document.body.dataset.browserType === "firefox" && !$isTouch))
+									(document.body.dataset.browserType === "firefox" && !$isTouch)) &&
+								e.isPrimary
 							) {
 								const target = e.target as HTMLDivElement;
 
