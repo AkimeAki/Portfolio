@@ -17,6 +17,7 @@
 		"lint:fix": "npm run lint -- --fix && npm run format"
 	},
 	"dependencies": {
+		"@akimeaki/check-browser": "0.4.0",
 		"@akimeaki/null-to-undefined": "1.0.1",
 		"@akimeaki/reset-css": "0.3.0",
 		"@kuma-ui/core": "1.5.7",

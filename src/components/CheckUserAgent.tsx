@@ -1,11 +1,11 @@
 "use client";
 
-import { checkUseragent } from "@/libs/check-useragent";
+import checkBrowser from "@akimeaki/check-browser";
 import { useEffect } from "react";
 
 export default function () {
 	useEffect(() => {
-		const data = checkUseragent();
+		const data = checkBrowser();
 		document.body.dataset.browser = data.browser;
 		document.body.dataset.browserType = data.type;
 		document.body.dataset.os = data.os;

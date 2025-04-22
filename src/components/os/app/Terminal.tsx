@@ -1,7 +1,7 @@
 "use client";
 
 import { runningCommands } from "@/atom";
-import { checkUseragent } from "@/libs/check-useragent";
+import checkBrowser from "@akimeaki/check-browser";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
@@ -32,7 +32,7 @@ export default () => {
 	useEffect(() => {
 		document.fonts.ready.then(() => {
 			const agent = window.navigator.userAgent.toLowerCase();
-			const data = checkUseragent();
+			const data = checkBrowser();
 			setTerminalLog(
 				`HamaguriShell 0.0.1<br>os: ${data.os}<br>browser: ${data.browser}<br>version: ${data.version}<br>${agent}<br><br>Error: スマホの入力に不具合が発生しています。ㅤ`
 			);
