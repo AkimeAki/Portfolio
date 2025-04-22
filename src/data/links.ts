@@ -56,10 +56,6 @@ export const linkList: {
 		name: "SUZURI",
 		url: "https://suzuri.jp/Aki___"
 	},
-	fiicen: {
-		name: "Fiicen",
-		url: "https://fiicen.jp/field/Akii"
-	},
 	hoyolab: {
 		name: "HoYoLab",
 		url: "https://www.hoyolab.com/accountCenter/postList?id=8411789"
