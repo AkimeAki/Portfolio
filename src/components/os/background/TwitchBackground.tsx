@@ -1,6 +1,7 @@
 "use client";
 
 import { osReady } from "@/atom";
+import checkBrowser from "@akimeaki/check-browser";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -25,6 +26,15 @@ export default function () {
 	const $osReady = useStore(osReady);
 	const [isPaused, setIsPaused] = useState<boolean>(true);
 	const [ready, setReady] = useState<boolean>(false);
+	const [browserCheck, setBrowserCheck] = useState<boolean>(false);
+
+	useEffect(() => {
+		const data = checkBrowser();
+		// AndroidのOperaは自動再生ができない
+		if (!(data.browser === "opera" && data.os === "android")) {
+			setBrowserCheck(true);
+		}
+	}, []);
 
 	useEffect(() => {
 		if ($osReady) {
@@ -35,7 +45,7 @@ export default function () {
 	useEffect(() => {
 		let unmounted = false;
 
-		if (ready) {
+		if (ready && browserCheck) {
 			try {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-expect-error
@@ -70,7 +80,7 @@ export default function () {
 		return () => {
 			unmounted = true;
 		};
-	}, [ready]);
+	}, [ready, browserCheck]);
 
 	useEffect(() => {
 		window.addEventListener("resize", resize);
@@ -93,7 +103,7 @@ export default function () {
 					user-select: none;
 					pointer-events: none;
 					background-color: #9143f9;
-					padding: 3px 15px 5px;
+					padding: 3px 15px 8px;
 					z-index: 999999;
 
 					@media (max-width: 720px) {
