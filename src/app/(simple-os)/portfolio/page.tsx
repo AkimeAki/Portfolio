@@ -1,8 +1,8 @@
 import { SetEmojiPath } from "@/components/atoms/EmojiPath";
-import { PortfolioContent } from "@/components/os/app/Portfolio";
 import { appList } from "@/libs/app-select";
 import { metaHead } from "@/libs/meta";
 import { Metadata } from "next";
+import { PortfolioContent } from "./_PortfolioContent";
 
 export const dynamic = "force-static";
 

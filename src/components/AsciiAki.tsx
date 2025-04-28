@@ -1,5 +1,6 @@
 "use client";
 
+import { isLoadIframe } from "@/libs/is-load-iframe";
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef, useState } from "react";
 
@@ -32,7 +33,9 @@ export default function () {
 	const element = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		setReady(true);
+		if (!isLoadIframe()) {
+			setReady(true);
+		}
 	}, []);
 
 	useEffect(() => {

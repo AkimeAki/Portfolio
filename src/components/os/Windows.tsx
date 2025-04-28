@@ -67,7 +67,7 @@ export default function ({ defaultWindow }: Props) {
 
 				return (
 					<Window key={appId} id={appId} appData={appList[appId]} ready={ready}>
-						<Component />
+						{Component}
 					</Window>
 				);
 			})}

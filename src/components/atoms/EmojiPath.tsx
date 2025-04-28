@@ -1,6 +1,7 @@
 "use client";
 
 import { emojiPathList } from "@/data/emoji-path";
+import { isLoadIframe } from "@/libs/is-load-iframe";
 import { useEffect } from "react";
 
 const pathList = [
@@ -58,14 +59,18 @@ export default function () {
 			}
 		};
 
-		document.body.addEventListener("mouseleave", mouseLeave);
-		document.body.addEventListener("mouseenter", mouseEnter);
-		window.addEventListener("contextmenu", contextmenu);
+		if (!isLoadIframe()) {
+			document.body.addEventListener("mouseleave", mouseLeave);
+			document.body.addEventListener("mouseenter", mouseEnter);
+			window.addEventListener("contextmenu", contextmenu);
+		}
 
 		return () => {
-			document.body.removeEventListener("mouseleave", mouseLeave);
-			document.body.removeEventListener("mouseenter", mouseEnter);
-			window.removeEventListener("contextmenu", contextmenu);
+			if (!isLoadIframe()) {
+				document.body.removeEventListener("mouseleave", mouseLeave);
+				document.body.removeEventListener("mouseenter", mouseEnter);
+				window.removeEventListener("contextmenu", contextmenu);
+			}
 		};
 	}, []);
 
@@ -77,22 +82,26 @@ interface SetEmojiPathProps {
 }
 export const SetEmojiPath = ({ path }: SetEmojiPathProps) => {
 	useEffect(() => {
-		const emojiPath = emojiPathList[path].emoji[0];
+		if (!isLoadIframe()) {
+			const emojiPath = emojiPathList[path].emoji[0];
 
-		document.body.dataset.emojiPath = emojiPath;
-		document.body.dataset.textPath = path;
+			document.body.dataset.emojiPath = emojiPath;
+			document.body.dataset.textPath = path;
 
-		(() => {
-			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
-				return;
-			}
+			(() => {
+				if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
+					return;
+				}
 
-			history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
-		})();
+				history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
+			})();
+		}
 
 		return () => {
-			document.body.dataset.emojiPath = "";
-			document.body.dataset.textPath = "";
+			if (!isLoadIframe()) {
+				document.body.dataset.emojiPath = "";
+				document.body.dataset.textPath = "";
+			}
 		};
 	}, [path]);
 

@@ -1,11 +1,10 @@
-import Portfolio from "@/components/os/app/Portfolio";
-import Faq from "@/components/os/app/Faq";
 import { pageTitle } from "@/libs/meta";
 import Profile from "@/components/os/app/Profile";
 import Teto from "@/components/os/app/Teto";
 import Furina from "@/components/os/app/Furina";
 import Terminal from "@/components/os/app/Terminal";
 import Intro from "@/components/os/app/Intro";
+import { IframeWindow } from "@/components/os/IframeWindow";
 
 export const sortList = (id: string, list: string[]) => {
 	let result = [...list];
@@ -30,7 +29,7 @@ export interface AppData {
 		isPixel: boolean;
 		path: string;
 	};
-	component: () => React.JSX.Element;
+	component: React.JSX.Element;
 	resize: boolean;
 	changeHistory: boolean;
 	size?: {
@@ -62,7 +61,7 @@ export const appList: {
 			isPixel: true,
 			path: "/app/picaxe.png"
 		},
-		component: Portfolio,
+		component: <IframeWindow src="/portfolio" />,
 		resize: true,
 		changeHistory: true,
 		viewPinButton: false
@@ -74,7 +73,7 @@ export const appList: {
 			isPixel: true,
 			path: "/app/ghost.png"
 		},
-		component: Faq,
+		component: <IframeWindow src="/faq" />,
 		resize: true,
 		changeHistory: true,
 		viewPinButton: false
@@ -86,7 +85,7 @@ export const appList: {
 			isPixel: false,
 			path: "/app/aki.webp"
 		},
-		component: Profile,
+		component: <Profile />,
 		resize: true,
 		changeHistory: true,
 		viewPinButton: false
@@ -98,7 +97,7 @@ export const appList: {
 			isPixel: false,
 			path: "/app/teto.webp"
 		},
-		component: Teto,
+		component: <Teto />,
 		resize: false,
 		changeHistory: false,
 		size: {
@@ -115,7 +114,7 @@ export const appList: {
 			isPixel: true,
 			path: "/app/furina.png"
 		},
-		component: Furina,
+		component: <Furina />,
 		resize: false,
 		changeHistory: false,
 		size: {
@@ -132,7 +131,7 @@ export const appList: {
 			isPixel: true,
 			path: "/app/terminal.png"
 		},
-		component: Terminal,
+		component: <Terminal />,
 		resize: true,
 		changeHistory: false,
 		viewPinButton: false
@@ -144,7 +143,7 @@ export const appList: {
 			isPixel: true,
 			path: "/app/aki.webp"
 		},
-		component: Intro,
+		component: <Intro />,
 		resize: true,
 		changeHistory: false,
 		size: {

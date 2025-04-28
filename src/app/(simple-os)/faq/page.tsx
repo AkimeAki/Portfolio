@@ -1,5 +1,4 @@
 import { SetEmojiPath } from "@/components/atoms/EmojiPath";
-import { FAQContent } from "@/components/os/app/Faq";
 import { appList } from "@/libs/app-select";
 import { metaHead } from "@/libs/meta";
 import { Metadata } from "next";
@@ -16,7 +15,8 @@ export default function () {
 	return (
 		<>
 			<SetEmojiPath path="faq" />
-			<FAQContent />
+			<p>Q. 質問はありますか。</p>
+			<p>A. ありません。</p>
 		</>
 	);
 }

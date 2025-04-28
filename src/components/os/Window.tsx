@@ -1123,7 +1123,6 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					<div
 						className={css`
 							flex: 1;
-							overflow: auto;
 							container-type: inline-size;
 
 							@layer base {

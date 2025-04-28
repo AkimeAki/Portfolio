@@ -13,7 +13,7 @@ export default function ({ children }: React.PropsWithChildren) {
 	return (
 		<>
 			<EmojiPath />
-			<LayoutInit type="simple-os" />
+			<LayoutInit type="simple-os" iframeType="os" />
 			<style
 				dangerouslySetInnerHTML={{
 					__html: /* css */ `
@@ -42,6 +42,10 @@ export default function ({ children }: React.PropsWithChildren) {
 						width: 100%;
 						margin: 0 auto;
 						padding: 100px 30px;
+
+						body[data-iframe="true"] & {
+							display: none;
+						}
 					`}
 				>
 					<h1
@@ -106,6 +110,14 @@ export default function ({ children }: React.PropsWithChildren) {
 						width: 100%;
 						margin: 0 auto;
 						padding: 0 30px 60px;
+
+						body[data-iframe="true"] & {
+							padding: 60px;
+
+							* {
+								font-family: "BestTenCRT";
+							}
+						}
 					`}
 				>
 					{children}

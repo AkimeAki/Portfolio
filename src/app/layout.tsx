@@ -3,6 +3,8 @@ import "@akimeaki/reset-css";
 import CheckUserAgent from "@/components/CheckUserAgent";
 import "@/styles/font.scss";
 import ChangeGenerator from "@/components/ChangeGenerator";
+import { IframeInit } from "@/components/os/IframeInit";
+import { siteUrl } from "@/libs/meta";
 
 interface Props {
 	children: React.ReactNode;
@@ -49,6 +51,7 @@ export default function ({ children }: Props) {
 					<>
 						<CheckUserAgent />
 						<ChangeGenerator />
+						<IframeInit origin={siteUrl} />
 						{children}
 					</>
 				</KumaRegistry>

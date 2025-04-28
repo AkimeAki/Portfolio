@@ -1,12 +1,12 @@
 "use client";
 
-import { css } from "@kuma-ui/core";
-import PortfolioArea from "@/components/os/PortfolioArea";
-import { Fragment, ReactNode, useState } from "react";
-import { cx } from "@/libs/merge-kuma";
 import { toolColorList } from "@/color-label";
+import PortfolioArea from "@/components/os/PortfolioArea";
+import { cx } from "@/libs/merge-kuma";
+import { css } from "@kuma-ui/core";
+import { Fragment, ReactNode, useState } from "react";
 
-export interface Portfolio {
+interface Portfolio {
 	title: string;
 	href?: string;
 	buttonTitle?: string;
@@ -404,33 +404,7 @@ const categoryList = [
 	)
 ];
 
-export default function () {
-	return (
-		<div
-			className={css`
-				padding: 30px;
-				height: 100%;
-				overflow-y: scroll;
-
-				@container (max-width: 720px) {
-					padding: 12px;
-				}
-			`}
-		>
-			<div
-				className={css`
-					max-width: 1000px;
-					width: 100%;
-					margin: 0 auto;
-				`}
-			>
-				<PortfolioContent />
-			</div>
-		</div>
-	);
-}
-
-export const PortfolioContent = () => {
+export function PortfolioContent() {
 	const [selectCategory, setSelectCategory] = useState<(typeof categoryList)[number]>("全て");
 
 	return (
@@ -482,7 +456,7 @@ export const PortfolioContent = () => {
 											padding: 6px 13px 8px 15px;
 										}
 
-										body[data-layout="os"][data-browser="safari"] & {
+										body[data-layout="os"][data-browser="safari"] && {
 											padding: 6px 13px 8px 15px;
 										}
 									`,
@@ -535,4 +509,4 @@ export const PortfolioContent = () => {
 			</div>
 		</div>
 	);
-};
+}
