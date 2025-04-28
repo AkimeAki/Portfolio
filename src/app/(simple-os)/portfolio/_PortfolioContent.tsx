@@ -6,7 +6,7 @@ import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
 import { Fragment, ReactNode, useState } from "react";
 
-interface Portfolio {
+export interface Portfolio {
 	title: string;
 	href?: string;
 	buttonTitle?: string;

@@ -1,7 +1,7 @@
 import { css } from "@kuma-ui/core";
 import ColorLabel from "@/components/ColorLabel";
-import { Portfolio } from "@/components/os/app/Portfolio";
 import { toolColorList } from "@/color-label";
+import { Portfolio } from "@/app/(simple-os)/portfolio/_PortfolioContent";
 
 export default function ({
 	title,
