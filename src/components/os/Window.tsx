@@ -1140,6 +1140,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 						</div>
 					</div>
 					<div
+						style={{ height: `calc(100% - ${windowHeaderHeight}px)` }}
 						className={css`
 							flex: 1;
 							container-type: inline-size;

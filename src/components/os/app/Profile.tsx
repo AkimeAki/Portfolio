@@ -10,28 +10,35 @@ export default function () {
 	return (
 		<div
 			className={css`
-				padding: 30px;
+				overflow-y: scroll;
+				height: 100%;
 			`}
 		>
 			<div
 				className={css`
-					display: flex;
-					gap: 50px;
-					flex-direction: column;
-					max-width: 1000px;
-					width: 100%;
-					margin: 0 auto;
-
-					h3 {
-						display: table;
-						font-size: 18px;
-						color: #e73e6b;
-						background-color: #d0e79a;
-						padding: 5px 25px 7px;
-					}
+					padding: 30px;
 				`}
 			>
-				<ProfileContent />
+				<div
+					className={css`
+						display: flex;
+						gap: 50px;
+						flex-direction: column;
+						max-width: 1000px;
+						width: 100%;
+						margin: 0 auto;
+
+						h3 {
+							display: table;
+							font-size: 18px;
+							color: #e73e6b;
+							background-color: #d0e79a;
+							padding: 5px 25px 7px;
+						}
+					`}
+				>
+					<ProfileContent />
+				</div>
 			</div>
 		</div>
 	);
