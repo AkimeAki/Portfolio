@@ -12,7 +12,7 @@ export function IframeWindow({ src }: Props) {
 	const loadingRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		window.addEventListener("message", (response) => {
+		const loadIframe = (response: MessageEvent) => {
 			if (response.data.name === "AkiOSIframeInit" && response.data.value) {
 				if (iframeRef.current !== null) {
 					iframeRef.current.dataset.loaded = "true";
@@ -22,7 +22,13 @@ export function IframeWindow({ src }: Props) {
 					}
 				}
 			}
-		});
+		};
+
+		window.addEventListener("message", loadIframe);
+
+		return () => {
+			window.removeEventListener("message", loadIframe);
+		};
 	}, []);
 
 	return (
