@@ -2,7 +2,6 @@ import { pageTitle } from "@/libs/meta";
 import Profile from "@/components/os/app/Profile";
 import Teto from "@/components/os/app/Teto";
 import Furina from "@/components/os/app/Furina";
-import Terminal from "@/components/os/app/Terminal";
 import { IframeWindow } from "@/components/os/IframeWindow";
 
 export const sortList = (id: string, list: string[]) => {
@@ -130,7 +129,7 @@ export const appList: {
 			isPixel: true,
 			path: "/app/terminal.png"
 		},
-		component: <Terminal />,
+		component: <IframeWindow src="/terminal" />,
 		resize: true,
 		changeHistory: false,
 		viewPinButton: false

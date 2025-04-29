@@ -8,7 +8,7 @@ import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
 import sanitizeHtml from "sanitize-html";
 
-export default () => {
+export function TerminalContent() {
 	const [terminalLog, setTerminalLog] = useState<string>("");
 	const [inputText, setInputText] = useState<string>("");
 	const [toggleEnter, setToggleEnter] = useState<boolean>(false);
@@ -145,8 +145,6 @@ export default () => {
 				className={css`
 					width: 100%;
 					height: 100%;
-					background-color: #0c0c0c;
-					overflow-y: scroll;
 					padding: 5px;
 
 					font-family: CascadiaMonoNF;
@@ -226,4 +224,4 @@ export default () => {
 			</div>
 		</>
 	);
-};
+}

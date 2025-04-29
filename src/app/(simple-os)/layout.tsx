@@ -113,9 +113,7 @@ export default function ({ children }: React.PropsWithChildren) {
 				<main
 					className={css`
 						body[data-iframe="true"] & {
-							* {
-								font-family: "BestTenCRT";
-							}
+							font-family: "BestTenCRT";
 						}
 					`}
 				>

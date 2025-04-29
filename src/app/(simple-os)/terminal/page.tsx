@@ -1,6 +1,6 @@
 import { metaHead } from "@/libs/meta";
 import { Metadata } from "next";
-import { IntroContent } from "./_IntroContent";
+import { TerminalContent } from "./_TerminalContent";
 
 export const dynamic = "force-static";
 
@@ -16,7 +16,7 @@ export default function () {
 					__html: /* css */ `
 						body {
 							display: none;
-							background-color: #f0eef4;
+							background-color: #0c0c0c;
 						}
 
 						body[data-iframe="true"] {
@@ -25,7 +25,7 @@ export default function () {
 					`
 				}}
 			/>
-			<IntroContent />
+			<TerminalContent />
 		</>
 	);
 }
