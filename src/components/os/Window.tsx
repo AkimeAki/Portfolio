@@ -1145,13 +1145,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							flex: 1;
 							container-type: inline-size;
 
-							@layer base {
-								body & {
-									* {
-										color: #cbcbcb;
-									}
-								}
-							}
+							color: #cbcbcb;
 						`}
 					>
 						{children}

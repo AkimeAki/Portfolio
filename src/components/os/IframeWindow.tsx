@@ -1,5 +1,6 @@
 "use client";
 
+import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef } from "react";
 
@@ -10,6 +11,7 @@ interface Props {
 export function IframeWindow({ src }: Props) {
 	const iframeRef = useRef<HTMLIFrameElement>(null);
 	const loadingRef = useRef<HTMLDivElement>(null);
+	const { openWindow } = useWindow();
 
 	useEffect(() => {
 		const loadIframe = (response: MessageEvent) => {
@@ -21,6 +23,14 @@ export function IframeWindow({ src }: Props) {
 						loadingRef.current.style.display = "none";
 					}
 				}
+			}
+
+			if (
+				response.data.name === "AkiOSOpenWindow" &&
+				response.data.value !== null &&
+				response.data.value !== undefined
+			) {
+				openWindow(String(response.data.value));
 			}
 		};
 

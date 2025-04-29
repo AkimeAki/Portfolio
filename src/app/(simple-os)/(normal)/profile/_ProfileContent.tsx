@@ -1,56 +1,22 @@
 "use client";
 
-import { isTouch } from "@/atom";
-import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
-import { useStore } from "@nanostores/react";
 import { useRouter } from "next/navigation";
 
-export default function () {
-	return (
-		<div
-			className={css`
-				overflow-y: scroll;
-				height: 100%;
-			`}
-		>
-			<div
-				className={css`
-					padding: 30px;
-				`}
-			>
-				<div
-					className={css`
-						display: flex;
-						gap: 50px;
-						flex-direction: column;
-						max-width: 1000px;
-						width: 100%;
-						margin: 0 auto;
-
-						h3 {
-							display: table;
-							font-size: 18px;
-							color: #e73e6b;
-							background-color: #d0e79a;
-							padding: 5px 25px 7px;
-						}
-					`}
-				>
-					<ProfileContent />
-				</div>
-			</div>
-		</div>
-	);
-}
-
-export const ProfileContent = () => {
-	const { openWindow } = useWindow();
-	const $isTouch = useStore(isTouch);
+export function ProfileContent() {
 	const router = useRouter();
 
 	return (
-		<>
+		<div
+			className={css`
+				container-type: inline-size;
+
+				p {
+					margin-bottom: 10px;
+					line-height: 1.4;
+				}
+			`}
+		>
 			<div
 				className={css`
 					display: flex;
@@ -66,10 +32,6 @@ export const ProfileContent = () => {
 				<div
 					className={css`
 						flex: 1;
-
-						p {
-							margin-bottom: 10px;
-						}
 					`}
 				>
 					<p>
@@ -108,12 +70,18 @@ export const ProfileContent = () => {
 								cursor: pointer;
 							`}
 							onClick={() => {
-								if ($isTouch || document.body.dataset.layout !== "os") {
+								if (document.body.dataset.iframe === "true") {
+									window.parent.postMessage(
+										{
+											name: "AkiOSOpenWindow",
+											value: "furina"
+										},
+										origin
+									);
+								} else {
 									window.open(
 										"https://www.youtube.com/watch?v=DkROVPRcceM&list=PLnVoUTTAoKRrI5sgu4NdqiJivv8FZKdci"
 									);
-								} else {
-									openWindow("furina");
 								}
 							}}
 						>
@@ -126,12 +94,18 @@ export const ProfileContent = () => {
 								cursor: pointer;
 							`}
 							onClick={() => {
-								if ($isTouch || document.body.dataset.layout !== "os") {
+								if (document.body.dataset.iframe === "true") {
+									window.parent.postMessage(
+										{
+											name: "AkiOSOpenWindow",
+											value: "teto"
+										},
+										origin
+									);
+								} else {
 									window.open(
 										"https://www.youtube.com/watch?v=LLjfal8jCYI&list=PLnVoUTTAoKRrLKI-G9oAymJm_k8RVs_m9"
 									);
-								} else {
-									openWindow("teto");
 								}
 							}}
 						>
@@ -147,10 +121,16 @@ export const ProfileContent = () => {
 								cursor: pointer;
 							`}
 							onClick={() => {
-								if (document.body.dataset.layout !== "os") {
-									router.push("/portfolio");
+								if (document.body.dataset.iframe === "true") {
+									window.parent.postMessage(
+										{
+											name: "AkiOSOpenWindow",
+											value: "portfolio"
+										},
+										origin
+									);
 								} else {
-									openWindow("portfolio");
+									router.push("/portfolio");
 								}
 							}}
 						>
@@ -200,6 +180,6 @@ export const ProfileContent = () => {
 				<p>・ウェブ制作</p>
 				<p>・動画編集</p>
 			</div>
-		</>
+		</div>
 	);
-};
+}

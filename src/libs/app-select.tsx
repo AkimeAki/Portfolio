@@ -1,5 +1,4 @@
 import { pageTitle } from "@/libs/meta";
-import Profile from "@/components/os/app/Profile";
 import Teto from "@/components/os/app/Teto";
 import Furina from "@/components/os/app/Furina";
 import { IframeWindow } from "@/components/os/IframeWindow";
@@ -83,7 +82,7 @@ export const appList: {
 			isPixel: false,
 			path: "/app/aki.webp"
 		},
-		component: <Profile />,
+		component: <IframeWindow src="/profile" />,
 		resize: true,
 		changeHistory: true,
 		viewPinButton: false
@@ -100,7 +99,7 @@ export const appList: {
 		changeHistory: false,
 		size: {
 			width: 426,
-			height: 240
+			height: 240 - 4
 		},
 		viewPinButton: true,
 		defaultPin: true
@@ -117,7 +116,7 @@ export const appList: {
 		changeHistory: false,
 		size: {
 			width: 426,
-			height: 240
+			height: 240 - 4
 		},
 		viewPinButton: true,
 		defaultPin: true
