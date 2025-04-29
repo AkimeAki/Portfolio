@@ -179,6 +179,8 @@ export function ProfileContent() {
 				<p>できること</p>
 				<p>・ウェブ制作</p>
 				<p>・動画編集</p>
+				<p>・3Dモデリング（限定的）</p>
+				<p>・イラスト（練習中）</p>
 			</div>
 		</div>
 	);

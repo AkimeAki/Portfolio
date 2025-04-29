@@ -158,5 +158,17 @@ export const appList: {
 		viewPinButton: false,
 		defaultPin: false,
 		touchWindow: true
+	},
+	pictures: {
+		title: "イラスト",
+		pageTitle: `イラスト - ${pageTitle}`,
+		image: {
+			isPixel: true,
+			path: "/app/pictures.png"
+		},
+		component: <IframeWindow src="/pictures" />,
+		resize: true,
+		changeHistory: true,
+		viewPinButton: false
 	}
 };

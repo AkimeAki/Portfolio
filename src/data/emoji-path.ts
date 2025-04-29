@@ -14,5 +14,8 @@ export const emojiPathList: {
 	},
 	profile: {
 		emoji: ["👻"]
+	},
+	pictures: {
+		emoji: ["🎨"]
 	}
 };

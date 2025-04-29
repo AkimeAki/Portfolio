@@ -73,6 +73,9 @@ export default function () {
 			<AppIcon id="portfolio" imgSrc="/app/picaxe.png" isPixel>
 				作ったもの
 			</AppIcon>
+			<AppIcon id="pictures" imgSrc="/app/pictures.png" isPixel>
+				イラスト
+			</AppIcon>
 			<AppIcon href="https://coffee.shikiiro.net/" imgSrc="/app/aki-coffee.png" isPixel target="_blank">
 				日常ブログ
 			</AppIcon>
