@@ -15,7 +15,8 @@ interface Props {
 	ready?: boolean;
 }
 
-const windowHeaderHeight = 45;
+const windowHeaderHeightData = 45;
+const windowSpHeaderHeightData = 40;
 
 export default function ({ children, id, appData, ready: _ready = true }: Props) {
 	const $openAppSortList = useStore(openAppSortList);
@@ -28,6 +29,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 	const $minimizeWindowList = useStore(minimizeWindowList);
 	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
 	const [ready, setReady] = useState<boolean>(false);
+	const [windowHeaderHeight, setWindowHeaderHeight] = useState<number>(windowHeaderHeightData);
 
 	useEffect(() => {
 		if (_ready) {
@@ -42,6 +44,23 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 			setIsMaxWindow(false);
 		}
 	}, [$isTouch]);
+
+	useEffect(() => {
+		const resize = () => {
+			if (window.matchMedia("(max-width: 720px)").matches) {
+				setWindowHeaderHeight(windowSpHeaderHeightData);
+			} else {
+				setWindowHeaderHeight(windowHeaderHeightData);
+			}
+		};
+
+		resize();
+		window.addEventListener("resize", resize);
+
+		return () => {
+			window.removeEventListener("resize", resize);
+		};
+	}, []);
 
 	useEffect(() => {
 		const nonpinWindowList = $openAppSortList.filter((id) => {
@@ -68,11 +87,11 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 
 			if (appData.size !== undefined) {
 				width = appData.size.width;
-				height = appData.size.height + windowHeaderHeight;
+				height = appData.size.height + windowHeaderHeightData + 4;
 
 				if (appData.spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
 					width = appData.spSize.width;
-					height = appData.spSize.height + windowHeaderHeight;
+					height = appData.spSize.height + windowSpHeaderHeightData + 4;
 				}
 			} else {
 				width = Math.min(window.innerWidth * 0.9, 1000);

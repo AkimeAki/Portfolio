@@ -2,6 +2,7 @@ import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
 import "@akimeaki/reset-css";
 import CheckUserAgent from "@/components/CheckUserAgent";
 import "@/styles/font.scss";
+import "@/styles/global.scss";
 import ChangeGenerator from "@/components/ChangeGenerator";
 import { IframeInit } from "@/components/os/IframeInit";
 import { siteUrl } from "@/libs/meta";

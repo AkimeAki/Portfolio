@@ -40,10 +40,9 @@ export default function () {
 
 	useEffect(() => {
 		let unmounted = false;
-
 		if (ready) {
 			(async () => {
-				if (element.current !== null) {
+				if (element.current !== null && element.current.checkVisibility()) {
 					const asciiArea = element.current;
 
 					const asciiTextLength = 75;

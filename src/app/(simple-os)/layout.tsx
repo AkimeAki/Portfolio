@@ -17,13 +17,14 @@ export default function ({ children }: React.PropsWithChildren) {
 			<style
 				dangerouslySetInnerHTML={{
 					__html: /* css */ `
-						body {
-							background-color: #323232;
-						}
-
 						@layer base {
-							* {
+							body {
+								background-color: #323232;
 								color: #cbcbcb;
+							}
+
+							body[data-iframe="true"] {
+								background-color: transparent;
 							}
 						}
 					`
@@ -33,6 +34,11 @@ export default function ({ children }: React.PropsWithChildren) {
 				className={css`
 					display: flex;
 					flex-direction: column;
+
+					body[data-iframe="true"] & {
+						display: block;
+						height: 100%;
+					}
 				`}
 			>
 				<header
@@ -106,14 +112,7 @@ export default function ({ children }: React.PropsWithChildren) {
 				</header>
 				<main
 					className={css`
-						max-width: 1100px;
-						width: 100%;
-						margin: 0 auto;
-						padding: 0 30px 60px;
-
 						body[data-iframe="true"] & {
-							padding: 60px;
-
 							* {
 								font-family: "BestTenCRT";
 							}
@@ -155,7 +154,6 @@ export default function ({ children }: React.PropsWithChildren) {
 						<AsciiAki />
 					</div>
 				</div>
-				<footer></footer>
 			</div>
 		</>
 	);

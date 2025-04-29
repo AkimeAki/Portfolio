@@ -3,7 +3,6 @@ import Profile from "@/components/os/app/Profile";
 import Teto from "@/components/os/app/Teto";
 import Furina from "@/components/os/app/Furina";
 import Terminal from "@/components/os/app/Terminal";
-import Intro from "@/components/os/app/Intro";
 import { IframeWindow } from "@/components/os/IframeWindow";
 
 export const sortList = (id: string, list: string[]) => {
@@ -137,13 +136,13 @@ export const appList: {
 		viewPinButton: false
 	},
 	intro: {
-		title: "自己紹介.txt",
-		pageTitle: "自己紹介.txt",
+		title: "Welcome.txt",
+		pageTitle: "Welcome.txt",
 		image: {
 			isPixel: true,
-			path: "/app/aki.webp"
+			path: "/app/letter.png"
 		},
-		component: <Intro />,
+		component: <IframeWindow src="/intro" />,
 		resize: true,
 		changeHistory: false,
 		size: {
@@ -152,7 +151,7 @@ export const appList: {
 		},
 		spSize: {
 			width: 326,
-			height: 140
+			height: 150
 		},
 		defaultPosition: {
 			bottom: 80,

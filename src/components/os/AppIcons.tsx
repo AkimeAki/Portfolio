@@ -67,6 +67,9 @@ export default function () {
 			<AppIcon id="profile" imgSrc="/app/aki.webp">
 				プロフィール
 			</AppIcon>
+			<AppIcon id="intro" imgSrc="/app/letter.png" isPixel>
+				Welcome.txt
+			</AppIcon>
 			<AppIcon id="portfolio" imgSrc="/app/picaxe.png" isPixel>
 				作ったもの
 			</AppIcon>

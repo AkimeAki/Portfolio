@@ -171,6 +171,7 @@ export default function ({ notFound = false }: Props) {
 				"/app/simplev.webp",
 				"/app/allergy-navi.webp",
 				"/app/dotya.png",
+				"/app/letter.png",
 				"/app/terminal.png"
 			];
 			for (let i = 1; i <= 36; i++) {
