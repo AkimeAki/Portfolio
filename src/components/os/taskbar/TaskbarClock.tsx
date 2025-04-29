@@ -17,8 +17,38 @@ export default function () {
 			const nowMin = ("00" + nowDate.getMinutes()).slice(-2);
 			const nowSec = ("00" + nowDate.getSeconds()).slice(-2);
 
+			const dayOfWeek = nowDate.getDay();
+			let weekIcon = "";
+
+			switch (dayOfWeek) {
+				case 0:
+					weekIcon = "☀️";
+					break;
+				case 1:
+					weekIcon = "🌙";
+					break;
+				case 2:
+					weekIcon = "🔥";
+					break;
+				case 3:
+					weekIcon = "💧";
+					break;
+				case 4:
+					weekIcon = "🍃";
+					break;
+				case 5:
+					weekIcon = "☮️";
+					break;
+				case 6:
+					weekIcon = "🛜";
+					break;
+			}
+
 			if (element.current !== null) {
-				element.current.innerHTML = `${nowYear}/${nowMonth}/${nowDay}\n${nowHour}:${nowMin}:${nowSec}`;
+				element.current.innerHTML = /* html */ `
+					<span>${`${nowYear}/${nowMonth}/${nowDay}\n${nowHour}:${nowMin}:${nowSec}`}</span>
+					<span class="week-icon">${weekIcon}</span>
+				`;
 			}
 		}, 1000);
 
@@ -35,13 +65,24 @@ export default function () {
 				top: 50%;
 				right: 20px;
 				transform: translateY(-50%);
-				color: white;
 				white-space: pre-wrap;
-				font-size: 16px;
 				text-align: right;
-				line-height: 1;
 				pointer-events: auto;
 				z-index: calc(infinity - 1);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 20px;
+
+				span {
+					color: white;
+					font-size: 16px;
+					line-height: 1;
+				}
+
+				.week-icon {
+					font-size: 25px;
+				}
 
 				@media (max-width: 720px) {
 					position: fixed;
@@ -53,6 +94,10 @@ export default function () {
 
 					body[data-os="android"] & {
 						top: 4px;
+					}
+
+					.week-icon {
+						font-size: 16px;
 					}
 				}
 			`}
