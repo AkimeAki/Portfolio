@@ -101,7 +101,12 @@ export const appList: {
 			width: 426,
 			height: 240 - 4
 		},
+		spSize: {
+			width: 320,
+			height: 180 - 4
+		},
 		viewPinButton: true,
+		touchWindow: true,
 		defaultPin: true
 	},
 	furina: {
@@ -118,7 +123,12 @@ export const appList: {
 			width: 426,
 			height: 240 - 4
 		},
+		spSize: {
+			width: 320,
+			height: 180 - 4
+		},
 		viewPinButton: true,
+		touchWindow: true,
 		defaultPin: true
 	},
 	terminal: {
