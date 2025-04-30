@@ -158,21 +158,9 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 								image-rendering: pixelated;
 
 								@media (max-width: 720px) {
-									display: none;
-								}
-							`}
-						/>
-						<img
-							src="/chrome-shortcut.png"
-							className={css`
-								display: none;
-								position: absolute;
-								bottom: 0;
-								right: 0;
-								image-rendering: pixelated;
-
-								@media (max-width: 720px) {
-									display: block;
+									position: absolute;
+									left: 0;
+									bottom: 0;
 								}
 							`}
 						/>
