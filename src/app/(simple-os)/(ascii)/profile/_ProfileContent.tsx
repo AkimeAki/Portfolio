@@ -68,6 +68,7 @@ export function ProfileContent() {
 							className={css`
 								color: #43c1e7;
 								cursor: pointer;
+								user-select: none;
 							`}
 							onClick={() => {
 								if (document.body.dataset.iframe === "true") {
@@ -92,6 +93,7 @@ export function ProfileContent() {
 							className={css`
 								color: #fa5353;
 								cursor: pointer;
+								user-select: none;
 							`}
 							onClick={() => {
 								if (document.body.dataset.iframe === "true") {
@@ -119,6 +121,7 @@ export function ProfileContent() {
 							className={css`
 								color: #53f71f;
 								cursor: pointer;
+								user-select: none;
 							`}
 							onClick={() => {
 								if (document.body.dataset.iframe === "true") {
@@ -145,6 +148,7 @@ export function ProfileContent() {
 								cursor: pointer;
 								margin: 0 5px;
 								white-space: nowrap;
+								user-select: none;
 							`}
 						>
 							XのDM
