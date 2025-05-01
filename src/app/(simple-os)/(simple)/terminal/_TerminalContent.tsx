@@ -7,6 +7,7 @@ import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
 import sanitizeHtml from "sanitize-html";
+import { cx } from "@/libs/merge-kuma";
 
 export function TerminalContent() {
 	const [terminalLog, setTerminalLog] = useState<string>("");
@@ -149,11 +150,6 @@ export function TerminalContent() {
 
 					font-family: CascadiaMonoNF;
 					font-weight: normal;
-
-					* {
-						font-family: CascadiaMonoNF;
-						font-weight: normal;
-					}
 				`}
 			>
 				<div
@@ -163,12 +159,6 @@ export function TerminalContent() {
 						line-height: 1.4;
 						color: white;
 						word-break: break-all;
-
-						* {
-							line-height: 1.4;
-							color: white;
-							word-break: break-all;
-						}
 					`}
 					dangerouslySetInnerHTML={{ __html: terminalLog }}
 				/>
@@ -201,25 +191,18 @@ export function TerminalContent() {
 							e.preventDefault();
 						}
 					}}
-					className={[
+					className={cx(
 						css`
 							width: 100%;
 							color: white;
 							line-height: 1.4;
 							word-break: break-all;
-
-							* {
-								color: white;
-								line-height: 1.4;
-								word-break: break-all;
-							}
 						`,
-						!isInputReady
-							? css`
-									display: none;
-								`
-							: ""
-					].join(" ")}
+						!isInputReady &&
+							css`
+								display: none;
+							`
+					)}
 				/>
 			</div>
 		</>
