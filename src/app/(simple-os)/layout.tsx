@@ -1,19 +1,18 @@
 import { metaHead } from "@/libs/meta";
-import { css } from "@kuma-ui/core";
 import { Metadata } from "next";
+import LayoutInit from "@/components/LayoutInit";
+import EmojiPath from "@/components/atoms/EmojiPath";
+import { css } from "@kuma-ui/core";
 import Link from "next/link";
 import { cx } from "@/libs/merge-kuma";
-import EmojiPath from "@/components/atoms/EmojiPath";
-import LayoutInit from "@/components/LayoutInit";
-import AsciiAki from "@/components/AsciiAki";
 
 export const metadata: Metadata = metaHead({});
 
 export default function ({ children }: React.PropsWithChildren) {
 	return (
 		<>
-			<EmojiPath />
 			<LayoutInit type="simple-os" iframeType="os" />
+			<EmojiPath />
 			<style
 				dangerouslySetInnerHTML={{
 					__html: /* css */ `
@@ -59,6 +58,8 @@ export default function ({ children }: React.PropsWithChildren) {
 							font-family: "ArkPixel12ZHCN";
 							font-size: 28px;
 							text-align: center;
+							user-select: none;
+							pointer-events: none;
 						`}
 					>
 						彩季
@@ -73,6 +74,8 @@ export default function ({ children }: React.PropsWithChildren) {
 							top: 50%;
 							left: 10px;
 							transform: translateY(-50%);
+							user-select: none;
+							white-space: nowrap;
 
 							@media (max-width: 600px) {
 								top: 50px;
@@ -110,48 +113,7 @@ export default function ({ children }: React.PropsWithChildren) {
 						<span>彩季.AkiOS を起動</span>
 					</Link>
 				</header>
-				<main
-					className={css`
-						body[data-iframe="true"] & {
-							font-family: "BestTenCRT";
-						}
-					`}
-				>
-					{children}
-				</main>
-				<div
-					className={css`
-						position: fixed;
-						top: 0;
-						left: 50%;
-						transform: translateX(-50%);
-						-webkit-transform: translateX(-50%);
-						height: 100%;
-						max-width: 1100px;
-						width: 100%;
-						user-select: none;
-						pointer-events: none;
-					`}
-				>
-					<div
-						className={css`
-							position: absolute;
-							transform: scale(0.6);
-							-webkit-transform: scale(0.6, 0.6);
-							bottom: -50px;
-							right: -50px;
-							opacity: 0.35;
-
-							* {
-								opacity: 1;
-								transition-property: opacity;
-								transition-duration: 200ms;
-							}
-						`}
-					>
-						<AsciiAki />
-					</div>
-				</div>
+				{children}
 			</div>
 		</>
 	);
