@@ -176,7 +176,7 @@ export function ProfileContent() {
 				</div>
 			</div>
 			<div>
-				<p>できること</p>
+				<p>好きなこと</p>
 				<p>・ウェブ制作</p>
 				<p>・動画編集</p>
 				<p>・3Dモデリング（限定的）</p>
