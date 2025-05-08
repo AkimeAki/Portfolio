@@ -131,6 +131,18 @@ export const appList: {
 		touchWindow: true,
 		defaultPin: true
 	},
+	twitter: {
+		title: "Twitter",
+		pageTitle: "Twitter",
+		image: {
+			isPixel: false,
+			path: "/app/simplev.webp"
+		},
+		component: <IframeWindow src="/twitter" />,
+		resize: false,
+		changeHistory: false,
+		viewPinButton: true
+	},
 	terminal: {
 		title: "ターミナル",
 		pageTitle: "ターミナル",

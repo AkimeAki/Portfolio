@@ -1,24 +1,10 @@
-"use client";
-
 import { css } from "@kuma-ui/core";
-import { useEffect } from "react";
 
-export default () => {
-	useEffect(() => {
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-		if ((window as any).twttr !== undefined && (window as any).twttr.widgets !== undefined) {
-			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-			(window as any).twttr.widgets.load();
-		}
-	}, []);
+export const dynamic = "force-static";
 
+export default function () {
 	return (
-		<div
-			className={css`
-				width: 100%;
-				height: 100%;
-			`}
-		>
+		<>
 			<iframe
 				title="Misskey.ioのタイムライン"
 				src="https://misskey.io/embed/user-timeline/9bjv3n9376"
@@ -34,6 +20,6 @@ export default () => {
 				`}
 			/>
 			<script defer src="https://misskey.io/embed.js" />
-		</div>
+		</>
 	);
-};
+}
