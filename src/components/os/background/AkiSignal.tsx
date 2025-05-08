@@ -87,6 +87,8 @@ export default function () {
 					image-rendering: pixelated;
 					opacity: 0.9;
 				`}
+				data-loading-image
+				loading="eager"
 			/>
 			<img
 				src="/aki-signal.png"
@@ -112,6 +114,8 @@ export default function () {
 							animation-name: aki-signal;
 						`
 				)}
+				data-loading-image
+				loading="eager"
 			/>
 			<img
 				src="/aki-signal.png"
@@ -135,6 +139,8 @@ export default function () {
 							animation-name: aki-signal;
 						`
 				)}
+				data-loading-image
+				loading="eager"
 			/>
 		</div>
 	);

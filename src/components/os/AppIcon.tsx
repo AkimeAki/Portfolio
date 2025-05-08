@@ -123,6 +123,8 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 					<img
 						alt={String(children)}
 						src={imgSrc}
+						data-loading-image
+						loading="eager"
 						className={[
 							css`
 								position: absolute;

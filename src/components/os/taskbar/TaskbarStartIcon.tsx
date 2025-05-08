@@ -49,6 +49,8 @@ export default function ({ href, alt, iconPath, text = "" }: Props) {
 						user-select: none;
 						pointer-events: none;
 					`}
+					loading="eager"
+					data-loading-image
 				/>
 			</a>
 			<span

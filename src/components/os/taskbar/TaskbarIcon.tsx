@@ -40,6 +40,8 @@ export default function ({ href, alt, iconPath }: Props) {
 					width: 100%;
 					height: 100%;
 				`}
+				loading="eager"
+				data-loading-image
 			/>
 		</a>
 	);

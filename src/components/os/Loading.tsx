@@ -154,42 +154,44 @@ export default function ({ notFound = false }: Props) {
 	}, [ready]);
 
 	useEffect(() => {
-		const getLoadingData = async () => {
-			const targetUrls = [
-				"/icon/github.webp",
-				"/icon/niconico.webp",
-				"/icon/twitch.webp",
-				"/icon/x.webp",
-				"/icon/youtube.webp",
-				"/aki-signal.png",
-				"/aki.png",
-				"/app/ghost.png",
-				"/app/aki-coffee.png",
-				"/app/blog.png",
-				"/app/aki.webp",
-				"/app/picaxe.png",
-				"/app/simplev.webp",
-				"/app/allergy-navi.webp",
-				"/app/dotya.png",
-				"/app/letter.png",
-				"/app/pictures.png",
-				"/app/terminal.png"
-			];
-			for (let i = 1; i <= 36; i++) {
-				targetUrls.push(`/emoji/${i}.png`);
+		const checkLoadedImage = () => {
+			const loadingImageList = document.querySelectorAll<HTMLImageElement>("img[data-loading-image]");
+			let loaded = true;
+			for (const image of Array.from(loadingImageList)) {
+				if (image.dataset.loaded !== "true") {
+					loaded = false;
+					console.log(loaded);
+					break;
+				}
 			}
 
-			await Promise.all(targetUrls.map((target) => fetch(target)));
-			setTimeout(() => {
-				setImageLoading(false);
-				setLoadProgress((prev) => {
-					return prev + 100 / perLoad;
-				});
-			}, 500);
+			if (loaded) {
+				setTimeout(() => {
+					setImageLoading(false);
+					setLoadProgress((prev) => {
+						return prev + 100 / perLoad;
+					});
+				}, 500);
+			}
+		};
+
+		const getLoadingData = () => {
+			const loadingImageList = document.querySelectorAll<HTMLImageElement>("img[data-loading-image]");
+			for (const image of Array.from(loadingImageList)) {
+				if (image.complete) {
+					image.dataset.loaded = "true";
+					checkLoadedImage();
+				} else {
+					image.onload = () => {
+						image.dataset.loaded = "true";
+						checkLoadedImage();
+					};
+				}
+			}
 		};
 
 		if (ready) {
-			void getLoadingData();
+			getLoadingData();
 		}
 	}, [ready]);
 
