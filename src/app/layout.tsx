@@ -34,19 +34,20 @@ export default function ({ children }: Props) {
 							async
 							src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6914867149724943"
 							crossOrigin="anonymous"
-						></script>
+						/>
 					</>
 				)}
 				{process.env.SCAN === "true" && <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />}
 			</head>
 			<body>
 				<noscript>
+					{/* biome-ignore lint/a11y/useIframeTitle: <explanation> */}
 					<iframe
 						src="https://www.googletagmanager.com/ns.html?id=GTM-KGV4LZWH"
 						height="0"
 						width="0"
 						style={{ display: "none", visibility: "hidden" }}
-					></iframe>
+					/>
 				</noscript>
 				<KumaRegistry>
 					<>

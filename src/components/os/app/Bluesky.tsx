@@ -5,9 +5,9 @@ import { useEffect } from "react";
 
 export default () => {
 	useEffect(() => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 		if ((window as any).twttr !== undefined && (window as any).twttr.widgets !== undefined) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 			(window as any).twttr.widgets.load();
 		}
 	}, []);

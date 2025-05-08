@@ -10,6 +10,7 @@ export default () => {
 			`}
 		>
 			<iframe
+				title="おすすめの重音テト動画"
 				src="https://www.youtube.com/embed/videoseries?list=PLnVoUTTAoKRrLKI-G9oAymJm_k8RVs_m9&loop=1&autoplay=1"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen

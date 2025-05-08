@@ -1,6 +1,6 @@
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import AsciiAki from "@/components/AsciiAki";
 
 export const metadata: Metadata = metaHead({});

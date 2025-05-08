@@ -2,12 +2,12 @@ import { SetEmojiPath } from "@/components/atoms/EmojiPath";
 import { appList } from "@/libs/app-select";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = metaHead({
-	title: appList["pictures"].pageTitle,
+	title: appList.pictures.pageTitle,
 	isFullTitle: true,
 	description: "彩季が描いたイラスト集です。"
 });
@@ -50,7 +50,7 @@ export default function () {
 			>
 				{picturesData.map((data, index) => {
 					return (
-						<a href={data.url} target="_blank" key={index}>
+						<a href={data.url} target="_blank" key={index} rel="noreferrer">
 							<img
 								src={`/pictures/${data.file}`}
 								alt={data.alt}

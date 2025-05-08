@@ -1,7 +1,7 @@
 import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
 import Link from "next/link";
-import { HTMLAttributeAnchorTarget } from "react";
+import type { HTMLAttributeAnchorTarget } from "react";
 
 interface Props {
 	href: string;

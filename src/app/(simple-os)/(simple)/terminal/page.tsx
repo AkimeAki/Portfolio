@@ -1,5 +1,5 @@
 import { metaHead } from "@/libs/meta";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { TerminalContent } from "./_TerminalContent";
 
 export const dynamic = "force-static";

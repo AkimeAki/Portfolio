@@ -1,0 +1,24 @@
+{
+	"name": "ポートフォリオ",
+	"dockerComposeFile": "./compose.yml",
+	"service": "app",
+	"workspaceFolder": "/app/",
+	"customizations": {
+		"vscode": {
+			"extensions": ["esbenp.prettier-vscode", "EditorConfig.EditorConfig", "biomejs.biome"],
+			"settings": {
+				"npm.packageManager": "npm",
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"files.readonlyInclude": {
+					"node_modules/**/*": true,
+					".git/**/*": true,
+					"dist/**/*": true
+				},
+				"biome.enabled": true,
+				"biome.lspBin": "node_modules/@biomejs/cli-linux-x64/biome"
+			}
+		}
+	},
+	"shutdownAction": "stopCompose"
+}

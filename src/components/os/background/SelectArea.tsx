@@ -29,8 +29,8 @@ export default function () {
 			selectAreaElement.current.style.bottom = bottom;
 			selectAreaElement.current.style.right = right;
 
-			selectAreaElement.current.style.width = width + "px";
-			selectAreaElement.current.style.height = height + "px";
+			selectAreaElement.current.style.width = `${width}px`;
+			selectAreaElement.current.style.height = `${height}px`;
 		}
 	};
 
@@ -50,8 +50,8 @@ export default function () {
 			) {
 				if (e.offsetX - startX > 0 && e.offsetY - startY > 0) {
 					setSelectArea(
-						startY + "px",
-						startX + "px",
+						`${startY}px`,
+						`${startX}px`,
 						"auto",
 						"auto",
 						Math.abs(e.offsetX - startX),
@@ -61,10 +61,10 @@ export default function () {
 
 				if (e.offsetX - startX <= 0 && e.offsetY - startY > 0) {
 					setSelectArea(
-						startY + "px",
+						`${startY}px`,
 						"auto",
 						"auto",
-						targetAreaElement.current.offsetWidth - startX + "px",
+						`${targetAreaElement.current.offsetWidth - startX}px`,
 						Math.abs(e.offsetX - startX),
 						Math.abs(e.offsetY - startY)
 					);
@@ -74,8 +74,8 @@ export default function () {
 					setSelectArea(
 						"auto",
 						"auto",
-						targetAreaElement.current.offsetHeight - startY + "px",
-						targetAreaElement.current.offsetWidth - startX + "px",
+						`${targetAreaElement.current.offsetHeight - startY}px`,
+						`${targetAreaElement.current.offsetWidth - startX}px`,
 						Math.abs(e.offsetX - startX),
 						Math.abs(e.offsetY - startY)
 					);
@@ -84,8 +84,8 @@ export default function () {
 				if (e.offsetX - startX > 0 && e.offsetY - startY <= 0) {
 					setSelectArea(
 						"auto",
-						startX + "px",
-						targetAreaElement.current.offsetHeight - startY + "px",
+						`${startX}px`,
+						`${targetAreaElement.current.offsetHeight - startY}px`,
 						"auto",
 						Math.abs(e.offsetX - startX),
 						Math.abs(e.offsetY - startY)
@@ -109,7 +109,7 @@ export default function () {
 			if (selectAreaElement.current !== null && !$isTouch) {
 				startX = -10;
 				startY = -10;
-				setSelectArea(startY + "px", startX + "px", "auto", "auto", 0, 0);
+				setSelectArea(`${startY}px`, `${startX}px`, "auto", "auto", 0, 0);
 				selectAreaElement.current.style.display = "none";
 			}
 			document.body.dataset.dragging = "";

@@ -90,11 +90,11 @@ export default function () {
 	useEffect(() => {
 		if (code !== "") {
 			if (element.current !== null) {
-				element.current.style.transitionDuration = element.current.scrollHeight * 32 + "ms";
+				element.current.style.transitionDuration = `${element.current.scrollHeight * 32}ms`;
 			}
 			setTimeout(() => {
 				if (element.current !== null) {
-					element.current.style.top = element.current.scrollHeight * -1 + "px";
+					element.current.style.top = `${element.current.scrollHeight * -1}px`;
 				}
 			}, 1000);
 		} else {

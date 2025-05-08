@@ -11,11 +11,11 @@ export default function () {
 			const nowDate = new Date();
 
 			const nowYear = nowDate.getFullYear();
-			const nowMonth = ("00" + (nowDate.getMonth() + 1)).slice(-2);
-			const nowDay = ("00" + nowDate.getDate()).slice(-2);
-			const nowHour = ("00" + nowDate.getHours()).slice(-2);
-			const nowMin = ("00" + nowDate.getMinutes()).slice(-2);
-			const nowSec = ("00" + nowDate.getSeconds()).slice(-2);
+			const nowMonth = `00${nowDate.getMonth() + 1}`.slice(-2);
+			const nowDay = `00${nowDate.getDate()}`.slice(-2);
+			const nowHour = `00${nowDate.getHours()}`.slice(-2);
+			const nowMin = `00${nowDate.getMinutes()}`.slice(-2);
+			const nowSec = `00${nowDate.getSeconds()}`.slice(-2);
 
 			const dayOfWeek = nowDate.getDay();
 			let weekIcon = "";

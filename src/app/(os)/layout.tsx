@@ -9,7 +9,7 @@ import Touch from "@/components/Touch";
 import TwitchBackground from "@/components/os/background/TwitchBackground";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import PixelWrapper from "@/components/os/background/PixelWrapper";
 import NewVideo from "@/components/os/background/NewVideo";
 import Galaxy from "@/components/os/background/Galaxy";

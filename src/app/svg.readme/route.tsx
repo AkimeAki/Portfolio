@@ -8,6 +8,7 @@ interface Props {
 function SVG({ 格言 }: Props) {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+			<title>格言</title>
 			<style
 				dangerouslySetInnerHTML={{
 					__html: /* css */ `

@@ -150,6 +150,7 @@ export function ProfileContent() {
 								white-space: nowrap;
 								user-select: none;
 							`}
+							rel="noreferrer"
 						>
 							XのDM
 						</a>
@@ -172,6 +173,7 @@ export function ProfileContent() {
 					`}
 				>
 					<img
+						alt="彩季"
 						className={css`
 							width: 100%;
 						`}

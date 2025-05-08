@@ -2,7 +2,7 @@
 
 import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 
 interface Props {
 	style?: CSSProperties;

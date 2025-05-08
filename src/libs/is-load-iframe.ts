@@ -1,3 +1,3 @@
 export const isLoadIframe = () => {
-	return window != window.parent;
+	return window !== window.parent;
 };

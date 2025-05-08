@@ -63,7 +63,7 @@ export default function () {
 					}
 
 					await new Promise((resolve) => setTimeout(resolve, 1000));
-					const isPaused = player.isPaused() === true ? true : false;
+					const isPaused = player.isPaused() === true;
 					if (!isPaused) {
 						await new Promise((resolve) => setTimeout(resolve, 10000));
 					}

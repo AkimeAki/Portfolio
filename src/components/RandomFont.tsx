@@ -26,13 +26,15 @@ export default function ({ text }: Props) {
 		const minTime = 700;
 
 		if (element.current !== null) {
-			const textLength = element.current.children.length;
+			const currentElement = element.current;
+
+			const textLength = currentElement.children.length;
 			for (let i = 0; i < textLength; i++) {
 				const randomTime = Math.floor(Math.random() * (maxTime - minTime) + minTime);
 
 				const id = setInterval(() => {
 					if (Math.floor(Math.random() * 5) === 1) {
-						(element.current!.children[i] as HTMLSpanElement).style.fontFamily =
+						(currentElement.children[i] as HTMLSpanElement).style.fontFamily =
 							fonts[Math.floor(Math.random() * fonts.length)];
 					}
 				}, randomTime);
@@ -42,9 +44,9 @@ export default function ({ text }: Props) {
 		}
 
 		return () => {
-			timerIds.forEach((timerId) => {
+			for (const timerId of timerIds) {
 				clearInterval(timerId);
-			});
+			}
 		};
 	}, []);
 

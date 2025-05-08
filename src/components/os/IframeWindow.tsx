@@ -107,6 +107,7 @@ export function IframeWindow({ src }: Props) {
 				</div>
 			</div>
 			<iframe
+				title="ウィンドウコンテンツ"
 				src={src}
 				ref={iframeRef}
 				data-loaded="false"
@@ -126,7 +127,7 @@ export function IframeWindow({ src }: Props) {
 						pointer-events: all;
 					}
 				`}
-			></iframe>
+			/>
 		</>
 	);
 }

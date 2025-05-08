@@ -10,7 +10,7 @@ export default function () {
 	const $pinWindowList = useStore(pinWindowList);
 	const $minimizeWindowList = useStore(minimizeWindowList);
 
-	const openWindow = (id: string, isChangeHistory: boolean = true) => {
+	const openWindow = (id: string, isChangeHistory = true) => {
 		const list = openAppSortList.get();
 
 		if (appList[id].changeHistory) {
@@ -55,7 +55,7 @@ export default function () {
 		pinWindowList.set(result);
 	};
 
-	const closeWindow = (closeId: string, isChangeHistory: boolean = true) => {
+	const closeWindow = (closeId: string, isChangeHistory = true) => {
 		// 閉じたいウィンドウ以外のウィンドウリスト（履歴変更するもののみ）
 		const resetAppChangeHistoryList = $openAppSortList.filter((id) => {
 			return id !== closeId && appList[id].changeHistory;

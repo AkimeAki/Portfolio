@@ -1,7 +1,7 @@
 import { css } from "@kuma-ui/core";
 import ColorLabel from "@/components/ColorLabel";
 import { toolColorList } from "@/color-label";
-import { Portfolio } from "@/app/(simple-os)/(ascii)/portfolio/_PortfolioContent";
+import type { Portfolio } from "@/app/(simple-os)/(ascii)/portfolio/_PortfolioContent";
 
 export default function ({
 	title,
@@ -85,6 +85,7 @@ export default function ({
 									padding: 7px 10px 8px;
 								}
 							`}
+							rel="noreferrer"
 						>
 							{buttonTitle}
 						</a>

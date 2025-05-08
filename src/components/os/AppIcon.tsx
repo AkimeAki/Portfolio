@@ -121,6 +121,7 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 			>
 				{imgSrc !== undefined && (
 					<img
+						alt={String(children)}
 						src={imgSrc}
 						className={[
 							css`
@@ -148,23 +149,22 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 					/>
 				)}
 				{href !== undefined && target === "_blank" && (
-					<>
-						<img
-							src="/shortcut.png"
-							className={css`
-								position: absolute;
-								bottom: 10px;
-								left: 10px;
-								image-rendering: pixelated;
+					<img
+						alt="ショートカットアイコン"
+						src="/shortcut.png"
+						className={css`
+							position: absolute;
+							bottom: 10px;
+							left: 10px;
+							image-rendering: pixelated;
 
-								@media (max-width: 720px) {
-									position: absolute;
-									left: 0;
-									bottom: 0;
-								}
-							`}
-						/>
-					</>
+							@media (max-width: 720px) {
+								position: absolute;
+								left: 0;
+								bottom: 0;
+							}
+						`}
+					/>
 				)}
 			</div>
 			<span

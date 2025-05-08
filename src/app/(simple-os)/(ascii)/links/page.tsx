@@ -3,7 +3,7 @@ import { SetEmojiPath } from "@/components/atoms/EmojiPath";
 import { linkList } from "@/data/links";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
@@ -44,6 +44,7 @@ export default function () {
 							`}
 						>
 							<img
+								alt={`${linkList[link].name}のロゴ`}
 								src={`/icon/${link}.webp`}
 								width={64}
 								height={64}

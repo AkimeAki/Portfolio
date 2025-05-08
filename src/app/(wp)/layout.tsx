@@ -1,5 +1,5 @@
 import { metaHead } from "@/libs/meta";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = metaHead({
 	noindex: true

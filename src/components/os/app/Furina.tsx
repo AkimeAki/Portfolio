@@ -10,6 +10,7 @@ export default () => {
 			`}
 		>
 			<iframe
+				title="おすすめのフリーナ動画"
 				src="https://www.youtube.com/embed/videoseries?list=PLnVoUTTAoKRrI5sgu4NdqiJivv8FZKdci&loop=1&autoplay=1"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen

@@ -5,6 +5,12 @@ bun.lockb
 *.png
 *.svg
 *.ttf
+*.mp4
+*.glb
+*.webp
+.env.*
 .editorconfig
 Makefile
 _redirects
+.husky/**/*
+.npmrc

@@ -13,15 +13,15 @@ const loadImage = (src: string): Promise<HTMLImageElement> => {
 	});
 };
 
-const createHtml = (textList: string[][], className: string = "") => {
+const createHtml = (textList: string[][], className = "") => {
 	let html = "";
-	textList.forEach((textLine) => {
+	for (const textLine of textList) {
 		html += `<div class="${className}">`;
-		textLine.forEach((text) => {
+		for (const text of textLine) {
 			html += text;
-		});
+		}
 		html += "</div>";
-	});
+	}
 
 	return html;
 };
@@ -42,7 +42,7 @@ export default function () {
 		let unmounted = false;
 		if (ready) {
 			(async () => {
-				if (element.current !== null && element.current.checkVisibility()) {
+				if (element.current?.checkVisibility()) {
 					const asciiArea = element.current;
 
 					const asciiTextLength = 75;

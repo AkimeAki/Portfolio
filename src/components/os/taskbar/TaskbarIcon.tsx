@@ -30,6 +30,7 @@ export default function ({ href, alt, iconPath }: Props) {
 					}
 				}
 			`}
+			rel="noreferrer"
 		>
 			<img
 				src={iconPath}

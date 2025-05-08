@@ -492,7 +492,7 @@ export default function ({ notFound = false }: Props) {
 										width:
 											errorMessage !== ""
 												? undefined
-												: ((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 286 + "px"
+												: `${((loadProgress === 0 ? 0 : loadProgress + 1) / 100) * 286}px`
 									}}
 									className={[
 										css`

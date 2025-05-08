@@ -1,7 +1,7 @@
 "use client";
 
 import { pinWindowList, isTouch, openAppSortList, minimizeWindowList } from "@/atom";
-import { AppData } from "@/libs/app-select";
+import type { AppData } from "@/libs/app-select";
 import { cx } from "@/libs/merge-kuma";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
@@ -305,9 +305,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight - e.movementY + "px";
+								windowElement.current.style.top = `${windowElement.current.offsetTop + e.movementY}px`;
+								windowElement.current.style.height = `${windowElement.current.offsetHeight - e.movementY}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -322,10 +321,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.top =
-									windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.top = `${windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY)}px`;
+								windowElement.current.style.height = `${windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -360,8 +357,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight + e.movementY + "px";
+								windowElement.current.style.height = `${windowElement.current.offsetHeight + e.movementY}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -376,8 +372,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.height = `${windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -412,10 +407,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.left =
-									windowElement.current.offsetLeft + e.movementX + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth - e.movementX + "px";
+								windowElement.current.style.left = `${windowElement.current.offsetLeft + e.movementX}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth - e.movementX}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -430,10 +423,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.left =
-									windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.left = `${windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX)}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -468,8 +459,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth + e.movementX + "px";
+								windowElement.current.style.width = `${windowElement.current.offsetWidth + e.movementX}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -484,8 +474,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.width = `${windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -520,11 +509,9 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth + e.movementX + "px";
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight - e.movementY + "px";
+								windowElement.current.style.top = `${windowElement.current.offsetTop + e.movementY}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth + e.movementX}px`;
+								windowElement.current.style.height = `${windowElement.current.offsetHeight - e.movementY}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -539,12 +526,9 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.top =
-									windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX) + "px";
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY) + "px";
+								windowElement.current.style.top = `${windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY)}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX)}px`;
+								windowElement.current.style.height = `${windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -579,13 +563,10 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.top = windowElement.current.offsetTop + e.movementY + "px";
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight - e.movementY + "px";
-								windowElement.current.style.left =
-									windowElement.current.offsetLeft + e.movementX + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth - e.movementX + "px";
+								windowElement.current.style.top = `${windowElement.current.offsetTop + e.movementY}px`;
+								windowElement.current.style.height = `${windowElement.current.offsetHeight - e.movementY}px`;
+								windowElement.current.style.left = `${windowElement.current.offsetLeft + e.movementX}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth - e.movementX}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -600,14 +581,10 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.top =
-									windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY) + "px";
-								windowElement.current.style.left =
-									windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.top = `${windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY)}px`;
+								windowElement.current.style.height = `${windowElement.current.offsetHeight - (touch.pageY - previousTouch.pageY)}px`;
+								windowElement.current.style.left = `${windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX)}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -642,10 +619,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight + e.movementY + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth + e.movementX + "px";
+								windowElement.current.style.height = `${windowElement.current.offsetHeight + e.movementY}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth + e.movementX}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -660,10 +635,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY) + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.height = `${windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY)}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth + (touch.pageX - previousTouch.pageX)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -698,12 +671,9 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const target = e.target as HTMLDivElement;
 
 							if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight + e.movementY + "px";
-								windowElement.current.style.left =
-									windowElement.current.offsetLeft + e.movementX + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth - e.movementX + "px";
+								windowElement.current.style.height = `${windowElement.current.offsetHeight + e.movementY}px`;
+								windowElement.current.style.left = `${windowElement.current.offsetLeft + e.movementX}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth - e.movementX}px`;
 								target.draggable = false;
 								target.setPointerCapture(e.pointerId);
 							}
@@ -718,12 +688,9 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							const touch = e.touches[0];
 
 							if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-								windowElement.current.style.height =
-									windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY) + "px";
-								windowElement.current.style.left =
-									windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
-								windowElement.current.style.width =
-									windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX) + "px";
+								windowElement.current.style.height = `${windowElement.current.offsetHeight + (touch.pageY - previousTouch.pageY)}px`;
+								windowElement.current.style.left = `${windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX)}px`;
+								windowElement.current.style.width = `${windowElement.current.offsetWidth - (touch.pageX - previousTouch.pageX)}px`;
 								windowElement.current.draggable = false;
 							}
 
@@ -818,10 +785,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 								const target = e.target as HTMLDivElement;
 
 								if (e.buttons === 1 && windowElement.current !== null && !isMaxWindow) {
-									windowElement.current.style.top =
-										windowElement.current.offsetTop + e.movementY + "px";
-									windowElement.current.style.left =
-										windowElement.current.offsetLeft + e.movementX + "px";
+									windowElement.current.style.top = `${windowElement.current.offsetTop + e.movementY}px`;
+									windowElement.current.style.left = `${windowElement.current.offsetLeft + e.movementX}px`;
 									windowElement.current.draggable = false;
 									target.setPointerCapture(e.pointerId);
 								}
@@ -836,10 +801,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 								const touch = e.touches[0];
 
 								if (windowElement.current !== null && !isMaxWindow && previousTouch !== null) {
-									windowElement.current.style.top =
-										windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
-									windowElement.current.style.left =
-										windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
+									windowElement.current.style.top = `${windowElement.current.offsetTop + (touch.pageY - previousTouch.pageY)}px`;
+									windowElement.current.style.left = `${windowElement.current.offsetLeft + (touch.pageX - previousTouch.pageX)}px`;
 									windowElement.current.draggable = false;
 								}
 
@@ -853,7 +816,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							document.body.dataset.dragging = "";
 							setPreviousTouch(null);
 						}}
-						style={{ height: windowHeaderHeight + "px" }}
+						style={{ height: `${windowHeaderHeight}px` }}
 						className={css`
 							position: relative;
 							background-color: #060303;

@@ -1,5 +1,5 @@
 import { metaHead, pageTitle } from "@/libs/meta";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
 
 export const dynamic = "force-static";

@@ -1,10 +1,10 @@
 "use client";
 
-import { toolColorList } from "@/color-label";
+import type { toolColorList } from "@/color-label";
 import PortfolioArea from "@/components/os/PortfolioArea";
 import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
-import { Fragment, ReactNode, useState } from "react";
+import { Fragment, type ReactNode, useState } from "react";
 
 export interface Portfolio {
 	title: string;
@@ -277,7 +277,7 @@ const portfolioList: ({
 						width: 100%;
 						max-width: 560px;
 					`}
-				></iframe>
+				/>
 			</>
 		)
 	},
@@ -304,7 +304,7 @@ const portfolioList: ({
 						width: 100%;
 						max-width: 560px;
 					`}
-				></iframe>
+				/>
 			</>
 		)
 	},
@@ -331,7 +331,7 @@ const portfolioList: ({
 						width: 100%;
 						max-width: 560px;
 					`}
-				></iframe>
+				/>
 			</>
 		)
 	},
@@ -504,7 +504,7 @@ export function PortfolioContent() {
 						);
 					}
 
-					return <Fragment key={index}></Fragment>;
+					return <Fragment key={index} />;
 				})}
 			</div>
 		</div>

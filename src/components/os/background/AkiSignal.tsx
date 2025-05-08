@@ -26,16 +26,20 @@ export default function () {
 				const ctx = canvas.getContext("2d");
 				const image = signalElement.current;
 
+				if (ctx === null) {
+					return;
+				}
+
 				canvas.width = image.naturalWidth;
 				canvas.height = image.naturalHeight;
-				ctx!.drawImage(image, 0, 0, canvas.width, canvas.height);
+				ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
 				const rect = image.getBoundingClientRect();
 
 				const clickPixelX = (e.offsetX - rect.left) / (image.width / image.naturalWidth);
 				const clickPixelY = (e.offsetY - rect.top) / (image.width / image.naturalHeight);
 
-				const pixelData = ctx!.getImageData(clickPixelX, clickPixelY, 1, 1).data;
+				const pixelData = ctx.getImageData(clickPixelX, clickPixelY, 1, 1).data;
 				const alpha = pixelData[3];
 				if (alpha === 255) {
 					canvas.remove();

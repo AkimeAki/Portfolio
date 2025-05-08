@@ -52,7 +52,7 @@ export function TerminalContent() {
 		if (prevToggleEnter.current !== toggleEnter && inputText !== "" && inputElement.current !== null) {
 			prevToggleEnter.current = toggleEnter;
 			setTerminalLog((prev) => {
-				return prev + "<br>" + inputText;
+				return `${prev}<br>${inputText}`;
 			});
 
 			const text = "You&nbsp;>&nbsp;";

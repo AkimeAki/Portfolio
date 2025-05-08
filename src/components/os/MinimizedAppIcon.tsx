@@ -33,6 +33,7 @@ export default function ({ id, iconPath, isPixel }: Props) {
 			`}
 		>
 			<img
+				alt={`${id}のアイコン`}
 				src={iconPath}
 				className={[
 					css`

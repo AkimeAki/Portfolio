@@ -80,8 +80,8 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 					e.isPrimary
 				) {
 					if (e.buttons === 1) {
-						target.style.top = target.offsetTop + e.movementY + "px";
-						target.style.left = target.offsetLeft + e.movementX + "px";
+						target.style.top = `${target.offsetTop + e.movementY}px`;
+						target.style.left = `${target.offsetLeft + e.movementX}px`;
 						target.draggable = false;
 						target.setPointerCapture(e.pointerId);
 					}
@@ -92,8 +92,8 @@ export default function ({ opacity, top, left, right, bottom, width, height }: P
 					const touch = e.touches[0];
 					if (previousTouch !== null) {
 						const target = touch.target as HTMLDivElement;
-						target.style.top = target.offsetTop + (touch.pageY - previousTouch.pageY) + "px";
-						target.style.left = target.offsetLeft + (touch.pageX - previousTouch.pageX) + "px";
+						target.style.top = `${target.offsetTop + (touch.pageY - previousTouch.pageY)}px`;
+						target.style.left = `${target.offsetLeft + (touch.pageX - previousTouch.pageX)}px`;
 						target.draggable = false;
 					}
 

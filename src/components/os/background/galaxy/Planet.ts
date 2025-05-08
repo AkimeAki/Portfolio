@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Orbit } from "@/components/os/background/galaxy/Orbit";
+import type { Orbit } from "@/components/os/background/galaxy/Orbit";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 export class Planet {
@@ -59,7 +59,7 @@ export class Planet {
 		model.scene.rotation.x = THREE.MathUtils.degToRad(0);
 		model.scene.rotation.z = THREE.MathUtils.degToRad(0);
 		model.scene.rotation.y = THREE.MathUtils.degToRad(180);
-		model.scene.traverse(function (node) {
+		model.scene.traverse((node) => {
 			node.castShadow = true;
 			node.receiveShadow = true;
 		});

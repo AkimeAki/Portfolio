@@ -9,7 +9,7 @@ export function middleware(request: Request) {
 	for (const path in emojiPathList) {
 		for (const emojiPath of emojiPathList[path].emoji) {
 			if (emoji === emojiPath || emoji === encodeURIComponent(emojiPath)) {
-				const redirectUrl = url.protocol + "//" + url.host + "/" + path + url.search + url.hash;
+				const redirectUrl = `${url.protocol}//${url.host}/${path}${url.search}${url.hash}`;
 
 				return NextResponse.redirect(redirectUrl, {
 					status: 301
