@@ -160,7 +160,6 @@ export default function ({ notFound = false }: Props) {
 			for (const image of Array.from(loadingImageList)) {
 				if (image.dataset.loaded !== "true") {
 					loaded = false;
-					console.log(loaded);
 					break;
 				}
 			}
