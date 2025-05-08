@@ -33,7 +33,7 @@ export const linkList: {
 		url: "https://misskey.io/@_aki"
 	},
 	bskyMisskey: {
-		name: "Bridgy Fed\n（内容はBlueskyと同じ）",
+		name: "Bridgy Fed",
 		url: "https://misskey.io/@aki.wtf@bsky.brid.gy"
 	},
 	mixi2: {
