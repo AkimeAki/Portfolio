@@ -24,6 +24,10 @@ export const linkList: {
 		name: "GitHub",
 		url: "https://github.com/AkimeAki"
 	},
+	pixiv: {
+		name: "Pixiv",
+		url: "https://www.pixiv.net/users/64086928"
+	},
 	bluesky: {
 		name: "Bluesky",
 		url: "https://bsky.app/profile/aki.wtf"
