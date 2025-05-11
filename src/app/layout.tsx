@@ -50,12 +50,10 @@ export default function ({ children }: Props) {
 					/>
 				</noscript>
 				<KumaRegistry>
-					<>
-						<CheckUserAgent />
-						<ChangeGenerator />
-						<IframeInit origin={siteUrl} />
-						{children}
-					</>
+					<CheckUserAgent />
+					<ChangeGenerator />
+					<IframeInit origin={siteUrl} />
+					{children}
 				</KumaRegistry>
 			</body>
 		</html>

@@ -7,14 +7,14 @@ import TaskbarStart from "@/components/os/taskbar/TaskbarStart";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import MinimizedApps from "@/components/os/MinimizedApps";
-import { linkList } from "@/data/links";
+import { linkData } from "@/data/links";
 import { cx } from "@/libs/merge-kuma";
 import { memo } from "react";
 
 const TaskbarIconMemo = memo(() => {
 	return (
 		<>
-			{Object.keys(linkList)
+			{Object.keys(linkData)
 				.filter(
 					(link) =>
 						link === "x" ||
@@ -38,8 +38,8 @@ const TaskbarIconMemo = memo(() => {
 					>
 						<TaskbarIcon
 							iconPath={`/icon/${link}.webp`}
-							alt={`${linkList[link].name}`}
-							href={linkList[link].url}
+							alt={`${linkData[link].name}`}
+							href={linkData[link].url}
 						/>
 					</span>
 				))}

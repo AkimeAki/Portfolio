@@ -1,4 +1,4 @@
-export const linkList: {
+export const linkData: {
 	[key: string]: {
 		name: string;
 		url: string;
@@ -25,7 +25,7 @@ export const linkList: {
 		url: "https://github.com/AkimeAki"
 	},
 	pixiv: {
-		name: "Pixiv",
+		name: "pixiv",
 		url: "https://www.pixiv.net/users/64086928"
 	},
 	bluesky: {

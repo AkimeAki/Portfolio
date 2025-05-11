@@ -14,57 +14,54 @@ import PixelWrapper from "@/components/os/background/PixelWrapper";
 import NewVideo from "@/components/os/background/NewVideo";
 import Galaxy from "@/components/os/background/Galaxy";
 import LayoutInit from "@/components/LayoutInit";
+import { InlineStyle } from "@/components/atoms/InlineStyle";
 
 export const metadata: Metadata = metaHead({});
 
 export default function ({ children }: React.PropsWithChildren) {
 	return (
 		<>
-			<style
-				dangerouslySetInnerHTML={{
-					__html: /* css */ `
-						html,
-						body {
+			<InlineStyle
+				css={`
+					html,
+					body {
+						overscroll-behavior-y: contain;
+						overflow: hidden;
+
+						* {
 							overscroll-behavior-y: contain;
-							overflow: hidden;
-
-							* {
-								overscroll-behavior-y: contain;
-							}
 						}
+					}
 
-						body {
-							touch-action: none;
-							overscroll-behavior-y: none;
-							background-color: #060303;
-						}
+					body {
+						touch-action: none;
+						overscroll-behavior-y: none;
+						background-color: #060303;
+					}
 
-						@layer base {
-							* {
-								font-family: "BestTenCRT";
-								font-size: 18px;
-								color: #777777;
-								font-variant-ligatures: none;
-							}
+					body {
+						font-family: "BestTenCRT";
+						font-size: 18px;
+						color: #777777;
+						font-variant-ligatures: none;
+					}
 
-							p {
-								line-height: 1.6;
-							}
+					p {
+						line-height: 1.6;
+					}
 
-							rt {
-								text-align: center;
-							}
-						}
+					rt {
+						text-align: center;
+					}
 
-						body[data-user-dragging="true"] {
-							user-select: none !important;
-						}
+					body[data-user-dragging="true"] {
+						user-select: none !important;
+					}
 
-						body[data-user-dragging="true"] * {
-							user-select: none !important;
-						}
-					`
-				}}
+					body[data-user-dragging="true"] * {
+						user-select: none !important;
+					}
+				`}
 			/>
 			<div
 				className={css`

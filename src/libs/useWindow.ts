@@ -2,8 +2,9 @@
 
 import { pinWindowList, openAppSortList, minimizeWindowList } from "@/atom";
 import { useStore } from "@nanostores/react";
-import { appList, sortList } from "@/libs/app-select";
+import { appData } from "@/data/app";
 import { pageTitle } from "@/libs/meta";
+import { sortList } from "@/libs/app-select";
 
 export default function () {
 	const $openAppSortList = useStore(openAppSortList);
@@ -13,7 +14,7 @@ export default function () {
 	const openWindow = (id: string, isChangeHistory = true) => {
 		const list = openAppSortList.get();
 
-		if (appList[id].changeHistory) {
+		if (appData[id].changeHistory) {
 			if (isChangeHistory) {
 				const sortResult = sortList(id, list);
 				if (JSON.stringify(sortResult) !== JSON.stringify(list)) {
@@ -21,7 +22,7 @@ export default function () {
 				}
 			}
 
-			document.title = appList[id].pageTitle;
+			document.title = appData[id].pageTitle;
 		}
 
 		openAppSortList.set(sortList(id, list));
@@ -58,7 +59,7 @@ export default function () {
 	const closeWindow = (closeId: string, isChangeHistory = true) => {
 		// 閉じたいウィンドウ以外のウィンドウリスト（履歴変更するもののみ）
 		const resetAppChangeHistoryList = $openAppSortList.filter((id) => {
-			return id !== closeId && appList[id].changeHistory;
+			return id !== closeId && appData[id].changeHistory;
 		});
 
 		if (isChangeHistory) {
@@ -68,7 +69,7 @@ export default function () {
 				document.title = pageTitle;
 			} else {
 				history.pushState({}, "", `/${resetAppChangeHistoryList[0]}`);
-				document.title = appList[resetAppChangeHistoryList[0]].pageTitle;
+				document.title = appData[resetAppChangeHistoryList[0]].pageTitle;
 			}
 		}
 

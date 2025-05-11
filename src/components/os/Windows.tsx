@@ -2,7 +2,7 @@
 
 import Window from "@/components/os/Window";
 import { openAppSortList, osReady } from "@/atom";
-import { appList } from "@/libs/app-select";
+import { appData } from "@/data/app";
 import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
 import useWindow from "@/libs/useWindow";
@@ -34,7 +34,7 @@ export default function ({ defaultWindow }: Props) {
 				openWindow(location.pathname.replace("/", ""), false);
 			} else {
 				const result = $openAppSortList.filter((id) => {
-					return !appList[id].changeHistory;
+					return !appData[id].changeHistory;
 				});
 
 				openAppSortList.set(result);
@@ -63,10 +63,10 @@ export default function ({ defaultWindow }: Props) {
 	return (
 		<>
 			{mixOpenAppList.toSorted().map((appId) => {
-				const Component = appList[appId].component;
+				const Component = appData[appId].component;
 
 				return (
-					<Window key={appId} id={appId} appData={appList[appId]} ready={ready}>
+					<Window key={appId} id={appId} appData={appData[appId]} ready={ready}>
 						{Component}
 					</Window>
 				);

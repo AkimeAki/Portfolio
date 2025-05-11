@@ -11,6 +11,34 @@ const pathList = [
 	...Object.keys(emojiPathList)
 ];
 
+function changePath(to: "text" | "emoji", textPath: string, emojiPath: string) {
+	const pathList = location.pathname.split("/");
+	let path = "";
+	for (let i = 0; i < pathList.length; i++) {
+		if (to === "emoji") {
+			if (pathList[i] === textPath) {
+				pathList[i] = emojiPath;
+				path = emojiPath;
+				break;
+			}
+		} else if (to === "text") {
+			if (pathList[i] === encodeURIComponent(emojiPath) || pathList[i] === emojiPath) {
+				pathList[i] = textPath;
+				path = textPath;
+				break;
+			}
+		}
+	}
+
+	if (path === "") {
+		return;
+	}
+
+	const pathname = pathList.join("/");
+
+	history.replaceState({}, "", `${pathname}${location.search}`);
+}
+
 export default function () {
 	useEffect(() => {
 		const getPath = () => {
@@ -22,12 +50,8 @@ export default function () {
 				return;
 			}
 
-			if (!pathList.includes(getPath())) {
-				return;
-			}
-
 			if (document.body.dataset.emojiPath !== "" && document.body.dataset.emojiPath !== undefined) {
-				history.replaceState({}, "", `/${document.body.dataset.textPath}`);
+				changePath("text", document.body.dataset.textPath ?? "", document.body.dataset.emojiPath ?? "");
 			}
 		};
 
@@ -36,12 +60,8 @@ export default function () {
 				return;
 			}
 
-			if (!pathList.includes(getPath())) {
-				return;
-			}
-
 			if (document.body.dataset.textPath !== "" && document.body.dataset.textPath !== undefined) {
-				history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
+				changePath("emoji", document.body.dataset.textPath ?? "", document.body.dataset.emojiPath ?? "");
 			}
 		};
 
@@ -50,12 +70,8 @@ export default function () {
 				return;
 			}
 
-			if (!pathList.includes(getPath())) {
-				return;
-			}
-
 			if (document.body.dataset.emojiPath !== "" && document.body.dataset.emojiPath !== undefined) {
-				history.replaceState({}, "", `/${document.body.dataset.textPath}`);
+				changePath("text", document.body.dataset.textPath ?? "", document.body.dataset.emojiPath ?? "");
 			}
 		};
 
@@ -93,7 +109,7 @@ export const SetEmojiPath = ({ path }: SetEmojiPathProps) => {
 					return;
 				}
 
-				history.replaceState({}, "", `/${document.body.dataset.emojiPath}`);
+				changePath("emoji", path, emojiPath);
 			})();
 		}
 

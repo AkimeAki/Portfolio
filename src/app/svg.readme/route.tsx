@@ -1,3 +1,5 @@
+import { InlineStyle } from "@/components/atoms/InlineStyle";
+
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
@@ -9,25 +11,23 @@ function SVG({ 格言 }: Props) {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
 			<title>格言</title>
-			<style
-				dangerouslySetInnerHTML={{
-					__html: /* css */ `
-						@font-face {
-							font-family: "BestTenCRT";
-							src: url("https://r2.shikiiro.net/BestTen-CRT.otf");
-						}
+			<InlineStyle
+				css={`
+					@font-face {
+						font-family: "BestTenCRT";
+						src: url("https://r2.shikiiro.net/BestTen-CRT.otf");
+					}
 
-						#顔 {
-							font-size: 40px;
-						}
+					#顔 {
+						font-size: 40px;
+					}
 
-						#格言 {
-							font-size: 16px;
-							font-family: "BestTenCRT";
-							margin-top: 5px;
-						}
-					`
-				}}
+					#格言 {
+						font-size: 16px;
+						font-family: "BestTenCRT";
+						margin-top: 5px;
+					}
+				`}
 			/>
 			<g>
 				<foreignObject x="0" y="0" width="100%" height="100%">

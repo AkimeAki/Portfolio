@@ -1,5 +1,6 @@
 "use client";
 
+import { siteUrl } from "@/libs/meta";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef } from "react";
@@ -18,6 +19,16 @@ export function IframeWindow({ src }: Props) {
 			if (response.data.name === "AkiOSIframeInit" && response.data.value) {
 				if (iframeRef.current !== null) {
 					iframeRef.current.dataset.loaded = "true";
+
+					if (iframeRef.current.contentWindow !== null) {
+						iframeRef.current.contentWindow.postMessage(
+							{
+								name: "AkiOSIframeLayout",
+								value: "os"
+							},
+							siteUrl
+						);
+					}
 
 					if (loadingRef.current !== null) {
 						loadingRef.current.style.display = "none";

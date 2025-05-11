@@ -17,5 +17,11 @@ export const emojiPathList: {
 	},
 	pictures: {
 		emoji: ["🎨"]
+	},
+	movies: {
+		emoji: ["🎞", "🎞️"]
+	},
+	models: {
+		emoji: ["📦"]
 	}
 };

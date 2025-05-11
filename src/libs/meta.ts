@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const pageTitle = "彩季.AkiOS";
-export const siteUrl = process.env.SITE_ROOT_URL ?? "";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_ROOT_URL ?? "";
 
 export const metaHead = ({
 	title,

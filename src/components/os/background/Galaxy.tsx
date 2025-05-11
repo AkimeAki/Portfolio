@@ -89,12 +89,12 @@ export default function () {
 
 				// ひよこ惑星
 				const hiyokoPlanet = new Planet(scene);
-				hiyokoPlanet.load("models/hiyoko.glb");
+				hiyokoPlanet.load("/hiyoko.glb");
 
 				// ピグリン惑星
 				const piglinPlanet = new Planet(scene);
 				// piglinPlanet.load("models/piglin.glb", -20, 5);
-				piglinPlanet.load("models/piglin.glb");
+				piglinPlanet.load("/piglin.glb");
 
 				const maxFPS = 30;
 				let lastUpdateTime = performance.now();

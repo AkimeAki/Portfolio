@@ -1,6 +1,7 @@
 import { metaHead, pageTitle } from "@/libs/meta";
 import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
+import { InlineStyle } from "@/components/atoms/InlineStyle";
 
 export const dynamic = "force-static";
 
@@ -14,14 +15,12 @@ export const metadata: Metadata = metaHead({
 export default function () {
 	return (
 		<>
-			<style
-				dangerouslySetInnerHTML={{
-					__html: /* css */ `
-						body {
-							background-color: #f0f0f1;
-						}
-					`
-				}}
+			<InlineStyle
+				css={`
+					body {
+						background-color: #f0f0f1;
+					}
+				`}
 			/>
 			<div
 				className={css`

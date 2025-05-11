@@ -1,7 +1,7 @@
 "use client";
 
 import { pinWindowList, isTouch, openAppSortList, minimizeWindowList } from "@/atom";
-import type { AppData } from "@/libs/app-select";
+import type { AppData } from "@/data/app";
 import { cx } from "@/libs/merge-kuma";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
@@ -1003,7 +1003,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 										}
 									}}
 									style={{ display: $isTouch ? "none" : "flex" }}
-									className={[
+									className={cx(
 										css`
 											align-items: center;
 											justify-content: center;
@@ -1055,7 +1055,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 														border-width: 2px;
 													}
 												`
-									].join(" ")}
+									)}
 								/>
 							)}
 							<div

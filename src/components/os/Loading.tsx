@@ -5,6 +5,7 @@ import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
 import checkBrowser from "@akimeaki/check-browser";
+import { InlineStyle } from "@/components/atoms/InlineStyle";
 
 interface Props {
 	notFound?: boolean;
@@ -564,9 +565,8 @@ export default function ({ notFound = false }: Props) {
 									].join(" ")}
 								/>
 								<noscript>
-									<style
-										dangerouslySetInnerHTML={{
-											__html: /* scss */ `
+									<InlineStyle
+										css={`
 											#loading-progress {
 												animation-duration: 1s;
 												animation-delay: 250ms;
@@ -605,8 +605,7 @@ export default function ({ notFound = false }: Props) {
 													}
 												}
 											}
-										`
-										}}
+										`}
 									/>
 								</noscript>
 							</div>
@@ -729,14 +728,12 @@ export default function ({ notFound = false }: Props) {
 														: "Ready"}
 										</span>
 										<noscript>
-											<style
-												dangerouslySetInnerHTML={{
-													__html: /* scss */ `
-														#loading-message {
-															display: none;
-														}
-													`
-												}}
+											<InlineStyle
+												css={`
+													#loading-message {
+														display: none;
+													}
+												`}
 											/>
 										</noscript>
 									</>

@@ -1,11 +1,15 @@
 {
-	"name": "ポートフォリオ",
 	"dockerComposeFile": "./compose.yml",
 	"service": "app",
 	"workspaceFolder": "/app/",
 	"customizations": {
 		"vscode": {
-			"extensions": ["esbenp.prettier-vscode", "EditorConfig.EditorConfig", "biomejs.biome"],
+			"extensions": [
+				"esbenp.prettier-vscode",
+				"EditorConfig.EditorConfig",
+				"biomejs.biome",
+				"styled-components.vscode-styled-components"
+			],
 			"settings": {
 				"npm.packageManager": "npm",
 				"editor.formatOnSave": true,

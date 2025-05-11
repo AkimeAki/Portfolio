@@ -3,7 +3,7 @@
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef, useState } from "react";
 import TaskbarStartIcon from "@/components/os/taskbar/TaskbarStartIcon";
-import { linkList } from "@/data/links";
+import { linkData } from "@/data/links";
 import { cx } from "@/libs/merge-kuma";
 
 export default function () {
@@ -136,7 +136,7 @@ export default function () {
 						column-gap: 20px;
 					`}
 				>
-					{Object.keys(linkList)
+					{Object.keys(linkData)
 						.filter(
 							(link) =>
 								!(
@@ -163,9 +163,9 @@ export default function () {
 							>
 								<TaskbarStartIcon
 									iconPath={`/icon/${link}.webp`}
-									alt={`${linkList[link].name}`}
-									text={`${linkList[link].name}`}
-									href={linkList[link].url}
+									alt={`${linkData[link].name}`}
+									text={`${linkData[link].name}`}
+									href={linkData[link].url}
 								/>
 							</span>
 						))}

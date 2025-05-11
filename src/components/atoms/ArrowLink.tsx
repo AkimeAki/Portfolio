@@ -33,9 +33,6 @@ export default function ({ children, href, target, className }: React.PropsWithC
 						}
 
 						color: #edf8af;
-						* {
-							color: #edf8af;
-						}
 					}
 				`,
 				className !== undefined && className

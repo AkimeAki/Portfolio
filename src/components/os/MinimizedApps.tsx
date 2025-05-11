@@ -4,7 +4,7 @@ import { css } from "@kuma-ui/core";
 import MinimizedAppIcon from "@/components/os/MinimizedAppIcon";
 import { useStore } from "@nanostores/react";
 import { minimizeWindowList } from "@/atom";
-import { appList } from "@/libs/app-select";
+import { appData } from "@/data/app";
 
 export default function () {
 	const $minimizeWindowList = useStore(minimizeWindowList);
@@ -21,8 +21,8 @@ export default function () {
 				<MinimizedAppIcon
 					key={id}
 					id={id}
-					iconPath={appList[id].image.path}
-					isPixel={appList[id].image.isPixel}
+					iconPath={appData[id].image.path}
+					isPixel={appData[id].image.isPixel}
 				/>
 			))}
 		</div>
