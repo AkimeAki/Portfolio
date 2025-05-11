@@ -26,6 +26,16 @@ export default function () {
 				`}
 			/>
 			<SetEmojiPath path="pictures" />
+			<h2
+				className={css`
+					margin-bottom: 30px;
+					font-size: 25px;
+					font-weight: bold;
+					color: #edf8af;
+				`}
+			>
+				描いたイラスト集
+			</h2>
 			<div
 				className={css`
 					display: grid;
