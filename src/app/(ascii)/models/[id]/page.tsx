@@ -4,7 +4,6 @@ import { modelsData } from "@/data/models";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { ModelView } from "./_ModelView";
 
 export const dynamic = "force-static";
@@ -19,7 +18,8 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 	return metaHead({
 		title: `${modelsData[params.id].title} - ${appData.models.pageTitle}`,
 		isFullTitle: true,
-		description: `彩季が作成した3Dモデル「${modelsData[params.id].title}」です。${modelsData[params.id].detail}`
+		description: `彩季が作成した3Dモデル「${modelsData[params.id].title}」です。${modelsData[params.id].detail}`,
+		canonicalPath: `/models/${params.id}`
 	});
 };
 

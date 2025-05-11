@@ -4,7 +4,6 @@ import { moviesData } from "@/data/movies";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 export const dynamic = "force-static";
 
@@ -18,7 +17,8 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 	return metaHead({
 		title: `${moviesData[params.id].title} - ${appData.movies.pageTitle}`,
 		isFullTitle: true,
-		description: `彩季が作成した動画「${moviesData[params.id].title}」です。${moviesData[params.id].detail}`
+		description: `彩季が作成した動画「${moviesData[params.id].title}」です。${moviesData[params.id].detail}`,
+		canonicalPath: `/movies/${params.id}`
 	});
 };
 

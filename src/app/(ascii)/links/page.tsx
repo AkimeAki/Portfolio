@@ -9,7 +9,8 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = metaHead({
 	title: "各種リンク一覧",
-	description: "彩季です。"
+	description: "彩季です。",
+	canonicalPath: "/links"
 });
 
 export default function () {

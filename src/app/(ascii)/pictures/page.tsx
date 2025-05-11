@@ -11,7 +11,8 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metaHead({
 	title: appData.pictures.pageTitle,
 	isFullTitle: true,
-	description: "彩季が描いたイラスト集です。"
+	description: "彩季が描いたイラスト集です。",
+	canonicalPath: "/pictures"
 });
 
 export default function () {

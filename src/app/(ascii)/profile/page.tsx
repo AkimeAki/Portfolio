@@ -9,7 +9,8 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metaHead({
 	title: appData.profile.pageTitle,
 	isFullTitle: true,
-	description: "彩季です。"
+	description: "彩季です。",
+	canonicalPath: "/profile"
 });
 
 export default function () {

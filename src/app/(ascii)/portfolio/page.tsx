@@ -10,7 +10,8 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metaHead({
 	title: appData.portfolio.pageTitle,
 	isFullTitle: true,
-	description: "彩季が作ったものを置いています。"
+	description: "彩季が作ったものを置いています。",
+	canonicalPath: "/portfolio"
 });
 
 export default function () {

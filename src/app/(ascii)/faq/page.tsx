@@ -8,7 +8,8 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metaHead({
 	title: appData.faq.pageTitle,
 	isFullTitle: true,
-	description: "彩季に来るよくあるかもしれない質問が書いてあります。"
+	description: "彩季に来るよくあるかもしれない質問が書いてあります。",
+	canonicalPath: "/faq"
 });
 
 export default function () {

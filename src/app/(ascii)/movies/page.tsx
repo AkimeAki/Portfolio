@@ -8,7 +8,8 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metaHead({
 	title: appData.movies.pageTitle,
 	isFullTitle: true,
-	description: "彩季が作成した動画集です。"
+	description: "彩季が作成した動画集です。",
+	canonicalPath: "/movies"
 });
 
 export default function () {

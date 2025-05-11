@@ -8,7 +8,8 @@ export const dynamic = "force-static";
 export const metadata: Metadata = metaHead({
 	title: appData.models.pageTitle,
 	isFullTitle: true,
-	description: "彩季が作成した3Dモデル集です。"
+	description: "彩季が作成した3Dモデル集です。",
+	canonicalPath: "/models"
 });
 
 export default function () {
