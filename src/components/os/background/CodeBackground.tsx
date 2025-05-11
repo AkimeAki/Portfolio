@@ -15,7 +15,7 @@ const codeUrls: {
 	},
 	{
 		viewed: false,
-		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/app/(simple-os)/(simple)/terminal/_TerminalContent.tsx"
+		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/app/(iframe)/terminal/_TerminalContent.tsx"
 	},
 	{
 		viewed: false,
