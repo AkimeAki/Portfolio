@@ -7,6 +7,7 @@ bun.lockb
 *.ttf
 *.mp4
 *.glb
+*.gif
 *.webp
 .env.*
 .editorconfig
