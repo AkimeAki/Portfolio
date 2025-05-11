@@ -123,7 +123,7 @@ export default function ({ children }: React.PropsWithChildren) {
 						body[data-layout="os"] & {
 							font-family: "BestTenCRT";
 							padding: 30px;
-							height: 100%;
+							height: auto;
 
 							@media (max-width: 500px) {
 								padding: 15px;
