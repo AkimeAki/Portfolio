@@ -32,7 +32,7 @@ interface Props {
 export default function ({ params }: Props) {
 	return (
 		<>
-			<BackArrow href="/📦" text="作成した3Dモデル一覧に戻る" />
+			<BackArrow href="/models" text="作った3Dモデル一覧に戻る" />
 			<div
 				className={css`
 					margin-top: 30px;

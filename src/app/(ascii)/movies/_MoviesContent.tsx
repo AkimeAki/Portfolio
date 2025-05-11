@@ -24,7 +24,7 @@ export function MoviesContent() {
 					return (
 						<Link
 							key={id}
-							href={`/${emojiPathList.movies.emoji[0]}/${id}`}
+							href={`/movies/${id}`}
 							className={css`
 								position: relative;
 								display: block;

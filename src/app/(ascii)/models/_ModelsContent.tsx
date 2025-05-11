@@ -21,7 +21,7 @@ export function ModelsContent() {
 			{Object.keys(modelsData).map((id) => (
 				<Link
 					key={id}
-					href={`/${emojiPathList.models.emoji[0]}/${id}`}
+					href={`/models/${id}`}
 					className={css`
 						position: relative;
 						display: block;

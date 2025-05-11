@@ -31,7 +31,7 @@ interface Props {
 export default function ({ params }: Props) {
 	return (
 		<>
-			<BackArrow href="/🎞" text="作成したムービー一覧に戻る" />
+			<BackArrow href="/movies" text="作ったムービー一覧に戻る" />
 			<div
 				className={css`
 					margin-top: 30px;
