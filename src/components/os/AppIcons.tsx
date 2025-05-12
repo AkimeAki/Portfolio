@@ -88,7 +88,7 @@ export default function () {
 			<AppIcon href="https://blog.shikiiro.net/" imgSrc="/app/blog.png" isPixel target="_blank">
 				技術ブログ
 			</AppIcon>
-			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.webp" target="_blank">
+			<AppIcon id="allergynavi" imgSrc="/app/allergy-navi.webp">
 				アレルギーナビ
 			</AppIcon>
 			<AppIcon id="pixelgives" imgSrc="/app/dotya.png" isPixel>

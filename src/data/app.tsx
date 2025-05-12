@@ -216,5 +216,21 @@ export const appData: {
 			width: 542,
 			height: 250
 		}
+	},
+	allergynavi: {
+		title: "アレルギーナビ",
+		pageTitle: `アレルギーナビ - ${pageTitle}`,
+		image: {
+			isPixel: true,
+			path: "/app/allergy-navi.webp"
+		},
+		component: <IframeWindow src="/service/allergynavi" />,
+		resize: false,
+		changeHistory: false,
+		viewPinButton: false,
+		size: {
+			width: 542,
+			height: 250
+		}
 	}
 };

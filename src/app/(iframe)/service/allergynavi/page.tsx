@@ -9,7 +9,7 @@ export default function () {
 			<InlineStyle
 				css={`
 					body {
-						background-color: #f3eee6;
+						background-color: white;
 
 						&[data-touch="true"] {
 							display: flex;
@@ -30,6 +30,16 @@ export default function () {
 					padding: 20px;
 					line-height: 1.4;
 					justify-content: center;
+					font-family:
+						游ゴシック体,
+						YuGothic,
+						游ゴシック,
+						メイリオ,
+						Meiryo,
+						Hiragino Kaku Gothic Pro,
+						ヒラギノ角ゴ Pro W3,
+						ＭＳ Ｐゴシック,
+						sans-serif;
 
 					body[data-touch="true"] & {
 						@media (max-width: 560px) {
@@ -53,28 +63,23 @@ export default function () {
 					`}
 				>
 					<div>
-						<p>ドット絵の素材配布サイトを作りました。</p>
-						<p>ドット屋さんってことです。無料ですけど。</p>
+						<p>アレルギーの方向けのアレルゲン情報サイトを作りました。</p>
+						<p>みんなでアレルギー情報を持ち寄りましょう！</p>
 					</div>
 					<div>
 						<a
-							href="https://pixel.gives"
+							href="https://allergy-navi.com"
 							className={css`
-								border-top: 2px solid #6e6358;
-								border-bottom: 2px solid #111516;
 								border-radius: 4px;
-								color: #faf5b1;
-								background-color: #4d3d36;
-								padding: 10px 20px 14px;
+								color: white;
+								background-color: #f36164;
+								padding: 10px 20px 10px;
 								text-decoration: none;
 								line-height: 1;
 								font-size: 18px;
 								display: block;
 								text-align: center;
-
-								&:hover {
-									background-color: #554a46;
-								}
+								font-weight: bold;
 							`}
 							target="_blank"
 							rel="noreferrer"
@@ -93,12 +98,11 @@ export default function () {
 					`}
 				>
 					<img
-						src="/service/dotya.png"
+						src="/service/allergynavi.webp"
 						alt="どっとや"
 						className={css`
-							image-rendering: pixelated;
 							vertical-align: bottom;
-							border: 7px solid #482b1a;
+							border: 4px solid #f1f1f1;
 							width: 200px;
 							aspect-ratio: 1/1;
 						`}
