@@ -5,7 +5,6 @@ import ContextMenu from "@/components/ContextMenu";
 import Loading from "@/components/os/Loading";
 import SelectArea from "@/components/os/background/SelectArea";
 import Taskbar from "@/components/os/taskbar/Taskbar";
-import Touch from "@/components/Touch";
 import TwitchBackground from "@/components/os/background/TwitchBackground";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
@@ -73,7 +72,6 @@ export default function ({ children }: React.PropsWithChildren) {
 				`}
 			>
 				<Loading />
-				<Touch />
 				<ContextMenu />
 				<LayoutInit type="os" />
 				<div

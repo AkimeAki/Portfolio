@@ -91,7 +91,7 @@ export default function () {
 			<AppIcon href="https://allergy-navi.com/" imgSrc="/app/allergy-navi.webp" target="_blank">
 				アレルギーナビ
 			</AppIcon>
-			<AppIcon href="https://pixel.gives/" imgSrc="/app/dotya.png" isPixel target="_blank">
+			<AppIcon id="pixelgives" imgSrc="/app/dotya.png" isPixel>
 				どっとや
 			</AppIcon>
 			<AppIcon href="https://simple-v.shikiiro.net/" imgSrc="/app/simplev.webp" target="_blank">

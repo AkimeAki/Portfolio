@@ -200,5 +200,21 @@ export const appData: {
 		resize: true,
 		changeHistory: true,
 		viewPinButton: false
+	},
+	pixelgives: {
+		title: "どっとや",
+		pageTitle: `どっとや - ${pageTitle}`,
+		image: {
+			isPixel: true,
+			path: "/app/dotya.png"
+		},
+		component: <IframeWindow src="/service/pixelgives" />,
+		resize: false,
+		changeHistory: false,
+		viewPinButton: false,
+		size: {
+			width: 542,
+			height: 250
+		}
 	}
 };

@@ -6,7 +6,7 @@ import "@/styles/global.scss";
 import ChangeGenerator from "@/components/ChangeGenerator";
 import { IframeInit } from "@/components/os/IframeInit";
 import { siteUrl } from "@/libs/meta";
-
+import Touch from "@/components/Touch";
 interface Props {
 	children: React.ReactNode;
 }
@@ -50,6 +50,7 @@ export default function ({ children }: Props) {
 					/>
 				</noscript>
 				<KumaRegistry>
+					<Touch />
 					<CheckUserAgent />
 					<ChangeGenerator />
 					<IframeInit origin={siteUrl} />
