@@ -82,10 +82,10 @@ export default function () {
 			<AppIcon id="movies" imgSrc="/app/movies.png" isPixel>
 				ムービー
 			</AppIcon>
-			<AppIcon href="https://coffee.shikiiro.net/" imgSrc="/app/aki-coffee.png" isPixel target="_blank">
+			<AppIcon id="aiblog" imgSrc="/app/aki-coffee.png" isPixel>
 				日常ブログ
 			</AppIcon>
-			<AppIcon href="https://blog.shikiiro.net/" imgSrc="/app/blog.png" isPixel target="_blank">
+			<AppIcon id="techblog" imgSrc="/app/blog.png" isPixel>
 				技術ブログ
 			</AppIcon>
 			<AppIcon id="allergynavi" imgSrc="/app/allergy-navi.webp">

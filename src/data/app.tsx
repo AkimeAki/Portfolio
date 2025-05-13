@@ -232,5 +232,37 @@ export const appData: {
 			width: 542,
 			height: 250
 		}
+	},
+	aiblog: {
+		title: "日常ブログ",
+		pageTitle: `日常ブログ - ${pageTitle}`,
+		image: {
+			isPixel: true,
+			path: "/app/aki-coffee.png"
+		},
+		component: <IframeWindow src="/service/aiblog" />,
+		resize: false,
+		changeHistory: false,
+		viewPinButton: false,
+		size: {
+			width: 542,
+			height: 250
+		}
+	},
+	techblog: {
+		title: "技術ブログ",
+		pageTitle: `技術ブログ - ${pageTitle}`,
+		image: {
+			isPixel: true,
+			path: "/app/blog.png"
+		},
+		component: <IframeWindow src="/service/techblog" />,
+		resize: false,
+		changeHistory: false,
+		viewPinButton: false,
+		size: {
+			width: 542,
+			height: 250
+		}
 	}
 };

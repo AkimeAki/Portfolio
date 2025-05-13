@@ -99,7 +99,7 @@ export default function () {
 				>
 					<img
 						src="/service/allergynavi.webp"
-						alt="どっとや"
+						alt="アレルギーナビ"
 						className={css`
 							vertical-align: bottom;
 							border: 4px solid #f1f1f1;
