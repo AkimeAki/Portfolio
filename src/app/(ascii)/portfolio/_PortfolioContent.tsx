@@ -51,11 +51,11 @@ export function PortfolioContent() {
 										setSelectCategory(category);
 									}
 								}}
+								data-cursor={selectCategory === category ? "default" : "pointer"}
 								className={cx(
 									css`
 										border-radius: 99px;
 										background-color: #060303;
-										cursor: pointer;
 										white-space: nowrap;
 										font-size: 15px;
 										padding: 6px 13px 5px;
@@ -77,7 +77,6 @@ export function PortfolioContent() {
 										css`
 											background-color: #f14159;
 											color: white;
-											cursor: default;
 										`
 								)}
 							>

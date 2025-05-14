@@ -65,9 +65,9 @@ export function ProfileContent() {
 					</p>
 					<p>
 						<span
+							data-cursor="pointer"
 							className={css`
 								color: #43c1e7;
-								cursor: pointer;
 								user-select: none;
 							`}
 							onClick={() => {
@@ -90,9 +90,9 @@ export function ProfileContent() {
 						</span>
 						と
 						<span
+							data-cursor="pointer"
 							className={css`
 								color: #fa5353;
-								cursor: pointer;
 								user-select: none;
 							`}
 							onClick={() => {
@@ -118,9 +118,9 @@ export function ProfileContent() {
 					<p>
 						実績や作ったものは 「
 						<span
+							data-cursor="pointer"
 							className={css`
 								color: #53f71f;
-								cursor: pointer;
 								user-select: none;
 							`}
 							onClick={() => {
@@ -143,9 +143,9 @@ export function ProfileContent() {
 						<a
 							href="https://x.com/Akime_Aki"
 							target="_blank"
+							data-cursor="pointer"
 							className={css`
 								color: #43c1e7;
-								cursor: pointer;
 								margin: 0 5px;
 								white-space: nowrap;
 								user-select: none;

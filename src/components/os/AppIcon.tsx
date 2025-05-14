@@ -205,24 +205,24 @@ export default function ({ children, id, imgSrc, href, isPixel = false, onClick,
 						}
 					}}
 					target={target}
+					data-cursor="pointer"
 					className={css`
 						position: absolute;
 						top: 0;
 						left: 0%;
 						width: 100%;
 						height: 100%;
-						cursor: pointer;
 					`}
 				/>
 			) : (
 				<span
+					data-cursor="pointer"
 					className={css`
 						position: absolute;
 						top: 0;
 						left: 0%;
 						width: 100%;
 						height: 100%;
-						cursor: pointer;
 					`}
 				/>
 			)}

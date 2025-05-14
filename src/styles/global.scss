@@ -1,1 +1,17 @@
 @layer aki-reset, base;
+
+@layer base {
+	body[data-layout="os"] {
+		cursor: url("/cursor/default.png") default;
+	}
+
+	body:not([data-layout="os"]) {
+		*[data-cursor="pointer"] {
+			cursor: pointer;
+		}
+
+		*[data-cursor="default"] {
+			cursor: default;
+		}
+	}
+}

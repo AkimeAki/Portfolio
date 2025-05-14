@@ -178,6 +178,7 @@ export default function () {
 						return !prev;
 					});
 				}}
+				data-cursor="pointer"
 				className={[
 					css`
 						display: flex;
@@ -189,7 +190,6 @@ export default function () {
 						border-style: solid;
 						border-width: 2px;
 						border-color: transparent;
-						cursor: pointer;
 						transition-duration: 200ms;
 						transition-property: background-color;
 

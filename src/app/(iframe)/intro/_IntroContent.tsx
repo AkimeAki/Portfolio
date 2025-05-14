@@ -51,6 +51,7 @@ export function IntroContent() {
 		<div
 			ref={memoElement}
 			contentEditable={finishIntro ? "true" : "false"}
+			data-cursor="text"
 			className={css`
 				width: 100%;
 				min-height: 100%;
@@ -58,7 +59,6 @@ export function IntroContent() {
 				white-space: pre-wrap;
 				word-break: break-all;
 				padding: 5px 10px;
-				cursor: text;
 				line-height: 1.6;
 				font-size: 15px;
 			`}
