@@ -30,6 +30,7 @@ export default function () {
 					padding: 20px;
 					line-height: 1.4;
 					justify-content: center;
+					font-family: ArkPixelJA, DotGothic16, sans-serif;
 
 					body[data-touch="true"] & {
 						@media (max-width: 560px) {
@@ -44,6 +45,7 @@ export default function () {
 						flex-direction: column;
 						justify-content: space-between;
 						gap: 10px;
+						flex: 1;
 
 						body[data-touch="true"] & {
 							@media (max-width: 560px) {
@@ -90,6 +92,22 @@ export default function () {
 								order: 1;
 							}
 						}
+
+						width: 200px;
+						aspect-ratio: 1/1;
+						position: relative;
+
+						&:before {
+							content: "";
+							position: absolute;
+							top: 5px;
+							left: 5px;
+							z-index: -1;
+							display: block;
+							background-color: #482b1a;
+							width: 100%;
+							height: 100%;
+						}
 					`}
 				>
 					<img
@@ -98,9 +116,9 @@ export default function () {
 						className={css`
 							image-rendering: pixelated;
 							vertical-align: bottom;
-							border: 7px solid #482b1a;
-							width: 200px;
-							aspect-ratio: 1/1;
+							background-color: white;
+							width: 100%;
+							height: 100%;
 						`}
 					/>
 				</div>
