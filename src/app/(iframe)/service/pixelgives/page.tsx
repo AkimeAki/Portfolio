@@ -67,7 +67,7 @@ export default function () {
 								border-radius: 4px;
 								color: #faf5b1;
 								background-color: #4d3d36;
-								padding: 10px 20px 14px;
+								padding: 10px 20px 12px;
 								text-decoration: none;
 								line-height: 1;
 								font-size: 18px;
