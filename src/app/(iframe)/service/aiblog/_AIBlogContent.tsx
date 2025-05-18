@@ -82,7 +82,7 @@ export function AIBlogContent() {
 					padding: 20px;
 					line-height: 1.4;
 					justify-content: center;
-					font-family: "851";
+					font-family: "きろ字";
 					color: white;
 					max-width: 540px;
 

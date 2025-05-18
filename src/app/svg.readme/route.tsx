@@ -15,7 +15,7 @@ function SVG({ 格言 }: Props) {
 				css={`
 					@font-face {
 						font-family: "BestTenCRT";
-						src: url("https://r2.shikiiro.net/BestTen-CRT.otf");
+						src: url("https://storage.shikiiro.net/fonts/BestTen-CRT.otf");
 					}
 
 					#顔 {
