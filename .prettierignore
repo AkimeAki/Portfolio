@@ -15,3 +15,4 @@ Makefile
 _redirects
 .husky/**/*
 .npmrc
+/modules/

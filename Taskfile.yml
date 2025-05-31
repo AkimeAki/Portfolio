@@ -1,0 +1,30 @@
+version: "3"
+
+tasks:
+  ps:
+    desc: "コンテナ一覧"
+    cmds:
+      - docker compose ps -a
+  init:
+    desc: "コンテナ起動"
+    cmds:
+      - task delete
+      - docker compose build --no-cache
+      - docker compose up -d
+      - task install-tools-windows
+  install-tools-windows:
+    platforms: [windows]
+    desc: "ツールインストール（Windows）"
+    cmds:
+      - |
+        if [ ! -f ./modules/cli-win32-x64/biome.exe ]; then
+          curl -L https://github.com/biomejs/biome/releases/download/cli%2Fv1.9.4/biome-win32-x64.exe -o ./modules/cli-win32-x64/biome.exe --create-dirs
+        fi
+  delete:
+    desc: "コンテナ削除"
+    cmds:
+      - docker compose down --rmi all --volumes --remove-orphans
+  attach:
+    desc: "コンテナにアタッチ"
+    cmds:
+      - docker compose exec -it app bash
