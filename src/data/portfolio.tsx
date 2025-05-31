@@ -15,20 +15,20 @@ export interface Portfolio {
 export const portfolioData: ({
 	content: ReactNode;
 } & Portfolio)[] = [
-	{
-		title: "アレルギーナビ",
-		iconSrc: "/portfolio/allergy-navi.webp",
-		href: "https://allergy-navi.com/",
-		inCharge: "開発",
-		category: "ウェブサービス",
-		tools: ["typescript", "nextjs", "kumaui", "coackroachdb", "cloudrun", "workers"],
-		content: (
-			<>
-				<p>アレルギーの方向けのアレルゲン情報サイトです。</p>
-				<p>みんなでアレルギー情報を持ち寄りましょう。飲食店のみんな、アレルギー対応忘れないでね。</p>
-			</>
-		)
-	},
+	// {
+	// 	title: "アレルギーナビ",
+	// 	iconSrc: "/portfolio/allergy-navi.webp",
+	// 	href: "https://allergy-navi.com/",
+	// 	inCharge: "開発",
+	// 	category: "ウェブサービス",
+	// 	tools: ["typescript", "nextjs", "kumaui", "coackroachdb", "cloudrun", "workers"],
+	// 	content: (
+	// 		<>
+	// 			<p>アレルギーの方向けのアレルゲン情報サイトです。</p>
+	// 			<p>みんなでアレルギー情報を持ち寄りましょう。飲食店のみんな、アレルギー対応忘れないでね。</p>
+	// 		</>
+	// 	)
+	// },
 	{
 		title: "どっとや",
 		iconSrc: "/portfolio/dotya.webp",

@@ -88,9 +88,9 @@ export default function () {
 			<AppIcon id="techblog" imgSrc="/app/blog.png" isPixel>
 				技術ブログ
 			</AppIcon>
-			<AppIcon id="allergynavi" imgSrc="/app/allergy-navi.webp">
+			{/* <AppIcon id="allergynavi" imgSrc="/app/allergy-navi.webp">
 				アレルギーナビ
-			</AppIcon>
+			</AppIcon> */}
 			<AppIcon id="pixelgives" imgSrc="/app/dotya.png" isPixel>
 				どっとや
 			</AppIcon>
