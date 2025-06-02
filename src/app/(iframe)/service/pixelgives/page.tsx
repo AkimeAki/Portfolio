@@ -112,7 +112,7 @@ export default function () {
 				>
 					<img
 						src="/service/dotya.png"
-						alt="どっとや"
+						alt="どっと屋"
 						className={css`
 							image-rendering: pixelated;
 							vertical-align: bottom;

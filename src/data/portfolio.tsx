@@ -30,7 +30,7 @@ export const portfolioData: ({
 	// 	)
 	// },
 	{
-		title: "どっとや",
+		title: "どっと屋",
 		iconSrc: "/portfolio/dotya.webp",
 		href: "https://pixel.gives/",
 		inCharge: "開発",

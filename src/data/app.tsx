@@ -202,8 +202,8 @@ export const appData: {
 		viewPinButton: false
 	},
 	pixelgives: {
-		title: "どっとや",
-		pageTitle: `どっとや - ${pageTitle}`,
+		title: "どっと屋",
+		pageTitle: `どっと屋 - ${pageTitle}`,
 		image: {
 			isPixel: true,
 			path: "/app/dotya.png"
