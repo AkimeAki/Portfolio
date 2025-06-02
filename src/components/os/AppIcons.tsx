@@ -92,7 +92,7 @@ export default function () {
 				アレルギーナビ
 			</AppIcon> */}
 			<AppIcon id="pixelgives" imgSrc="/app/dotya.png" isPixel>
-				どっとや
+				どっと屋
 			</AppIcon>
 			<AppIcon href="https://simple-v.shikiiro.net/" imgSrc="/app/simplev.webp" target="_blank">
 				SimpleV
