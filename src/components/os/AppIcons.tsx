@@ -97,9 +97,9 @@ export default function () {
 			<AppIcon href="https://simple-v.shikiiro.net/" imgSrc="/app/simplev.webp" target="_blank">
 				SimpleV
 			</AppIcon>
-			<AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
+			{/* <AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
 				FAQ
-			</AppIcon>
+			</AppIcon> */}
 			<AppIcon id="terminal" imgSrc="/app/terminal.png" isPixel>
 				ターミナル
 			</AppIcon>
