@@ -36,7 +36,6 @@ export default function ({
 	const [iconImageSrc, setIconImageSrc] = useState<string>(imgSrc ?? "");
 
 	useEffect(() => {
-		console.log("aaa");
 		if (id !== undefined && imgSrc !== undefined && openImgSrc !== undefined) {
 			if ($openedAppSortList.includes(id)) {
 				setIconImageSrc(openImgSrc);

@@ -15,12 +15,12 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
 }
 
 interface Props {
-	params: {
-		id: string;
-	};
+	params: Promise<{ id: string }>;
 }
 
-export default function ({ params }: Props) {
+export default async function ({ params }: Props) {
+	const { id } = await params;
+
 	return (
 		<>
 			<BackArrow href="/window/models" text="作った3Dモデル一覧に戻る" />
@@ -37,7 +37,7 @@ export default function ({ params }: Props) {
 						font-weight: bold;
 					`}
 				>
-					{modelsData[params.id].title}
+					{modelsData[id].title}
 				</h2>
 				<p
 					className={css`
@@ -45,7 +45,7 @@ export default function ({ params }: Props) {
 						text-align: center;
 					`}
 				>
-					{modelsData[params.id].detail}
+					{modelsData[id].detail}
 				</p>
 				<div
 					className={css`
@@ -63,7 +63,7 @@ export default function ({ params }: Props) {
 						text-align: center;
 					`}
 				>
-					<ModelView modelId={params.id} />
+					<ModelView modelId={id} />
 				</div>
 			</div>
 		</>

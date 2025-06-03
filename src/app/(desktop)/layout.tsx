@@ -1,6 +1,6 @@
 import AkiSignal from "@/components/desktop/background/AkiSignal";
 import { AppArea } from "@/components/desktop/AppArea";
-import CodeBackground from "@/components/desktop/background/CodeBackground";
+import { CodeBackground } from "@/components/desktop/background/CodeBackground";
 import ContextMenu from "@/components/ContextMenu";
 import Loading from "@/components/desktop/Loading";
 import SelectArea from "@/components/desktop/background/SelectArea";

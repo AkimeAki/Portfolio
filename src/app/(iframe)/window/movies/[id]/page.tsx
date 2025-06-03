@@ -1,9 +1,6 @@
 import { BackArrow } from "@/components/atoms/BackArrow";
-import { appData } from "@/data/app";
 import { moviesData } from "@/data/movies";
-import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
-import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
@@ -13,22 +10,13 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
 	}));
 }
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-	return metaHead({
-		title: `${moviesData[params.id].title} - ${appData.movies.pageTitle}`,
-		isFullTitle: true,
-		description: `彩季が作成した動画「${moviesData[params.id].title}」です。${moviesData[params.id].detail}`,
-		canonicalPath: `/movies/${params.id}`
-	});
-};
-
 interface Props {
-	params: {
-		id: string;
-	};
+	params: Promise<{ id: string }>;
 }
 
-export default function ({ params }: Props) {
+export default async function ({ params }: Props) {
+	const { id } = await params;
+
 	return (
 		<>
 			<BackArrow href="/window/movies" text="作ったムービー一覧に戻る" />
@@ -45,7 +33,7 @@ export default function ({ params }: Props) {
 						font-weight: bold;
 					`}
 				>
-					{moviesData[params.id].title}
+					{moviesData[id].title}
 				</h2>
 				<p
 					className={css`
@@ -53,7 +41,7 @@ export default function ({ params }: Props) {
 						text-align: center;
 					`}
 				>
-					{moviesData[params.id].detail}
+					{moviesData[id].detail}
 				</p>
 				<div
 					className={css`
@@ -61,8 +49,8 @@ export default function ({ params }: Props) {
 					`}
 				>
 					<iframe
-						src={moviesData[params.id].url}
-						title={moviesData[params.id].title}
+						src={moviesData[id].url}
+						title={moviesData[id].title}
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						referrerPolicy="strict-origin-when-cross-origin"
 						allowFullScreen

@@ -23,7 +23,7 @@ const codeUrls: {
 	}
 ];
 
-export default function () {
+export function CodeBackground() {
 	const $osReady = useStore(osReady);
 	const element = useRef<HTMLDivElement | null>(null);
 	const [code, setCode] = useState<string>("");
