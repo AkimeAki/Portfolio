@@ -3,6 +3,7 @@
 /dist/
 /.next/
 /.vercel/
+/.open-next/
 /.wrangler/
 /.kuma/
 /modules/

@@ -1,7 +1,6 @@
 import { InlineStyle } from "@/components/atoms/InlineStyle";
 
 export const dynamic = "force-dynamic";
-export const runtime = "edge";
 
 interface Props {
 	格言: string;
