@@ -1,80 +1,37 @@
 "use client";
 
-import { minimizeWindowList, openedAppSortList, osReady } from "@/atom";
-import { appData } from "@/data/app";
+import { osReady } from "@/atom";
 import { cx } from "@/libs/merge-kuma";
-import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import type { PropsWithChildren } from "react";
 
 interface Props {
-	children: React.ReactNode;
-	id?: string;
 	imgSrc?: string;
-	openImgSrc?: string;
 	href?: string;
 	isPixel?: boolean;
 	onClick?: () => void;
 	target?: string;
+	className?: string;
 }
 
 export default function ({
 	children,
-	id,
 	imgSrc,
-	openImgSrc,
 	href,
 	isPixel = false,
 	onClick,
-	target = "_self"
-}: Props) {
-	const $openedAppSortList = useStore(openedAppSortList);
-	const { openWindow, releaseMinimizedWindow } = useWindow();
+	target = "_self",
+	className
+}: PropsWithChildren<Props>) {
 	const $osReady = useStore(osReady);
-	const [iconImageSrc, setIconImageSrc] = useState<string>(imgSrc ?? "");
-
-	useEffect(() => {
-		if (id !== undefined && imgSrc !== undefined && openImgSrc !== undefined) {
-			if ($openedAppSortList.includes(id)) {
-				setIconImageSrc(openImgSrc);
-			} else {
-				setIconImageSrc(imgSrc);
-			}
-		}
-	}, [$openedAppSortList]);
 
 	return (
 		<div
 			onClick={() => {
 				if (onClick !== undefined) {
 					onClick();
-				}
-
-				if (id !== undefined) {
-					const list = openedAppSortList.get();
-
-					// クリックしたアプリが最前面じゃなかったら最善面にする
-					if (list[list.length - 1] !== id) {
-						openWindow(id);
-					}
-
-					// クリックしたアプリが最小化されてたら最小化解除する
-					const minimizedList = minimizeWindowList.get();
-					if (minimizedList.includes(id)) {
-						releaseMinimizedWindow(id);
-					}
-
-					if (process.env.NODE_ENV === "production") {
-						window.dataLayer.push({ event: "app-click", appId: id, url: null });
-					}
-				}
-
-				if (href !== undefined) {
-					if (process.env.NODE_ENV === "production") {
-						window.dataLayer.push({ event: "app-click", appId: null, url: href });
-					}
 				}
 			}}
 			className={cx(
@@ -89,10 +46,9 @@ export default function ({
 					border-color: transparent;
 					border-width: 1px;
 					background-color: transparent;
-					pointer-events: none;
 					padding: 2px;
 					transition-duration: 200ms;
-					transition-property: bodrer-color, background-color;
+					transition-property: background-color;
 
 					@media (hover: hover) {
 						&:hover {
@@ -110,21 +66,7 @@ export default function ({
 						gap: 6px;
 					}
 				`,
-				$osReady &&
-					css`
-						animation-duration: 70ms;
-						animation-delay: 1200ms;
-						animation-fill-mode: forwards;
-						animation-iteration-count: 1;
-						animation-timing-function: linear;
-						animation-name: viewed-app-icon;
-
-						@keyframes viewed-app-icon {
-							100% {
-								pointer-events: all;
-							}
-						}
-					`
+				className
 			)}
 		>
 			<div
@@ -148,7 +90,7 @@ export default function ({
 				{imgSrc !== undefined && (
 					<img
 						alt={String(children)}
-						src={iconImageSrc}
+						src={imgSrc}
 						data-loading-image
 						loading="eager"
 						className={[
@@ -221,10 +163,9 @@ export default function ({
 			>
 				{children}
 			</span>
-			{href !== undefined ||
-			(id !== undefined && appData[id].isEnabledPath ? `/${id}` : undefined) !== undefined ? (
+			{href !== undefined ? (
 				<Link
-					href={href ?? (id !== undefined && appData[id].isEnabledPath ? `/${id}` : "")}
+					href={href}
 					onClick={(e) => {
 						if (href === undefined) {
 							e.preventDefault();

@@ -3,7 +3,7 @@
 import { siteUrl } from "@/libs/meta";
 import useWindow from "@/libs/useWindow";
 import { css } from "@kuma-ui/core";
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 
 interface Props {
 	src: string;
@@ -41,7 +41,17 @@ export function IframeWindow({ src }: Props) {
 				response.data.value !== null &&
 				response.data.value !== undefined
 			) {
-				openWindow(String(response.data.value));
+				if (document.body.dataset.iframe === "true") {
+					window.parent.postMessage(
+						{
+							name: "AkiOSOpenWindow",
+							value: response.data.value
+						},
+						origin
+					);
+				} else {
+					openWindow(String(response.data.value));
+				}
 			}
 		};
 
@@ -53,7 +63,7 @@ export function IframeWindow({ src }: Props) {
 	}, []);
 
 	return (
-		<>
+		<Fragment key={src}>
 			<div
 				ref={loadingRef}
 				className={css`
@@ -139,6 +149,6 @@ export function IframeWindow({ src }: Props) {
 					}
 				`}
 			/>
-		</>
+		</Fragment>
 	);
 }

@@ -103,6 +103,10 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 			let bottom: number | undefined = undefined;
 			let right: number | undefined = undefined;
 
+			if (appData.defaultMaxWindow) {
+				setIsMaxWindow(true);
+			}
+
 			if (appData.defaultPosition !== undefined) {
 				top = appData.defaultPosition.top;
 				left = appData.defaultPosition.left;

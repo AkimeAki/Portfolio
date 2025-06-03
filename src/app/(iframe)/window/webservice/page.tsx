@@ -1,22 +1,13 @@
 import { SetAppId } from "@/components/iframe/SetAppId";
-import { PortfolioContent } from "./_PortfolioContent";
 import { InlineStyle } from "@/components/commons/InlineStyle";
+import { WebService } from "./_WebService";
 
 export const dynamic = "force-static";
 
 export default function () {
 	return (
 		<>
-			<InlineStyle
-				css={`
-					body {
-						color: #e9e9e9;
-						overflow: hidden;
-					}
-				`}
-			/>
-			<SetAppId id="portfolio" />
-			<PortfolioContent />
+			<WebService />
 		</>
 	);
 }

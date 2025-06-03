@@ -27,6 +27,7 @@ export interface AppData {
 		right?: number;
 		bottom?: number;
 	};
+	defaultMaxWindow?: boolean;
 	viewPinButton: boolean;
 	defaultPin?: boolean;
 	touchWindow?: boolean;
@@ -40,12 +41,13 @@ export const appData: {
 		pageTitle: `作ったもの・実績など - ${pageTitle}`,
 		image: {
 			isPixel: true,
-			path: "/app/folder.png"
+			path: "/app/folder-open.png"
 		},
 		component: <IframeWindow src="/window/portfolio" />,
 		resize: true,
 		isEnabledPath: true,
-		viewPinButton: false
+		viewPinButton: false,
+		defaultMaxWindow: true
 	},
 	faq: {
 		title: "FAQ",

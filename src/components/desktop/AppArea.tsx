@@ -2,10 +2,74 @@
 
 import { css } from "@kuma-ui/core";
 import AppIcon from "@/components/desktop/AppIcon";
-import { osReady } from "@/atom";
+import { minimizeWindowList, openedAppSortList, osReady } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { cx } from "@/libs/merge-kuma";
-import { useEffect, useState } from "react";
+import { type PropsWithChildren, useEffect, useState } from "react";
+import useWindow from "@/libs/useWindow";
+
+interface DesktopIconProps {
+	id: string;
+	imgSrc?: string;
+	isPixel?: boolean;
+	onClick?: () => void;
+}
+
+export function DesktopIcon({ children, id, imgSrc, isPixel }: PropsWithChildren<DesktopIconProps>) {
+	const { openWindow, releaseMinimizedWindow } = useWindow();
+	const $osReady = useStore(osReady);
+
+	function appClick(id: string) {
+		const list = openedAppSortList.get();
+
+		// クリックしたアプリが最前面じゃなかったら最善面にする
+		if (list[list.length - 1] !== id) {
+			openWindow(id);
+		}
+
+		// クリックしたアプリが最小化されてたら最小化解除する
+		const minimizedList = minimizeWindowList.get();
+		if (minimizedList.includes(id)) {
+			releaseMinimizedWindow(id);
+		}
+
+		if (process.env.NODE_ENV === "production") {
+			window.dataLayer.push({ event: "app-click", appId: id, url: null });
+		}
+	}
+
+	return (
+		<AppIcon
+			imgSrc={imgSrc}
+			onClick={() => {
+				appClick(id);
+			}}
+			isPixel={isPixel}
+			className={cx(
+				css`
+					pointer-events: none;
+				`,
+				$osReady &&
+					css`
+						animation-duration: 70ms;
+						animation-delay: 1200ms;
+						animation-fill-mode: forwards;
+						animation-iteration-count: 1;
+						animation-timing-function: linear;
+						animation-name: viewed-app-icon;
+
+						@keyframes viewed-app-icon {
+							100% {
+								pointer-events: all;
+							}
+						}
+					`
+			)}
+		>
+			{children}
+		</AppIcon>
+	);
+}
 
 export function AppArea() {
 	const $osReady = useStore(osReady);
@@ -16,6 +80,24 @@ export function AppArea() {
 			setReady(true);
 		}
 	}, [$osReady]);
+
+	const $openedAppSortList = useStore(openedAppSortList);
+	const [introImgSrc, setIntroImgSrc] = useState<string>("/app/letter.png");
+	const [portfolioImgSrc, setPortfolioImgSrc] = useState<string>("/app/folder.png");
+
+	useEffect(() => {
+		if ($openedAppSortList.includes("intro")) {
+			setIntroImgSrc("/app/letter-open.png");
+		} else {
+			setIntroImgSrc("/app/letter.png");
+		}
+
+		if ($openedAppSortList.includes("portfolio")) {
+			setPortfolioImgSrc("/app/folder-open.png");
+		} else {
+			setPortfolioImgSrc("/app/folder.png");
+		}
+	}, [$openedAppSortList]);
 
 	return (
 		<div
@@ -64,45 +146,45 @@ export function AppArea() {
 					`
 			)}
 		>
-			<AppIcon id="profile" imgSrc="/app/aki.webp">
+			<DesktopIcon id="profile" imgSrc="/app/aki.webp">
 				プロフィール
-			</AppIcon>
-			<AppIcon id="intro" imgSrc="/app/letter.png" openImgSrc="/app/letter-open.png" isPixel>
+			</DesktopIcon>
+			<DesktopIcon id="intro" imgSrc={introImgSrc} isPixel>
 				Welcome.txt
-			</AppIcon>
-			<AppIcon id="portfolio" imgSrc="/app/folder.png" isPixel>
+			</DesktopIcon>
+			<DesktopIcon id="portfolio" imgSrc={portfolioImgSrc} isPixel>
 				作ったもの
-			</AppIcon>
-			<AppIcon id="pictures" imgSrc="/app/pictures.png" isPixel>
+			</DesktopIcon>
+			<DesktopIcon id="pictures" imgSrc="/app/pictures.png" isPixel>
 				イラスト
-			</AppIcon>
-			<AppIcon id="models" imgSrc="/app/models.png" isPixel>
+			</DesktopIcon>
+			<DesktopIcon id="models" imgSrc="/app/models.png" isPixel>
 				3Dモデル
-			</AppIcon>
-			<AppIcon id="movies" imgSrc="/app/movies.png" isPixel>
+			</DesktopIcon>
+			<DesktopIcon id="movies" imgSrc="/app/movies.png" isPixel>
 				ムービー
-			</AppIcon>
+			</DesktopIcon>
 			{/* <AppIcon id="aiblog" imgSrc="/app/aki-coffee.png" isPixel>
 				日常ブログ
 			</AppIcon> */}
-			<AppIcon id="techblog" imgSrc="/app/blog.png" isPixel>
+			<DesktopIcon id="techblog" imgSrc="/app/blog.png" isPixel>
 				技術ブログ
-			</AppIcon>
+			</DesktopIcon>
 			{/* <AppIcon id="allergynavi" imgSrc="/app/allergy-navi.webp">
 				アレルギーナビ
 			</AppIcon> */}
-			<AppIcon id="pixelgives" imgSrc="/app/dotya.png" isPixel>
+			<DesktopIcon id="pixelgives" imgSrc="/app/dotya.png" isPixel>
 				どっと屋
-			</AppIcon>
+			</DesktopIcon>
 			{/* <AppIcon href="https://simple-v.shikiiro.net/" imgSrc="/app/simplev.webp" target="_blank">
 				SimpleV
 			</AppIcon> */}
 			{/* <AppIcon id="faq" imgSrc="/app/ghost.png" isPixel>
 				FAQ
 			</AppIcon> */}
-			<AppIcon id="terminal" imgSrc="/app/terminal.png" isPixel>
+			<DesktopIcon id="terminal" imgSrc="/app/terminal.png" isPixel>
 				ターミナル
-			</AppIcon>
+			</DesktopIcon>
 		</div>
 	);
 }

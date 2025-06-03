@@ -31,6 +31,7 @@ export default async function ({ params }: Props) {
 						text-align: center;
 						font-size: 30px;
 						font-weight: bold;
+						color: #edf8af;
 					`}
 				>
 					{moviesData[id].title}

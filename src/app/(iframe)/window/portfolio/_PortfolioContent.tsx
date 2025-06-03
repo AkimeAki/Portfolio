@@ -1,120 +1,181 @@
 "use client";
 
-import PortfolioArea from "@/components/desktop/PortfolioArea";
-import { portfolioData } from "@/data/portfolio";
+import { portfolioCategoryData } from "@/data/portfolio";
 import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
-import { Fragment, type ReactNode, useState } from "react";
+import { type PropsWithChildren, useState } from "react";
 
-const categoryList = [
-	"全て",
-	...Array.from(
-		new Set(
-			portfolioData.map((portfolio) => {
-				return portfolio.category;
-			})
-		)
-	)
-];
+interface SideNavProps {
+	onClick: () => void;
+	indent?: number;
+	selected?: boolean;
+}
+
+function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithChildren<SideNavProps>) {
+	return (
+		<span
+			onClick={onClick}
+			style={{ "--indent": `${String(indent)}em` } as React.CSSProperties}
+			className={cx(
+				css`
+					padding: 5px 13px 10px;
+					padding-left: calc(13px + var(--indent));
+					cursor: pointer;
+					font-size: 16px;
+					user-select: none;
+					white-space: nowrap;
+
+					@media (max-width: 960px) {
+						padding-left: 13px;
+					}
+
+					&:hover {
+						background-color: #e9e9e9;
+						color: #646464;
+					}
+				`,
+				selected &&
+					css`
+						background-color: #e9e9e9;
+						color: #646464;
+					`
+			)}
+		>
+			{children}
+		</span>
+	);
+}
 
 export function PortfolioContent() {
-	const [selectCategory, setSelectCategory] = useState<(typeof categoryList)[number]>("全て");
+	const [selectCategory, setSelectCategory] = useState<string>("root");
+	const Component = portfolioCategoryData[selectCategory].component;
 
 	return (
 		<div
 			className={css`
-				display: flex;
 				flex-direction: column;
-				gap: 50px;
+				display: flex;
+				height: 100%;
 			`}
 		>
 			<div
 				className={css`
+					height: 50px;
+					border-bottom: 4px solid #4b4b4b;
 					display: flex;
-					flex-direction: column;
-					gap: 5px;
+					align-items: center;
+					padding: 0 15px 6px;
+					font-size: 20px;
+					color: #edf8af;
 				`}
 			>
-				<div
-					className={css`
-						display: flex;
-						flex-wrap: wrap;
-						gap: 10px;
-					`}
-				>
-					{categoryList.map((category) => {
-						return (
-							<div
-								key={category}
-								onClick={() => {
-									if (selectCategory !== category) {
-										setSelectCategory(category);
-									}
-								}}
-								data-cursor={selectCategory === category ? "default" : "pointer"}
-								className={cx(
-									css`
-										border-radius: 99px;
-										background-color: #060303;
-										white-space: nowrap;
-										font-size: 15px;
-										padding: 6px 13px 5px;
-										user-select: none;
-										padding: 6px 13px 10px 15px;
-
-										body[data-os="android"] & {
-											padding: 6px 13px 8px 15px;
-										}
-
-										body[data-browser="safari"] && {
-											padding: 6px 13px 8px 15px;
-										}
-									`,
-									selectCategory === category &&
-										css`
-											background-color: #f14159;
-											color: white;
-										`
-								)}
-							>
-								{category}
-							</div>
-						);
-					})}
-				</div>
-				<div>
-					<p
-						className={css`
-							text-align: right;
-						`}
-					>
-						{
-							portfolioData.filter((portfolio) => {
-								return selectCategory === "全て" || selectCategory === portfolio.category;
-							}).length
-						}
-						/{portfolioData.length} 件
-					</p>
-				</div>
+				{portfolioCategoryData[selectCategory].title}
 			</div>
 			<div
 				className={css`
 					display: flex;
-					flex-direction: column;
-					gap: 150px;
+					flex: 1;
+
+					@media (max-width: 960px) {
+						flex-direction: column;
+					}
 				`}
 			>
-				{portfolioData.map((portfolio, index) => {
-					if (selectCategory === "全て" || selectCategory === portfolio.category) {
-						return (
-							<PortfolioArea key={index} {...portfolio}>
-								{portfolio.content}
-							</PortfolioArea>
-						);
-					}
+				<aside
+					className={css`
+						display: flex;
+						flex-direction: column;
+						width: 200px;
+						border-right: 2px solid #4b4b4b;
+						overflow-y: scroll;
 
-					return <Fragment key={index} />;
-				})}
+						@media (max-width: 960px) {
+							width: 100%;
+							flex-direction: row;
+							overflow-y: hidden;
+							overflow-x: scroll;
+						}
+					`}
+				>
+					<SideNav
+						selected={selectCategory === "root"}
+						onClick={() => {
+							setSelectCategory("root");
+						}}
+					>
+						作ったもの
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "webservice"}
+						onClick={() => {
+							setSelectCategory("webservice");
+						}}
+					>
+						ウェブサービス
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "website"}
+						onClick={() => {
+							setSelectCategory("website");
+						}}
+					>
+						ウェブサイト
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "pictures"}
+						onClick={() => {
+							setSelectCategory("pictures");
+						}}
+					>
+						イラスト
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "models"}
+						onClick={() => {
+							setSelectCategory("models");
+						}}
+					>
+						3Dモデル
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "movies"}
+						onClick={() => {
+							setSelectCategory("movies");
+						}}
+					>
+						ムービー
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "chrome"}
+						onClick={() => {
+							setSelectCategory("chrome");
+						}}
+					>
+						Chrome 拡張機能
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "vscode"}
+						onClick={() => {
+							setSelectCategory("vscode");
+						}}
+					>
+						VSCode 拡張機能
+					</SideNav>
+				</aside>
+				<main
+					className={css`
+						flex: 1;
+					`}
+				>
+					{typeof Component === "function" ? <Component setSelectCategory={setSelectCategory} /> : Component}
+				</main>
 			</div>
 		</div>
 	);

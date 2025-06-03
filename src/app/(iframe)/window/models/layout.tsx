@@ -25,16 +25,6 @@ export default function ({ children }: PropsWithChildren) {
 				`}
 			/>
 			<SetAppId id="models" />
-			<h2
-				className={css`
-					margin-bottom: 30px;
-					font-size: 25px;
-					font-weight: bold;
-					color: #edf8af;
-				`}
-			>
-				作った3Dモデル集
-			</h2>
 			{children}
 		</>
 	);

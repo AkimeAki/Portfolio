@@ -1,6 +1,8 @@
-import type { ReactNode } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 import type { toolColorList } from "@/data/tool-color-label";
 import { css } from "@kuma-ui/core";
+import AppIcon from "@/components/desktop/AppIcon";
+import { IframeWindow } from "@/components/desktop/IframeWindow";
 
 export interface Portfolio {
 	title: string;
@@ -12,7 +14,185 @@ export interface Portfolio {
 	tools?: (keyof typeof toolColorList)[];
 }
 
-export const portfolioData: ({
+interface PortfolioCategoryData {
+	[key: string]: {
+		title: string;
+		component:
+			| JSX.Element
+			| (({ setSelectCategory }: { setSelectCategory: Dispatch<SetStateAction<string>> }) => JSX.Element);
+	};
+}
+
+export const portfolioCategoryData: PortfolioCategoryData = {
+	root: {
+		title: "制作実績",
+		component: ({ setSelectCategory }: { setSelectCategory: Dispatch<SetStateAction<string>> }) => {
+			return (
+				<div
+					className={css`
+						display: flex;
+						padding: 15px;
+						column-gap: 15px;
+						row-gap: 15px;
+						flex-wrap: wrap;
+						align-items: flex-start;
+						align-content: flex-start;
+
+						@media (max-width: 720px) {
+							display: grid;
+							grid-template-columns: 1fr 1fr 1fr 1fr;
+							gap: 0;
+							width: 100%;
+							height: auto;
+							row-gap: 10px;
+							padding: 30px 0;
+						}
+					`}
+				>
+					<AppIcon
+						imgSrc="/app/global.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("webservice");
+						}}
+					>
+						ウェブサービス
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/global.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("website");
+						}}
+					>
+						ウェブサイト
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/pictures.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("pictures");
+						}}
+					>
+						イラスト
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/models.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("models");
+						}}
+					>
+						3Dモデル
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/movies.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("movies");
+						}}
+					>
+						ムービー
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/movies.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("chrome");
+						}}
+					>
+						Chrome 拡張機能
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/movies.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("vscode");
+						}}
+					>
+						VSCode 拡張機能
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/movies.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("minecraft");
+						}}
+					>
+						Minecraft
+						<br />
+						リソースパック
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/movies.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("discord");
+						}}
+					>
+						Discord Bot
+					</AppIcon>
+				</div>
+			);
+		}
+	},
+	webservice: {
+		title: "制作実績 / ウェブサービス",
+		component: () => {
+			return <IframeWindow src="/window/webservice" />;
+		}
+	},
+	website: {
+		title: "制作実績 / ウェブサイト",
+		component: () => {
+			return <IframeWindow src="/window/website" />;
+		}
+	},
+	pictures: {
+		title: "制作実績 / イラスト",
+		component: () => {
+			return <IframeWindow src="/window/pictures" />;
+		}
+	},
+	models: {
+		title: "制作実績 / 3Dモデル",
+		component: () => {
+			return <IframeWindow src="/window/models" />;
+		}
+	},
+	movies: {
+		title: "制作実績 / ムービー",
+		component: () => {
+			return <IframeWindow src="/window/movies" />;
+		}
+	},
+	chrome: {
+		title: "制作実績 / Chrome 拡張機能",
+		component: () => {
+			return <IframeWindow src="/window/chrome" />;
+		}
+	},
+	vscode: {
+		title: "制作実績 / VSCode 拡張機能",
+		component: () => {
+			return <IframeWindow src="/window/vscode" />;
+		}
+	},
+	minecraft: {
+		title: "制作実績 / Minecraft リソースパック",
+		component: () => {
+			return <IframeWindow src="/window/minecraft" />;
+		}
+	},
+	discord: {
+		title: "制作実績 / Discord Bot",
+		component: () => {
+			return <IframeWindow src="/window/discord" />;
+		}
+	}
+};
+
+export const _portfolioData: ({
 	content: ReactNode;
 } & Portfolio)[] = [
 	// {
@@ -43,22 +223,22 @@ export const portfolioData: ({
 			</>
 		)
 	},
-	{
-		title: "SimpleV",
-		href: "https://simple-v.shikiiro.net/",
-		iconSrc: "/portfolio/simplev.webp",
-		inCharge: "開発",
-		category: "ウェブサービス",
-		tools: ["typescript", "astro", "react", "emotion", "pages"],
-		content: (
-			<>
-				<p>
-					配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
-				</p>
-				<p>これであなたもVTuberのVくらいにはなれましたね。</p>
-			</>
-		)
-	},
+	// {
+	// 	title: "SimpleV",
+	// 	href: "https://simple-v.shikiiro.net/",
+	// 	iconSrc: "/portfolio/simplev.webp",
+	// 	inCharge: "開発",
+	// 	category: "ウェブサービス",
+	// 	tools: ["typescript", "astro", "react", "emotion", "pages"],
+	// 	content: (
+	// 		<>
+	// 			<p>
+	// 				配信用のシンプルな立ち絵を表示できるサービスです。あなたの声に合わせて立ち絵を切り替えることができます。
+	// 			</p>
+	// 			<p>これであなたもVTuberのVくらいにはなれましたね。</p>
+	// 		</>
+	// 	)
+	// },
 	{
 		title: "ポートフォリオ（このサイト）",
 		href: "https://shikiiro.net/",
@@ -72,18 +252,18 @@ export const portfolioData: ({
 			</>
 		)
 	},
-	{
-		title: "某バンドのHP",
-		inCharge: "開発",
-		category: "ウェブサイト",
-		tools: ["javascript", "php", "wordpress", "starrental"],
-		content: (
-			<>
-				<p>とあるバンドのHPをWordPressでテーマ作成から作りました。</p>
-				<p>（諸事情でURLの公開はしたくないので、個別でお問い合わせしてくれれば教えます。）</p>
-			</>
-		)
-	},
+	// {
+	// 	title: "某バンドのHP",
+	// 	inCharge: "開発",
+	// 	category: "ウェブサイト",
+	// 	tools: ["javascript", "php", "wordpress", "starrental"],
+	// 	content: (
+	// 		<>
+	// 			<p>とあるバンドのHPをWordPressでテーマ作成から作りました。</p>
+	// 			<p>（諸事情でURLの公開はしたくないので、個別でお問い合わせしてくれれば教えます。）</p>
+	// 		</>
+	// 	)
+	// },
 	{
 		title: "カーソルを追従する四角いの",
 		iconSrc: "/portfolio/rectangle-follows-cursor.webp",
@@ -151,21 +331,21 @@ export const portfolioData: ({
 			</>
 		)
 	},
-	{
-		title: "すずはな / Suzuhana / 스즈히나 / 铃花 (JP/EN/KR/CN)",
-		iconSrc: "/portfolio/steam.webp",
-		href: "https://steamcommunity.com/sharedfiles/filedetails/?id=2910319000",
-		inCharge: "アニメーション",
-		category: "動画編集",
-		buttonTitle: "Steam ワークショップで見る",
-		tools: ["aviutl"],
-		content: (
-			<>
-				<p>すずはなさんのコア・バトルページを追加するLibrary Of RuinaのMODです。</p>
-				<p>一部演出のアニメーションだけお手伝いさせていただきました。</p>
-			</>
-		)
-	},
+	// {
+	// 	title: "すずはな / Suzuhana / 스즈히나 / 铃花 (JP/EN/KR/CN)",
+	// 	iconSrc: "/portfolio/steam.webp",
+	// 	href: "https://steamcommunity.com/sharedfiles/filedetails/?id=2910319000",
+	// 	inCharge: "アニメーション",
+	// 	category: "動画編集",
+	// 	buttonTitle: "Steam ワークショップで見る",
+	// 	tools: ["aviutl"],
+	// 	content: (
+	// 		<>
+	// 			<p>すずはなさんのコア・バトルページを追加するLibrary Of RuinaのMODです。</p>
+	// 			<p>一部演出のアニメーションだけお手伝いさせていただきました。</p>
+	// 		</>
+	// 	)
+	// },
 	{
 		title: "Kawaii Piglin",
 		iconSrc: "/portfolio/piglin.webp",
@@ -211,19 +391,19 @@ export const portfolioData: ({
 			</>
 		)
 	},
-	{
-		title: "ロゴの規約など収集所",
-		iconSrc: "/portfolio/logo-hiroba.webp",
-		href: "https://logo.shikiiro.net/",
-		inCharge: "開発",
-		category: "ウェブサービス",
-		tools: ["typescript", "astro", "pandacss", "pages"],
-		content: (
-			<>
-				<p>ロゴの規約など適当に集めてます。</p>
-			</>
-		)
-	},
+	// {
+	// 	title: "ロゴの規約など収集所",
+	// 	iconSrc: "/portfolio/logo-hiroba.webp",
+	// 	href: "https://logo.shikiiro.net/",
+	// 	inCharge: "開発",
+	// 	category: "ウェブサービス",
+	// 	tools: ["typescript", "astro", "pandacss", "pages"],
+	// 	content: (
+	// 		<>
+	// 			<p>ロゴの規約など適当に集めてます。</p>
+	// 		</>
+	// 	)
+	// },
 	{
 		title: "孅いウェブエンジニアブログ",
 		iconSrc: "/portfolio/kayowai.webp",
@@ -238,18 +418,18 @@ export const portfolioData: ({
 			</>
 		)
 	},
-	{
-		title: "Aki Coffee☕ - AIが背景画像を生成するブログ",
-		href: "https://coffee.shikiiro.net/",
-		inCharge: "開発, ブログ執筆",
-		category: "ウェブサイト",
-		tools: ["typescript", "astro", "microcms", "pages", "chatgpt"],
-		content: (
-			<>
-				<p>たまに更新する自分の日常ブログです。背景画像が面白いです。</p>
-			</>
-		)
-	},
+	// {
+	// 	title: "Aki Coffee☕ - AIが背景画像を生成するブログ",
+	// 	href: "https://coffee.shikiiro.net/",
+	// 	inCharge: "開発, ブログ執筆",
+	// 	category: "ウェブサイト",
+	// 	tools: ["typescript", "astro", "microcms", "pages", "chatgpt"],
+	// 	content: (
+	// 		<>
+	// 			<p>たまに更新する自分の日常ブログです。背景画像が面白いです。</p>
+	// 		</>
+	// 	)
+	// },
 	{
 		title: "YouTubeチャンネルのエンディング",
 		iconSrc: "/portfolio/youtube.webp",
