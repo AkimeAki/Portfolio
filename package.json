@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "rm -rf ./.next/**/* && WATCHPACK_POLLING=true next dev -p 34661",
 		"dev:scan": "rm -rf ./.next/**/* && env WATCHPACK_POLLING=true SCAN=true next dev -p 34661",
-		"build": "npm run lint && rm -rf ./.next/**/* && next build",
+		"build": "npm run lint && rm -rf ./.next/**/* && opennextjs-cloudflare build",
 		"cloudflare:build": "npx @cloudflare/next-on-pages",
 		"preview": "next start -p 34661",
 		"format": "prettier --write './**/*'",
