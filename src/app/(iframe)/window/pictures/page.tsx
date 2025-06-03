@@ -1,10 +1,11 @@
-import { SetEmojiPath } from "@/components/atoms/EmojiPath";
+import { SetEmojiPath } from "@/components/commons/EmojiPath";
 import { picturesData } from "@/data/pictures";
 import { appData } from "@/data/app";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import type { Metadata } from "next";
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
+import { SetAppId } from "@/components/iframe/SetAppId";
 
 export const dynamic = "force-static";
 
@@ -27,6 +28,7 @@ export default function () {
 					}
 				`}
 			/>
+			<SetAppId id="pictures" />
 			<h2
 				className={css`
 					margin-bottom: 30px;

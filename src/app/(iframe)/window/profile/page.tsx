@@ -1,5 +1,6 @@
+import { SetAppId } from "@/components/iframe/SetAppId";
 import { ProfileContent } from "./_ProfileContent";
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 
 export const dynamic = "force-static";
 
@@ -22,6 +23,7 @@ export default function () {
 					}
 				`}
 			/>
+			<SetAppId id="profile" />
 			<ProfileContent />
 		</>
 	);

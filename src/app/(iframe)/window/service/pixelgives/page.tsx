@@ -1,4 +1,5 @@
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
+import { SetAppId } from "@/components/iframe/SetAppId";
 import { css } from "@kuma-ui/core";
 
 export const dynamic = "force-static";
@@ -23,6 +24,7 @@ export default function () {
 					}
 				`}
 			/>
+			<SetAppId id="pixelgives" />
 			<div
 				className={css`
 					display: flex;

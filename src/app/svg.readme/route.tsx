@@ -1,4 +1,4 @@
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 
 export const dynamic = "force-dynamic";
 

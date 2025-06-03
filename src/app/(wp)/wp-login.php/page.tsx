@@ -1,7 +1,7 @@
 import { metaHead, pageTitle } from "@/libs/meta";
 import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 
 export const dynamic = "force-static";
 

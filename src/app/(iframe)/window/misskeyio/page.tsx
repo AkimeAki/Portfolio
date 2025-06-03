@@ -1,3 +1,4 @@
+import { SetAppId } from "@/components/iframe/SetAppId";
 import { css } from "@kuma-ui/core";
 
 export const dynamic = "force-static";
@@ -19,6 +20,7 @@ export default function () {
 					color-scheme: light dark;
 				`}
 			/>
+			<SetAppId id="misskeyio" />
 			<script defer src="https://misskey.io/embed.js" />
 		</>
 	);

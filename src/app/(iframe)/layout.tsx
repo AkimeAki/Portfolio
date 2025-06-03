@@ -1,6 +1,7 @@
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
+import { IframeInit } from "@/components/iframe/IframeInit";
 import LayoutInit from "@/components/LayoutInit";
-import { metaHead } from "@/libs/meta";
+import { metaHead, siteUrl } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import type { Metadata } from "next";
 
@@ -25,7 +26,8 @@ export default function ({ children }: React.PropsWithChildren) {
 					}
 				`}
 			/>
-			<LayoutInit type="os" />
+			<LayoutInit />
+			<IframeInit origin={siteUrl} />
 			{children}
 		</>
 	);

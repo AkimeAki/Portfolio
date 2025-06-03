@@ -1,19 +1,18 @@
 import { metaHead } from "@/libs/meta";
 import type { Metadata } from "next";
 import LayoutInit from "@/components/LayoutInit";
-import EmojiPath from "@/components/atoms/EmojiPath";
+import EmojiPath from "@/components/commons/EmojiPath";
 import { css } from "@kuma-ui/core";
 import Link from "next/link";
 import { cx } from "@/libs/merge-kuma";
 import AsciiAki from "@/components/AsciiAki";
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 
 export const metadata: Metadata = metaHead({});
 
 export default function ({ children }: React.PropsWithChildren) {
 	return (
 		<>
-			<LayoutInit type="ascii" />
 			<EmojiPath />
 			<InlineStyle
 				css={`

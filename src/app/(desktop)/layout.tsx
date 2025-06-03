@@ -13,7 +13,7 @@ import PixelWrapper from "@/components/desktop/background/PixelWrapper";
 import NewVideo from "@/components/desktop/background/NewVideo";
 import Galaxy from "@/components/desktop/background/Galaxy";
 import LayoutInit from "@/components/LayoutInit";
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 
 export const metadata: Metadata = metaHead({});
 
@@ -73,7 +73,6 @@ export default function ({ children }: React.PropsWithChildren) {
 			>
 				<Loading />
 				<ContextMenu />
-				<LayoutInit type="os" />
 				<div
 					className={css`
 						position: relative;

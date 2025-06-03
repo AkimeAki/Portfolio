@@ -57,7 +57,6 @@ export default function ({
 
 					// クリックしたアプリが最前面じゃなかったら最善面にする
 					if (list[list.length - 1] !== id) {
-						console.log("aaaadsdsdsdsd");
 						openWindow(id);
 					}
 

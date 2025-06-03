@@ -1,4 +1,4 @@
-import { BackArrow } from "@/components/atoms/BackArrow";
+import { BackArrow } from "@/components/commons/BackArrow";
 import { moviesData } from "@/data/movies";
 import { css } from "@kuma-ui/core";
 

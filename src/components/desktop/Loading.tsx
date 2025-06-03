@@ -5,7 +5,7 @@ import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
 import checkBrowser from "@akimeaki/check-browser";
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 
 interface Props {
 	notFound?: boolean;
@@ -233,7 +233,8 @@ export default function ({ notFound = false }: Props) {
 
 						* {
 							color: white;
-							font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック",
+							font-family:
+								"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック",
 								"Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Verdana, Meiryo;
 							font-weight: normal;
 							box-sizing: border-box; // 非対応ブラウ

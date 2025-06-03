@@ -1,4 +1,5 @@
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
+import { SetAppId } from "@/components/iframe/SetAppId";
 import { css } from "@kuma-ui/core";
 import type { PropsWithChildren } from "react";
 
@@ -23,6 +24,7 @@ export default function ({ children }: PropsWithChildren) {
 					}
 				`}
 			/>
+			<SetAppId id="models" />
 			<h2
 				className={css`
 					margin-bottom: 30px;

@@ -1,8 +1,11 @@
+import { SetAppId } from "@/components/iframe/SetAppId";
+
 export const dynamic = "force-static";
 
 export default function () {
 	return (
 		<>
+			<SetAppId id="bluesky" />
 			<script
 				async
 				src="https://bst.heion.net/timeline.js"

@@ -146,6 +146,25 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 		}
 	}, [ready]);
 
+	// iframe内のクリックを受け取って処理
+	useEffect(() => {
+		const click = (response: MessageEvent) => {
+			if (response.data.name === "AkiOSIframeClick" && response.data.value !== undefined) {
+				const id = String(response.data.value);
+				const list = openedAppSortList.get();
+				if (list[list.length - 1] !== id) {
+					openWindow(id);
+				}
+			}
+		};
+
+		window.addEventListener("message", click);
+
+		return () => {
+			window.removeEventListener("message", click);
+		};
+	}, []);
+
 	return (
 		<div
 			ref={windowElement}
@@ -166,10 +185,10 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					animation-iteration-count: 1;
 					animation-duration: 200ms;
 					animation-fill-mode: forwards;
-					transition-duration: 400ms;
+					transition-duration: 150ms;
 					transition-property: translate, scale, opacity;
 					animation-timing-function: steps(5, start);
-					transition-timing-function: steps(10, start);
+					transition-timing-function: steps(5, start);
 
 					@keyframes view-window {
 						0% {
@@ -199,16 +218,11 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					`,
 				$minimizeWindowList.includes(id) &&
 					css`
-						translate: 0 100vh;
-						scale: 0;
+						translate: 0 50vh;
+						scale: 0.5;
 						user-select: none !important;
 						pointer-events: none !important;
 						opacity: 0;
-
-						* {
-							user-select: none !important;
-							pointer-events: none !important;
-						}
 					`
 			)}
 		>

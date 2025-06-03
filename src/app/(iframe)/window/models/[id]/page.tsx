@@ -1,4 +1,4 @@
-import { BackArrow } from "@/components/atoms/BackArrow";
+import { BackArrow } from "@/components/commons/BackArrow";
 import { appData } from "@/data/app";
 import { modelsData } from "@/data/models";
 import { metaHead } from "@/libs/meta";

@@ -15,6 +15,16 @@ export function IframeInit({ origin }: Props) {
 	}, []);
 
 	useEffect(() => {
+		function click() {
+			window.parent.postMessage(
+				{
+					name: "AkiOSIframeClick",
+					value: document.body.dataset.appId
+				},
+				origin
+			);
+		}
+
 		if (ready) {
 			if (isLoadIframe()) {
 				document.body.dataset.iframe = "true";
@@ -28,8 +38,14 @@ export function IframeInit({ origin }: Props) {
 						origin
 					);
 				}, 200);
+
+				window.addEventListener("click", click);
 			}
 		}
+
+		return () => {
+			window.removeEventListener("click", click);
+		};
 	}, [ready]);
 
 	return <></>;

@@ -1,5 +1,6 @@
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 import { TerminalContent } from "./_TerminalContent";
+import { SetAppId } from "@/components/iframe/SetAppId";
 
 export const dynamic = "force-static";
 
@@ -13,6 +14,7 @@ export default function () {
 					}
 				`}
 			/>
+			<SetAppId id="terminal" />
 			<TerminalContent />
 		</>
 	);

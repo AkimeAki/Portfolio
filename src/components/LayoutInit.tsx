@@ -2,15 +2,7 @@
 
 import { useEffect } from "react";
 
-interface Props {
-	type: string;
-}
-
-export default function ({ type }: Props) {
-	useEffect(() => {
-		document.body.dataset.layout = type;
-	}, []);
-
+export default function () {
 	useEffect(() => {
 		const loadLayout = (response: MessageEvent) => {
 			if (response.data.name === "AkiOSIframeLayout" && response.data.value) {

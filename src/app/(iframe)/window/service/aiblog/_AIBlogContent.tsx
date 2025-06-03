@@ -1,6 +1,6 @@
 "use client";
 
-import { InlineStyle } from "@/components/atoms/InlineStyle";
+import { InlineStyle } from "@/components/commons/InlineStyle";
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef, useState } from "react";
 import { annotate } from "rough-notation";

@@ -4,8 +4,6 @@ import CheckUserAgent from "@/components/CheckUserAgent";
 import "@/styles/font.scss";
 import "@/styles/global.scss";
 import ChangeGenerator from "@/components/ChangeGenerator";
-import { IframeInit } from "@/components/desktop/IframeInit";
-import { siteUrl } from "@/libs/meta";
 import Touch from "@/components/Touch";
 interface Props {
 	children: React.ReactNode;
@@ -45,7 +43,6 @@ export default function ({ children }: Props) {
 					<Touch />
 					<CheckUserAgent />
 					<ChangeGenerator />
-					<IframeInit origin={siteUrl} />
 					{children}
 				</KumaRegistry>
 			</body>
