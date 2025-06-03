@@ -1,7 +1,7 @@
-import AkiSignal from "@/components/os/background/AkiSignal";
+import AkiSignal from "@/components/desktop/background/AkiSignal";
 import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
-import Loading from "@/components/os/Loading";
+import Loading from "@/components/desktop/Loading";
 
 export const metadata: Metadata = {
 	title: "ページが見つかりませんでした"

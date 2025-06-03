@@ -1,20 +1,20 @@
 "use client";
 
-import { pinWindowList, openAppSortList, minimizeWindowList } from "@/atom";
+import { pinedWindowList, openedAppSortList, minimizeWindowList } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { appData } from "@/data/app";
 import { pageTitle } from "@/libs/meta";
 import { sortList } from "@/libs/app-select";
 
 export default function () {
-	const $openAppSortList = useStore(openAppSortList);
-	const $pinWindowList = useStore(pinWindowList);
+	const $openedAppSortList = useStore(openedAppSortList);
+	const $pinedWindowList = useStore(pinedWindowList);
 	const $minimizeWindowList = useStore(minimizeWindowList);
 
 	const openWindow = (id: string, isChangeHistory = true) => {
-		const list = openAppSortList.get();
+		const list = openedAppSortList.get();
 
-		if (appData[id].changeHistory) {
+		if (appData[id].isEnabledPath) {
 			if (isChangeHistory) {
 				const sortResult = sortList(id, list);
 				if (JSON.stringify(sortResult) !== JSON.stringify(list)) {
@@ -25,11 +25,11 @@ export default function () {
 			document.title = appData[id].pageTitle;
 		}
 
-		openAppSortList.set(sortList(id, list));
+		openedAppSortList.set(sortList(id, list));
 	};
 
 	const pinWindow = (id: string) => {
-		let result = [...$pinWindowList];
+		let result = [...$pinedWindowList];
 
 		if (!result.includes(id)) {
 			result.push(id);
@@ -41,11 +41,11 @@ export default function () {
 			result = [...result, id];
 		}
 
-		pinWindowList.set(result);
+		pinedWindowList.set(result);
 	};
 
 	const unpinWindow = (id: string) => {
-		let result = [...$pinWindowList];
+		let result = [...$pinedWindowList];
 
 		if (result.includes(id)) {
 			result = result.filter((item) => {
@@ -53,13 +53,13 @@ export default function () {
 			});
 		}
 
-		pinWindowList.set(result);
+		pinedWindowList.set(result);
 	};
 
 	const closeWindow = (closeId: string, isChangeHistory = true) => {
 		// 閉じたいウィンドウ以外のウィンドウリスト（履歴変更するもののみ）
-		const resetAppChangeHistoryList = $openAppSortList.filter((id) => {
-			return id !== closeId && appData[id].changeHistory;
+		const resetAppChangeHistoryList = $openedAppSortList.filter((id) => {
+			return id !== closeId && appData[id].isEnabledPath;
 		});
 
 		if (isChangeHistory) {
@@ -74,11 +74,11 @@ export default function () {
 		}
 
 		// 閉じたいウィンドウ以外のウィンドウリスト（すべて）
-		const resetAppList = $openAppSortList.filter((id) => {
+		const resetAppList = $openedAppSortList.filter((id) => {
 			return id !== closeId;
 		});
 
-		openAppSortList.set(resetAppList);
+		openedAppSortList.set(resetAppList);
 	};
 
 	const minimizeWindow = (id: string) => {

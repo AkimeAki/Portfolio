@@ -4,7 +4,7 @@ import CheckUserAgent from "@/components/CheckUserAgent";
 import "@/styles/font.scss";
 import "@/styles/global.scss";
 import ChangeGenerator from "@/components/ChangeGenerator";
-import { IframeInit } from "@/components/os/IframeInit";
+import { IframeInit } from "@/components/desktop/IframeInit";
 import { siteUrl } from "@/libs/meta";
 import Touch from "@/components/Touch";
 interface Props {

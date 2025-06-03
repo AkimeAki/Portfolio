@@ -1,26 +1,6 @@
 @layer aki-reset, base;
 
 @layer base {
-	body[data-layout="os"] {
-		cursor: url("/cursor/default.png"), auto;
-
-		*[data-cursor="pointer"] {
-			cursor: url("/cursor/pointer.png"), auto;
-		}
-
-		a {
-			cursor: url("/cursor/pointer.png"), auto;
-		}
-
-		*[data-cursor="default"] {
-			cursor: url("/cursor/default.png"), auto;
-		}
-
-		*[data-cursor="text"] {
-			cursor: url("/cursor/text.png"), auto;
-		}
-	}
-
 	body:not([data-layout="os"]) {
 		*[data-cursor="pointer"] {
 			cursor: pointer;

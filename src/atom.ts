@@ -10,8 +10,8 @@ export const isTouchDevice = (): boolean => {
 	return false;
 };
 
-export const openAppSortList = atom<string[]>([]);
-export const pinWindowList = atom<string[]>([]);
+export const openedAppSortList = atom<string[]>([]);
+export const pinedWindowList = atom<string[]>([]);
 export const minimizeWindowList = atom<string[]>([]);
 
 export const osReady = atom<boolean>(false);

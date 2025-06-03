@@ -17,6 +17,7 @@ export default function ({ children }: React.PropsWithChildren) {
 				css={`
 					body {
 						display: none;
+						font-family: "BestTenCRT";
 					}
 
 					body[data-iframe="true"] {
@@ -25,15 +26,7 @@ export default function ({ children }: React.PropsWithChildren) {
 				`}
 			/>
 			<LayoutInit type="os" />
-			<main
-				className={css`
-					body[data-layout="os"] & {
-						font-family: "BestTenCRT";
-					}
-				`}
-			>
-				{children}
-			</main>
+			{children}
 		</>
 	);
 }

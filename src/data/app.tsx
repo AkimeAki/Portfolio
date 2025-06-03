@@ -1,7 +1,7 @@
 import { pageTitle } from "@/libs/meta";
-import Teto from "@/components/os/app/Teto";
-import Furina from "@/components/os/app/Furina";
-import { IframeWindow } from "@/components/os/IframeWindow";
+import Teto from "@/components/desktop/app/Teto";
+import Furina from "@/components/desktop/app/Furina";
+import { IframeWindow } from "@/components/desktop/IframeWindow";
 
 export interface AppData {
 	title: string;
@@ -12,7 +12,7 @@ export interface AppData {
 	};
 	component: React.JSX.Element;
 	resize: boolean;
-	changeHistory: boolean;
+	isEnabledPath: boolean;
 	size?: {
 		width: number;
 		height: number;
@@ -40,11 +40,11 @@ export const appData: {
 		pageTitle: `作ったもの・実績など - ${pageTitle}`,
 		image: {
 			isPixel: true,
-			path: "/app/picaxe.png"
+			path: "/app/folder.png"
 		},
-		component: <IframeWindow src="/portfolio" />,
+		component: <IframeWindow src="/window/portfolio" />,
 		resize: true,
-		changeHistory: true,
+		isEnabledPath: true,
 		viewPinButton: false
 	},
 	faq: {
@@ -54,9 +54,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/ghost.png"
 		},
-		component: <IframeWindow src="/faq" />,
+		component: <IframeWindow src="/window/faq" />,
 		resize: true,
-		changeHistory: true,
+		isEnabledPath: true,
 		viewPinButton: false
 	},
 	profile: {
@@ -66,9 +66,9 @@ export const appData: {
 			isPixel: false,
 			path: "/app/aki.webp"
 		},
-		component: <IframeWindow src="/profile" />,
+		component: <IframeWindow src="/window/profile" />,
 		resize: true,
-		changeHistory: true,
+		isEnabledPath: true,
 		viewPinButton: false
 	},
 	teto: {
@@ -80,7 +80,7 @@ export const appData: {
 		},
 		component: <Teto />,
 		resize: false,
-		changeHistory: false,
+		isEnabledPath: false,
 		size: {
 			width: 426,
 			height: 240 - 4
@@ -102,7 +102,7 @@ export const appData: {
 		},
 		component: <Furina />,
 		resize: false,
-		changeHistory: false,
+		isEnabledPath: false,
 		size: {
 			width: 426,
 			height: 240 - 4
@@ -122,9 +122,9 @@ export const appData: {
 			isPixel: false,
 			path: "/app/simplev.webp"
 		},
-		component: <IframeWindow src="/twitter" />,
+		component: <IframeWindow src="/window/twitter" />,
 		resize: false,
-		changeHistory: false,
+		isEnabledPath: false,
 		viewPinButton: true
 	},
 	terminal: {
@@ -134,9 +134,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/terminal.png"
 		},
-		component: <IframeWindow src="/terminal" />,
+		component: <IframeWindow src="/window/terminal" />,
 		resize: true,
-		changeHistory: false,
+		isEnabledPath: false,
 		viewPinButton: false
 	},
 	intro: {
@@ -146,9 +146,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/letter.png"
 		},
-		component: <IframeWindow src="/intro" />,
+		component: <IframeWindow src="/window/intro" />,
 		resize: true,
-		changeHistory: false,
+		isEnabledPath: false,
 		size: {
 			width: 426,
 			height: 220
@@ -172,9 +172,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/pictures.png"
 		},
-		component: <IframeWindow src="/pictures" />,
+		component: <IframeWindow src="/window/pictures" />,
 		resize: true,
-		changeHistory: true,
+		isEnabledPath: true,
 		viewPinButton: false
 	},
 	models: {
@@ -184,9 +184,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/models.png"
 		},
-		component: <IframeWindow src="/models" />,
+		component: <IframeWindow src="/window/models" />,
 		resize: true,
-		changeHistory: true,
+		isEnabledPath: true,
 		viewPinButton: false
 	},
 	movies: {
@@ -196,9 +196,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/movies.png"
 		},
-		component: <IframeWindow src="/movies" />,
+		component: <IframeWindow src="/window/movies" />,
 		resize: true,
-		changeHistory: true,
+		isEnabledPath: true,
 		viewPinButton: false
 	},
 	pixelgives: {
@@ -208,9 +208,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/dotya.png"
 		},
-		component: <IframeWindow src="/service/pixelgives" />,
+		component: <IframeWindow src="/window/service/pixelgives" />,
 		resize: false,
-		changeHistory: false,
+		isEnabledPath: false,
 		viewPinButton: false,
 		size: {
 			width: 542,
@@ -224,9 +224,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/allergy-navi.webp"
 		},
-		component: <IframeWindow src="/service/allergynavi" />,
+		component: <IframeWindow src="/window/service/allergynavi" />,
 		resize: false,
-		changeHistory: false,
+		isEnabledPath: false,
 		viewPinButton: false,
 		size: {
 			width: 542,
@@ -240,9 +240,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/aki-coffee.png"
 		},
-		component: <IframeWindow src="/service/aiblog" />,
+		component: <IframeWindow src="/window/service/aiblog" />,
 		resize: false,
-		changeHistory: false,
+		isEnabledPath: false,
 		viewPinButton: false,
 		size: {
 			width: 542,
@@ -256,9 +256,9 @@ export const appData: {
 			isPixel: true,
 			path: "/app/blog.png"
 		},
-		component: <IframeWindow src="/service/techblog" />,
+		component: <IframeWindow src="/window/service/techblog" />,
 		resize: false,
-		changeHistory: false,
+		isEnabledPath: false,
 		viewPinButton: false,
 		size: {
 			width: 542,
