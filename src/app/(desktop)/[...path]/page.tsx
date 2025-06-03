@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { metaHead } from "@/libs/meta";
 
 export const dynamic = "force-static";
+export const runtime = "edge";
 
 interface PageProps {
 	params: Promise<{ path: string[] }>;
