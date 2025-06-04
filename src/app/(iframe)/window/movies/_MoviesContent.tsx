@@ -1,5 +1,6 @@
 "use client";
 
+import { PortfolioListContent } from "@/components/iframe/PortfolioListContent";
 import { emojiPathList } from "@/data/emoji-path";
 import { moviesData } from "@/data/movies";
 import { css } from "@kuma-ui/core";
@@ -22,96 +23,27 @@ export function MoviesContent() {
 			{Object.keys(moviesData).map((id) => {
 				if (moviesData[id].type === "youtube") {
 					return (
-						<div
+						<PortfolioListContent
 							key={id}
-							className={css`
-								display: flex;
-								flex-direction: column;
-								gap: 5px;
-							`}
-						>
-							<Link
-								href={`/window/movies/${id}`}
-								className={css`
-									position: relative;
-									display: block;
-									aspect-ratio: 16/9;
-									border: none;
-									width: 100%;
-									max-width: 560px;
+							href={`/window/movies/${id}`}
+							hoverText="詳しく見る"
+							imagePath={moviesData[id].thumbnailFile}
+							title={moviesData[id].title}
+							onMouseEnter={(e) => {
+								if (!(e.target instanceof HTMLImageElement)) {
+									return;
+								}
 
-									&:hover {
-										img {
-											filter: brightness(0.5);
-										}
+								e.target.src = moviesData[id].demoFile;
+							}}
+							onMouseLeave={(e) => {
+								if (!(e.target instanceof HTMLImageElement)) {
+									return;
+								}
 
-										span {
-											opacity: 1;
-										}
-									}
-								`}
-								onMouseEnter={(e) => {
-									if (!(e.target instanceof HTMLImageElement)) {
-										return;
-									}
-
-									e.target.src = moviesData[id].demoFile;
-								}}
-								onMouseLeave={(e) => {
-									if (!(e.target instanceof HTMLImageElement)) {
-										return;
-									}
-
-									e.target.src = moviesData[id].thumbnailFile;
-								}}
-							>
-								<span
-									className={css`
-										position: absolute;
-										top: 50%;
-										left: 50%;
-										transform: translate(-50%, -50%);
-										opacity: 0;
-										user-select: none;
-										pointer-events: none;
-										width: 100%;
-										font-weight: bold;
-										text-align: center;
-										font-size: 18px;
-										color: white;
-										transition-duration: 200ms;
-										transition-property: opacity;
-										z-index: 1;
-									`}
-								>
-									詳しく見る
-								</span>
-								<img
-									src={moviesData[id].thumbnailFile}
-									alt={moviesData[id].title}
-									className={css`
-										width: 100%;
-										height: 100%;
-										object-fit: cover;
-										vertical-align: bottom;
-										transition-duration: 200ms;
-										transition-property: filter;
-									`}
-								/>
-							</Link>
-							<h3
-								className={css`
-									user-select: none;
-									pointer-events: none;
-									width: 100%;
-									text-align: center;
-									font-size: 18px;
-									color: white;
-								`}
-							>
-								{moviesData[id].title}
-							</h3>
-						</div>
+								e.target.src = moviesData[id].thumbnailFile;
+							}}
+						/>
 					);
 				}
 

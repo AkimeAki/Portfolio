@@ -1,7 +1,7 @@
 export const picturesData: {
 	url: string;
 	file: string;
-	title?: string;
+	title: string;
 }[] = [
 	{
 		url: "https://www.pixiv.net/artworks/129680562",
