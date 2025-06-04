@@ -90,11 +90,11 @@ export default function ({ children }: React.PropsWithChildren) {
 							background-image: radial-gradient(#555555, #000000);
 						`}
 					>
-						<CodeBackground />
 						<TwitchBackground />
 						<AkiSignal />
 						<Galaxy />
 						<NewVideo />
+						<CodeBackground />
 						<SelectArea />
 						<PixelWrapper />
 						<AppArea />
