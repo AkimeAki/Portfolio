@@ -35,13 +35,15 @@ export default function () {
 					}}
 					className={css`
 						position: absolute;
-						top: 40px;
-						right: 300px;
-						width: 320px;
-						height: 180px;
+						top: 10%;
+						right: 25%;
+						width: 28%;
+						min-width: 320px;
+						aspect-ratio: 16/9;
 
 						user-select: none;
 						pointer-events: none;
+						filter: brightness(80%);
 
 						@media (max-width: 720px) {
 							right: -70px;
