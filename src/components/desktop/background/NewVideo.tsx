@@ -7,7 +7,7 @@ import GlitchWrapper from "@/components/desktop/GlitchWrapper";
 import { useEffect, useState } from "react";
 import checkBrowser from "@akimeaki/check-browser";
 import Image from "next/image";
-import NewVideoFrame from "@/assets/desktop/new-video-frame.png";
+import NewVideoFrame from "@/assets/desktop/new_video_frame.png";
 
 export default function () {
 	const $osReady = useStore(osReady);
