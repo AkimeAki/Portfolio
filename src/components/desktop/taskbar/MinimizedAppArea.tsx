@@ -3,13 +3,14 @@
 import { css } from "@kuma-ui/core";
 import MinimizedAppIcon from "@/components/desktop/taskbar/MinimizedAppIcon";
 import { useStore } from "@nanostores/react";
-import { openedAppSortList } from "@/atom";
+import { minimizeWindowList, openedAppSortList } from "@/atom";
 import { appData } from "@/data/app";
 import { useEffect, useState } from "react";
 
 export function MinimizedAppArea() {
 	const $openedAppSortList = useStore(openedAppSortList);
 	const [openedAppList, setOpenedAppList] = useState<string[]>([]);
+	const $minimizeWindowList = useStore(minimizeWindowList);
 
 	// アプリを開いた順のリストを作成
 	useEffect(() => {
@@ -53,7 +54,7 @@ export function MinimizedAppArea() {
 					id={id}
 					iconPath={appData[id].image.path}
 					isPixel={appData[id].image.isPixel}
-					isOpen={$openedAppSortList.at(-1) === id}
+					isOpen={$openedAppSortList.at(-1) === id && !$minimizeWindowList.includes(id)}
 				/>
 			))}
 		</div>
