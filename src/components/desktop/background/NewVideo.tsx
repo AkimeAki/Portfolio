@@ -43,7 +43,7 @@ export default function () {
 							right: -70px;
 							top: auto;
 							bottom: 280px;
-							filter: brightness(50%) opacity(0.5);
+							filter: brightness(50%) opacity(0.4);
 						}
 
 						@media (max-width: 530px) {
