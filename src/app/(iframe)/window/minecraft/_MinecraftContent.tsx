@@ -23,7 +23,7 @@ export function MinecraftContent() {
 						key={id}
 						href={`/window/website/${id}`}
 						hoverText="詳しく見る"
-						image={webSiteData[id].thumbnailFile}
+						imagePath={webSiteData[id].thumbnailFile}
 						title={webSiteData[id].title}
 					/>
 				);
