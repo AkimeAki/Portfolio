@@ -1,3 +1,5 @@
+"use client";
+
 import { css } from "@kuma-ui/core";
 import Link from "next/link";
 
