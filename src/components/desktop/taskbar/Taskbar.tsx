@@ -6,7 +6,7 @@ import TaskbarClock from "@/components/desktop/taskbar/TaskbarClock";
 import TaskbarStart from "@/components/desktop/taskbar/TaskbarStart";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import MinimizedApps from "@/components/desktop/MinimizedApps";
+import { MinimizedAppArea } from "@/components/desktop/taskbar/MinimizedAppArea";
 import { linkData } from "@/data/links";
 import { cx } from "@/libs/merge-kuma";
 import { memo } from "react";
@@ -52,7 +52,7 @@ const TaskbarIconMemo = memo(() => {
 					}
 				`}
 			>
-				<MinimizedApps />
+				<MinimizedAppArea />
 			</span>
 		</>
 	);
