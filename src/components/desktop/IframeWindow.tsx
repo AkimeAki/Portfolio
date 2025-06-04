@@ -50,7 +50,9 @@ export function IframeWindow({ src }: Props) {
 						origin
 					);
 				} else {
-					openWindow(String(response.data.value));
+					requestAnimationFrame(() => {
+						openWindow(String(response.data.value));
+					});
 				}
 			}
 		};
