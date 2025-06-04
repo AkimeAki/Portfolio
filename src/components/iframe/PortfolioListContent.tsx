@@ -33,6 +33,7 @@ export function PortfolioListContent({
 				display: flex;
 				flex-direction: column;
 				gap: 5px;
+				width: 100%;
 			`}
 		>
 			<Link
@@ -43,7 +44,6 @@ export function PortfolioListContent({
 					display: block;
 					border: none;
 					width: 100%;
-					max-width: 560px;
 
 					&:hover {
 						img {
@@ -93,10 +93,11 @@ export function PortfolioListContent({
 					className={css`
 						width: 100%;
 						height: 100%;
-						object-fit: cover;
+						object-fit: contain;
 						vertical-align: bottom;
 						transition-duration: 200ms;
 						transition-property: filter;
+						aspect-ratio: 3/2;
 					`}
 				/>
 				{type === "work" && (

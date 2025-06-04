@@ -1,6 +1,5 @@
-import { SetAppId } from "@/components/iframe/SetAppId";
 import { InlineStyle } from "@/components/commons/InlineStyle";
-import { WebSite } from "./_WebSite";
+import { VSCodeExtension } from "./_VSCodeExtension";
 
 export const dynamic = "force-static";
 
@@ -14,8 +13,7 @@ export default function () {
 					}
 				`}
 			/>
-			<SetAppId id="website" />
-			<WebSite />
+			<VSCodeExtension />
 		</>
 	);
 }
