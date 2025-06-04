@@ -42,18 +42,39 @@ export default function () {
 			>
 				{picturesData.map((data, index) => {
 					return (
-						<a href={data.url} target="_blank" key={index} rel="noreferrer">
-							<img
-								src={`/pictures/${data.file}`}
-								alt={data.alt}
+						<div
+							key={index}
+							className={css`
+								display: flex;
+								flex-direction: column;
+								gap: 5px;
+							`}
+						>
+							<a href={data.url} target="_blank" rel="noreferrer">
+								<img
+									src={`/pictures/${data.file}`}
+									alt={data.title}
+									className={css`
+										border-radius: 8px;
+										aspect-ratio: 1/1;
+										width: 100%;
+										height: auto;
+									`}
+								/>
+							</a>
+							<h3
 								className={css`
-									border-radius: 8px;
-									aspect-ratio: 1/1;
+									user-select: none;
+									pointer-events: none;
 									width: 100%;
-									height: auto;
+									text-align: center;
+									font-size: 18px;
+									color: white;
 								`}
-							/>
-						</a>
+							>
+								{data.title}
+							</h3>
+						</div>
 					);
 				})}
 			</div>
