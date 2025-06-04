@@ -92,9 +92,9 @@ export default function ({ children }: React.PropsWithChildren) {
 					>
 						<TwitchBackground />
 						<AkiSignal />
-						<Galaxy />
 						<NewVideo />
 						<CodeBackground />
+						<Galaxy />
 						<SelectArea />
 						<PixelWrapper />
 						<AppArea />

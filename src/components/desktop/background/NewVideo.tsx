@@ -6,6 +6,8 @@ import { useStore } from "@nanostores/react";
 import GlitchWrapper from "@/components/desktop/GlitchWrapper";
 import { useEffect, useState } from "react";
 import checkBrowser from "@akimeaki/check-browser";
+import Image from "next/image";
+import NewVideoFrame from "@/assets/desktop/new-video-frame.png";
 
 export default function () {
 	const $osReady = useStore(osReady);
@@ -30,6 +32,9 @@ export default function () {
 		<>
 			{browserCheck && (
 				<div
+					style={{
+						animationName: ready ? "new-video-signal" : ""
+					}}
 					className={css`
 						position: absolute;
 						top: 10%;
@@ -37,48 +42,47 @@ export default function () {
 						width: 28%;
 						min-width: 320px;
 						aspect-ratio: 16/9;
+						border: 4px solid #060303;
+
+						animation-duration: 70ms;
+						animation-fill-mode: forwards;
+						animation-delay: 1500ms;
+						animation-iteration-count: 5;
+						animation-timing-function: linear;
+						opacity: 0;
 						filter: brightness(80%);
 
 						@media (max-width: 720px) {
+							filter: brightness(50%) opacity(0.4);
 							right: -70px;
 							top: auto;
 							bottom: 280px;
-							filter: brightness(50%) opacity(0.4);
 						}
 
 						@media (max-width: 530px) {
 							transform: scale(0.8);
 						}
+
+						@keyframes new-video-signal {
+							100% {
+								opacity: 1;
+							}
+						}
 					`}
 				>
 					<GlitchWrapper
-						style={{
-							animationName: ready ? "new-video-signal" : ""
-						}}
 						className={css`
 							position: relative;
 							width: 100%;
 							height: 100%;
 							user-select: none;
 							pointer-events: none;
-
-							animation-duration: 70ms;
-							animation-fill-mode: forwards;
-							animation-delay: 1500ms;
-							animation-iteration-count: 5;
-							animation-timing-function: linear;
-							opacity: 0;
-
-							@keyframes new-video-signal {
-								100% {
-									opacity: 1;
-								}
-							}
 						`}
 					>
-						<img
-							src="/new-video-frame.webp"
+						<Image
+							src={NewVideoFrame}
 							alt=""
+							width={470}
 							className={css`
 								position: absolute;
 								top: 50%;
@@ -87,7 +91,6 @@ export default function () {
 								width: calc(2600 / 1920 * 100%);
 								height: calc(1700 / 1080 * 100%);
 								z-index: 1;
-								opacity: 0.85;
 							`}
 						/>
 						<div
@@ -114,7 +117,6 @@ export default function () {
 								left: 0;
 								width: 100%;
 								height: 100%;
-								aspect-ratio: 16/9;
 								border: none;
 							`}
 						/>
