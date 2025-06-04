@@ -104,8 +104,8 @@ export function PortfolioListContent({
 					<div
 						className={css`
 							position: absolute;
-							bottom: 5px;
-							right: 5px;
+							bottom: 10px;
+							right: 10px;
 							z-index: 1;
 						`}
 					>
