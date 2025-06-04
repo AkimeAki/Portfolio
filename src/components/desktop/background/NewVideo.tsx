@@ -69,10 +69,6 @@ export default function () {
 							animation-timing-function: linear;
 							opacity: 0;
 
-							@media (max-width: 720px) {
-								filter: brightness(50%) opacity(0.5);
-							}
-
 							@keyframes new-video-signal {
 								100% {
 									opacity: 1;
