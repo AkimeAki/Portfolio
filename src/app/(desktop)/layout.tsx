@@ -12,7 +12,6 @@ import type { Metadata } from "next";
 import PixelWrapper from "@/components/desktop/background/PixelWrapper";
 import NewVideo from "@/components/desktop/background/NewVideo";
 import Galaxy from "@/components/desktop/background/Galaxy";
-import LayoutInit from "@/components/LayoutInit";
 import { InlineStyle } from "@/components/commons/InlineStyle";
 
 export const metadata: Metadata = metaHead({});
@@ -95,8 +94,8 @@ export default function ({ children }: React.PropsWithChildren) {
 						<TwitchBackground />
 						<AkiSignal />
 						<Galaxy />
-						<SelectArea />
 						<NewVideo />
+						<SelectArea />
 						<PixelWrapper />
 						<AppArea />
 						{children}
