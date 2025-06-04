@@ -47,6 +47,27 @@ export function WebService() {
 								}
 							`}
 						>
+							<span
+								className={css`
+									position: absolute;
+									top: 50%;
+									left: 50%;
+									transform: translate(-50%, -50%);
+									opacity: 0;
+									user-select: none;
+									pointer-events: none;
+									width: 100%;
+									font-weight: bold;
+									text-align: center;
+									font-size: 18px;
+									color: white;
+									transition-duration: 200ms;
+									transition-property: opacity;
+									z-index: 1;
+								`}
+							>
+								詳しく見る
+							</span>
 							<img
 								src={webServiceData[id].thumbnailFile}
 								alt={webServiceData[id].title}
