@@ -2,7 +2,6 @@
 
 import { css } from "@kuma-ui/core";
 import Image from "next/image";
-import Aki from "@/assets/profile/aki.png";
 
 export function ProfileContent() {
 	return (
@@ -122,7 +121,7 @@ export function ProfileContent() {
 						className={css`
 							width: 100%;
 						`}
-						src={Aki}
+						src={"/profile/aki.png"}
 					/>
 				</div>
 			</div>

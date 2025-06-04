@@ -1,10 +1,11 @@
 "use client";
 
+import AppIcon from "@/components/desktop/AppIcon";
 import { PortfolioListContent } from "@/components/iframe/PortfolioListContent";
-import { webSiteData } from "@/data/website";
+import { chromeExtensionData } from "@/data/chrome";
 import { css } from "@kuma-ui/core";
 
-export function WebSite() {
+export function ChromeExtension() {
 	return (
 		<div
 			className={css`
@@ -17,14 +18,15 @@ export function WebSite() {
 				}
 			`}
 		>
-			{Object.keys(webSiteData).map((id) => {
+			{Object.keys(chromeExtensionData).map((id) => {
 				return (
 					<PortfolioListContent
 						key={id}
-						href={`/window/website/${id}`}
+						href={`/window/chrome/${id}`}
 						hoverText="詳しく見る"
-						imagePath={webSiteData[id].thumbnailFile}
-						title={webSiteData[id].title}
+						imagePath={chromeExtensionData[id].thumbnailFile}
+						title={chromeExtensionData[id].title}
+						type={chromeExtensionData[id].type}
 					/>
 				);
 			})}

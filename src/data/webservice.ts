@@ -13,7 +13,7 @@ export const webServiceData: {
 } = {
 	pixelgives: {
 		url: "https://pixel.gives",
-		thumbnailFile: "/webservice/pixelgives.png",
+		thumbnailFile: "/portfolio/webservice/pixelgives.webp",
 		title: "どっと屋",
 		detail: "ドット絵の素材配布サイトを作りました。",
 		credit: [
@@ -25,6 +25,10 @@ export const webServiceData: {
 				position: "イラスト",
 				name: "ろむ",
 				url: "https://x.com/____stagnate"
+			},
+			{
+				position: "中国語翻訳",
+				name: "ノブ"
 			},
 			{
 				position: "ウェブデザイン",

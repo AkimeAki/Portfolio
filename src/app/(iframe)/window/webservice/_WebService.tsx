@@ -3,7 +3,6 @@
 import { PortfolioListContent } from "@/components/iframe/PortfolioListContent";
 import { webServiceData } from "@/data/webservice";
 import { css } from "@kuma-ui/core";
-import Link from "next/link";
 
 export function WebService() {
 	return (

@@ -4,7 +4,7 @@ import { PortfolioListContent } from "@/components/iframe/PortfolioListContent";
 import { webSiteData } from "@/data/website";
 import { css } from "@kuma-ui/core";
 
-export function WebSite() {
+export function MinecraftContent() {
 	return (
 		<div
 			className={css`
@@ -23,7 +23,7 @@ export function WebSite() {
 						key={id}
 						href={`/window/website/${id}`}
 						hoverText="詳しく見る"
-						imagePath={webSiteData[id].thumbnailFile}
+						image={webSiteData[id].thumbnailFile}
 						title={webSiteData[id].title}
 					/>
 				);

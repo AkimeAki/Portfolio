@@ -5,7 +5,7 @@ export const picturesData: {
 }[] = [
 	{
 		url: "https://www.pixiv.net/artworks/129680562",
-		file: "voice-teto.webp",
+		file: "/portfolio/pictures/voice-teto.webp",
 		title: "重音テト"
 	}
 ];

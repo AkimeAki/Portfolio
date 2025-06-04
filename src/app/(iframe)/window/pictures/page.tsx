@@ -38,13 +38,18 @@ export default function () {
 				`}
 			>
 				{picturesData.map((data, index) => {
+					let hoverText = "アクセスする";
+					if (data.url.startsWith("https://www.pixiv.net/")) {
+						hoverText = "Pixivで見る";
+					}
+
 					return (
 						<PortfolioListContent
 							key={index}
 							href={data.url}
-							hoverText="アクセスする"
+							hoverText={hoverText}
 							target="_blank"
-							imagePath={`/pictures/${data.file}`}
+							imagePath={data.file}
 							title={data.title}
 						/>
 					);

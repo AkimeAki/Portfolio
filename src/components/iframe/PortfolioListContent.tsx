@@ -2,6 +2,7 @@
 
 import { css } from "@kuma-ui/core";
 import Link from "next/link";
+import { PortfolioBadge } from "@/components/iframe/PortfolioBadge";
 
 interface Props {
 	href: string;
@@ -12,6 +13,7 @@ interface Props {
 	target?: string;
 	onMouseEnter?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 	onMouseLeave?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+	type?: string;
 }
 
 export function PortfolioListContent({
@@ -22,7 +24,8 @@ export function PortfolioListContent({
 	title,
 	target,
 	onMouseEnter,
-	onMouseLeave
+	onMouseLeave,
+	type
 }: Props) {
 	return (
 		<div
@@ -96,6 +99,18 @@ export function PortfolioListContent({
 						transition-property: filter;
 					`}
 				/>
+				{type === "work" && (
+					<div
+						className={css`
+							position: absolute;
+							bottom: 5px;
+							right: 5px;
+							z-index: 1;
+						`}
+					>
+						<PortfolioBadge type="work" />
+					</div>
+				)}
 			</Link>
 			<h3
 				className={css`

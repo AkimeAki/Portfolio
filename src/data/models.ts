@@ -7,20 +7,20 @@ export const modelsData: {
 	};
 } = {
 	hiyoko: {
-		file: "/models/hiyoko.glb",
-		thumbnailFile: "/models/hiyoko.webp",
+		file: "/portfolio/models/hiyoko.glb",
+		thumbnailFile: "/portfolio/models/hiyoko.webp",
 		title: "ひよこ",
 		detail: "ひよこです。"
 	},
 	piglin: {
-		file: "/models/piglin.glb",
-		thumbnailFile: "/models/piglin.webp",
+		file: "/portfolio/models/piglin.glb",
+		thumbnailFile: "/portfolio/models/piglin.webp",
 		title: "かわいいピグリン",
 		detail: "Minecraftのピグリンを女の子にする3Dテクスチャとして作成しました。"
 	},
 	paperairplane: {
-		file: "/models/paperairplane.glb",
-		thumbnailFile: "/models/paperairplane.webp",
+		file: "/portfolio/models/paperairplane.glb",
+		thumbnailFile: "/portfolio/models/paperairplane.webp",
 		title: "紙飛行機",
 		detail: "Minecraftのトライデントを紙飛行機にする3Dテクスチャとして作成しました。"
 	}

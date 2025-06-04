@@ -23,7 +23,8 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 					cursor: pointer;
 					font-size: 16px;
 					user-select: none;
-					white-space: nowrap;
+					word-break: auto-phrase;
+					overflow-wrap: anywhere;
 
 					body[data-os="android"] & {
 						padding-bottom: 8px;
@@ -35,6 +36,7 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 
 					@media (max-width: 960px) {
 						padding: 7px 13px 12px;
+						white-space: nowrap;
 
 						body[data-os="android"] & {
 							padding-bottom: 10px;
@@ -191,6 +193,24 @@ export function PortfolioContent() {
 						}}
 					>
 						VSCode 拡張機能
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "minecraft"}
+						onClick={() => {
+							setSelectCategory("minecraft");
+						}}
+					>
+						Minecraft リソースパック
+					</SideNav>
+					<SideNav
+						indent={1}
+						selected={selectCategory === "discord"}
+						onClick={() => {
+							setSelectCategory("discord");
+						}}
+					>
+						Discord Bot
 					</SideNav>
 				</aside>
 				<main
