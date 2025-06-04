@@ -95,7 +95,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						ムービー
 					</AppIcon>
 					<AppIcon
-						imgSrc="/app/movies.png"
+						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
 							setSelectCategory("chrome");
@@ -104,7 +104,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						Chrome 拡張機能
 					</AppIcon>
 					<AppIcon
-						imgSrc="/app/movies.png"
+						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
 							setSelectCategory("vscode");
@@ -113,7 +113,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						VSCode 拡張機能
 					</AppIcon>
 					<AppIcon
-						imgSrc="/app/movies.png"
+						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
 							setSelectCategory("minecraft");
@@ -124,7 +124,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						リソースパック
 					</AppIcon>
 					<AppIcon
-						imgSrc="/app/movies.png"
+						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
 							setSelectCategory("discord");
