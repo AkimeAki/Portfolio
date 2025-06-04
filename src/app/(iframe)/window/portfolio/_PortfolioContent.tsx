@@ -85,11 +85,11 @@ export function PortfolioContent() {
 					color: #edf8af;
 
 					body[data-os="android"] & {
-						padding-bottom: 4px;
+						padding-bottom: 3px;
 					}
 
 					body[data-browser="safari"] & {
-						padding-bottom: 4px;
+						padding-bottom: 3px;
 					}
 				`}
 			>
