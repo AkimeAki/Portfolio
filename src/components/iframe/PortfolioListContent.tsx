@@ -105,6 +105,12 @@ export function PortfolioListContent({
 					text-align: center;
 					font-size: 18px;
 					color: white;
+					word-break: auto-phrase;
+					overflow-wrap: anywhere;
+
+					@media (max-width: 720px) {
+						font-size: 16px;
+					}
 				`}
 			>
 				{title}
