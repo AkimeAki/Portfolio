@@ -25,8 +25,24 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 					user-select: none;
 					white-space: nowrap;
 
+					body[data-os="android"] & {
+						padding-bottom: 8px;
+					}
+
+					body[data-browser="safari"] & {
+						padding-bottom: 8px;
+					}
+
 					@media (max-width: 960px) {
-						padding-left: 13px;
+						padding: 7px 13px 12px;
+
+						body[data-os="android"] & {
+							padding-bottom: 10px;
+						}
+
+						body[data-browser="safari"] & {
+							padding-bottom: 10px;
+						}
 					}
 
 					&:hover {
@@ -67,6 +83,14 @@ export function PortfolioContent() {
 					padding: 0 15px 6px;
 					font-size: 20px;
 					color: #edf8af;
+
+					body[data-os="android"] & {
+						padding-bottom: 4px;
+					}
+
+					body[data-browser="safari"] & {
+						padding-bottom: 4px;
+					}
 				`}
 			>
 				{portfolioCategoryData[selectCategory].title}
