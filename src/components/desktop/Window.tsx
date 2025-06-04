@@ -909,16 +909,16 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 										content: "";
 										width: 13px;
 										height: 13px;
-										border-bottom-color: #91797d;
+										border-bottom-color: #c6dd9a;
 										border-bottom-style: solid;
 										border-bottom-width: 2px;
 									}
 
 									&:hover {
-										background-color: #91797d;
+										background-color: #c6dd9a;
 
 										&:before {
-											border-color: white;
+											border-color: #060303;
 										}
 									}
 								`}
@@ -950,7 +950,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 											content: "";
 											width: 8px;
 											height: 8px;
-											background-color: #91797d;
+											background-color: #c6dd9a;
 										}
 
 										&:after {
@@ -962,16 +962,16 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 											content: "";
 											width: 16px;
 											height: 5px;
-											background-color: #91797d;
+											background-color: #c6dd9a;
 										}
 
 										&:hover {
-											background-color: #91797d;
+											background-color: #c6dd9a;
 
 											&:before,
 											&:after,
 											& > div {
-												background-color: white;
+												background-color: #060303;
 											}
 
 											.slash-pin {
@@ -990,7 +990,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 											display: block;
 											width: 3px;
 											height: 9px;
-											background-color: #91797d;
+											background-color: #c6dd9a;
 										`}
 									/>
 									{!$pinedWindowList.includes(id) && (
@@ -1031,11 +1031,11 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 											border-radius: 50%;
 
 											&:hover {
-												background-color: #91797d;
+												background-color: #c6dd9a;
 
 												&:before,
 												&:after {
-													border-color: white;
+													border-color: #060303;
 												}
 											}
 										`,
@@ -1045,7 +1045,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 													&:after {
 														display: block;
 														content: "";
-														border-color: #91797d;
+														border-color: #c6dd9a;
 														border-style: solid;
 														border-width: 2px;
 													}
@@ -1068,7 +1068,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 														content: "";
 														width: 11px;
 														height: 11px;
-														border-color: #91797d;
+														border-color: #c6dd9a;
 														border-style: solid;
 														border-width: 2px;
 													}
@@ -1104,7 +1104,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 										content: "";
 										width: 17px;
 										height: 3px;
-										background-color: #91797d;
+										background-color: #c6dd9a;
 									}
 
 									&:before {

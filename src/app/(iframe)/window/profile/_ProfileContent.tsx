@@ -1,6 +1,8 @@
 "use client";
 
 import { css } from "@kuma-ui/core";
+import Image from "next/image";
+import Aki from "@/assets/profile/aki.png";
 
 export function ProfileContent() {
 	return (
@@ -61,38 +63,6 @@ export function ProfileContent() {
 						適当にウェブ開発などやってるゆっくり実況者。もしくは、適当にゆっくり実況をやっているウェブエンジニアです。
 					</p>
 					<p>
-						<span
-							data-cursor="pointer"
-							className={css`
-								color: #43c1e7;
-								user-select: none;
-							`}
-							onClick={() => {
-								window.open(
-									"https://www.youtube.com/watch?v=DkROVPRcceM&list=PLnVoUTTAoKRrI5sgu4NdqiJivv8FZKdci"
-								);
-							}}
-						>
-							フリーナ
-						</span>
-						と
-						<span
-							data-cursor="pointer"
-							className={css`
-								color: #fa5353;
-								user-select: none;
-							`}
-							onClick={() => {
-								window.open(
-									"https://www.youtube.com/watch?v=LLjfal8jCYI&list=PLnVoUTTAoKRrLKI-G9oAymJm_k8RVs_m9"
-								);
-							}}
-						>
-							重音テト
-						</span>
-						が推しです。ここを見た人は推すことをおすすめします。
-					</p>
-					<p>
 						実績や作ったものは 「
 						<span
 							data-cursor="pointer"
@@ -130,7 +100,8 @@ export function ProfileContent() {
 						やメール（
 						<span
 							className={css`
-								font-family: "游ゴシック体", YuGothic, "游ゴシック", "メイリオ", Meiryo,
+								font-family:
+									"游ゴシック体", YuGothic, "游ゴシック", "メイリオ", Meiryo,
 									"Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 							`}
 						>
@@ -145,12 +116,13 @@ export function ProfileContent() {
 						width: 100%;
 					`}
 				>
-					<img
+					<Image
 						alt="彩季"
+						width={200}
 						className={css`
 							width: 100%;
 						`}
-						src="/profile/aki.png"
+						src={Aki}
 					/>
 				</div>
 			</div>

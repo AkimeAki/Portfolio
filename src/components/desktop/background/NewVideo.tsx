@@ -42,7 +42,6 @@ export default function () {
 						width: 28%;
 						min-width: 320px;
 						aspect-ratio: 16/9;
-						border: 4px solid #060303;
 
 						animation-duration: 70ms;
 						animation-fill-mode: forwards;
@@ -51,6 +50,18 @@ export default function () {
 						animation-timing-function: linear;
 						opacity: 0;
 						filter: brightness(80%);
+
+						&:after {
+							position: absolute;
+							content: "";
+							display: block;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							width: 100%;
+							height: 100%;
+							border: 4px solid #060303;
+						}
 
 						@media (max-width: 720px) {
 							filter: brightness(50%) opacity(0.4);
