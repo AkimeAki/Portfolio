@@ -1,5 +1,5 @@
 import { css } from "@kuma-ui/core";
-import ColorLabel from "@/components/ColorLabel";
+import { ColorLabel } from "@/components/commons/ColorLabel";
 import { toolColorList } from "@/data/tool-color-label";
 import type { Portfolio } from "@/data/portfolio";
 

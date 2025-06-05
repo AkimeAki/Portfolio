@@ -6,7 +6,7 @@ interface Props {
 	color: string;
 }
 
-export default function ({ children, bgColor, color }: Props) {
+export function ColorLabel({ children, bgColor, color }: Props) {
 	return (
 		<span
 			style={{ backgroundColor: bgColor, color }}
@@ -16,6 +16,7 @@ export default function ({ children, bgColor, color }: Props) {
 				padding: 3px 8px;
 				border-radius: 6px;
 				line-height: 1;
+				font-family: "BestTenCRT";
 
 				@media (max-width: 720px) {
 					font-size: 12px;

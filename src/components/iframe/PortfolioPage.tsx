@@ -6,6 +6,8 @@ import { PortfolioBadge } from "@/components/iframe/PortfolioBadge";
 import { cx } from "@/libs/merge-kuma";
 import type { PortfolioData } from "@/types/portfolio";
 import { css } from "@kuma-ui/core";
+import { toolColorList } from "@/data/tool-color-label";
+import { ColorLabel } from "@/components/commons/ColorLabel";
 
 interface Props {
 	back?: {
@@ -260,6 +262,46 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 								{data.client.name}
 							</a>
 						</span>
+					</div>
+				)}
+				{data.tools !== undefined && (
+					<div
+						className={css`
+							display: flex;
+							flex-direction: column;
+							gap: 15px;
+							max-width: 560px;
+							width: 100%;
+							margin: 0 auto;
+						`}
+					>
+						<h3
+							className={css`
+								color: #edf8af;
+								margin-bottom: 10px;
+								font-family: "BestTenCRT";
+							`}
+						>
+							使用ツール
+						</h3>
+						<div
+							className={css`
+								display: flex;
+								gap: 5px;
+							`}
+						>
+							{data.tools.map((tool, index) => {
+								return (
+									<ColorLabel
+										bgColor={toolColorList[tool].bgColor}
+										color={toolColorList[tool].color}
+										key={index}
+									>
+										{toolColorList[tool].name}
+									</ColorLabel>
+								);
+							})}
+						</div>
 					</div>
 				)}
 			</div>
