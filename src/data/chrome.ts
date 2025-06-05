@@ -8,7 +8,7 @@ export const chromeExtensionData: PortfolioData = {
 		detail: "Google Apps Script製のウェブページを正常に印刷できるようにするChrome拡張機能です。",
 		type: "work",
 		client: {
-			name: "匿名"
+			name: "非公開"
 		},
 		credit: [
 			{
@@ -29,7 +29,7 @@ export const chromeExtensionData: PortfolioData = {
 		detail: "ウェブ上で画像の拡張子（フォーマット）を変換した上で保存することができる拡張機能です。",
 		type: "work",
 		client: {
-			name: "匿名"
+			name: "非公開"
 		},
 		credit: [
 			{

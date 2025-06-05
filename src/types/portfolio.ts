@@ -1,4 +1,5 @@
 import type { toolColorList } from "@/data/tool-color-label";
+import type { DateTime } from "luxon";
 
 interface Client {
 	name: string;
@@ -15,6 +16,7 @@ export interface PortfolioData {
 	[key: string]: {
 		url?: string;
 		modelPath?: string;
+		createdAt?: string;
 		title: string;
 		imagePath: string;
 		hoverImagePath?: string;

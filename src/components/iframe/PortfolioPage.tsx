@@ -8,6 +8,7 @@ import type { PortfolioData } from "@/types/portfolio";
 import { css } from "@kuma-ui/core";
 import { toolColorList } from "@/data/tool-color-label";
 import { ColorLabel } from "@/components/commons/ColorLabel";
+import { DateTime } from "luxon";
 
 interface Props {
 	back?: {
@@ -166,12 +167,41 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						</div>
 					</>
 				)}
+				{data.createdAt !== undefined && (
+					<div
+						className={css`
+							display: flex;
+							flex-direction: column;
+							gap: 10px;
+							max-width: 560px;
+							width: 100%;
+							margin: 0 auto;
+						`}
+					>
+						<h3
+							className={css`
+								color: #edf8af;
+								margin-bottom: 10px;
+								font-family: "BestTenCRT";
+							`}
+						>
+							制作日：
+						</h3>
+						<span
+							className={cx(css`
+								color: #d8d8d8;
+							`)}
+						>
+							{`${DateTime.fromISO(data.createdAt).year}年${DateTime.fromISO(data.createdAt).month}月${DateTime.fromISO(data.createdAt).day}日`}
+						</span>
+					</div>
+				)}
 				{data.credit !== undefined && (
 					<div
 						className={css`
 							display: flex;
 							flex-direction: column;
-							gap: 15px;
+							gap: 10px;
 							max-width: 560px;
 							width: 100%;
 							margin: 0 auto;
@@ -226,7 +256,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						className={css`
 							display: flex;
 							flex-direction: column;
-							gap: 15px;
+							gap: 10px;
 							max-width: 560px;
 							width: 100%;
 							margin: 0 auto;
@@ -269,7 +299,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						className={css`
 							display: flex;
 							flex-direction: column;
-							gap: 15px;
+							gap: 10px;
 							max-width: 560px;
 							width: 100%;
 							margin: 0 auto;

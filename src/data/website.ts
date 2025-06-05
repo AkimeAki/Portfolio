@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import type { PortfolioData } from "@/types/portfolio";
 
 export const webSiteData: PortfolioData = {
@@ -6,6 +7,7 @@ export const webSiteData: PortfolioData = {
 		title: "バンドのHP",
 		detail: "バンドのHP作成をWordPressのテーマ作成、ダッシュボードの機能作成から行いました。\n（現在はアクセスできません。）",
 		type: "work",
+		createdAt: DateTime.fromObject({ year: 2021, month: 9, day: 3 }, { zone: "Asia/Tokyo" }).toISO() ?? undefined,
 		tools: ["wordpress"],
 		credit: [
 			{
@@ -16,7 +18,10 @@ export const webSiteData: PortfolioData = {
 				position: "ウェブサイト制作",
 				name: "彩季"
 			}
-		]
+		],
+		client: {
+			name: "非公開"
+		}
 	},
 	techblog: {
 		url: "https://blog.shikiiro.net",
