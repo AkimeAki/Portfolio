@@ -17,6 +17,7 @@ export function ColorLabel({ children, bgColor, color }: Props) {
 				border-radius: 6px;
 				line-height: 1;
 				font-family: "BestTenCRT";
+				letter-spacing: 0.05em;
 
 				@media (max-width: 720px) {
 					font-size: 12px;
