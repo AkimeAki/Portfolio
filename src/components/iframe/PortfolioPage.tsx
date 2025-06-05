@@ -51,6 +51,8 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 				<p
 					className={css`
 						text-align: center;
+						white-space: pre-line;
+						line-height: 1.4;
 					`}
 				>
 					{data.detail}
@@ -80,24 +82,28 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						<a
 							href={data.url}
 							target="_blank"
-							className={css`
-								position: relative;
-								display: block;
-								border: none;
-								width: 100%;
-								max-width: 560px;
-								margin: 0 auto;
+							className={cx(
+								css`
+									position: relative;
+									display: block;
+									border: none;
+									width: 100%;
+									max-width: 560px;
+									margin: 0 auto;
+								`,
+								data.url !== undefined &&
+									css`
+										&:hover {
+											img {
+												filter: brightness(0.5);
+											}
 
-								&:hover {
-									img {
-										filter: brightness(0.5);
-									}
-
-									span {
-										opacity: 1;
-									}
-								}
-							`}
+											span {
+												opacity: 1;
+											}
+										}
+									`
+							)}
 							rel="noreferrer"
 						>
 							<span
