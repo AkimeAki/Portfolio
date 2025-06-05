@@ -2,7 +2,7 @@ import type { PortfolioData } from "@/types/portfolio";
 
 export const webSiteData: PortfolioData = {
 	band: {
-		imagePath: "/portfolio/website/techblog.webp",
+		imagePath: "/portfolio/website/band.webp",
 		title: "バンドのHP",
 		detail: "バンドのHP作成をWordPressのテーマ作成、ダッシュボードの機能作成から行いました。\n（現在はアクセスできません。）",
 		type: "work",
