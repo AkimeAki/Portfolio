@@ -21,6 +21,7 @@ export default async function ({ params }: Props) {
 			<PortfolioPage
 				back={{ url: "/window/chrome", text: "作ったChrome 拡張機能一覧に戻る" }}
 				data={chromeExtensionData[id]}
+				linkText="Chromeウェブストアで見る"
 			/>
 		</>
 	);

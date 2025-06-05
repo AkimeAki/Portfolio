@@ -16,3 +16,4 @@ _redirects
 .husky/**/*
 .npmrc
 /modules/
+/.husky/

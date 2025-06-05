@@ -6,6 +6,9 @@
 	"engines": {
 		"node": "20.16.0"
 	},
+	"volta": {
+		"node": "20.16.0"
+	},
 	"scripts": {
 		"dev": "rm -rf ./.next/**/* && WATCHPACK_POLLING=true next dev -p 34661",
 		"dev:scan": "rm -rf ./.next/**/* && env WATCHPACK_POLLING=true SCAN=true next dev -p 34661",
@@ -14,7 +17,8 @@
 		"cloudflare:build": "npx @cloudflare/next-on-pages",
 		"preview": "next start -p 34661",
 		"format": "prettier --write './**/*'",
-		"lint": "biome lint"
+		"lint": "biome lint",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"@akimeaki/check-browser": "0.4.0",
@@ -30,6 +34,7 @@
 		"@types/react-dom": "18.3.1",
 		"@types/sanitize-html": "2.16.0",
 		"@types/three": "0.177.0",
+		"husky": "9.1.7",
 		"luxon": "3.6.1",
 		"nanostores": "1.0.1",
 		"next": "15.3.3",
