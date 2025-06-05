@@ -11,15 +11,15 @@ const codeUrls: {
 }[] = [
 	{
 		viewed: false,
-		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/app/(desktop)/layout.tsx"
+		code: "https://raw.githubusercontent.com/AkimeAki/Convert-and-Download-Image/refs/heads/main/src/lib.ts"
 	},
 	{
 		viewed: false,
-		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/app/(iframe)/window/terminal/_TerminalContent.tsx"
+		code: "https://raw.githubusercontent.com/AkimeAki/CheckBrowser/refs/heads/main/src/check-browser.ts"
 	},
 	{
 		viewed: false,
-		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/components/desktop/Window.tsx"
+		code: "https://raw.githubusercontent.com/AkimeAki/Rectangle-Follows-Cursor/refs/heads/main/src/content.ts"
 	}
 ];
 
