@@ -17,20 +17,15 @@ export function BackArrow({ text, href }: Props) {
 				transform: translateY(-50%);
 				user-select: none;
 				white-space: nowrap;
+				font-family: "BestTenCRT";
+				font-size: 16px;
 
 				@media (max-width: 600px) {
 					top: 50px;
 				}
 
-				span {
-					font-family: "BestTenCRT";
-					font-size: 16px;
-				}
-
 				&:hover {
-					span {
-						color: #edf8af;
-					}
+					color: #edf8af;
 
 					.back-arrow {
 						transform: translateX(-5px);

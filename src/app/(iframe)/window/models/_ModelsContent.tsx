@@ -24,8 +24,7 @@ export function ModelsContent() {
 					key={id}
 					href={`/window/models/${id}`}
 					hoverText="詳しく見る"
-					imagePath={modelsData[id].thumbnailFile}
-					title={modelsData[id].title}
+					data={modelsData[id]}
 				/>
 			))}
 		</div>

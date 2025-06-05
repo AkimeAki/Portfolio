@@ -14,6 +14,7 @@ export function PortfolioBadge({ type }: Props) {
 					border-radius: 9999px;
 					padding: 7px 11px 10px 12px;
 					font-size: 14px;
+					font-family: "BestTenCRT";
 
 					body[data-os="android"] & {
 						padding-bottom: 7px;

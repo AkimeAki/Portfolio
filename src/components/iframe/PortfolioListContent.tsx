@@ -3,30 +3,16 @@
 import { css } from "@kuma-ui/core";
 import Link from "next/link";
 import { PortfolioBadge } from "@/components/iframe/PortfolioBadge";
+import type { PortfolioData } from "@/types/portfolio";
 
 interface Props {
 	href: string;
 	hoverText?: string;
-	imagePath: string;
-	imageAlt?: string;
-	title: string;
 	target?: string;
-	onMouseEnter?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-	onMouseLeave?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-	type?: string;
+	data: PortfolioData[string];
 }
 
-export function PortfolioListContent({
-	href,
-	hoverText = "",
-	imagePath,
-	imageAlt,
-	title,
-	target,
-	onMouseEnter,
-	onMouseLeave,
-	type
-}: Props) {
+export function PortfolioListContent({ href, hoverText = "", data, target }: Props) {
 	return (
 		<div
 			className={css`
@@ -56,14 +42,18 @@ export function PortfolioListContent({
 					}
 				`}
 				onMouseEnter={(e) => {
-					if (onMouseEnter !== undefined) {
-						onMouseEnter(e);
+					if (!(e.target instanceof HTMLImageElement) || data.hoverImagePath === undefined) {
+						return;
 					}
+
+					e.target.src = data.hoverImagePath;
 				}}
 				onMouseLeave={(e) => {
-					if (onMouseLeave !== undefined) {
-						onMouseLeave(e);
+					if (!(e.target instanceof HTMLImageElement) || data.hoverImagePath === undefined) {
+						return;
 					}
+
+					e.target.src = data.imagePath;
 				}}
 			>
 				<span
@@ -83,13 +73,14 @@ export function PortfolioListContent({
 						transition-duration: 200ms;
 						transition-property: opacity;
 						z-index: 1;
+						font-family: "BestTenCRT";
 					`}
 				>
 					{hoverText}
 				</span>
 				<img
-					src={imagePath}
-					alt={imageAlt ?? title}
+					src={data.imagePath}
+					alt={data.title}
 					className={css`
 						width: 100%;
 						height: 100%;
@@ -100,7 +91,7 @@ export function PortfolioListContent({
 						aspect-ratio: 3/2;
 					`}
 				/>
-				{type === "work" && (
+				{data.type === "work" && (
 					<div
 						className={css`
 							position: absolute;
@@ -123,13 +114,14 @@ export function PortfolioListContent({
 					color: white;
 					word-break: auto-phrase;
 					overflow-wrap: anywhere;
+					font-family: "BestTenCRT";
 
 					@media (max-width: 720px) {
 						font-size: 16px;
 					}
 				`}
 			>
-				{title}
+				{data.title}
 			</h3>
 		</div>
 	);

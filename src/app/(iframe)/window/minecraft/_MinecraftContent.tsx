@@ -21,10 +21,9 @@ export function MinecraftContent() {
 				return (
 					<PortfolioListContent
 						key={id}
-						href={`/window/website/${id}`}
+						href={`/window/minecraft/${id}`}
 						hoverText="詳しく見る"
-						imagePath={webSiteData[id].thumbnailFile}
-						title={webSiteData[id].title}
+						data={webSiteData[id]}
 					/>
 				);
 			})}

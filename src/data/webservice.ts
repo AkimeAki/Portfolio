@@ -1,21 +1,12 @@
-export const webServiceData: {
-	[key: string]: {
-		url: string;
-		title: string;
-		thumbnailFile: string;
-		detail: string;
-		credit: {
-			position: string;
-			name: string;
-			url?: string;
-		}[];
-	};
-} = {
+import type { PortfolioData } from "@/types/portfolio";
+
+export const webServiceData: PortfolioData = {
 	pixelgives: {
 		url: "https://pixel.gives",
-		thumbnailFile: "/portfolio/webservice/pixelgives.webp",
+		imagePath: "/portfolio/webservice/pixelgives.webp",
 		title: "どっと屋",
 		detail: "ドット絵の素材配布サイトを作りました。",
+		type: "hobby",
 		credit: [
 			{
 				position: "企画",

@@ -92,7 +92,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 							setSelectCategory("movies");
 						}}
 					>
-						ムービー
+						映像
 					</AppIcon>
 					<AppIcon
 						imgSrc="/app/blocks.png"

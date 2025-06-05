@@ -1,6 +1,5 @@
-import { BackArrow } from "@/components/commons/BackArrow";
+import { PortfolioPage } from "@/components/iframe/PortfolioPage";
 import { moviesData } from "@/data/movies";
-import { css } from "@kuma-ui/core";
 
 export const dynamic = "force-static";
 
@@ -19,51 +18,7 @@ export default async function ({ params }: Props) {
 
 	return (
 		<>
-			<BackArrow href="/window/movies" text="作ったムービー一覧に戻る" />
-			<div
-				className={css`
-					margin-top: 30px;
-				`}
-			>
-				<h2
-					className={css`
-						margin-bottom: 30px;
-						text-align: center;
-						font-size: 30px;
-						font-weight: bold;
-						color: #edf8af;
-					`}
-				>
-					{moviesData[id].title}
-				</h2>
-				<p
-					className={css`
-						margin-bottom: 50px;
-						text-align: center;
-					`}
-				>
-					{moviesData[id].detail}
-				</p>
-				<div
-					className={css`
-						text-align: center;
-					`}
-				>
-					<iframe
-						src={moviesData[id].url}
-						title={moviesData[id].title}
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						className={css`
-							aspect-ratio: 16/9;
-							border: none;
-							width: 100%;
-							max-width: 560px;
-						`}
-					/>
-				</div>
-			</div>
+			<PortfolioPage back={{ url: "/window/movies", text: "作った映像一覧に戻る" }} data={moviesData[id]} />
 		</>
 	);
 }

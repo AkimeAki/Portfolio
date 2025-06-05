@@ -148,6 +148,7 @@ export default function ({
 						transition-duration: 200ms;
 						transition-property: color;
 						color: #c9c9c9;
+						font-family: "BestTenCRT";
 
 						@media (max-width: 720px) {
 							margin-bottom: 0;

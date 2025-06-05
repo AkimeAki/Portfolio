@@ -25,6 +25,7 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 					user-select: none;
 					word-break: auto-phrase;
 					overflow-wrap: anywhere;
+					font-family: "BestTenCRT";
 
 					body[data-os="android"] & {
 						padding-bottom: 8px;
@@ -85,6 +86,7 @@ export function PortfolioContent() {
 					padding: 0 15px 6px;
 					font-size: 20px;
 					color: #edf8af;
+					font-family: "BestTenCRT";
 
 					body[data-os="android"] & {
 						padding-bottom: 3px;

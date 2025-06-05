@@ -61,6 +61,7 @@ export function IntroContent() {
 				padding: 5px 10px;
 				line-height: 1.6;
 				font-size: 15px;
+				font-family: "BestTenCRT";
 			`}
 		/>
 	);

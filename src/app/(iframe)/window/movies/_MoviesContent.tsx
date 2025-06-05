@@ -21,33 +21,14 @@ export function MoviesContent() {
 			`}
 		>
 			{Object.keys(moviesData).map((id) => {
-				if (moviesData[id].type === "youtube") {
-					return (
-						<PortfolioListContent
-							key={id}
-							href={`/window/movies/${id}`}
-							hoverText="詳しく見る"
-							imagePath={moviesData[id].thumbnailFile}
-							title={moviesData[id].title}
-							onMouseEnter={(e) => {
-								if (!(e.target instanceof HTMLImageElement)) {
-									return;
-								}
-
-								e.target.src = moviesData[id].demoFile;
-							}}
-							onMouseLeave={(e) => {
-								if (!(e.target instanceof HTMLImageElement)) {
-									return;
-								}
-
-								e.target.src = moviesData[id].thumbnailFile;
-							}}
-						/>
-					);
-				}
-
-				return <Fragment key={id} />;
+				return (
+					<PortfolioListContent
+						key={id}
+						href={`/window/movies/${id}`}
+						hoverText="詳しく見る"
+						data={moviesData[id]}
+					/>
+				);
 			})}
 		</div>
 	);

@@ -75,6 +75,7 @@ export function IframeWindow({ src }: Props) {
 					width: 100%;
 					height: 100%;
 					padding-bottom: 20px;
+					font-family: "BestTenCRT";
 
 					@keyframes loading-animation {
 						0% {

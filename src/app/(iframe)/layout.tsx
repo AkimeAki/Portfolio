@@ -18,7 +18,7 @@ export default function ({ children }: React.PropsWithChildren) {
 				css={`
 					body {
 						display: none;
-						font-family: "BestTenCRT";
+						font-family: "DotGothic16";
 					}
 
 					body[data-iframe="true"] {

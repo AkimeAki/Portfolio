@@ -1,20 +1,11 @@
-export const minecraftData: {
-	[key: string]: {
-		url: string;
-		title: string;
-		thumbnailFile: string;
-		detail: string;
-		credit: {
-			position: string;
-			name: string;
-			url?: string;
-		}[];
-	};
-} = {
+import type { PortfolioData } from "@/types/portfolio";
+
+export const minecraftData: PortfolioData = {
 	kawaiipiglin: {
 		url: "https://blog.shikiiro.net",
-		thumbnailFile: "/portfolio/minecraft/kawaiipiglin.png",
+		imagePath: "/portfolio/minecraft/kawaiipiglin.png",
 		title: "孅いウェブエンジニアブログ",
+		type: "hobby",
 		detail: "自分の技術ブログです。技術に関する備忘録書いてます。",
 		credit: [
 			{

@@ -873,6 +873,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 									color: #e73e6b;
 									margin-bottom: 5px;
 									white-space: nowrap;
+									font-family: "BestTenCRT";
 
 									body[data-os="android"] & {
 										margin-bottom: 0;

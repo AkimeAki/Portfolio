@@ -1,27 +1,25 @@
-export const modelsData: {
-	[key: string]: {
-		file: string;
-		title: string;
-		thumbnailFile: string;
-		detail: string;
-	};
-} = {
+import type { PortfolioData } from "@/types/portfolio";
+
+export const modelsData: PortfolioData = {
 	hiyoko: {
-		file: "/portfolio/models/hiyoko.glb",
-		thumbnailFile: "/portfolio/models/hiyoko.webp",
+		modelPath: "/portfolio/models/hiyoko.glb",
+		imagePath: "/portfolio/models/hiyoko.webp",
 		title: "ひよこ",
-		detail: "ひよこです。"
+		detail: "ひよこです。",
+		type: "hobby"
 	},
 	piglin: {
-		file: "/portfolio/models/piglin.glb",
-		thumbnailFile: "/portfolio/models/piglin.webp",
+		modelPath: "/portfolio/models/piglin.glb",
+		imagePath: "/portfolio/models/piglin.webp",
 		title: "かわいいピグリン",
-		detail: "Minecraftのピグリンを女の子にする3Dテクスチャとして作成しました。"
+		detail: "Minecraftのピグリンを女の子にする3Dテクスチャとして作成しました。",
+		type: "hobby"
 	},
 	paperairplane: {
-		file: "/portfolio/models/paperairplane.glb",
-		thumbnailFile: "/portfolio/models/paperairplane.webp",
+		modelPath: "/portfolio/models/paperairplane.glb",
+		imagePath: "/portfolio/models/paperairplane.webp",
 		title: "紙飛行機",
-		detail: "Minecraftのトライデントを紙飛行機にする3Dテクスチャとして作成しました。"
+		detail: "Minecraftのトライデントを紙飛行機にする3Dテクスチャとして作成しました。",
+		type: "hobby"
 	}
 };

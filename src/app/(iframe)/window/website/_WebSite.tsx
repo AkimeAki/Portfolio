@@ -23,8 +23,7 @@ export function WebSite() {
 						key={id}
 						href={`/window/website/${id}`}
 						hoverText="詳しく見る"
-						imagePath={webSiteData[id].thumbnailFile}
-						title={webSiteData[id].title}
+						data={webSiteData[id]}
 					/>
 				);
 			})}

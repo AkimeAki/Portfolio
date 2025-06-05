@@ -23,8 +23,7 @@ export function WebService() {
 						key={id}
 						href={`/window/webservice/${id}`}
 						hoverText="詳しく見る"
-						imagePath={webServiceData[id].thumbnailFile}
-						title={webServiceData[id].title}
+						data={webServiceData[id]}
 					/>
 				);
 			})}

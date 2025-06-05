@@ -38,7 +38,7 @@ export default function ({ children }: React.PropsWithChildren) {
 					}
 
 					body {
-						font-family: "BestTenCRT";
+						font-family: "DotGothic16";
 						font-size: 18px;
 						color: #777777;
 						font-variant-ligatures: none;

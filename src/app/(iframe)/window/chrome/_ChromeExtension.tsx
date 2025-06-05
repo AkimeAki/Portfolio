@@ -24,9 +24,7 @@ export function ChromeExtension() {
 						key={id}
 						href={`/window/chrome/${id}`}
 						hoverText="詳しく見る"
-						imagePath={chromeExtensionData[id].thumbnailFile}
-						title={chromeExtensionData[id].title}
-						type={chromeExtensionData[id].type}
+						data={chromeExtensionData[id]}
 					/>
 				);
 			})}

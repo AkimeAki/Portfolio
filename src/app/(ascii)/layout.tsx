@@ -75,20 +75,15 @@ export default function ({ children }: React.PropsWithChildren) {
 							transform: translateY(-50%);
 							user-select: none;
 							white-space: nowrap;
+							font-size: 16px;
+							font-family: "BestTenCRT";
 
 							@media (max-width: 600px) {
 								top: 50px;
 							}
 
-							span {
-								font-family: "BestTenCRT";
-								font-size: 16px;
-							}
-
 							&:hover {
-								span {
-									color: #edf8af;
-								}
+								color: #edf8af;
 
 								.back-portfolio-arrow {
 									transform: translateX(-5px);

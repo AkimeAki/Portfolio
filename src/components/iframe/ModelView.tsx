@@ -1,6 +1,5 @@
 "use client";
 
-import { modelsData } from "@/data/models";
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -8,10 +7,10 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 interface Props {
-	modelId: string;
+	modelPath: string;
 }
 
-export function ModelView({ modelId }: Props) {
+export function ModelView({ modelPath }: Props) {
 	const canvasElement = useRef<HTMLCanvasElement>(null);
 	const canvasWrapper = useRef<HTMLDivElement>(null);
 
@@ -74,8 +73,11 @@ export function ModelView({ modelId }: Props) {
 
 			// モデル読み込み
 			(async () => {
+				if (modelPath === undefined) {
+					return;
+				}
 				const loader = new GLTFLoader();
-				const model = await loader.loadAsync(modelsData[modelId].file);
+				const model = await loader.loadAsync(modelPath);
 				model.scene.scale.set(1, 1, 1);
 				model.scene.rotation.x = THREE.MathUtils.degToRad(0);
 				model.scene.rotation.z = THREE.MathUtils.degToRad(0);
