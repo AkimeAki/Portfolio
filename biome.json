@@ -14,7 +14,8 @@
 			".vercel/**/*",
 			".kuma/**/*",
 			".git/**/*",
-			".wrangler/**/*"
+			".wrangler/**/*",
+			".open-next/**/*"
 		]
 	},
 	"formatter": {

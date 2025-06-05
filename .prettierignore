@@ -9,6 +9,7 @@ bun.lockb
 *.glb
 *.gif
 *.webp
+*.pdn
 .env.*
 .editorconfig
 Makefile

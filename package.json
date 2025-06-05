@@ -16,7 +16,7 @@
 		"build-opennext": "opennextjs-cloudflare build",
 		"cloudflare:build": "npx @cloudflare/next-on-pages",
 		"preview": "next start -p 34661",
-		"format": "prettier --write './**/*'",
+		"format": "prettier --write ./**/*",
 		"lint": "biome lint",
 		"prepare": "husky"
 	},
