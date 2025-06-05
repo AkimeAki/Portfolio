@@ -49,7 +49,11 @@ export function PortfolioListContent({ href, hoverText = "", data, target }: Pro
 					e.target.src = data.hoverImagePath;
 				}}
 				onMouseLeave={(e) => {
-					if (!(e.target instanceof HTMLImageElement) || data.hoverImagePath === undefined) {
+					if (
+						!(e.target instanceof HTMLImageElement) ||
+						data.hoverImagePath === undefined ||
+						data.imagePath === undefined
+					) {
 						return;
 					}
 
@@ -79,7 +83,7 @@ export function PortfolioListContent({ href, hoverText = "", data, target }: Pro
 					{hoverText}
 				</span>
 				<img
-					src={data.imagePath}
+					src={data.imagePath ?? "/portfolio/no-image.png"}
 					alt={data.title}
 					className={css`
 						width: 100%;

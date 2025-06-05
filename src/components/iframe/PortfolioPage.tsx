@@ -131,7 +131,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 								{linkText ?? ""}
 							</span>
 							<img
-								src={data.imagePath}
+								src={data.imagePath ?? "/portfolio/no-image.png"}
 								alt={data.title}
 								className={css`
 									width: 100%;

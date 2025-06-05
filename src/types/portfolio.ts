@@ -18,7 +18,7 @@ export interface PortfolioData {
 		modelPath?: string;
 		createdAt?: string;
 		title: string;
-		imagePath: string;
+		imagePath?: string;
 		hoverImagePath?: string;
 		detail: string;
 		type: "work" | "hobby";

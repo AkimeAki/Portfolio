@@ -160,7 +160,7 @@ export default function () {
 						`}
 					>
 						<img
-							src="/service/techblog.png"
+							src="/portfolio/service/techblog.png"
 							alt="孅いウェブエンジニアブログ"
 							className={css`
 								position: relative;

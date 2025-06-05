@@ -42,5 +42,19 @@ export const chromeExtensionData: PortfolioData = {
 				url: "https://x.com/____stagnate"
 			}
 		]
+	},
+	auto: {
+		title: "メンバーの自動分別処理",
+		detail: "ウェブ上で特定のページの自動分別処理を行う拡張機能です。特定のページ専用で作成しており、一般公開はしていません。",
+		type: "work",
+		client: {
+			name: "非公開"
+		},
+		credit: [
+			{
+				position: "拡張機能制作",
+				name: "彩季"
+			}
+		]
 	}
 };

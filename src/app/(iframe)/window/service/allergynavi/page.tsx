@@ -100,7 +100,7 @@ export default function () {
 					`}
 				>
 					<img
-						src="/service/allergynavi.webp"
+						src="/portfolio/service/allergynavi.webp"
 						alt="アレルギーナビ"
 						className={css`
 							vertical-align: bottom;

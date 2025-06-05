@@ -61,7 +61,7 @@ export function AIBlogContent() {
 				`}
 			/>
 			<img
-				src="/service/aiblogbg.webp"
+				src="/portfolio/service/aiblogbg.webp"
 				alt=""
 				className={css`
 					position: fixed;

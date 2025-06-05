@@ -113,7 +113,7 @@ export default function () {
 					`}
 				>
 					<img
-						src="/service/dotya.png"
+						src="/portfolio/service/dotya.png"
 						alt="どっと屋"
 						className={css`
 							image-rendering: pixelated;
