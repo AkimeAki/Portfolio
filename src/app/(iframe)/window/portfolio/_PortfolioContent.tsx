@@ -176,7 +176,7 @@ export function PortfolioContent() {
 							setSelectCategory("movies");
 						}}
 					>
-						ムービー
+						映像
 					</SideNav>
 					<SideNav
 						indent={1}
