@@ -10,11 +10,11 @@
 		"node": "20.16.0"
 	},
 	"scripts": {
-		"dev": "rm -rf ./.next/**/* && WATCHPACK_POLLING=true next dev -p 34661",
-		"dev:scan": "rm -rf ./.next/**/* && env WATCHPACK_POLLING=true SCAN=true next dev -p 34661",
-		"build": "npm run lint && rm -rf ./.next/**/* && next build",
+		"clean": "tsx ./tools/clean.ts",
+		"dev": "npm run clean && cross-env WATCHPACK_POLLING=true next dev -p 34661",
+		"dev:scan": "npm run clean && cross-env WATCHPACK_POLLING=true SCAN=true next dev -p 34661",
+		"build": "npm run lint && npm run clean && next build",
 		"build-opennext": "opennextjs-cloudflare build",
-		"cloudflare:build": "npx @cloudflare/next-on-pages",
 		"preview": "next start -p 34661",
 		"format": "prettier --write ./**/*",
 		"lint": "biome lint",
@@ -34,6 +34,7 @@
 		"@types/react-dom": "18.3.1",
 		"@types/sanitize-html": "2.16.0",
 		"@types/three": "0.177.0",
+		"cross-env": "7.0.3",
 		"husky": "9.1.7",
 		"luxon": "3.6.1",
 		"nanostores": "1.0.1",
@@ -45,6 +46,7 @@
 		"sass": "1.89.1",
 		"shiki": "3.4.2",
 		"three": "0.177.0",
+		"tsx": "4.19.4",
 		"typescript": "5"
 	},
 	"devDependencies": {

@@ -7,3 +7,5 @@
 /.wrangler/
 /.kuma/
 /modules/
+*.code-workspace*
+!example.code-workspace*
