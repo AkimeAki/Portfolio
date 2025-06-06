@@ -4,25 +4,21 @@ import { ModelView } from "@/components/iframe/ModelView";
 import { BackArrow } from "@/components/commons/BackArrow";
 import { PortfolioBadge } from "@/components/iframe/PortfolioBadge";
 import { cx } from "@/libs/merge-kuma";
-import type { PortfolioData } from "@/types/portfolio";
 import { css } from "@kuma-ui/core";
-import { toolColorList } from "@/data/tool-color-label";
 import { ColorLabel } from "@/components/commons/ColorLabel";
 import { DateTime } from "luxon";
+import type { PortfolioSchema } from "@/libs/nilto";
 
 interface Props {
-	back?: {
-		text: string;
-		url: string;
-	};
-	data: PortfolioData[string];
+	backUrl?: string;
+	data: PortfolioSchema;
 	linkText?: string;
 }
 
-export function PortfolioPage({ back, data, linkText }: Props) {
+export function PortfolioPage({ backUrl, data, linkText }: Props) {
 	return (
 		<>
-			{back !== undefined && <BackArrow href={back.url} text={back.text} />}
+			{backUrl !== undefined && <BackArrow href={backUrl} text="戻る" />}
 			<div
 				className={css`
 					margin-top: 30px;
@@ -51,15 +47,16 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						<PortfolioBadge type="work" />
 					</div>
 				)}
-				<p
+				<div
 					className={css`
-						text-align: center;
-						white-space: pre-line;
-						line-height: 1.4;
+						p {
+							text-align: center;
+							white-space: pre-line;
+							line-height: 1.4;
+						}
 					`}
-				>
-					{data.detail}
-				</p>
+					dangerouslySetInnerHTML={{ __html: data.detail }}
+				/>
 				{data.url?.startsWith("https://www.youtube.com") ? (
 					<div
 						className={css`
@@ -81,7 +78,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						/>
 					</div>
 				) : (
-					data.modelPath === undefined && (
+					data["3dmodel"] === undefined && (
 						<a
 							href={data.url}
 							target="_blank"
@@ -94,7 +91,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 									max-width: 560px;
 									margin: 0 auto;
 								`,
-								data.url !== undefined &&
+								data.url !== "" &&
 									css`
 										&:hover {
 											img {
@@ -131,7 +128,11 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 								{linkText ?? ""}
 							</span>
 							<img
-								src={data.imagePath ?? "/portfolio/no-image.png"}
+								src={
+									data.eyecatch !== undefined
+										? `${data.eyecatch?.url}?width=560&format=webp`
+										: "/portfolio/no-image.png"
+								}
 								alt={data.title}
 								className={css`
 									width: 100%;
@@ -145,7 +146,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						</a>
 					)
 				)}
-				{data.modelPath !== undefined && (
+				{data["3dmodel"] !== undefined && (
 					<>
 						<div
 							className={css`
@@ -163,11 +164,11 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 								text-align: center;
 							`}
 						>
-							<ModelView modelPath={data.modelPath} />
+							<ModelView modelPath={data["3dmodel"].url} />
 						</div>
 					</>
 				)}
-				{data.createdAt !== undefined && (
+				{data.created_at !== "" && (
 					<div
 						className={css`
 							display: flex;
@@ -192,11 +193,11 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 								color: #d8d8d8;
 							`)}
 						>
-							{`${DateTime.fromISO(data.createdAt).year}年${DateTime.fromISO(data.createdAt).month}月${DateTime.fromISO(data.createdAt).day}日`}
+							{`${DateTime.fromISO(data.created_at).year}年${DateTime.fromISO(data.created_at).month}月${DateTime.fromISO(data.created_at).day}日`}
 						</span>
 					</div>
 				)}
-				{data.credit !== undefined && (
+				{data.credits.length !== 0 && (
 					<div
 						className={css`
 							display: flex;
@@ -216,7 +217,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						>
 							クレジット
 						</h3>
-						{data.credit.map((credit, index) => {
+						{data.credits.map((credit, index) => {
 							return (
 								<span
 									key={index}
@@ -224,19 +225,19 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 										css`
 											color: #d8d8d8;
 										`,
-										credit.name === "彩季" &&
+										credit.person.name === "彩季" &&
 											css`
 												color: #ffffff;
 											`
 									)}
 								>
-									<span>{credit.position}: </span>
+									<span>{credit.credit_position}: </span>
 									<a
-										href={credit.url}
+										href={credit.person.url}
 										target="_blank"
 										rel="noreferrer"
 										className={cx(
-											credit.url !== undefined &&
+											credit.person.url !== "" &&
 												css`
 													&:hover {
 														text-decoration: underline;
@@ -244,7 +245,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 												`
 										)}
 									>
-										{credit.name}
+										{credit.person.name}
 									</a>
 								</span>
 							);
@@ -294,7 +295,7 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 						</span>
 					</div>
 				)}
-				{data.tools !== undefined && (
+				{data.tools.length !== 0 && (
 					<div
 						className={css`
 							display: flex;
@@ -320,14 +321,14 @@ export function PortfolioPage({ back, data, linkText }: Props) {
 								gap: 5px;
 							`}
 						>
-							{data.tools.map((tool, index) => {
+							{data.tools.map((tool) => {
 								return (
 									<ColorLabel
-										bgColor={toolColorList[tool].bgColor}
-										color={toolColorList[tool].color}
-										key={index}
+										bgColor={tool.tool.bg_color}
+										color={tool.tool.text_color}
+										key={tool.tool._id}
 									>
-										{toolColorList[tool].name}
+										{tool.tool.name}
 									</ColorLabel>
 								);
 							})}

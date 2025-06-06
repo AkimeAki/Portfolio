@@ -1,15 +1,15 @@
 "use client";
 
 import { css } from "@kuma-ui/core";
-import Link from "next/link";
 import { PortfolioBadge } from "@/components/iframe/PortfolioBadge";
-import type { PortfolioData } from "@/types/portfolio";
+import type { PortfolioSchema } from "@/libs/nilto";
+import Link from "next/link";
 
 interface Props {
 	href: string;
 	hoverText?: string;
 	target?: string;
-	data: PortfolioData[string];
+	data: PortfolioSchema;
 }
 
 export function PortfolioListContent({ href, hoverText = "", data, target }: Props) {
@@ -42,22 +42,22 @@ export function PortfolioListContent({ href, hoverText = "", data, target }: Pro
 					}
 				`}
 				onMouseEnter={(e) => {
-					if (!(e.target instanceof HTMLImageElement) || data.hoverImagePath === undefined) {
+					if (!(e.target instanceof HTMLImageElement) || data.hover_eyecatch === undefined) {
 						return;
 					}
 
-					e.target.src = data.hoverImagePath;
+					e.target.src = `${data.hover_eyecatch.url}?width=560`;
 				}}
 				onMouseLeave={(e) => {
 					if (
 						!(e.target instanceof HTMLImageElement) ||
-						data.hoverImagePath === undefined ||
-						data.imagePath === undefined
+						data.hover_eyecatch === undefined ||
+						data.eyecatch === undefined
 					) {
 						return;
 					}
 
-					e.target.src = data.imagePath;
+					e.target.src = `${data.eyecatch.url}?width=560&format=webp`;
 				}}
 			>
 				<span
@@ -83,7 +83,11 @@ export function PortfolioListContent({ href, hoverText = "", data, target }: Pro
 					{hoverText}
 				</span>
 				<img
-					src={data.imagePath ?? "/portfolio/no-image.png"}
+					src={
+						data.eyecatch !== undefined
+							? `${data.eyecatch?.url}?width=340&format=webp`
+							: "/portfolio/no-image.png"
+					}
 					alt={data.title}
 					className={css`
 						width: 100%;

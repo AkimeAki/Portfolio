@@ -1,5 +1,3 @@
-import { modelsData } from "@/data/models";
-import { moviesData } from "@/data/movies";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -15,13 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		"/models",
 		"/pictures",
 		"/links",
-		"/faq",
-		...Object.keys(modelsData).map((id) => {
-			return `/models/${id}`;
-		}),
-		...Object.keys(moviesData).map((id) => {
-			return `/movies/${id}`;
-		})
+		"/faq"
 	];
 
 	const urlList = staticPathList.map((path) => {

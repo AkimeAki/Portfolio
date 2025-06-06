@@ -1,1 +1,1 @@
-code --remote wsl+Debian "/mnt/xxx/example.code-workspace"
+code --remote wsl+Debian "/xxx/example.code-workspace"
