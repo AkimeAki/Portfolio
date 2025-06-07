@@ -5,6 +5,7 @@ import { metaHead, siteUrl } from "@/libs/meta";
 import type { Metadata } from "next";
 
 export const dynamic = "error";
+export const dynamicParams = false;
 
 export const metadata: Metadata = metaHead({
 	noindex: true
