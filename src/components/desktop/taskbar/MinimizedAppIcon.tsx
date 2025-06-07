@@ -13,7 +13,8 @@ export default function ({ id, iconPath, isPixel, isOpen = false }: Props) {
 	const { openWindow, releaseMinimizedWindow } = useWindow();
 
 	return (
-		<div
+		<button
+			type="button"
 			onClick={() => {
 				openWindow(id);
 				releaseMinimizedWindow(id);
@@ -56,6 +57,6 @@ export default function ({ id, iconPath, isPixel, isOpen = false }: Props) {
 						: ""
 				].join(" ")}
 			/>
-		</div>
+		</button>
 	);
 }

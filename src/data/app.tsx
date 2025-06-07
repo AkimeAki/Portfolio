@@ -1,7 +1,50 @@
+import dynamic from "next/dynamic";
 import { pageTitle } from "@/libs/meta";
-import Teto from "@/components/desktop/app/Teto";
-import Furina from "@/components/desktop/app/Furina";
-import { IframeWindow } from "@/components/desktop/IframeWindow";
+const Teto = dynamic(() => import("@/components/desktop/app/Teto"));
+const Furina = dynamic(() => import("@/components/desktop/app/Furina"));
+const PortfolioWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/portfolio" />)
+);
+const FaqWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/faq" />)
+);
+const ProfileWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/profile" />)
+);
+const TwitterWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/twitter" />)
+);
+const TerminalWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/terminal" />)
+);
+const IntroWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/intro" />)
+);
+const PicturesWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/pipctures" />)
+);
+const ModelsWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/models" />)
+);
+const MoviesWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/movies" />)
+);
+const PixelGivesWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => (
+		<mod.IframeWindow src="/window/service/pixelgives" />
+	))
+);
+const AllergyNaviWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => (
+		<mod.IframeWindow src="/window/service/allergynavi" />
+	))
+);
+const AiBlogWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/service/aiblog" />)
+);
+const TechBlogWindow = dynamic(() =>
+	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/service/techblog" />)
+);
 
 export interface AppData {
 	title: string;
@@ -43,7 +86,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/folder-open.png"
 		},
-		component: <IframeWindow src="/window/portfolio" />,
+		component: <PortfolioWindow />,
 		resize: true,
 		isEnabledPath: true,
 		viewPinButton: false,
@@ -56,7 +99,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/ghost.png"
 		},
-		component: <IframeWindow src="/window/faq" />,
+		component: <FaqWindow />,
 		resize: true,
 		isEnabledPath: true,
 		viewPinButton: false
@@ -68,7 +111,7 @@ export const appData: {
 			isPixel: false,
 			path: "/app/aki.webp"
 		},
-		component: <IframeWindow src="/window/profile" />,
+		component: <ProfileWindow />,
 		resize: true,
 		isEnabledPath: true,
 		viewPinButton: false
@@ -124,7 +167,7 @@ export const appData: {
 			isPixel: false,
 			path: "/app/simplev.webp"
 		},
-		component: <IframeWindow src="/window/twitter" />,
+		component: <TwitterWindow />,
 		resize: false,
 		isEnabledPath: false,
 		viewPinButton: true
@@ -136,7 +179,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/terminal.png"
 		},
-		component: <IframeWindow src="/window/terminal" />,
+		component: <TerminalWindow />,
 		resize: true,
 		isEnabledPath: false,
 		viewPinButton: false
@@ -148,7 +191,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/letter.png"
 		},
-		component: <IframeWindow src="/window/intro" />,
+		component: <IntroWindow />,
 		resize: true,
 		isEnabledPath: false,
 		size: {
@@ -174,7 +217,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/pictures.png"
 		},
-		component: <IframeWindow src="/window/pictures" />,
+		component: <PicturesWindow />,
 		resize: true,
 		isEnabledPath: true,
 		viewPinButton: false
@@ -186,7 +229,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/models.png"
 		},
-		component: <IframeWindow src="/window/models" />,
+		component: <ModelsWindow />,
 		resize: true,
 		isEnabledPath: true,
 		viewPinButton: false
@@ -198,7 +241,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/movies.png"
 		},
-		component: <IframeWindow src="/window/movies" />,
+		component: <MoviesWindow />,
 		resize: true,
 		isEnabledPath: true,
 		viewPinButton: false
@@ -210,7 +253,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/dotya.png"
 		},
-		component: <IframeWindow src="/window/service/pixelgives" />,
+		component: <PixelGivesWindow />,
 		resize: false,
 		isEnabledPath: false,
 		viewPinButton: false,
@@ -226,7 +269,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/allergy-navi.webp"
 		},
-		component: <IframeWindow src="/window/service/allergynavi" />,
+		component: <AllergyNaviWindow />,
 		resize: false,
 		isEnabledPath: false,
 		viewPinButton: false,
@@ -242,7 +285,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/aki-coffee.png"
 		},
-		component: <IframeWindow src="/window/service/aiblog" />,
+		component: <AiBlogWindow />,
 		resize: false,
 		isEnabledPath: false,
 		viewPinButton: false,
@@ -258,7 +301,7 @@ export const appData: {
 			isPixel: true,
 			path: "/app/blog.png"
 		},
-		component: <IframeWindow src="/window/service/techblog" />,
+		component: <TechBlogWindow />,
 		resize: false,
 		isEnabledPath: false,
 		viewPinButton: false,

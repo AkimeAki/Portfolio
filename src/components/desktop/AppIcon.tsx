@@ -24,7 +24,8 @@ export default function ({
 	className
 }: PropsWithChildren<Props>) {
 	return (
-		<div
+		<button
+			type="button"
 			onClick={() => {
 				if (onClick !== undefined) {
 					onClick();
@@ -190,6 +191,6 @@ export default function ({
 					`}
 				/>
 			)}
-		</div>
+		</button>
 	);
 }
