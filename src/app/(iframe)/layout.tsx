@@ -5,7 +5,7 @@ import { metaHead, siteUrl } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
 import type { Metadata } from "next";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export const metadata: Metadata = metaHead({
 	noindex: true

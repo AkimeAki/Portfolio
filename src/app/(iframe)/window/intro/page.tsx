@@ -2,7 +2,7 @@ import { InlineStyle } from "@/components/commons/InlineStyle";
 import { IntroContent } from "./_IntroContent";
 import { SetAppId } from "@/components/iframe/SetAppId";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export default function () {
 	return (

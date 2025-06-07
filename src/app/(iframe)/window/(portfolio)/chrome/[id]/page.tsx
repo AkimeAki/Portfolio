@@ -1,9 +1,9 @@
 import { PortfolioPage } from "@/components/iframe/PortfolioPage";
 import { getPortfolio } from "@/libs/nilto";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
-export async function generateStaticParams(): Promise<{ id: string }[]> {
+export async function generateStaticParams() {
 	const chromeExtensionData = await getPortfolio({ type: "chrome_extension" });
 
 	return chromeExtensionData.map((data) => ({

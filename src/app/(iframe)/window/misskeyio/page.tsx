@@ -1,7 +1,7 @@
 import { SetAppId } from "@/components/iframe/SetAppId";
 import { css } from "@kuma-ui/core";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export default function () {
 	return (

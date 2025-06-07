@@ -2,7 +2,7 @@ import { PortfolioListContent } from "@/components/iframe/PortfolioListContent";
 import { getPortfolio } from "@/libs/nilto";
 import { css } from "@kuma-ui/core";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export default async function () {
 	const chromeExtensionData = await getPortfolio({ type: "chrome_extension" });

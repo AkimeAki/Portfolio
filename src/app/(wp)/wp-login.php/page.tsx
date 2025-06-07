@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
 import { InlineStyle } from "@/components/commons/InlineStyle";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export const metadata: Metadata = metaHead({
 	title: `ログイン ‹ ${pageTitle} — WordPress`,

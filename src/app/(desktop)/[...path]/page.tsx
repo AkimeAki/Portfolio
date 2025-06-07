@@ -3,7 +3,7 @@ import { Desktop } from "../_Desktop";
 import { notFound } from "next/navigation";
 import { metaHead } from "@/libs/meta";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 interface PageProps {
 	params: Promise<{ path: string[] }>;

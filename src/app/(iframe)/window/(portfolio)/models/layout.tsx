@@ -3,7 +3,7 @@ import { SetAppId } from "@/components/iframe/SetAppId";
 import { css } from "@kuma-ui/core";
 import type { PropsWithChildren } from "react";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export default function ({ children }: PropsWithChildren) {
 	return (

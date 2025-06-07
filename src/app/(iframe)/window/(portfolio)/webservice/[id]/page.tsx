@@ -1,7 +1,7 @@
 import { PortfolioPage } from "@/components/iframe/PortfolioPage";
 import { getPortfolio } from "@/libs/nilto";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
 	const webServiceData = await getPortfolio({ type: "webservice" });

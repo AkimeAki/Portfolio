@@ -1,6 +1,6 @@
 import { SetAppId } from "@/components/iframe/SetAppId";
 
-export const dynamic = "force-static";
+export const dynamic = "error";
 
 export default function () {
 	return (
