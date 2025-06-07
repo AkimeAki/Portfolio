@@ -8,13 +8,12 @@ import Taskbar from "@/components/desktop/taskbar/Taskbar";
 import TwitchBackground from "@/components/desktop/background/TwitchBackground";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
-import type { Metadata } from "next";
 import PixelWrapper from "@/components/desktop/background/PixelWrapper";
 import NewVideo from "@/components/desktop/background/NewVideo";
 import Galaxy from "@/components/desktop/background/Galaxy";
 import { InlineStyle } from "@/components/commons/InlineStyle";
 
-export const metadata: Metadata = metaHead({});
+export const metadata = metaHead({});
 
 export default function ({ children }: React.PropsWithChildren) {
 	return (

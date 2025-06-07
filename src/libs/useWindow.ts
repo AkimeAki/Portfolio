@@ -14,18 +14,23 @@ export default function () {
 	const openWindow = (id: string, isChangeHistory = true) => {
 		const list = openedAppSortList.get();
 
-		if (appData[id].isEnabledPath) {
-			if (isChangeHistory) {
-				const sortResult = sortList(id, list);
-				if (JSON.stringify(sortResult) !== JSON.stringify(list)) {
-					history.pushState({}, "", `/${id}`);
+		if (appData[id] !== undefined) {
+			if (appData[id].isEnabledPath) {
+				if (isChangeHistory) {
+					const sortResult = sortList(id, list);
+					if (
+						JSON.stringify(sortResult) !== JSON.stringify(list) &&
+						!location.pathname.startsWith(`/${id}`)
+					) {
+						history.pushState({}, "", `/${id}`);
+					}
 				}
+
+				document.title = appData[id].pageTitle;
 			}
 
-			document.title = appData[id].pageTitle;
+			openedAppSortList.set(sortList(id, list));
 		}
-
-		openedAppSortList.set(sortList(id, list));
 	};
 
 	const pinWindow = (id: string) => {

@@ -3,7 +3,7 @@
 import { portfolioCategoryData } from "@/data/portfolio";
 import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
-import { type PropsWithChildren, useState } from "react";
+import { type PropsWithChildren, useEffect, useState } from "react";
 
 interface SideNavProps {
 	onClick: () => void;
@@ -69,6 +69,49 @@ export function PortfolioContent() {
 	const [selectCategory, setSelectCategory] = useState<string>("root");
 	const Component = portfolioCategoryData[selectCategory].component;
 
+	function changeCategory(category: string) {
+		let path: string | null = "";
+		if (category === "root") {
+			path = "/portfolio";
+		} else {
+			path = `/portfolio/${category}`;
+		}
+
+		if (path !== null) {
+			window.parent.postMessage(
+				{
+					name: "AkiOSChangePath",
+					value: path
+				},
+				origin
+			);
+		}
+
+		setSelectCategory(category);
+	}
+
+	useEffect(() => {
+		const loadLayout = (response: MessageEvent) => {
+			if (response.data.name === "AkiOSIframePath" && typeof response.data.value === "string") {
+				const pathArray = String(response.data.value)
+					.split("/")
+					.filter((path) => {
+						return path !== "";
+					});
+				const category = pathArray[1];
+				if (category !== undefined) {
+					setSelectCategory(category);
+				}
+			}
+		};
+
+		window.addEventListener("message", loadLayout);
+
+		return () => {
+			window.removeEventListener("message", loadLayout);
+		};
+	}, []);
+
 	return (
 		<div
 			className={css`
@@ -128,7 +171,7 @@ export function PortfolioContent() {
 					<SideNav
 						selected={selectCategory === "root"}
 						onClick={() => {
-							setSelectCategory("root");
+							changeCategory("root");
 						}}
 					>
 						作ったもの
@@ -137,7 +180,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "webservices"}
 						onClick={() => {
-							setSelectCategory("webservices");
+							changeCategory("webservices");
 						}}
 					>
 						ウェブサービス
@@ -146,7 +189,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "websites"}
 						onClick={() => {
-							setSelectCategory("websites");
+							changeCategory("websites");
 						}}
 					>
 						ウェブサイト
@@ -155,7 +198,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "pictures"}
 						onClick={() => {
-							setSelectCategory("pictures");
+							changeCategory("pictures");
 						}}
 					>
 						イラスト
@@ -164,7 +207,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "models"}
 						onClick={() => {
-							setSelectCategory("models");
+							changeCategory("models");
 						}}
 					>
 						3Dモデル
@@ -173,7 +216,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "movies"}
 						onClick={() => {
-							setSelectCategory("movies");
+							changeCategory("movies");
 						}}
 					>
 						映像
@@ -182,7 +225,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "chrome_extensions"}
 						onClick={() => {
-							setSelectCategory("chrome_extensions");
+							changeCategory("chrome_extensions");
 						}}
 					>
 						Chrome 拡張機能
@@ -191,7 +234,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "vscode_extensions"}
 						onClick={() => {
-							setSelectCategory("vscode_extensions");
+							changeCategory("vscode_extensions");
 						}}
 					>
 						VSCode 拡張機能
@@ -200,7 +243,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "minecraft_resourcepacks"}
 						onClick={() => {
-							setSelectCategory("minecraft_resourcepacks");
+							changeCategory("minecraft_resourcepacks");
 						}}
 					>
 						Minecraft リソースパック
@@ -209,7 +252,7 @@ export function PortfolioContent() {
 						indent={1}
 						selected={selectCategory === "discord_bots"}
 						onClick={() => {
-							setSelectCategory("discord_bots");
+							changeCategory("discord_bots");
 						}}
 					>
 						Discord Bot
@@ -217,7 +260,7 @@ export function PortfolioContent() {
 					<SideNav
 						selected={selectCategory === "others"}
 						onClick={() => {
-							setSelectCategory("others");
+							changeCategory("others");
 						}}
 					>
 						その他
@@ -228,7 +271,7 @@ export function PortfolioContent() {
 						flex: 1;
 					`}
 				>
-					{typeof Component === "function" ? <Component setSelectCategory={setSelectCategory} /> : Component}
+					{typeof Component === "function" ? <Component changeCategory={changeCategory} /> : Component}
 				</main>
 			</div>
 		</div>

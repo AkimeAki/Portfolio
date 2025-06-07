@@ -28,6 +28,14 @@ export function IframeWindow({ src }: Props) {
 							},
 							siteUrl
 						);
+
+						iframeRef.current.contentWindow.postMessage(
+							{
+								name: "AkiOSIframePath",
+								value: location.pathname
+							},
+							siteUrl
+						);
 					}
 
 					if (loadingRef.current !== null) {
@@ -36,11 +44,7 @@ export function IframeWindow({ src }: Props) {
 				}
 			}
 
-			if (
-				response.data.name === "AkiOSOpenWindow" &&
-				response.data.value !== null &&
-				response.data.value !== undefined
-			) {
+			if (response.data.name === "AkiOSOpenWindow" && typeof response.data.value === "string") {
 				if (document.body.dataset.iframe === "true") {
 					window.parent.postMessage(
 						{
@@ -52,6 +56,22 @@ export function IframeWindow({ src }: Props) {
 				} else {
 					requestAnimationFrame(() => {
 						openWindow(String(response.data.value));
+					});
+				}
+			}
+
+			if (response.data.name === "AkiOSChangePath" && typeof response.data.value === "string") {
+				if (document.body.dataset.iframe === "true") {
+					window.parent.postMessage(
+						{
+							name: "AkiOSChangePath",
+							value: response.data.value
+						},
+						origin
+					);
+				} else {
+					requestAnimationFrame(() => {
+						history.replaceState({}, "", response.data.value);
 					});
 				}
 			}

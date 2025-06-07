@@ -31,7 +31,11 @@ export function Desktop({ defaultWindow }: Props) {
 	useEffect(() => {
 		const back = () => {
 			if (location.pathname !== "/") {
-				openWindow(location.pathname.replace("/", ""), false);
+				if (location.pathname.startsWith("/portfolio/")) {
+					openWindow("portfolio", false);
+				} else {
+					openWindow(location.pathname.replace("/", ""), false);
+				}
 			} else {
 				const result = $openedAppSortList.filter((id) => {
 					return !appData[id].isEnabledPath;

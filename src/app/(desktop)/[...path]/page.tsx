@@ -3,19 +3,10 @@ import { Desktop } from "../_Desktop";
 import { metaHead } from "@/libs/meta";
 import { notFound } from "next/navigation";
 
-export const dynamic = "error";
-// export const dynamicParams = false;
+export const dynamic = "force-dynamic";
 
 interface PageProps {
 	params: Promise<{ path: string[] }>;
-}
-
-export async function generateStaticParams() {
-	return Object.entries(appData)
-		.filter(([_, data]) => data.isEnabledPath)
-		.map(([key]) => ({
-			path: key.split("/")
-		}));
 }
 
 export const generateMetadata = async ({ params }: PageProps) => {
