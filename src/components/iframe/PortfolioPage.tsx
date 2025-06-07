@@ -80,67 +80,65 @@ export function PortfolioPage({ backUrl, data, linkText }: Props) {
 				) : (
 					data["3dmodel"] === undefined &&
 					data.eyecatch !== undefined && (
-						<a
-							href={data.url}
-							target="_blank"
-							className={cx(
-								css`
+						<>
+							{data.url !== "" && (
+								<div
+									className={css`
+										text-align: center;
+									`}
+								>
+									<a
+										href={data.url}
+										target="_blank"
+										rel="noreferrer"
+										className={css`
+											font-family: "BestTenCRT";
+											display: inline-block;
+											padding: 5px 10px 10px 13px;
+											background-color: #ab2944;
+											cursor: hover;
+
+											body[data-os="android"] & {
+												padding-bottom: 8px;
+											}
+
+											body[data-browser="safari"] & {
+												padding-bottom: 8px;
+											}
+
+											&:hover {
+												background-color: #bb4b61;
+											}
+										`}
+									>
+										{linkText ?? "アクセスする"}
+									</a>
+								</div>
+							)}
+							<div
+								className={css`
 									position: relative;
 									display: block;
 									border: none;
 									width: 100%;
 									max-width: 560px;
 									margin: 0 auto;
-								`,
-								data.url !== "" &&
-									css`
-										&:hover {
-											img {
-												filter: brightness(0.5);
-											}
-
-											span {
-												opacity: 1;
-											}
-										}
-									`
-							)}
-							rel="noreferrer"
-						>
-							<span
-								className={css`
-									position: absolute;
-									top: 50%;
-									left: 50%;
-									transform: translate(-50%, -50%);
-									opacity: 0;
-									user-select: none;
-									pointer-events: none;
-									width: 100%;
-									font-weight: bold;
-									text-align: center;
-									font-size: 18px;
-									color: white;
-									transition-duration: 200ms;
-									transition-property: opacity;
-									z-index: 1;
 								`}
 							>
-								{linkText ?? ""}
-							</span>
-							<img
-								src={`${data.eyecatch.url}?width=560&format=webp`}
-								alt={data.title}
-								className={css`
-									width: 100%;
-									height: 100%;
-									object-fit: cover;
-									vertical-align: bottom;
-									transition-duration: 200ms;
-									transition-property: filter;
-								`}
-							/>
-						</a>
+								<img
+									src={`${data.eyecatch.url}?width=560&format=webp`}
+									alt={data.title}
+									className={css`
+										width: 100%;
+										height: 100%;
+										object-fit: cover;
+										vertical-align: bottom;
+										transition-duration: 200ms;
+										transition-property: filter;
+									`}
+								/>
+							</div>
+						</>
 					)
 				)}
 				{data["3dmodel"] !== undefined && (
