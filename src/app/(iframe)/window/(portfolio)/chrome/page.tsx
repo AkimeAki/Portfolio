@@ -1,3 +1,5 @@
+"use cache";
+
 import { PortfolioListContent } from "@/components/iframe/PortfolioListContent";
 import { getPortfolio } from "@/libs/nilto";
 import { css } from "@kuma-ui/core";
