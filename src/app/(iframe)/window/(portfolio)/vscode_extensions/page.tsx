@@ -3,6 +3,7 @@ import { getPortfolio } from "@/libs/nilto";
 import { css } from "@kuma-ui/core";
 
 export const dynamic = "error";
+export const dynamicParams = false;
 
 export default async function () {
 	const vscodeExtensionsData = await getPortfolio({ type: "vscode_extension" });

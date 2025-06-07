@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export const dynamic = "error";
+export const dynamicParams = false;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const siteUrl = process.env.SITE_ROOT_URL ?? "";

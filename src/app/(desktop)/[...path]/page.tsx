@@ -3,6 +3,7 @@ import { Desktop } from "../_Desktop";
 import { metaHead } from "@/libs/meta";
 
 export const dynamic = "error";
+export const dynamicParams = false;
 
 interface PageProps {
 	params: Promise<{ path: string[] }>;

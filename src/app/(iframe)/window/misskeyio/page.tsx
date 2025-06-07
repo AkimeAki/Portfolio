@@ -2,6 +2,7 @@ import { SetAppId } from "@/components/iframe/SetAppId";
 import { css } from "@kuma-ui/core";
 
 export const dynamic = "error";
+export const dynamicParams = false;
 
 export default function () {
 	return (

@@ -3,6 +3,7 @@ import { IntroContent } from "./_IntroContent";
 import { SetAppId } from "@/components/iframe/SetAppId";
 
 export const dynamic = "error";
+export const dynamicParams = false;
 
 export default function () {
 	return (

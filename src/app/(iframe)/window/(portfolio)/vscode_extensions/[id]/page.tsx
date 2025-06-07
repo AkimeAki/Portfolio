@@ -2,6 +2,7 @@ import { PortfolioPage } from "@/components/iframe/PortfolioPage";
 import { getPortfolio } from "@/libs/nilto";
 
 export const dynamic = "error";
+export const dynamicParams = false;
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
 	const vscodeExtensionData = await getPortfolio({ type: "vscode_extension" });
