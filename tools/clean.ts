@@ -4,7 +4,7 @@ try {
 	fs.rmSync("./.next/", { recursive: true, force: true });
 	fs.rmSync("./.kuma/", { recursive: true, force: true });
 	fs.rmSync("./.open-next/", { recursive: true, force: true });
-	console.log("キャッシュを削除しました。");
+	console.log("🧹完了");
 } catch (err) {
-	console.error("キャッシュ削除エラー:", err);
+	console.error("🧹エラー:", err);
 }

@@ -1,6 +1,7 @@
 import { appData } from "@/data/app";
 import { Desktop } from "../_Desktop";
 import { metaHead } from "@/libs/meta";
+import { notFound } from "next/navigation";
 
 export const dynamic = "error";
 // export const dynamicParams = false;
@@ -29,6 +30,10 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
 export default async function ({ params }: PageProps) {
 	const path = (await params).path.join("/");
+
+	if (!Object.keys(appData).includes(path)) {
+		notFound();
+	}
 
 	return <Desktop defaultWindow={path} />;
 }
