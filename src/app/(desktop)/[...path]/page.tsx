@@ -9,12 +9,16 @@ interface PageProps {
 	params: Promise<{ path: string[] }>;
 }
 
+export async function generateStaticParams() {
+	return Object.entries(appData)
+		.filter(([_, data]) => data.isEnabledPath)
+		.map(([key]) => ({
+			path: key.split("/")
+		}));
+}
+
 export const generateMetadata = async ({ params }: PageProps) => {
 	const path = (await params).path.join("/");
-
-	if (!Object.keys(appData).includes(path) || !appData[path].isEnabledPath) {
-		notFound();
-	}
 
 	return metaHead({
 		title: appData[path].pageTitle,
@@ -25,10 +29,6 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
 export default async function ({ params }: PageProps) {
 	const path = (await params).path.join("/");
-
-	if (!Object.keys(appData).includes(path)) {
-		notFound();
-	}
 
 	return <Desktop defaultWindow={path} />;
 }
