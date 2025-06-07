@@ -121,6 +121,8 @@ export function ProfileContent() {
 						width={200}
 						className={css`
 							width: 100%;
+							user-select: none;
+							pointer-events: none;
 						`}
 						src={ProfileImage}
 					/>
