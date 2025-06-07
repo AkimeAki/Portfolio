@@ -85,7 +85,7 @@ export async function getPortfolio({ type, id }: GetPortfolioProps) {
 		});
 
 		if (id !== undefined) {
-			result.filter((data) => {
+			result = result.filter((data) => {
 				return String(data._id) === id;
 			});
 		}
