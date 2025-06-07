@@ -2,6 +2,10 @@ name: Deploy
 
 on:
   push:
+    branches:
+      - main
+  repository_dispatch:
+    types: [cms-update]
 
 jobs:
   deploy:
@@ -23,7 +27,6 @@ jobs:
         env:
           NILTO_API_KEY: ${{ secrets.NILTO_API_KEY }}
       - name: Deploy Worker
-        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
