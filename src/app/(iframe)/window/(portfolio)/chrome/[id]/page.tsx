@@ -1,5 +1,3 @@
-"use cache";
-
 import { PortfolioPage } from "@/components/iframe/PortfolioPage";
 import { getPortfolio } from "@/libs/nilto";
 

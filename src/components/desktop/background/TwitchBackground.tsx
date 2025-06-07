@@ -72,7 +72,7 @@ export default function () {
 					checkStatus();
 				};
 				void checkStatus();
-			} catch (e) {
+			} catch (_e) {
 				/* empty */
 			}
 		}

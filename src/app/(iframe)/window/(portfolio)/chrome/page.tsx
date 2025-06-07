@@ -1,5 +1,3 @@
-"use cache";
-
 import { PortfolioListContent } from "@/components/iframe/PortfolioListContent";
 import { getPortfolio } from "@/libs/nilto";
 import { css } from "@kuma-ui/core";
@@ -25,7 +23,7 @@ export default async function () {
 				return (
 					<PortfolioListContent
 						key={data._id}
-						href={`/window/minecraft/${data._id}`}
+						href={`/window/chrome/${data._id}`}
 						hoverText="詳しく見る"
 						data={data}
 					/>

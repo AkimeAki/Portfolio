@@ -2,7 +2,6 @@ import { InlineStyle } from "@/components/commons/InlineStyle";
 import { IframeInit } from "@/components/iframe/IframeInit";
 import LayoutInit from "@/components/LayoutInit";
 import { metaHead, siteUrl } from "@/libs/meta";
-import { css } from "@kuma-ui/core";
 import type { Metadata } from "next";
 
 export const dynamic = "error";

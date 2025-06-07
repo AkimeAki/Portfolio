@@ -1,6 +1,5 @@
 import { metaHead } from "@/libs/meta";
 import type { Metadata } from "next";
-import LayoutInit from "@/components/LayoutInit";
 import EmojiPath from "@/components/commons/EmojiPath";
 import { css } from "@kuma-ui/core";
 import Link from "next/link";

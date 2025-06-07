@@ -109,7 +109,7 @@ export function TerminalContent() {
 						range.setStart(inputElement.current.childNodes[0], 6);
 						selection.removeAllRanges();
 						selection.addRange(range);
-					} catch (e) {
+					} catch (_e) {
 						/* empty */
 					}
 				}

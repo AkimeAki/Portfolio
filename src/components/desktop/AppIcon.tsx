@@ -1,9 +1,7 @@
 "use client";
 
-import { osReady } from "@/atom";
 import { cx } from "@/libs/merge-kuma";
 import { css } from "@kuma-ui/core";
-import { useStore } from "@nanostores/react";
 import Link from "next/link";
 import type { PropsWithChildren } from "react";
 
@@ -25,8 +23,6 @@ export default function ({
 	target = "_self",
 	className
 }: PropsWithChildren<Props>) {
-	const $osReady = useStore(osReady);
-
 	return (
 		<div
 			onClick={() => {

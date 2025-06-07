@@ -1,5 +1,4 @@
 import { InlineStyle } from "@/components/commons/InlineStyle";
-import { SetAppId } from "@/components/iframe/SetAppId";
 import type { PropsWithChildren } from "react";
 
 export const dynamic = "error";

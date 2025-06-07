@@ -38,7 +38,9 @@
 				"noArrayIndexKey": "off"
 			},
 			"correctness": {
-				"useExhaustiveDependencies": "off"
+				"useExhaustiveDependencies": "off",
+				"noUnusedVariables": "error",
+				"noUnusedImports": "error"
 			}
 		}
 	},

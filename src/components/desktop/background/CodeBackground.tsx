@@ -69,7 +69,7 @@ export function CodeBackground() {
 							const text = await response.text();
 
 							setCode(text);
-						} catch (e) {
+						} catch (_e) {
 							/* empty */
 						}
 					}

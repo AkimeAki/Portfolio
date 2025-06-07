@@ -4,12 +4,12 @@ import { emojiPathList } from "@/data/emoji-path";
 import { isLoadIframe } from "@/libs/is-load-iframe";
 import { useEffect } from "react";
 
-const pathList = [
-	...Object.values(emojiPathList)
-		.flatMap((p) => p.emoji)
-		.flatMap((e) => [e, encodeURIComponent(e)]),
-	...Object.keys(emojiPathList)
-];
+// const pathList = [
+// 	...Object.values(emojiPathList)
+// 		.flatMap((p) => p.emoji)
+// 		.flatMap((e) => [e, encodeURIComponent(e)]),
+// 	...Object.keys(emojiPathList)
+// ];
 
 function changePath(to: "text" | "emoji", textPath: string, emojiPath: string) {
 	const pathList = location.pathname.split("/");
@@ -41,9 +41,9 @@ function changePath(to: "text" | "emoji", textPath: string, emojiPath: string) {
 
 export default function () {
 	useEffect(() => {
-		const getPath = () => {
-			return location.pathname.replaceAll(/[/]{2,}/g, "").replace(/^\//, "");
-		};
+		// const getPath = () => {
+		// 	return location.pathname.replaceAll(/[/]{2,}/g, "").replace(/^\//, "");
+		// };
 
 		const mouseLeave = () => {
 			if (document.body.dataset.os === "android" && document.body.dataset.browserType === "firefox") {
