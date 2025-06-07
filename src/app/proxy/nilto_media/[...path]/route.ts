@@ -2,8 +2,8 @@ import { type NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_request: NextRequest, { params }: { params: { path: string[] } }) {
-	const path = params.path.join("/");
+export async function GET(_request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+	const path = (await params).path.join("/");
 
 	const targetUrl = `https://cms-assets.nilto.com/spaces/464620327/media/${path}`;
 	try {
