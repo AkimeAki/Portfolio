@@ -4,15 +4,17 @@ import { css } from "@kuma-ui/core";
 import { PortfolioBadge } from "@/components/iframe/PortfolioBadge";
 import type { PortfolioSchema } from "@/libs/nilto";
 import Link from "next/link";
+import { cx } from "@/libs/merge-kuma";
 
 interface Props {
 	href: string;
 	hoverText?: string;
 	target?: string;
 	data: PortfolioSchema;
+	aspect?: string;
 }
 
-export function PortfolioListContent({ href, hoverText = "", data, target }: Props) {
+export function PortfolioListContent({ href, hoverText = "", data, target, aspect }: Props) {
 	return (
 		<div
 			className={css`
@@ -89,15 +91,23 @@ export function PortfolioListContent({ href, hoverText = "", data, target }: Pro
 							: "/portfolio/no-image.png"
 					}
 					alt={data.title}
-					className={css`
-						width: 100%;
-						height: 100%;
-						object-fit: contain;
-						vertical-align: bottom;
-						transition-duration: 200ms;
-						transition-property: filter;
-						aspect-ratio: 3/2;
-					`}
+					style={{ "--aspect": aspect } as React.CSSProperties}
+					className={cx(
+						css`
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+							vertical-align: bottom;
+							transition-duration: 200ms;
+							transition-property: filter;
+							aspect-ratio: 3/2;
+						`,
+						aspect !== undefined &&
+							css`
+								aspect-ratio: var(--aspect);
+								object-fit: contain;
+							`
+					)}
 				/>
 				{data.type === "work" && (
 					<div
@@ -123,6 +133,7 @@ export function PortfolioListContent({ href, hoverText = "", data, target }: Pro
 					word-break: auto-phrase;
 					overflow-wrap: anywhere;
 					font-family: "BestTenCRT";
+					line-height: 1.3;
 
 					@media (max-width: 720px) {
 						font-size: 16px;

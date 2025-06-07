@@ -53,7 +53,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						imgSrc="/app/global.png"
 						isPixel
 						onClick={() => {
-							setSelectCategory("webservice");
+							setSelectCategory("webservices");
 						}}
 					>
 						ウェブサービス
@@ -62,7 +62,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						imgSrc="/app/global.png"
 						isPixel
 						onClick={() => {
-							setSelectCategory("website");
+							setSelectCategory("websites");
 						}}
 					>
 						ウェブサイト
@@ -98,7 +98,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
-							setSelectCategory("chrome");
+							setSelectCategory("chrome_extensions");
 						}}
 					>
 						Chrome 拡張機能
@@ -107,7 +107,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
-							setSelectCategory("vscode");
+							setSelectCategory("vscode_extensions");
 						}}
 					>
 						VSCode 拡張機能
@@ -116,7 +116,7 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
-							setSelectCategory("minecraft");
+							setSelectCategory("minecraft_resourcepacks");
 						}}
 					>
 						Minecraft
@@ -127,25 +127,34 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 						imgSrc="/app/blocks.png"
 						isPixel
 						onClick={() => {
-							setSelectCategory("discord");
+							setSelectCategory("discord_bots");
 						}}
 					>
 						Discord Bot
+					</AppIcon>
+					<AppIcon
+						imgSrc="/app/blocks.png"
+						isPixel
+						onClick={() => {
+							setSelectCategory("others");
+						}}
+					>
+						その他
 					</AppIcon>
 				</div>
 			);
 		}
 	},
-	webservice: {
+	webservices: {
 		title: "制作実績 / ウェブサービス",
 		component: () => {
-			return <IframeWindow src="/window/webservice" />;
+			return <IframeWindow src="/window/webservices" />;
 		}
 	},
-	website: {
+	websites: {
 		title: "制作実績 / ウェブサイト",
 		component: () => {
-			return <IframeWindow src="/window/website" />;
+			return <IframeWindow src="/window/websites" />;
 		}
 	},
 	pictures: {
@@ -166,28 +175,34 @@ export const portfolioCategoryData: PortfolioCategoryData = {
 			return <IframeWindow src="/window/movies" />;
 		}
 	},
-	chrome: {
+	chrome_extensions: {
 		title: "制作実績 / Chrome 拡張機能",
 		component: () => {
-			return <IframeWindow src="/window/chrome" />;
+			return <IframeWindow src="/window/chrome_extensions" />;
 		}
 	},
-	vscode: {
+	vscode_extensions: {
 		title: "制作実績 / VSCode 拡張機能",
 		component: () => {
-			return <IframeWindow src="/window/vscode" />;
+			return <IframeWindow src="/window/vscode_extensions" />;
 		}
 	},
-	minecraft: {
+	minecraft_resourcepacks: {
 		title: "制作実績 / Minecraft リソースパック",
 		component: () => {
-			return <IframeWindow src="/window/minecraft" />;
+			return <IframeWindow src="/window/minecraft_resourcepacks" />;
 		}
 	},
-	discord: {
+	discord_bots: {
 		title: "制作実績 / Discord Bot",
 		component: () => {
-			return <IframeWindow src="/window/discord" />;
+			return <IframeWindow src="/window/discord_bots" />;
+		}
+	},
+	others: {
+		title: "制作実績 / その他",
+		component: () => {
+			return <IframeWindow src="/window/others" />;
 		}
 	}
 };

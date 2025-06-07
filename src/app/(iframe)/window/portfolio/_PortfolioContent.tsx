@@ -135,18 +135,18 @@ export function PortfolioContent() {
 					</SideNav>
 					<SideNav
 						indent={1}
-						selected={selectCategory === "webservice"}
+						selected={selectCategory === "webservices"}
 						onClick={() => {
-							setSelectCategory("webservice");
+							setSelectCategory("webservices");
 						}}
 					>
 						ウェブサービス
 					</SideNav>
 					<SideNav
 						indent={1}
-						selected={selectCategory === "website"}
+						selected={selectCategory === "websites"}
 						onClick={() => {
-							setSelectCategory("website");
+							setSelectCategory("websites");
 						}}
 					>
 						ウェブサイト
@@ -180,39 +180,47 @@ export function PortfolioContent() {
 					</SideNav>
 					<SideNav
 						indent={1}
-						selected={selectCategory === "chrome"}
+						selected={selectCategory === "chrome_extensions"}
 						onClick={() => {
-							setSelectCategory("chrome");
+							setSelectCategory("chrome_extensions");
 						}}
 					>
 						Chrome 拡張機能
 					</SideNav>
 					<SideNav
 						indent={1}
-						selected={selectCategory === "vscode"}
+						selected={selectCategory === "vscode_extensions"}
 						onClick={() => {
-							setSelectCategory("vscode");
+							setSelectCategory("vscode_extensions");
 						}}
 					>
 						VSCode 拡張機能
 					</SideNav>
 					<SideNav
 						indent={1}
-						selected={selectCategory === "minecraft"}
+						selected={selectCategory === "minecraft_resourcepacks"}
 						onClick={() => {
-							setSelectCategory("minecraft");
+							setSelectCategory("minecraft_resourcepacks");
 						}}
 					>
 						Minecraft リソースパック
 					</SideNav>
 					<SideNav
 						indent={1}
-						selected={selectCategory === "discord"}
+						selected={selectCategory === "discord_bots"}
 						onClick={() => {
-							setSelectCategory("discord");
+							setSelectCategory("discord_bots");
 						}}
 					>
 						Discord Bot
+					</SideNav>
+					<SideNav
+						selected={selectCategory === "others"}
+						onClick={() => {
+							setSelectCategory("others");
+						}}
+					>
+						その他
 					</SideNav>
 				</aside>
 				<main
