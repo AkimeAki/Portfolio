@@ -161,7 +161,12 @@ export function PortfolioPage({ backUrl, data, linkText }: Props) {
 								text-align: center;
 							`}
 						>
-							<ModelView modelPath={data["3dmodel"].url} />
+							<ModelView
+								modelPath={data["3dmodel"].url.replace(
+									"https://cms-assets.nilto.com/spaces/464620327/media/",
+									"/proxy/nilto_media/"
+								)}
+							/>
 						</div>
 					</>
 				)}
