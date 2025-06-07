@@ -183,7 +183,7 @@ export function PortfolioPage({ backUrl, data, linkText }: Props) {
 								font-family: "BestTenCRT";
 							`}
 						>
-							制作日：
+							制作日
 						</h3>
 						<span
 							className={cx(css`
