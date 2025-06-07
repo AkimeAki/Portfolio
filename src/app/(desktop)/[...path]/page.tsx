@@ -1,6 +1,5 @@
 import { appData } from "@/data/app";
 import { Desktop } from "../_Desktop";
-import { notFound } from "next/navigation";
 import { metaHead } from "@/libs/meta";
 
 export const dynamic = "error";
