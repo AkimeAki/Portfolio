@@ -119,6 +119,7 @@ export function PortfolioListContent({ baseHref, hoverText = "", data: rowData, 
 										transition-duration: 200ms;
 										transition-property: filter;
 										aspect-ratio: 3/2;
+										user-select: none;
 									`,
 									aspect !== undefined &&
 										css`
@@ -152,6 +153,7 @@ export function PortfolioListContent({ baseHref, hoverText = "", data: rowData, 
 								overflow-wrap: anywhere;
 								font-family: "BestTenCRT";
 								line-height: 1.3;
+								user-select: none;
 
 								@media (max-width: 720px) {
 									font-size: 16px;

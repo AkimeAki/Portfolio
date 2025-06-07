@@ -135,6 +135,8 @@ export function PortfolioPage({ backUrl, data, linkText }: Props) {
 										vertical-align: bottom;
 										transition-duration: 200ms;
 										transition-property: filter;
+										user-select: none;
+										pointer-events: none;
 									`}
 								/>
 							</div>
