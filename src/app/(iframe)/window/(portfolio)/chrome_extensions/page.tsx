@@ -5,7 +5,7 @@ import { css } from "@kuma-ui/core";
 export const dynamic = "error";
 
 export default async function () {
-	const chromeExtensionData = await getPortfolio({ type: "chrome_extension" });
+	const chromeExtensionsData = await getPortfolio({ type: "chrome_extension" });
 
 	return (
 		<div
@@ -19,16 +19,11 @@ export default async function () {
 				}
 			`}
 		>
-			{chromeExtensionData.map((data) => {
-				return (
-					<PortfolioListContent
-						key={data._id}
-						href={`/window/chrome_extensions/${data._id}`}
-						hoverText="詳しく見る"
-						data={data}
-					/>
-				);
-			})}
+			<PortfolioListContent
+				baseHref="/window/chrome_extensions/"
+				hoverText="詳しく見る"
+				data={chromeExtensionsData}
+			/>
 		</div>
 	);
 }

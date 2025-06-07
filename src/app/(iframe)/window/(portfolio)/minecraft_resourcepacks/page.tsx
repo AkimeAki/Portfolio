@@ -5,7 +5,7 @@ import { css } from "@kuma-ui/core";
 export const dynamic = "error";
 
 export default async function () {
-	const minecraftData = await getPortfolio({ type: "minecraft_resourcepack" });
+	const minecraftResourcepacksData = await getPortfolio({ type: "minecraft_resourcepack" });
 
 	return (
 		<div
@@ -19,16 +19,11 @@ export default async function () {
 				}
 			`}
 		>
-			{minecraftData.map((data) => {
-				return (
-					<PortfolioListContent
-						key={data._id}
-						href={`/window/minecraft_recouepacks/${data._id}`}
-						hoverText="詳しく見る"
-						data={data}
-					/>
-				);
-			})}
+			<PortfolioListContent
+				baseHref="/window/minecraft_recouepacks/"
+				hoverText="詳しく見る"
+				data={minecraftResourcepacksData}
+			/>
 		</div>
 	);
 }

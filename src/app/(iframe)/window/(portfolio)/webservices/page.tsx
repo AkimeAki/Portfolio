@@ -5,7 +5,7 @@ import { css } from "@kuma-ui/core";
 export const dynamic = "error";
 
 export default async function () {
-	const webServiceData = await getPortfolio({ type: "webservice" });
+	const webServicesData = await getPortfolio({ type: "webservice" });
 
 	return (
 		<div
@@ -19,16 +19,7 @@ export default async function () {
 				}
 			`}
 		>
-			{webServiceData.map((data) => {
-				return (
-					<PortfolioListContent
-						key={data._id}
-						href={`/window/webservices/${data._id}`}
-						hoverText="詳しく見る"
-						data={data}
-					/>
-				);
-			})}
+			<PortfolioListContent baseHref="/window/webservices/" hoverText="詳しく見る" data={webServicesData} />
 		</div>
 	);
 }

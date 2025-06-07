@@ -19,16 +19,7 @@ export default async function () {
 				}
 			`}
 		>
-			{picturesData.map((data) => {
-				return (
-					<PortfolioListContent
-						key={data._id}
-						href={`/window/pictures/${data._id}`}
-						hoverText="詳しく見る"
-						data={data}
-					/>
-				);
-			})}
+			<PortfolioListContent baseHref="/window/pictures/" hoverText="詳しく見る" data={picturesData} />
 		</div>
 	);
 }

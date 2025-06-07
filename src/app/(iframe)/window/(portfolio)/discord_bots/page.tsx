@@ -5,7 +5,7 @@ import { css } from "@kuma-ui/core";
 export const dynamic = "error";
 
 export default async function () {
-	const discordBotData = await getPortfolio({ type: "discord_bot" });
+	const discordBotsData = await getPortfolio({ type: "discord_bot" });
 
 	return (
 		<div
@@ -19,16 +19,7 @@ export default async function () {
 				}
 			`}
 		>
-			{discordBotData.map((data) => {
-				return (
-					<PortfolioListContent
-						key={data._id}
-						href={`/window/discord_bots/${data._id}`}
-						hoverText="詳しく見る"
-						data={data}
-					/>
-				);
-			})}
+			<PortfolioListContent baseHref="/window/discord_bots/" hoverText="詳しく見る" data={discordBotsData} />
 		</div>
 	);
 }
