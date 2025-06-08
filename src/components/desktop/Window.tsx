@@ -135,6 +135,16 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 			windowElement.current.style.left = left === undefined ? "auto" : `${left}px`;
 			windowElement.current.style.bottom = bottom === undefined ? "auto" : `${bottom}px`;
 			windowElement.current.style.right = right === undefined ? "auto" : `${right}px`;
+
+			// topとleftを元にリサイズ時するため、rightとbottomを消してtopとleftを再設定する
+			requestAnimationFrame(() => {
+				if (windowElement.current !== null) {
+					windowElement.current.style.top = `${windowElement.current.offsetTop}px`;
+					windowElement.current.style.left = `${windowElement.current.offsetLeft}px`;
+					windowElement.current.style.right = "auto";
+					windowElement.current.style.bottom = "auto";
+				}
+			});
 		}
 	}, [ready]);
 
