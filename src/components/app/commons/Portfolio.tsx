@@ -52,7 +52,7 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect }: Props) 
 							grid-template-columns: 1fr 1fr 1fr;
 							gap: 20px;
 
-							@media (max-width: 800px) {
+							@container (max-width: 800px) {
 								grid-template-columns: 1fr 1fr;
 							}
 						`}
@@ -186,7 +186,7 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect }: Props) 
 											line-height: 1.3;
 											user-select: none;
 
-											@media (max-width: 720px) {
+											@container (max-width: 720px) {
 												font-size: 16px;
 											}
 										`}

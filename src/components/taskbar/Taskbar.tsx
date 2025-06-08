@@ -29,7 +29,7 @@ const TaskbarIconMemo = memo(() => {
 						className={cx(
 							link === "niconico" &&
 								css`
-									@media (max-width: 720px) {
+									@container (max-width: 720px) {
 										display: none;
 									}
 								`
@@ -46,7 +46,7 @@ const TaskbarIconMemo = memo(() => {
 				className={css`
 					order: 6;
 
-					@media (max-width: 720px) {
+					@container (max-width: 720px) {
 						display: none;
 					}
 				`}
@@ -145,14 +145,14 @@ export default function () {
 						gap: 20px;
 						z-index: 1;
 
-						@media (max-width: 720px) {
+						@container (max-width: 720px) {
 							justify-content: center;
 						}
 					`}
 				>
 					<span
 						className={css`
-							@media (max-width: 720px) {
+							@container (max-width: 720px) {
 								order: 3;
 							}
 						`}
@@ -173,7 +173,7 @@ export default function () {
 						opacity: 0.7;
 						display: none;
 
-						@media (max-width: 720px) {
+						@container (max-width: 720px) {
 							display: block;
 						}
 					`}

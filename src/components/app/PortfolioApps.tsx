@@ -16,7 +16,7 @@ export function PortfolioApps() {
 				align-items: flex-start;
 				align-content: flex-start;
 
-				@media (max-width: 720px) {
+				@container (max-width: 720px) {
 					display: grid;
 					grid-template-columns: 1fr 1fr 1fr 1fr;
 					gap: 0;

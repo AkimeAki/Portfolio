@@ -20,7 +20,7 @@ export default function ({ href, alt, iconPath }: Props) {
 				border-width: 2px;
 				border-color: transparent;
 
-				@media (max-width: 720px) {
+				@container (max-width: 720px) {
 					border-radius: 50%;
 				}
 

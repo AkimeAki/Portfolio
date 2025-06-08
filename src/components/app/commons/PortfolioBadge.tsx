@@ -25,7 +25,7 @@ export function PortfolioBadge({ type }: Props) {
 						padding-bottom: 7px;
 					}
 
-					@media (max-width: 720px) {
+					@container (max-width: 720px) {
 						padding: 4px 9px 8px 10px;
 						font-size: 12px;
 

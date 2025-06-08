@@ -87,7 +87,7 @@ export default function () {
 						transition-property: transform, opacity;
 						transition-timing-function: steps(5, start);
 
-						@media (max-width: 720px) {
+						@container (max-width: 720px) {
 							top: 0;
 							left: 0;
 							padding: calc(20px + 26px) 20px 20px;
@@ -154,7 +154,7 @@ export default function () {
 										css`
 											display: none;
 
-											@media (max-width: 720px) {
+											@container (max-width: 720px) {
 												display: block;
 											}
 										`
@@ -192,7 +192,7 @@ export default function () {
 						transition-duration: 200ms;
 						transition-property: background-color;
 
-						@media (max-width: 720px) {
+						@container (max-width: 720px) {
 							border-radius: 50%;
 						}
 

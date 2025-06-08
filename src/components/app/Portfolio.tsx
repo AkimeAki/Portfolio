@@ -35,7 +35,7 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 						padding-bottom: 8px;
 					}
 
-					@media (max-width: 960px) {
+					@container (max-width: 960px) {
 						padding: 7px 13px 12px;
 						white-space: nowrap;
 
@@ -98,7 +98,7 @@ function _Portfolio() {
 					display: flex;
 					height: calc(100% - (50px + 4px));
 
-					@media (max-width: 960px) {
+					@container (max-width: 960px) {
 						flex-direction: column;
 					}
 				`}
@@ -111,7 +111,7 @@ function _Portfolio() {
 						border-right: 2px solid #4b4b4b;
 						overflow-y: scroll;
 
-						@media (max-width: 960px) {
+						@container (max-width: 960px) {
 							width: 100%;
 							flex-direction: row;
 							overflow-y: hidden;
@@ -221,6 +221,10 @@ function _Portfolio() {
 					className={css`
 						width: calc(100% - (200px + 2px));
 						height: 100%;
+
+						@container (max-width: 960px) {
+							width: 100%;
+						}
 					`}
 				>
 					<Component />
@@ -259,6 +263,7 @@ export function Portfolio() {
 				flex-direction: column;
 				display: flex;
 				height: 100%;
+				container-type: inline-size;
 			`}
 		>
 			<PortfolioProvider>

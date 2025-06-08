@@ -84,7 +84,7 @@ export default function () {
 					font-size: 25px;
 				}
 
-				@media (max-width: 720px) {
+				@container (max-width: 720px) {
 					position: fixed;
 					top: 3px;
 					left: 50%;

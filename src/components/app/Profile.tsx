@@ -1,8 +1,14 @@
+"use client";
+
 import { css } from "@kuma-ui/core";
 import Image from "next/image";
 import ProfileImage from "@/assets/profile/aki.png";
+import { useWindowManager } from "@/context/WindowManagerContext";
+import { APPS_DATA } from "@/data/app";
 
 export function Profile() {
+	const { dispatch } = useWindowManager();
+
 	return (
 		<div
 			className={css`
@@ -81,13 +87,10 @@ export function Profile() {
 									user-select: none;
 								`}
 								onClick={() => {
-									window.parent.postMessage(
-										{
-											name: "AkiOSOpenWindow",
-											value: "portfolio"
-										},
-										origin
-									);
+									const app = APPS_DATA.find((app) => app.id === "portfolio");
+									if (app !== undefined) {
+										dispatch({ type: "OPEN", payload: { app } });
+									}
 								}}
 							>
 								作ったもの

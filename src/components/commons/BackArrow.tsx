@@ -26,7 +26,7 @@ export function BackArrow({ text, href, onClick }: Props) {
 				font-size: 16px;
 				background-color: transparent;
 
-				@media (max-width: 600px) {
+				@container (max-width: 600px) {
 					top: 50px;
 				}
 

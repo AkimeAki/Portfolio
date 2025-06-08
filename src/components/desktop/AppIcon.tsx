@@ -57,7 +57,7 @@ export function AppIcon({
 						}
 					}
 
-					@media (max-width: 720px) {
+					@container (max-width: 720px) {
 						width: auto;
 						gap: 6px;
 					}
@@ -73,7 +73,7 @@ export function AppIcon({
 					flex-shrink: 0;
 					pointer-events: none;
 
-					@media (max-width: 720px) {
+					@container (max-width: 720px) {
 						width: 50px;
 						height: 50px;
 						border-radius: 50%;
@@ -98,7 +98,7 @@ export function AppIcon({
 								width: 100%;
 								height: 100%;
 
-								@media (max-width: 720px) {
+								@container (max-width: 720px) {
 									width: 80%;
 									height: 80%;
 									border-radius: 50%;
@@ -124,7 +124,7 @@ export function AppIcon({
 							left: 10px;
 							image-rendering: pixelated;
 
-							@media (max-width: 720px) {
+							@container (max-width: 720px) {
 								position: absolute;
 								left: 0;
 								bottom: 0;
@@ -146,12 +146,12 @@ export function AppIcon({
 						color: #c9c9c9;
 						font-family: "BestTenCRT";
 
-						@media (max-width: 720px) {
+						@container (max-width: 720px) {
 							margin-bottom: 0;
 							font-size: 15px;
 						}
 
-						@media (max-width: 460px) {
+						@container (max-width: 460px) {
 							font-size: 12px;
 						}
 					`,

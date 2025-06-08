@@ -68,6 +68,7 @@ export default function ({ children }: React.PropsWithChildren) {
 					left: 0;
 					width: 100%;
 					height: 100%;
+					container-type: inline-size;
 				`}
 			>
 				<Loading />
