@@ -1,11 +1,9 @@
-import nullToUndefined from "@akimeaki/null-to-undefined";
-
-interface NiltoMedia {
+export interface NiltoMedia {
 	url: string;
 	alt: string;
 }
 
-type NiltoDataSchema<T> = {
+export type NiltoDataSchema<T> = {
 	_id: number;
 	_model: string;
 	_title: string;
@@ -15,14 +13,14 @@ type NiltoDataSchema<T> = {
 	_status: string;
 } & T;
 
-interface NiltoSchema<T> {
+export interface NiltoSchema<T> {
 	total: number;
 	offset: number;
 	limit: number;
 	data: T[];
 }
 
-interface PortfolioAccountSchema {
+export interface PortfolioAccountSchema {
 	name: string;
 	url: string;
 }
@@ -60,20 +58,16 @@ export async function getPortfolio({ type, id }: GetPortfolioProps) {
 	let result: PortfolioSchema[] = [];
 
 	try {
-		const response = await fetch("https://cms-api.nilto.com/v1/contents/?model=portfolio&lang=ja", {
+		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_ROOT_UR ?? ""}/api/portfolio`, {
 			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"X-NILTO-API-KEY": process.env.NILTO_API_KEY ?? ""
-			},
 			cache: "force-cache"
 		});
 		if (!response.ok) {
 			throw new Error(`データを取得できませんでした。ステータス：${response.status}`);
 		}
-		const niltData: NiltoSchema<PortfolioSchema> = nullToUndefined(await response.json());
+		const niltData: PortfolioSchema[] = await response.json();
 
-		result = niltData.data;
+		result = niltData;
 
 		result = result.filter((data) => {
 			return data.data_type === type;
@@ -85,7 +79,7 @@ export async function getPortfolio({ type, id }: GetPortfolioProps) {
 			});
 		}
 	} catch (e) {
-		console.log(e);
+		console.error(e);
 	}
 
 	return result;

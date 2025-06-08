@@ -1,7 +1,6 @@
 "use client";
 
-import { cx } from "@/libs/merge-kuma";
-import { css } from "@kuma-ui/core";
+import { css, cx } from "@kuma-ui/core";
 import { type CSSProperties, useEffect, useRef, useState } from "react";
 
 interface Props {

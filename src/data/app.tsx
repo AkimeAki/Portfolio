@@ -1,313 +1,205 @@
 import dynamic from "next/dynamic";
-import { pageTitle } from "@/libs/meta";
-const Teto = dynamic(() => import("@/components/desktop/app/Teto"));
-const Furina = dynamic(() => import("@/components/desktop/app/Furina"));
-const PortfolioWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/portfolio" />)
-);
-const FaqWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/faq" />)
-);
-const ProfileWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/profile" />)
-);
-const TwitterWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/twitter" />)
-);
-const TerminalWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/terminal" />)
-);
-const IntroWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/intro" />)
-);
-const PicturesWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/pipctures" />)
-);
-const ModelsWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/models" />)
-);
-const MoviesWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/movies" />)
-);
-const PixelGivesWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => (
-		<mod.IframeWindow src="/window/service/pixelgives" />
-	))
-);
-const AllergyNaviWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => (
-		<mod.IframeWindow src="/window/service/allergynavi" />
-	))
-);
-const AiBlogWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/service/aiblog" />)
-);
-const TechBlogWindow = dynamic(() =>
-	import("@/components/desktop/IframeWindow").then((mod) => () => <mod.IframeWindow src="/window/service/techblog" />)
-);
+import { Loading } from "@/components/app/commons/Loading";
+import type { ComponentType } from "react";
+import { AppIcon } from "@/components/window/AppIcon";
 
-export interface AppData {
-	title: string;
-	pageTitle: string;
-	image: {
-		isPixel: boolean;
-		path: string;
+const Profile = dynamic(() => import("@/components/app/Profile").then((mod) => mod.Profile), {
+	loading: () => <Loading />
+});
+
+const Welcome = dynamic(() => import("@/components/app/Welcome").then((mod) => mod.Welcome), {
+	loading: () => <Loading />
+});
+
+const Portfolio = dynamic(() => import("@/components/app/Portfolio").then((mod) => mod.Portfolio), {
+	loading: () => <Loading />
+});
+
+const Terminal = dynamic(() => import("@/components/app/Terminal").then((mod) => mod.Terminal), {
+	loading: () => <Loading />
+});
+
+const Illust = dynamic(() => import("@/components/app/Illust").then((mod) => mod.Illust), {
+	loading: () => <Loading />
+});
+
+const Movie = dynamic(() => import("@/components/app/Movie").then((mod) => mod.Movie), {
+	loading: () => <Loading />
+});
+
+const Model = dynamic(() => import("@/components/app/Model").then((mod) => mod.Model), {
+	loading: () => <Loading />
+});
+
+const Blog = dynamic(() => import("@/components/app/Blog").then((mod) => mod.Blog), {
+	loading: () => <Loading />
+});
+
+const DotYa = dynamic(() => import("@/components/app/DotYa").then((mod) => mod.DotYa), {
+	loading: () => <Loading />
+});
+
+type WindowContent =
+	| {
+			type: "iframe";
+			src: string;
+	  }
+	| {
+			type: "component";
+			component: ComponentType;
+	  };
+
+export interface App {
+	id: string;
+	title?: string;
+	icon?: React.ReactNode;
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	param?: Record<string, any>;
+	window: {
+		size?: {
+			width?: number;
+			height?: number;
+			enabledResize?: boolean;
+		};
+		fullScreen?: {
+			isFullScreen?: boolean;
+			isMobile?: boolean;
+		};
+		pin?: {
+			isPinned: boolean;
+			isViewButton: boolean;
+		};
+		position?: {
+			top?: number;
+			bottom?: number;
+			left?: number;
+			right?: number;
+		};
+		content: WindowContent;
 	};
-	component: React.JSX.Element;
-	resize: boolean;
-	isEnabledPath: boolean;
-	size?: {
-		width: number;
-		height: number;
-	};
-	spSize?: {
-		width: number;
-		height: number;
-	};
-	defaultPosition?: {
-		top?: number;
-		left?: number;
-		right?: number;
-		bottom?: number;
-	};
-	defaultMaxWindow?: boolean;
-	viewPinButton: boolean;
-	defaultPin?: boolean;
-	touchWindow?: boolean;
 }
 
-export const appData: {
-	[key: string]: AppData;
-} = {
-	portfolio: {
-		title: "作ったもの",
-		pageTitle: `作ったもの・実績など - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/folder-open.png"
-		},
-		component: <PortfolioWindow />,
-		resize: true,
-		isEnabledPath: true,
-		viewPinButton: false,
-		defaultMaxWindow: true
-	},
-	faq: {
-		title: "FAQ",
-		pageTitle: `FAQ - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/ghost.png"
-		},
-		component: <FaqWindow />,
-		resize: true,
-		isEnabledPath: true,
-		viewPinButton: false
-	},
-	profile: {
+export const APPS_DATA: App[] = [
+	{
+		id: "profile",
 		title: "プロフィール",
-		pageTitle: `プロフィール - ${pageTitle}`,
-		image: {
-			isPixel: false,
-			path: "/app/aki.webp"
-		},
-		component: <ProfileWindow />,
-		resize: true,
-		isEnabledPath: true,
-		viewPinButton: false
+		icon: <AppIcon imagePath="/app/aki.webp" alt="彩季" />,
+		window: {
+			size: {
+				enabledResize: true
+			},
+			content: {
+				type: "component",
+				component: Profile
+			}
+		}
 	},
-	teto: {
-		title: "🥖おすすめのテト",
-		pageTitle: "🥖おすすめのテト",
-		image: {
-			isPixel: false,
-			path: "/app/teto.webp"
-		},
-		component: <Teto />,
-		resize: false,
-		isEnabledPath: false,
-		size: {
-			width: 426,
-			height: 240 - 4
-		},
-		spSize: {
-			width: 320,
-			height: 180 - 4
-		},
-		viewPinButton: true,
-		touchWindow: true,
-		defaultPin: true
-	},
-	furina: {
-		title: "💧おすすめのフリーナ動画",
-		pageTitle: "💧おすすめのフリーナ動画",
-		image: {
-			isPixel: true,
-			path: "/app/furina.png"
-		},
-		component: <Furina />,
-		resize: false,
-		isEnabledPath: false,
-		size: {
-			width: 426,
-			height: 240 - 4
-		},
-		spSize: {
-			width: 320,
-			height: 180 - 4
-		},
-		viewPinButton: true,
-		touchWindow: true,
-		defaultPin: true
-	},
-	twitter: {
-		title: "Twitter",
-		pageTitle: "Twitter",
-		image: {
-			isPixel: false,
-			path: "/app/simplev.webp"
-		},
-		component: <TwitterWindow />,
-		resize: false,
-		isEnabledPath: false,
-		viewPinButton: true
-	},
-	terminal: {
-		title: "ターミナル",
-		pageTitle: "ターミナル",
-		image: {
-			isPixel: true,
-			path: "/app/terminal.png"
-		},
-		component: <TerminalWindow />,
-		resize: true,
-		isEnabledPath: false,
-		viewPinButton: false
-	},
-	intro: {
+	{
+		id: "welcome",
 		title: "Welcome.txt",
-		pageTitle: "Welcome.txt",
-		image: {
-			isPixel: true,
-			path: "/app/letter.png"
-		},
-		component: <IntroWindow />,
-		resize: true,
-		isEnabledPath: false,
-		size: {
-			width: 426,
-			height: 220
-		},
-		spSize: {
-			width: 326,
-			height: 150
-		},
-		defaultPosition: {
-			bottom: 80,
-			right: 10
-		},
-		viewPinButton: false,
-		defaultPin: false,
-		touchWindow: true
+		icon: <AppIcon imagePath="/app/letter.png" alt="手紙" />,
+		window: {
+			size: {
+				width: 426,
+				height: 220
+			},
+			position: {
+				bottom: 80,
+				right: 10
+			},
+			content: {
+				type: "component",
+				component: Welcome
+			}
+		}
 	},
-	pictures: {
+	{
+		id: "portfolio",
+		title: "作ったもの",
+		icon: <AppIcon imagePath="/app/folder-open.png" alt="フォルダ" />,
+		window: {
+			content: {
+				type: "component",
+				component: Portfolio
+			},
+			fullScreen: {
+				isFullScreen: true
+			}
+		}
+	},
+	{
+		id: "terminal",
+		title: "ターミナル",
+		icon: <AppIcon imagePath="/app/terminal.png" alt="ターミナル" />,
+		window: {
+			content: {
+				type: "component",
+				component: Terminal
+			}
+		}
+	},
+	{
+		id: "movie",
+		title: "映像",
+		icon: <AppIcon imagePath="/app/tv.png" alt="テレビ" />,
+		window: {
+			content: {
+				type: "component",
+				component: Movie
+			}
+		}
+	},
+	{
+		id: "illust",
 		title: "イラスト",
-		pageTitle: `イラスト - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/pictures.png"
-		},
-		component: <PicturesWindow />,
-		resize: true,
-		isEnabledPath: true,
-		viewPinButton: false
+		icon: <AppIcon imagePath="/app/illust.png" alt="イラスト" />,
+		window: {
+			content: {
+				type: "component",
+				component: Illust
+			}
+		}
 	},
-	models: {
+	{
+		id: "model",
 		title: "3Dモデル",
-		pageTitle: `3Dモデル - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/models.png"
-		},
-		component: <ModelsWindow />,
-		resize: true,
-		isEnabledPath: true,
-		viewPinButton: false
+		icon: <AppIcon imagePath="/app/cube.png" alt="キューブ" />,
+		window: {
+			content: {
+				type: "component",
+				component: Model
+			}
+		}
 	},
-	movies: {
-		title: "ムービー",
-		pageTitle: `ムービー - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/movies.png"
-		},
-		component: <MoviesWindow />,
-		resize: true,
-		isEnabledPath: true,
-		viewPinButton: false
-	},
-	pixelgives: {
+	{
+		id: "dotya",
 		title: "どっと屋",
-		pageTitle: `どっと屋 - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/dotya.png"
-		},
-		component: <PixelGivesWindow />,
-		resize: false,
-		isEnabledPath: false,
-		viewPinButton: false,
-		size: {
-			width: 542,
-			height: 250
+		icon: <AppIcon imagePath="/app/dotya.png" alt="どっと屋のロゴ" />,
+		window: {
+			size: {
+				width: 542,
+				height: 250
+			},
+			content: {
+				type: "component",
+
+				component: DotYa
+			}
 		}
 	},
-	allergynavi: {
-		title: "アレルギーナビ",
-		pageTitle: `アレルギーナビ - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/allergy-navi.webp"
-		},
-		component: <AllergyNaviWindow />,
-		resize: false,
-		isEnabledPath: false,
-		viewPinButton: false,
-		size: {
-			width: 542,
-			height: 250
-		}
-	},
-	aiblog: {
-		title: "日常ブログ",
-		pageTitle: `日常ブログ - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/aki-coffee.png"
-		},
-		component: <AiBlogWindow />,
-		resize: false,
-		isEnabledPath: false,
-		viewPinButton: false,
-		size: {
-			width: 542,
-			height: 250
-		}
-	},
-	techblog: {
+	{
+		id: "blog",
 		title: "技術ブログ",
-		pageTitle: `技術ブログ - ${pageTitle}`,
-		image: {
-			isPixel: true,
-			path: "/app/blog.png"
-		},
-		component: <TechBlogWindow />,
-		resize: false,
-		isEnabledPath: false,
-		viewPinButton: false,
-		size: {
-			width: 542,
-			height: 250
+		icon: <AppIcon imagePath="/app/hourglass.png" alt="砂時計" />,
+		window: {
+			size: {
+				width: 542,
+				height: 250
+			},
+			content: {
+				type: "component",
+				component: Blog
+			}
 		}
 	}
-};
+];

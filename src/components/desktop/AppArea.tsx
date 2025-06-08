@@ -1,12 +1,12 @@
 "use client";
 
-import { css } from "@kuma-ui/core";
-import AppIcon from "@/components/desktop/AppIcon";
-import { minimizeWindowList, openedAppSortList, osReady } from "@/atom";
+import { css, cx } from "@kuma-ui/core";
+import { osReady } from "@/atom";
 import { useStore } from "@nanostores/react";
-import { cx } from "@/libs/merge-kuma";
 import { type PropsWithChildren, useEffect, useState } from "react";
-import useWindow from "@/libs/useWindow";
+import { useWindowManager } from "@/context/WindowManagerContext";
+import { APPS_DATA } from "@/data/app";
+import { AppIcon } from "@/components/desktop/AppIcon";
 
 interface DesktopIconProps {
 	id: string;
@@ -16,21 +16,26 @@ interface DesktopIconProps {
 }
 
 export function DesktopIcon({ children, id, imgSrc, isPixel }: PropsWithChildren<DesktopIconProps>) {
-	const { openWindow, releaseMinimizedWindow } = useWindow();
 	const $osReady = useStore(osReady);
+	const { dispatch } = useWindowManager();
 
 	function appClick(id: string) {
-		const list = openedAppSortList.get();
+		// const list = openedAppSortList.get();
 
-		// クリックしたアプリが最前面じゃなかったら最善面にする
-		if (list[list.length - 1] !== id) {
-			openWindow(id);
-		}
+		// // クリックしたアプリが最前面じゃなかったら最善面にする
+		// if (list[list.length - 1] !== id) {
+		// 	openWindow(id);
+		// }
 
-		// クリックしたアプリが最小化されてたら最小化解除する
-		const minimizedList = minimizeWindowList.get();
-		if (minimizedList.includes(id)) {
-			releaseMinimizedWindow(id);
+		// // クリックしたアプリが最小化されてたら最小化解除する
+		// const minimizedList = minimizeWindowList.get();
+		// if (minimizedList.includes(id)) {
+		// 	releaseMinimizedWindow(id);
+		// }
+
+		const app = APPS_DATA.find((app) => app.id === id);
+		if (app !== undefined) {
+			dispatch({ type: "OPEN", payload: { app } });
 		}
 
 		if (process.env.NODE_ENV === "production") {
@@ -74,30 +79,13 @@ export function DesktopIcon({ children, id, imgSrc, isPixel }: PropsWithChildren
 export function AppArea() {
 	const $osReady = useStore(osReady);
 	const [ready, setReady] = useState<boolean>(false);
+	const { state } = useWindowManager();
 
 	useEffect(() => {
 		if ($osReady) {
 			setReady(true);
 		}
 	}, [$osReady]);
-
-	const $openedAppSortList = useStore(openedAppSortList);
-	const [introImgSrc, setIntroImgSrc] = useState<string>("/app/letter.png");
-	const [portfolioImgSrc, setPortfolioImgSrc] = useState<string>("/app/folder.png");
-
-	useEffect(() => {
-		if ($openedAppSortList.includes("intro")) {
-			setIntroImgSrc("/app/letter-open.png");
-		} else {
-			setIntroImgSrc("/app/letter.png");
-		}
-
-		if ($openedAppSortList.includes("portfolio")) {
-			setPortfolioImgSrc("/app/folder-open.png");
-		} else {
-			setPortfolioImgSrc("/app/folder.png");
-		}
-	}, [$openedAppSortList]);
 
 	return (
 		<div
@@ -149,31 +137,51 @@ export function AppArea() {
 			<DesktopIcon id="profile" imgSrc="/app/aki.webp">
 				プロフィール
 			</DesktopIcon>
-			<DesktopIcon id="intro" imgSrc={introImgSrc} isPixel>
+			<DesktopIcon
+				id="welcome"
+				imgSrc={(() => {
+					if (state.apps.get("welcome")?.status === "opened") {
+						return "/app/letter-open.png";
+					}
+
+					return "/app/letter.png";
+				})()}
+				isPixel
+			>
 				Welcome.txt
 			</DesktopIcon>
-			<DesktopIcon id="portfolio" imgSrc={portfolioImgSrc} isPixel>
+			<DesktopIcon
+				id="portfolio"
+				imgSrc={(() => {
+					if (state.apps.get("portfolio")?.status === "opened") {
+						return "/app/folder-open.png";
+					}
+
+					return "/app/folder.png";
+				})()}
+				isPixel
+			>
 				作ったもの
 			</DesktopIcon>
-			<DesktopIcon id="pictures" imgSrc="/app/pictures.png" isPixel>
+			<DesktopIcon id="illust" imgSrc="/app/illust.png" isPixel>
 				イラスト
 			</DesktopIcon>
-			<DesktopIcon id="models" imgSrc="/app/models.png" isPixel>
+			<DesktopIcon id="model" imgSrc="/app/cube.png" isPixel>
 				3Dモデル
 			</DesktopIcon>
-			<DesktopIcon id="movies" imgSrc="/app/movies.png" isPixel>
-				ムービー
+			<DesktopIcon id="movie" imgSrc="/app/tv.png" isPixel>
+				映像
 			</DesktopIcon>
 			{/* <AppIcon id="aiblog" imgSrc="/app/aki-coffee.png" isPixel>
 				日常ブログ
 			</AppIcon> */}
-			<DesktopIcon id="techblog" imgSrc="/app/blog.png" isPixel>
+			<DesktopIcon id="blog" imgSrc="/app/hourglass.png" isPixel>
 				技術ブログ
 			</DesktopIcon>
 			{/* <AppIcon id="allergynavi" imgSrc="/app/allergy-navi.webp">
 				アレルギーナビ
 			</AppIcon> */}
-			<DesktopIcon id="pixelgives" imgSrc="/app/dotya.png" isPixel>
+			<DesktopIcon id="dotya" imgSrc="/app/dotya.png" isPixel>
 				どっと屋
 			</DesktopIcon>
 			{/* <AppIcon href="https://simple-v.shikiiro.net/" imgSrc="/app/simplev.webp" target="_blank">

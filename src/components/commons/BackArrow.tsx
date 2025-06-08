@@ -1,16 +1,21 @@
-import { cx } from "@/libs/merge-kuma";
-import { css } from "@kuma-ui/core";
+"use client";
+
+import { css, cx } from "@kuma-ui/core";
 import Link from "next/link";
 
 interface Props {
 	text: string;
-	href: string;
+	href?: string;
+	onClick?: () => void;
 }
 
-export function BackArrow({ text, href }: Props) {
+export function BackArrow({ text, href, onClick }: Props) {
+	const Component = href !== undefined ? Link : "button";
+
 	return (
-		<Link
-			href={href}
+		<Component
+			href={href ?? "/"}
+			onClick={onClick}
 			className={css`
 				display: inline-flex;
 				gap: 5px;
@@ -19,6 +24,7 @@ export function BackArrow({ text, href }: Props) {
 				white-space: nowrap;
 				font-family: "BestTenCRT";
 				font-size: 16px;
+				background-color: transparent;
 
 				@media (max-width: 600px) {
 					top: 50px;
@@ -45,6 +51,6 @@ export function BackArrow({ text, href }: Props) {
 				←
 			</span>
 			<span>{text}</span>
-		</Link>
+		</Component>
 	);
 }

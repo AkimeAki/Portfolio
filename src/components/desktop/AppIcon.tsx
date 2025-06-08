@@ -1,7 +1,6 @@
 "use client";
 
-import { cx } from "@/libs/merge-kuma";
-import { css } from "@kuma-ui/core";
+import { css, cx } from "@kuma-ui/core";
 import Link from "next/link";
 import type { PropsWithChildren } from "react";
 
@@ -14,7 +13,7 @@ interface Props {
 	className?: string;
 }
 
-export default function ({
+export function AppIcon({
 	children,
 	imgSrc,
 	href,

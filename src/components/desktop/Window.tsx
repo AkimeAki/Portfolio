@@ -1,35 +1,33 @@
 "use client";
 
-import { pinedWindowList, isTouch, openedAppSortList, minimizeWindowList } from "@/atom";
-import type { AppData } from "@/data/app";
-import { cx } from "@/libs/merge-kuma";
-import useWindow from "@/libs/useWindow";
-import { css } from "@kuma-ui/core";
+import { isTouch } from "@/atom";
+import { useWindowManager } from "@/context/WindowManagerContext";
+import type { App } from "@/data/app";
+import { css, cx } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import { useEffect, useRef, useState } from "react";
+import { type PropsWithChildren, useEffect, useRef, useState } from "react";
+import { PinButton } from "@/components/window/PinButton";
+import { FullScreenButton } from "@/components/window/FullScreenButton";
+import { CloseButton } from "@/components/window/CloseButton";
+import { MinimizeButton } from "@/components/window/MinimizeButon";
 
 interface Props {
-	children: React.ReactNode;
 	id: string;
-	appData: AppData;
+	appData: App;
 	ready?: boolean;
 }
 
 const windowHeaderHeightData = 45;
 const windowSpHeaderHeightData = 40;
 
-export default function ({ children, id, appData, ready: _ready = true }: Props) {
-	const $openedAppSortList = useStore(openedAppSortList);
+export function Window({ children, id, appData, ready: _ready = true }: PropsWithChildren<Props>) {
 	const windowElement = useRef<HTMLDivElement | null>(null);
 	const $isTouch = useStore(isTouch);
 	const [isMaxWindow, setIsMaxWindow] = useState<boolean>(false);
-	const { openWindow, closeWindow, pinWindow, unpinWindow, minimizeWindow } = useWindow();
-	const $pinedWindowList = useStore(pinedWindowList);
-	const [windowList, setWindowList] = useState<string[]>([]);
-	const $minimizeWindowList = useStore(minimizeWindowList);
 	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
 	const [ready, setReady] = useState<boolean>(false);
 	const [windowHeaderHeight, setWindowHeaderHeight] = useState<number>(windowHeaderHeightData);
+	const { state, dispatch } = useWindowManager();
 
 	useEffect(() => {
 		if (_ready) {
@@ -38,7 +36,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 	}, [_ready]);
 
 	useEffect(() => {
-		if ($isTouch && !appData.touchWindow) {
+		if ($isTouch && !appData.window.fullScreen?.isMobile) {
 			setIsMaxWindow(true);
 		} else {
 			setIsMaxWindow(false);
@@ -63,39 +61,29 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 	}, []);
 
 	useEffect(() => {
-		const nonPinedWindowList = $openedAppSortList.filter((id) => {
-			return !$pinedWindowList.includes(id);
-		});
-
-		const pinedWindowList = $openedAppSortList.filter((id) => {
-			return $pinedWindowList.includes(id);
-		});
-
-		setWindowList([...nonPinedWindowList, ...pinedWindowList]);
-	}, [$openedAppSortList, $pinedWindowList]);
-
-	useEffect(() => {
-		if (appData.defaultPin) {
-			pinWindow(id);
+		if (appData.window.pin?.isPinned) {
+			dispatch({ type: "TOGGLE_PIN", payload: { id } });
 		}
 	}, []);
 
 	useEffect(() => {
 		if (windowElement.current !== null && ready) {
-			let width = 0;
-			let height = 0;
+			let width = Math.min(window.innerWidth * 0.9, 1000);
+			let height = Math.min(window.innerHeight * 0.9 - 70, 700);
 
-			if (appData.size !== undefined) {
-				width = appData.size.width;
-				height = appData.size.height + windowHeaderHeightData + 4;
-
-				if (appData.spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
-					width = appData.spSize.width;
-					height = appData.spSize.height + windowSpHeaderHeightData + 4;
+			if (appData.window.size !== undefined) {
+				if (appData.window.size.width !== undefined) {
+					width = appData.window.size.width;
 				}
-			} else {
-				width = Math.min(window.innerWidth * 0.9, 1000);
-				height = Math.min(window.innerHeight * 0.9 - 70, 700);
+
+				if (appData.window.size.height !== undefined) {
+					height = appData.window.size.height + windowHeaderHeightData + 4;
+				}
+
+				// if (appData.spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
+				// 	width = appData.spSize.width;
+				// 	height = appData.spSize.height + windowSpHeaderHeightData + 4;
+				// }
 			}
 
 			let top: number | undefined = (window.innerHeight - 70 - height) / 2;
@@ -103,15 +91,15 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 			let bottom: number | undefined = undefined;
 			let right: number | undefined = undefined;
 
-			if (appData.defaultMaxWindow) {
+			if (appData.window.fullScreen?.isFullScreen) {
 				setIsMaxWindow(true);
 			}
 
-			if (appData.defaultPosition !== undefined) {
-				top = appData.defaultPosition.top;
-				left = appData.defaultPosition.left;
-				bottom = appData.defaultPosition.bottom;
-				right = appData.defaultPosition.right;
+			if (appData.window.position !== undefined) {
+				top = appData.window.position.top;
+				left = appData.window.position.left;
+				bottom = appData.window.position.bottom;
+				right = appData.window.position.right;
 			} else {
 				const appWindows = document.querySelectorAll<HTMLDivElement>("[data-app-id]");
 				let i = 0;
@@ -151,35 +139,32 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 	}, [ready]);
 
 	// iframe内のクリックを受け取って処理
-	useEffect(() => {
-		const click = (response: MessageEvent) => {
-			if (response.data.name === "AkiOSIframeClick" && response.data.value !== undefined) {
-				const id = String(response.data.value);
-				const list = openedAppSortList.get();
-				if (list[list.length - 1] !== id) {
-					openWindow(id);
-				}
-			}
-		};
+	// useEffect(() => {
+	// 	const click = (response: MessageEvent) => {
+	// 		if (response.data.name === "AkiOSIframeClick" && response.data.value !== undefined) {
+	// 			const id = String(response.data.value);
+	// 			const list = openedAppSortList.get();
+	// 			if (list[list.length - 1] !== id) {
+	// 				openWindow(id);
+	// 			}
+	// 		}
+	// 	};
 
-		window.addEventListener("message", click);
+	// 	window.addEventListener("message", click);
 
-		return () => {
-			window.removeEventListener("message", click);
-		};
-	}, []);
+	// 	return () => {
+	// 		window.removeEventListener("message", click);
+	// 	};
+	// }, []);
 
 	return (
 		<div
 			ref={windowElement}
 			onMouseDown={() => {
-				const list = openedAppSortList.get();
-				if (list[list.length - 1] !== id) {
-					openWindow(id);
-				}
+				dispatch({ type: "SELECT", payload: { id } });
 			}}
 			data-app-id={id}
-			style={{ zIndex: windowList.indexOf(id) }}
+			style={{ "--z-index": state.sortOrder.indexOf(id) } as React.CSSProperties}
 			className={cx(
 				css`
 					position: absolute;
@@ -193,6 +178,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 					transition-property: translate, scale, opacity;
 					animation-timing-function: steps(5, start);
 					transition-timing-function: steps(5, start);
+					z-index: var(--z-index);
 
 					@keyframes view-window {
 						0% {
@@ -220,7 +206,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							height: calc(100% - 96px) !important;
 						}
 					`,
-				$minimizeWindowList.includes(id) &&
+				state.apps.get(id)?.status === "minimized" &&
 					css`
 						translate: 0 50vh;
 						scale: 0.5;
@@ -306,7 +292,8 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 							pointer-events: all;
 						}
 					`,
-					(isMaxWindow || !appData.resize) &&
+					(isMaxWindow ||
+						(appData.window.size?.enabledResize !== undefined && !appData.window.size.enabledResize)) &&
 						css`
 							display: none;
 						`
@@ -851,21 +838,7 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 								margin-left: 10px;
 							`}
 						>
-							<img
-								src={appData.image.path}
-								className={cx(
-									css`
-										height: 100%;
-										aspect-ratio: 1/1;
-										padding: 7px;
-									`,
-									appData.image.isPixel &&
-										css`
-											image-rendering: pixelated;
-										`
-								)}
-								alt={appData.title}
-							/>
+							{appData.icon !== undefined && appData.icon}
 							<h2
 								className={css`
 									line-height: 1;
@@ -892,233 +865,12 @@ export default function ({ children, id, appData, ready: _ready = true }: Props)
 								margin-right: 10px;
 							`}
 						>
-							<div
-								onClick={() => {
-									minimizeWindow(id);
-								}}
-								style={{ display: $isTouch ? "none" : "flex" }}
-								className={css`
-									align-items: center;
-									justify-content: center;
-									position: relative;
-									width: 27px;
-									height: 27px;
-									border-radius: 50%;
-
-									&:before {
-										display: block;
-										content: "";
-										width: 13px;
-										height: 13px;
-										border-bottom-color: #c6dd9a;
-										border-bottom-style: solid;
-										border-bottom-width: 2px;
-									}
-
-									&:hover {
-										background-color: #c6dd9a;
-
-										&:before {
-											border-color: #060303;
-										}
-									}
-								`}
-							/>
-							{appData.viewPinButton && (
-								<div
-									onClick={() => {
-										if (!$isTouch) {
-											if (!$pinedWindowList.includes(id)) {
-												pinWindow(id);
-											} else {
-												unpinWindow(id);
-											}
-										}
-									}}
-									style={{ display: $isTouch ? "none" : "flex" }}
-									className={css`
-										position: relative;
-										width: 27px;
-										height: 27px;
-										border-radius: 50%;
-
-										&:before {
-											position: absolute;
-											top: 6px;
-											left: 50%;
-											transform: translateX(-50%);
-											display: block;
-											content: "";
-											width: 8px;
-											height: 8px;
-											background-color: #c6dd9a;
-										}
-
-										&:after {
-											position: absolute;
-											top: 13px;
-											left: 50%;
-											transform: translateX(-50%);
-											display: block;
-											content: "";
-											width: 16px;
-											height: 5px;
-											background-color: #c6dd9a;
-										}
-
-										&:hover {
-											background-color: #c6dd9a;
-
-											&:before,
-											&:after,
-											& > div {
-												background-color: #060303;
-											}
-
-											.slash-pin {
-												width: 3px;
-												border: none;
-											}
-										}
-									`}
-								>
-									<div
-										className={css`
-											position: absolute;
-											top: 14px;
-											left: 50%;
-											transform: translateX(-50%);
-											display: block;
-											width: 3px;
-											height: 9px;
-											background-color: #c6dd9a;
-										`}
-									/>
-									{!$pinedWindowList.includes(id) && (
-										<div
-											className={[
-												css`
-													position: absolute;
-													top: calc(50% + 1px);
-													left: 50%;
-													transform: translate(-50%, -50%) rotate(-45deg);
-													display: block;
-													width: 6px;
-													height: 24px;
-													border: 2px solid #060303;
-													z-index: 1;
-												`,
-												"slash-pin"
-											].join(" ")}
-										/>
-									)}
-								</div>
-							)}
-							{appData.resize && (
-								<div
-									onClick={() => {
-										if (!$isTouch) {
-											setIsMaxWindow(!isMaxWindow);
-										}
-									}}
-									style={{ display: $isTouch ? "none" : "flex" }}
-									className={cx(
-										css`
-											align-items: center;
-											justify-content: center;
-											position: relative;
-											width: 27px;
-											height: 27px;
-											border-radius: 50%;
-
-											&:hover {
-												background-color: #c6dd9a;
-
-												&:before,
-												&:after {
-													border-color: #060303;
-												}
-											}
-										`,
-										isMaxWindow
-											? css`
-													&:before,
-													&:after {
-														display: block;
-														content: "";
-														border-color: #c6dd9a;
-														border-style: solid;
-														border-width: 2px;
-													}
-
-													&:before {
-														transform: translate(2px, 2px);
-														width: 8px;
-														height: 8px;
-													}
-
-													&:after {
-														transform: translate(-3px, -3px);
-														width: 5px;
-														height: 5px;
-													}
-												`
-											: css`
-													&:before {
-														display: block;
-														content: "";
-														width: 11px;
-														height: 11px;
-														border-color: #c6dd9a;
-														border-style: solid;
-														border-width: 2px;
-													}
-												`
-									)}
-								/>
-							)}
-							<div
-								onClick={() => {
-									// 閉じるボタンを押したときの処理
-									closeWindow(id);
-								}}
-								className={css`
-									position: relative;
-									width: 27px;
-									height: 27px;
-									border-radius: 50%;
-
-									&:hover {
-										background-color: #c82746;
-
-										&:before,
-										&:after {
-											background-color: white;
-										}
-									}
-
-									&:before,
-									&:after {
-										position: absolute;
-										left: 5px;
-										display: block;
-										content: "";
-										width: 17px;
-										height: 3px;
-										background-color: #c6dd9a;
-									}
-
-									&:before {
-										top: 12px;
-										transform: rotate(45deg);
-									}
-
-									&:after {
-										bottom: 12px;
-										transform: rotate(-45deg);
-									}
-								`}
-							/>
+							<MinimizeButton id={id} />
+							{appData.window.pin?.isViewButton && <PinButton id={id} />}
+							{!(
+								appData.window.size?.enabledResize !== undefined && !appData.window.size.enabledResize
+							) && <FullScreenButton isMaxWindow={isMaxWindow} setIsMaxWindow={setIsMaxWindow} />}
+							<CloseButton id={id} />
 						</div>
 					</div>
 					<div

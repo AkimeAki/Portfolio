@@ -1,17 +1,18 @@
-import AkiSignal from "@/components/desktop/background/AkiSignal";
-import { AppArea } from "@/components/desktop/AppArea";
-import { CodeBackground } from "@/components/desktop/background/CodeBackground";
+import AkiSignal from "@/components/background/AkiSignal";
+import { CodeBackground } from "@/components/background/CodeBackground";
 import ContextMenu from "@/components/ContextMenu";
 import Loading from "@/components/desktop/Loading";
-import SelectArea from "@/components/desktop/background/SelectArea";
-import Taskbar from "@/components/desktop/taskbar/Taskbar";
-import TwitchBackground from "@/components/desktop/background/TwitchBackground";
+import SelectArea from "@/components/background/SelectArea";
+import Taskbar from "@/components/taskbar/Taskbar";
+import TwitchBackground from "@/components/background/TwitchBackground";
 import { metaHead } from "@/libs/meta";
 import { css } from "@kuma-ui/core";
-import PixelWrapper from "@/components/desktop/background/PixelWrapper";
-import NewVideo from "@/components/desktop/background/NewVideo";
-import Galaxy from "@/components/desktop/background/Galaxy";
+import PixelWrapper from "@/components/background/PixelWrapper";
+import NewVideo from "@/components/background/NewVideo";
+import Galaxy from "@/components/background/Galaxy";
 import { InlineStyle } from "@/components/commons/InlineStyle";
+import { WindowManagerProvider } from "@/context/WindowManagerContext";
+import { AppArea } from "@/components/desktop/AppArea";
 
 export const metadata = metaHead({});
 
@@ -79,27 +80,29 @@ export default function ({ children }: React.PropsWithChildren) {
 						overflow: hidden;
 					`}
 				>
-					<div
-						className={css`
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							background-image: radial-gradient(#555555, #000000);
-						`}
-					>
-						<TwitchBackground />
-						<AkiSignal />
-						<NewVideo />
-						<CodeBackground />
-						<Galaxy />
-						<SelectArea />
-						<PixelWrapper />
-						<AppArea />
-						{children}
-					</div>
-					<Taskbar />
+					<WindowManagerProvider>
+						<div
+							className={css`
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background-image: radial-gradient(#555555, #000000);
+							`}
+						>
+							<TwitchBackground />
+							<AkiSignal />
+							<NewVideo />
+							<CodeBackground />
+							<Galaxy />
+							<SelectArea />
+							<PixelWrapper />
+							<AppArea />
+							{children}
+						</div>
+						<Taskbar />
+					</WindowManagerProvider>
 				</div>
 			</div>
 		</>

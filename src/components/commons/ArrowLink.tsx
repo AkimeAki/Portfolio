@@ -1,5 +1,4 @@
-import { cx } from "@/libs/merge-kuma";
-import { css } from "@kuma-ui/core";
+import { css, cx } from "@kuma-ui/core";
 import Link from "next/link";
 import type { HTMLAttributeAnchorTarget } from "react";
 
