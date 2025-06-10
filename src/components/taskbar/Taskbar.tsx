@@ -1,6 +1,6 @@
 "use client";
 
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import TaskbarIcon from "@/components/taskbar/TaskbarIcon";
 import TaskbarClock from "@/components/taskbar/TaskbarClock";
 import TaskbarStart from "@/components/taskbar/TaskbarStart";
@@ -58,11 +58,11 @@ const TaskbarIconMemo = memo(() => {
 });
 
 export default function () {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 
 	return (
 		<div
-			style={{ animationName: !$osReady ? "" : "taskbar-signal" }}
+			style={{ animationName: !$isOSReady ? "" : "taskbar-signal" }}
 			className={css`
 				position: absolute;
 				bottom: 0;
@@ -88,7 +88,7 @@ export default function () {
 			`}
 		>
 			<div
-				style={{ animationName: !$osReady ? "" : "taskbar-view" }}
+				style={{ animationName: !$isOSReady ? "" : "taskbar-view" }}
 				className={css`
 					position: absolute;
 					top: 0;

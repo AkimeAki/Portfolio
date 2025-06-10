@@ -9,3 +9,4 @@
 /modules/
 *.code-workspace*
 !example.code-workspace*
+/.git/

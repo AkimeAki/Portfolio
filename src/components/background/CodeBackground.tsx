@@ -1,6 +1,6 @@
 "use client";
 
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
@@ -24,16 +24,16 @@ const codeUrls: {
 ];
 
 export function CodeBackground() {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const element = useRef<HTMLDivElement | null>(null);
 	const [code, setCode] = useState<string>("");
 	const [ready, setReady] = useState(false);
 
 	useEffect(() => {
-		if ($osReady) {
+		if ($isOSReady) {
 			setReady(true);
 		}
-	}, [$osReady]);
+	}, [$isOSReady]);
 
 	useEffect(() => {
 		let unmounted = false;

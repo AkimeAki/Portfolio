@@ -1,6 +1,6 @@
 "use client";
 
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import GlitchWrapper from "@/components/desktop/GlitchWrapper";
@@ -8,15 +8,15 @@ import { useEffect, useState } from "react";
 import checkBrowser from "@akimeaki/check-browser";
 
 export default function () {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const [ready, setReady] = useState<boolean>(false);
 	const [browserCheck, setBrowserCheck] = useState<boolean>(false);
 
 	useEffect(() => {
-		if ($osReady) {
+		if ($isOSReady) {
 			setReady(true);
 		}
-	}, [$osReady]);
+	}, [$isOSReady]);
 
 	useEffect(() => {
 		const data = checkBrowser();

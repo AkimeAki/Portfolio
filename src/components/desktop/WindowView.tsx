@@ -1,7 +1,7 @@
 "use client";
 
 import { Window } from "@/components/desktop/Window";
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import { APPS_DATA } from "@/data/app";
 import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export function WindowView({ defaultAppId }: Props) {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const [ready, setReady] = useState<boolean>(false);
 	const { state, dispatch } = useWindowManager();
 
@@ -57,12 +57,12 @@ export function WindowView({ defaultAppId }: Props) {
 	// }, [$openedAppSortList]);
 
 	useEffect(() => {
-		if ($osReady) {
+		if ($isOSReady) {
 			setTimeout(() => {
 				setReady(true);
 			}, 2200);
 		}
-	}, [$osReady]);
+	}, [$isOSReady]);
 
 	// useEffect(() => {
 	// 	setMixOpenAppList($openedAppSortList);

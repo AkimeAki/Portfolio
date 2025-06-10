@@ -1,12 +1,12 @@
 "use client";
 
-import { isTouch, osReady } from "@/atom";
+import { isTouch, isOSReady } from "@/atom";
 import { css, cx } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, useState } from "react";
 
 export default function () {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const [animation, setAnimation] = useState<boolean>(true);
 	const signalElement = useRef<HTMLImageElement | null>(null);
 	const $isTouch = useStore(isTouch);
@@ -106,7 +106,7 @@ export default function () {
 						animation-timing-function: linear;
 						filter: brightness(110%) blur(3px);
 					`,
-					$osReady &&
+					$isOSReady &&
 						animation &&
 						css`
 							animation-name: aki-signal;
@@ -131,7 +131,7 @@ export default function () {
 						animation-iteration-count: 8;
 						animation-timing-function: linear;
 					`,
-					$osReady &&
+					$isOSReady &&
 						animation &&
 						css`
 							animation-name: aki-signal;

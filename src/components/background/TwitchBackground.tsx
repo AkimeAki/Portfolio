@@ -1,6 +1,6 @@
 "use client";
 
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import checkBrowser from "@akimeaki/check-browser";
 import { css } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
@@ -23,7 +23,7 @@ const resize = () => {
 };
 
 export default function () {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const [isPaused, setIsPaused] = useState<boolean>(true);
 	const [ready, setReady] = useState<boolean>(false);
 	const [browserCheck, setBrowserCheck] = useState<boolean>(false);
@@ -37,10 +37,10 @@ export default function () {
 	}, []);
 
 	useEffect(() => {
-		if ($osReady) {
+		if ($isOSReady) {
 			setReady(true);
 		}
-	}, [$osReady]);
+	}, [$isOSReady]);
 
 	useEffect(() => {
 		let unmounted = false;

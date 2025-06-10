@@ -1,6 +1,6 @@
 "use client";
 
-import { isTouch, osReady } from "@/atom";
+import { isTouch, isOSReady } from "@/atom";
 import { css, cx } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
@@ -16,17 +16,17 @@ interface Props {
 }
 
 export default function ({ opacity, top, left, right, bottom, width, height }: Props) {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const [animationDelay, setAnimationDelay] = useState<number>(1200);
 	const $isTouch = useStore(isTouch);
 	const [previousTouch, setPreviousTouch] = useState<React.Touch | null>(null);
 	const [ready, setReady] = useState<boolean>(false);
 
 	useEffect(() => {
-		if ($osReady) {
+		if ($isOSReady) {
 			setReady(true);
 		}
-	}, [$osReady]);
+	}, [$isOSReady]);
 
 	useEffect(() => {
 		if (ready) {

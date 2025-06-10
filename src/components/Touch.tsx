@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { isTouch, isTouchDevice } from "@/atom";
+import { isTouch } from "@/atom";
+import { isTouchDevice } from "@/libs/touch";
 
 export default function () {
 	useEffect(() => {

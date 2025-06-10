@@ -1,6 +1,6 @@
 "use client";
 
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { css } from "@kuma-ui/core";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ interface Props {
 const perLoad = 3;
 
 export default function ({ notFound = false }: Props) {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const [imageLoading, setImageLoading] = useState<boolean>(true);
 	const [fontsLoading, setFontsLoading] = useState<boolean>(true);
 	const [ready, setReady] = useState(false);
@@ -211,14 +211,14 @@ export default function ({ notFound = false }: Props) {
 	useEffect(() => {
 		if (!imageLoading && !fontsLoading && ready) {
 			setTimeout(() => {
-				osReady.set(true);
+				isOSReady.set(true);
 			}, 3000);
 		}
 	}, [imageLoading, fontsLoading, ready]);
 
 	return (
 		<>
-			{!$osReady ? (
+			{!$isOSReady ? (
 				<div
 					className={css`
 						position: absolute;

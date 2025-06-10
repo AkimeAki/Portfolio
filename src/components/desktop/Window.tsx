@@ -36,7 +36,11 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 	}, [_ready]);
 
 	useEffect(() => {
-		if ($isTouch && appData.window.fullScreen?.isMobile !== undefined && appData.window.fullScreen.isMobile) {
+		if (
+			$isTouch &&
+			((appData.window.fullScreen?.isMobile !== undefined && appData.window.fullScreen.isMobile) ||
+				appData.window.fullScreen?.isMobile === undefined)
+		) {
 			setIsMaxWindow(true);
 		} else {
 			setIsMaxWindow(false);

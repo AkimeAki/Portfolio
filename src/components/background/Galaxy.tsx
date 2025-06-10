@@ -1,28 +1,21 @@
 "use client";
 
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import { css, cx } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Planet } from "@/components/background/galaxy/Planet";
 import { Orbit } from "@/components/background/galaxy/Orbit";
 
 export default function () {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const canvasElement = useRef<HTMLCanvasElement>(null);
-	const [ready, setReady] = useState<boolean>(false);
-
-	useEffect(() => {
-		if ($osReady) {
-			setReady(true);
-		}
-	}, [$osReady]);
 
 	useEffect(() => {
 		let unmounted = false;
 
-		if (ready) {
+		if ($isOSReady) {
 			if (canvasElement.current !== null) {
 				const canvas = canvasElement.current;
 
@@ -154,7 +147,7 @@ export default function () {
 		return () => {
 			unmounted = true;
 		};
-	}, [ready]);
+	}, [$isOSReady]);
 
 	return (
 		<canvas
@@ -183,7 +176,7 @@ export default function () {
 						}
 					}
 				`,
-				ready &&
+				$isOSReady &&
 					css`
 						animation-name: galaxy-signal;
 					`

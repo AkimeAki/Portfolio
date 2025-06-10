@@ -1,7 +1,7 @@
 "use client";
 
 import { css, cx } from "@kuma-ui/core";
-import { osReady } from "@/atom";
+import { isOSReady } from "@/atom";
 import { useStore } from "@nanostores/react";
 import { type PropsWithChildren, useEffect, useState } from "react";
 import { useWindowManager } from "@/context/WindowManagerContext";
@@ -16,7 +16,7 @@ interface DesktopIconProps {
 }
 
 export function DesktopIcon({ children, id, imgSrc, isPixel }: PropsWithChildren<DesktopIconProps>) {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const { dispatch } = useWindowManager();
 
 	function appClick(id: string) {
@@ -54,7 +54,7 @@ export function DesktopIcon({ children, id, imgSrc, isPixel }: PropsWithChildren
 				css`
 					pointer-events: none;
 				`,
-				$osReady &&
+				$isOSReady &&
 					css`
 						animation-duration: 70ms;
 						animation-delay: 1200ms;
@@ -77,15 +77,15 @@ export function DesktopIcon({ children, id, imgSrc, isPixel }: PropsWithChildren
 }
 
 export function AppArea() {
-	const $osReady = useStore(osReady);
+	const $isOSReady = useStore(isOSReady);
 	const [ready, setReady] = useState<boolean>(false);
 	const { state } = useWindowManager();
 
 	useEffect(() => {
-		if ($osReady) {
+		if ($isOSReady) {
 			setReady(true);
 		}
-	}, [$osReady]);
+	}, [$isOSReady]);
 
 	return (
 		<div
