@@ -60,6 +60,12 @@ export interface App {
 			width?: number;
 			height?: number;
 			enabledResize?: boolean;
+			responsive?: {
+				[mediaQuery: string]: {
+					width?: number;
+					height?: number;
+				};
+			};
 		};
 		fullScreen?: {
 			isFullScreen?: boolean;
@@ -101,11 +107,20 @@ export const APPS_DATA: App[] = [
 		window: {
 			size: {
 				width: 426,
-				height: 220
+				height: 220,
+				responsive: {
+					"(max-width: 720px)": {
+						width: 326,
+						height: 150
+					}
+				}
 			},
 			position: {
 				bottom: 80,
 				right: 10
+			},
+			fullScreen: {
+				isMobile: false
 			},
 			content: {
 				type: "component",

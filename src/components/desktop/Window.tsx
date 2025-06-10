@@ -18,7 +18,7 @@ interface Props {
 }
 
 const windowHeaderHeightData = 45;
-const windowSpHeaderHeightData = 40;
+const windowSpHeaderHeightData = 35;
 
 export function Window({ children, id, appData, ready: _ready = true }: PropsWithChildren<Props>) {
 	const windowElement = useRef<HTMLDivElement | null>(null);
@@ -36,7 +36,7 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 	}, [_ready]);
 
 	useEffect(() => {
-		if ($isTouch && !appData.window.fullScreen?.isMobile) {
+		if ($isTouch && appData.window.fullScreen?.isMobile !== undefined && appData.window.fullScreen.isMobile) {
 			setIsMaxWindow(true);
 		} else {
 			setIsMaxWindow(false);
@@ -77,13 +77,30 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 				}
 
 				if (appData.window.size.height !== undefined) {
-					height = appData.window.size.height + windowHeaderHeightData + 4;
+					height = appData.window.size.height + 4;
 				}
 
-				// if (appData.spSize !== undefined && window.matchMedia("(max-width: 720px)").matches) {
-				// 	width = appData.spSize.width;
-				// 	height = appData.spSize.height + windowSpHeaderHeightData + 4;
-				// }
+				if (appData.window.size.responsive !== undefined) {
+					for (const mediaQuery in appData.window.size.responsive) {
+						if (window.matchMedia(mediaQuery).matches) {
+							if (appData.window.size.responsive[mediaQuery].width !== undefined) {
+								width = appData.window.size.responsive[mediaQuery].width;
+							}
+
+							if (appData.window.size.responsive[mediaQuery].height !== undefined) {
+								height = appData.window.size.responsive[mediaQuery].height + 4;
+							}
+
+							break;
+						}
+					}
+				}
+
+				if (window.matchMedia("(max-width: 720px)").matches) {
+					height = height + windowSpHeaderHeightData;
+				} else {
+					height = height + windowHeaderHeightData;
+				}
 			}
 
 			let top: number | undefined = (window.innerHeight - 70 - height) / 2;
