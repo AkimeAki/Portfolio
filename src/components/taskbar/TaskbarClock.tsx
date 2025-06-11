@@ -3,7 +3,7 @@
 import { css } from "@kuma-ui/core";
 import { useEffect, useRef } from "react";
 
-export default function () {
+export function TaskbarClock() {
 	const element = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {

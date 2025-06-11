@@ -19,6 +19,7 @@ export async function GET() {
 			throw new Error(`データを取得できませんでした。ステータス：${response.status}`);
 		}
 		const niltData: NiltoSchema<PortfolioSchema> = nullToUndefined(await response.json());
+		await new Promise((resolve) => setTimeout(resolve, 5000));
 
 		return new NextResponse(JSON.stringify(niltData.data), {
 			status: 200

@@ -15,7 +15,7 @@ interface Props {
 	height: number;
 }
 
-export default function ({ opacity, top, left, right, bottom, width, height }: Props) {
+export function PixelBlock({ opacity, top, left, right, bottom, width, height }: Props) {
 	const $isOSReady = useStore(isOSReady);
 	const [animationDelay, setAnimationDelay] = useState<number>(1200);
 	const $isTouch = useStore(isTouch);

@@ -1,8 +1,8 @@
 "use client";
 
-import PixelBlock from "@/components/background/PixelBlock";
+import { PixelBlock } from "@/components/background/PixelBlock";
 
-export default function () {
+export function PixelWrapper() {
 	return (
 		<>
 			<PixelBlock top={-20} right={-20} width={100} height={100} opacity={0.6} />

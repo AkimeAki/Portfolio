@@ -6,7 +6,7 @@ interface Props {
 	iconPath: string;
 }
 
-export default function ({ href, alt, iconPath }: Props) {
+export function TaskbarIcon({ href, alt, iconPath }: Props) {
 	return (
 		<a
 			href={href}

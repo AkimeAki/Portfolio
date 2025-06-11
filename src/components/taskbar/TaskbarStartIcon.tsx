@@ -7,7 +7,7 @@ interface Props {
 	text?: string;
 }
 
-export default function ({ href, alt, iconPath, text = "" }: Props) {
+export function TaskbarStartIcon({ href, alt, iconPath, text = "" }: Props) {
 	return (
 		<div
 			className={css`

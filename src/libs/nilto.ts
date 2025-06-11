@@ -78,8 +78,8 @@ export async function getPortfolio({ type, id }: GetPortfolioProps) {
 				return String(data._id) === id;
 			});
 		}
-	} catch (e) {
-		console.error(e);
+	} catch (_e) {
+		console.error("エラー");
 	}
 
 	return result;

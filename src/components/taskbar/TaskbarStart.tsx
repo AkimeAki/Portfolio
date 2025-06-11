@@ -2,10 +2,10 @@
 
 import { css, cx } from "@kuma-ui/core";
 import { useEffect, useRef, useState } from "react";
-import TaskbarStartIcon from "@/components/taskbar/TaskbarStartIcon";
+import { TaskbarStartIcon } from "@/components/taskbar/TaskbarStartIcon";
 import { linkData } from "@/data/links";
 
-export default function () {
+export function TaskbarStart() {
 	const [imagePath, setImagePath] = useState<string>("/emoji/1.png");
 	const [ready, setReady] = useState<boolean>(false);
 	const [isOpen, setIsOpen] = useState<boolean>(false);

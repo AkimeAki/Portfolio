@@ -1,9 +1,9 @@
 "use client";
 
 import { isOSReady } from "@/atom";
-import TaskbarIcon from "@/components/taskbar/TaskbarIcon";
-import TaskbarClock from "@/components/taskbar/TaskbarClock";
-import TaskbarStart from "@/components/taskbar/TaskbarStart";
+import { TaskbarIcon } from "@/components/taskbar/TaskbarIcon";
+import { TaskbarClock } from "@/components/taskbar/TaskbarClock";
+import { TaskbarStart } from "@/components/taskbar/TaskbarStart";
 import { css, cx } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
 import { MinimizedAppArea } from "@/components/taskbar/MinimizedAppArea";
@@ -57,7 +57,7 @@ const TaskbarIconMemo = memo(() => {
 	);
 });
 
-export default function () {
+export function Taskbar() {
 	const $isOSReady = useStore(isOSReady);
 
 	return (
