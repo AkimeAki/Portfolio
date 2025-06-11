@@ -13,6 +13,7 @@ import Galaxy from "@/components/background/Galaxy";
 import { InlineStyle } from "@/components/commons/InlineStyle";
 import { WindowManagerProvider } from "@/context/WindowManagerContext";
 import { AppArea } from "@/components/desktop/AppArea";
+import { URLStateSyncer } from "@/components/URLStateSyncer";
 
 export const metadata = metaHead({});
 
@@ -92,6 +93,7 @@ export default function ({ children }: React.PropsWithChildren) {
 								background-image: radial-gradient(#555555, #000000);
 							`}
 						>
+							<URLStateSyncer />
 							<TwitchBackground />
 							<AkiSignal />
 							<NewVideo />

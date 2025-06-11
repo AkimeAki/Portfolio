@@ -53,8 +53,10 @@ export interface App {
 	id: string;
 	title?: string;
 	icon?: React.ReactNode;
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	param?: Record<string, any>;
+	url?: {
+		enableChangePath?: boolean;
+		urlStateFunction?: () => void;
+	};
 	window: {
 		size?: {
 			width?: number;
@@ -104,6 +106,9 @@ export const APPS_DATA: App[] = [
 		id: "welcome",
 		title: "Welcome.txt",
 		icon: <AppIcon imagePath="/app/letter.png" alt="手紙" />,
+		url: {
+			enableChangePath: false
+		},
 		window: {
 			size: {
 				width: 426,

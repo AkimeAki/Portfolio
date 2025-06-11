@@ -18,6 +18,7 @@ export interface WindowManagerSate {
 export type WindowAction =
 	| { type: "OPEN"; payload: { app: App } }
 	| { type: "CLOSE"; payload: { id: string } }
+	| { type: "CLOSE_ALL" }
 	| { type: "SELECT"; payload: { id: string } }
 	| { type: "MINIMIZE"; payload: { id: string } }
 	| { type: "TOGGLE_PIN"; payload: { id: string } };
@@ -119,6 +120,15 @@ function windowManagerReducer(state: WindowManagerSate, action: WindowAction): W
 			return {
 				apps: newApps,
 				sortOrder: state.sortOrder.filter((id) => id !== action.payload.id)
+			};
+		}
+
+		case "CLOSE_ALL": {
+			const newApps = new Map(state.apps);
+			newApps.clear();
+			return {
+				apps: newApps,
+				sortOrder: []
 			};
 		}
 
