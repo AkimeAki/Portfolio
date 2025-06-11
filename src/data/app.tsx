@@ -91,7 +91,7 @@ export const APPS_DATA: App[] = [
 	{
 		id: "profile",
 		title: "プロフィール",
-		icon: <AppIcon imagePath="/app/aki.webp" alt="彩季" />,
+		icon: <AppIcon imagePath="/app/aki.webp" alt="彩季" isPixel={false} />,
 		window: {
 			size: {
 				enabledResize: true
