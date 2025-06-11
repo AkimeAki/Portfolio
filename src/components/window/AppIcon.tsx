@@ -1,4 +1,4 @@
-import { css } from "@kuma-ui/core";
+import { css, cx } from "@kuma-ui/core";
 
 interface Props {
 	imagePath: string;
@@ -9,11 +9,13 @@ export function AppIcon({ imagePath, alt }: Props) {
 	return (
 		<img
 			src={imagePath}
-			className={css`
-				height: 100%;
-				aspect-ratio: 1/1;
-				padding: 7px;
-			`}
+			className={cx(
+				css`
+					height: 100%;
+					aspect-ratio: 1/1;
+				`,
+				"app-icon"
+			)}
 			alt={alt}
 		/>
 	);

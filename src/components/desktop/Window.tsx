@@ -867,6 +867,10 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 								height: 100%;
 								align-items: center;
 								margin-left: 10px;
+
+								.app-icon {
+									padding: 7px;
+								}
 							`}
 						>
 							{appData.icon !== undefined && appData.icon}
