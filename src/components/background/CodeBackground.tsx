@@ -15,11 +15,11 @@ const codeUrls: {
 	},
 	{
 		viewed: false,
-		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/app/(iframe)/window/terminal/_TerminalContent.tsx"
+		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/components/app/Terminal.tsx"
 	},
 	{
 		viewed: false,
-		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/components/window.tsx"
+		code: "https://raw.githubusercontent.com/AkimeAki/Portfolio/refs/heads/main/src/components/desktop/Window.tsx"
 	}
 ];
 
