@@ -198,7 +198,8 @@ export const APPS_DATA: App[] = [
 		window: {
 			size: {
 				width: 542,
-				height: 250
+				height: 250,
+				enabledResize: false
 			},
 			content: {
 				type: "component",
@@ -214,7 +215,8 @@ export const APPS_DATA: App[] = [
 		window: {
 			size: {
 				width: 542,
-				height: 250
+				height: 250,
+				enabledResize: false
 			},
 			content: {
 				type: "component",
