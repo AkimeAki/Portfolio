@@ -1,10 +1,13 @@
 "use client";
 
+import { useNotification } from "@/hooks/useNotification";
 import { css } from "@kuma-ui/core";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export function TaskbarClock() {
-	const element = useRef<HTMLDivElement>(null);
+	const [weekIcon, setWeekIcon] = useState<string>("");
+	const [time, setTime] = useState<string>("");
+	const { addMessage } = useNotification();
 
 	useEffect(() => {
 		const id = setInterval(() => {
@@ -44,12 +47,8 @@ export function TaskbarClock() {
 					break;
 			}
 
-			if (element.current !== null) {
-				element.current.innerHTML = /* html */ `
-					<span>${`${nowYear}/${nowMonth}/${nowDay}\n${nowHour}:${nowMin}:${nowSec}`}</span>
-					<span class="week-icon">${weekIcon}</span>
-				`;
-			}
+			setTime(`${nowYear}/${nowMonth}/${nowDay}\n${nowHour}:${nowMin}:${nowSec}`);
+			setWeekIcon(weekIcon);
 		}, 1000);
 
 		return () => {
@@ -59,7 +58,6 @@ export function TaskbarClock() {
 
 	return (
 		<div
-			ref={element}
 			className={css`
 				position: absolute;
 				top: 50%;
@@ -74,16 +72,6 @@ export function TaskbarClock() {
 				justify-content: center;
 				gap: 20px;
 
-				span {
-					color: white;
-					font-size: 16px;
-					line-height: 1;
-				}
-
-				.week-icon {
-					font-size: 25px;
-				}
-
 				@container (max-width: 720px) {
 					position: fixed;
 					top: 3px;
@@ -95,12 +83,34 @@ export function TaskbarClock() {
 					body[data-os="android"] & {
 						top: 4px;
 					}
-
-					.week-icon {
-						font-size: 16px;
-					}
 				}
 			`}
-		/>
+		>
+			<span
+				className={css`
+					color: white;
+					font-size: 16px;
+					line-height: 1;
+				`}
+			>
+				{time}
+			</span>
+			<span
+				onClick={() => {
+					addMessage("ネットサーフィンなんかやめて\n早く寝なさい");
+				}}
+				className={css`
+					font-size: 25px;
+					color: white;
+					line-height: 1;
+
+					@container (max-width: 720px) {
+						font-size: 16px;
+					}
+				`}
+			>
+				{weekIcon}
+			</span>
+		</div>
 	);
 }

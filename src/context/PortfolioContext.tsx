@@ -11,6 +11,12 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 	const [category, setCategory] = useState<string>("root");
 
 	useEffect(() => {
+		const expectedPath = category === "root" ? "/portfolio" : `/portfolio/${category}`;
+
+		if (location.pathname === expectedPath) {
+			return;
+		}
+
 		if (category === "root" && location.pathname !== "/portfolio") {
 			window.history.pushState({ app: "portfolio" }, "", "/portfolio");
 		} else {
