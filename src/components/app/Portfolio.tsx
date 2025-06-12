@@ -96,7 +96,7 @@ function _Portfolio() {
 			<div
 				className={css`
 					display: flex;
-					height: calc(100% - (50px + 4px));
+					height: calc(100% - 50px);
 
 					@container (max-width: 960px) {
 						flex-direction: column;

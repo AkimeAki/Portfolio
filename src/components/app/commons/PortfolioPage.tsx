@@ -117,7 +117,9 @@ export function PortfolioPage({ setSelectId, data, linkText }: Props) {
 											}
 										`}
 									>
-										{linkText ?? "アクセスする"}
+										{data.url.startsWith("https://www.pixiv.net/")
+											? "pixivで見る"
+											: (linkText ?? "アクセスする")}
 									</a>
 								</div>
 							)}

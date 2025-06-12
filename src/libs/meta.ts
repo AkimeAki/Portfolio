@@ -9,7 +9,7 @@ interface Props {
 	noindex?: boolean;
 }
 
-export const pageTitle = `<Aki name="彩季" />`;
+export const pageTitle = "彩季.AkiOS";
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_ROOT_URL ?? "";
 
 export const metaHead = ({

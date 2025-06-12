@@ -12,9 +12,10 @@ interface Props {
 	target?: string;
 	data: () => Promise<PortfolioSchema[]>;
 	aspect?: string;
+	linkText?: string;
 }
 
-export function Portfolio({ hoverText = "", data: promiseData, aspect }: Props) {
+export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText }: Props) {
 	const [data, setData] = useState<PortfolioSchema[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [selectId, setSelectId] = useState<string | null>(null);
@@ -217,7 +218,13 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect }: Props) 
 								{(() => {
 									const targetData = data.find((data) => String(data._id) === selectId);
 									if (targetData !== undefined) {
-										return <PortfolioPage setSelectId={setSelectId} data={targetData} />;
+										return (
+											<PortfolioPage
+												setSelectId={setSelectId}
+												data={targetData}
+												linkText={linkText}
+											/>
+										);
 									}
 
 									return "";

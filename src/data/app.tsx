@@ -55,7 +55,6 @@ export interface App {
 	icon?: React.ReactNode;
 	url?: {
 		enableChangePath?: boolean;
-		urlStateFunction?: () => void;
 	};
 	window: {
 		size?: {
@@ -151,6 +150,9 @@ export const APPS_DATA: App[] = [
 		id: "terminal",
 		title: "ターミナル",
 		icon: <AppIcon imagePath="/app/terminal.png" alt="ターミナル" />,
+		url: {
+			enableChangePath: false
+		},
 		window: {
 			content: {
 				type: "component",
@@ -195,6 +197,9 @@ export const APPS_DATA: App[] = [
 		id: "dotya",
 		title: "どっと屋",
 		icon: <AppIcon imagePath="/app/dotya.png" alt="どっと屋のロゴ" />,
+		url: {
+			enableChangePath: false
+		},
 		window: {
 			size: {
 				width: 542,
@@ -212,6 +217,9 @@ export const APPS_DATA: App[] = [
 		id: "blog",
 		title: "技術ブログ",
 		icon: <AppIcon imagePath="/app/hourglass.png" alt="砂時計" />,
+		url: {
+			enableChangePath: false
+		},
 		window: {
 			size: {
 				width: 542,

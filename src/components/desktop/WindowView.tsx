@@ -32,30 +32,6 @@ export function WindowView({ defaultAppId }: Props) {
 		}
 	}, [ready]);
 
-	// useEffect(() => {
-	// 	const back = () => {
-	// 		if (location.pathname !== "/") {
-	// 			if (location.pathname.startsWith("/portfolio/")) {
-	// 				openWindow("portfolio", false);
-	// 			} else {
-	// 				openWindow(location.pathname.replace("/", ""), false);
-	// 			}
-	// 		} else {
-	// 			const result = $openedAppSortList.filter((id) => {
-	// 				return !appData[id].isEnabledPath;
-	// 			});
-
-	// 			openedAppSortList.set(result);
-	// 		}
-	// 	};
-
-	// 	window.addEventListener("popstate", back);
-
-	// 	return () => {
-	// 		window.removeEventListener("popstate", back);
-	// 	};
-	// }, [$openedAppSortList]);
-
 	useEffect(() => {
 		if ($isOSReady) {
 			setTimeout(() => {
@@ -63,10 +39,6 @@ export function WindowView({ defaultAppId }: Props) {
 			}, 2200);
 		}
 	}, [$isOSReady]);
-
-	// useEffect(() => {
-	// 	setMixOpenAppList($openedAppSortList);
-	// }, [$openedAppSortList]);
 
 	return (
 		<>

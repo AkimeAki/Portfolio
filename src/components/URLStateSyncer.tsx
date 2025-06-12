@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useWindowManager } from "@/context/WindowManagerContext";
 import { APPS_DATA } from "@/data/app";
+import { pageTitle } from "@/libs/meta";
 
 export function URLStateSyncer() {
 	const { state, dispatch } = useWindowManager();
@@ -18,6 +19,7 @@ export function URLStateSyncer() {
 
 		if (changePathApps.length === 0 && !init.current) {
 			window.history.pushState(null, "", "/");
+			document.title = pageTitle;
 			init.current = false;
 			return;
 		}
@@ -33,20 +35,25 @@ export function URLStateSyncer() {
 		const appToOpen = APPS_DATA.find((app) => app.id === appId);
 
 		if (appToOpen !== undefined) {
-			if (appToOpen.url?.urlStateFunction !== undefined) {
-				appToOpen.url.urlStateFunction();
-			} else {
-				if (appToOpen.url?.enableChangePath === undefined || appToOpen.url.enableChangePath) {
-					window.history.pushState(null, "", `/${appId}`);
+			if (appToOpen.url?.enableChangePath === undefined || appToOpen.url.enableChangePath) {
+				window.history.pushState(null, "", `/${appId}`);
+				if (appToOpen.title !== undefined) {
+					document.title = `${appToOpen.title} - ${pageTitle}`;
+				} else {
+					document.title = pageTitle;
 				}
 			}
 		}
 	}, [state.sortOrder, state.apps]);
 
 	useEffect(() => {
-		function syncUrlToState() {
+		function syncUrlToState(e: PopStateEvent) {
 			const pathSegments = location.pathname.split("/").filter(Boolean);
 			const appId = pathSegments[0];
+
+			if (e.state?.app === "portfolio") {
+				return;
+			}
 
 			if (appId === undefined) {
 				dispatch({ type: "CLOSE_ALL" });
