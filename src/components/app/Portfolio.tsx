@@ -1,7 +1,8 @@
 "use client";
 
 import { PortfolioProvider, usePortfolio } from "@/context/PortfolioContext";
-import { portfolioCategoryData } from "@/data/portfolio";
+import { componentMap } from "@/data/portfolio";
+import { portfolioCategoryMap } from "@/data/portfolio-def";
 import { css, cx } from "@kuma-ui/core";
 import type { PropsWithChildren } from "react";
 
@@ -67,7 +68,8 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 
 function _Portfolio() {
 	const { category, setCategory } = usePortfolio();
-	const Component = portfolioCategoryData[category].component;
+	const componentId = portfolioCategoryMap[category].componentId;
+	const Component = componentMap[componentId];
 
 	return (
 		<>
@@ -91,7 +93,7 @@ function _Portfolio() {
 					}
 				`}
 			>
-				{portfolioCategoryData[category].title}
+				{portfolioCategoryMap[category].title}
 			</div>
 			<div
 				className={css`

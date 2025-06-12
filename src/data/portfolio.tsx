@@ -48,56 +48,16 @@ const Other = dynamic(() => import("@/components/app/Other").then((mod) => mod.O
 	loading: () => <Loading />
 });
 
-interface PortfolioCategoryData {
-	[key: string]: {
-		title: string;
-		component: ComponentType;
-	};
-}
-
-export const portfolioCategoryData: PortfolioCategoryData = {
-	root: {
-		title: "制作実績",
-		component: PortfolioApps
-	},
-	webservice: {
-		title: "制作実績 / ウェブサービス",
-		component: WebService
-	},
-	website: {
-		title: "制作実績 / ウェブサイト",
-		component: WebSite
-	},
-	illust: {
-		title: "制作実績 / イラスト",
-		component: Illust
-	},
-	model: {
-		title: "制作実績 / 3Dモデル",
-		component: Model
-	},
-	movie: {
-		title: "制作実績 / ムービー",
-		component: Movie
-	},
-	chrome_extension: {
-		title: "制作実績 / Chrome 拡張機能",
-		component: ChromeExtension
-	},
-	vscode_extension: {
-		title: "制作実績 / VSCode 拡張機能",
-		component: VSCodeExtension
-	},
-	minecraft_resourcepack: {
-		title: "制作実績 / Minecraft リソースパック",
-		component: MinecraftResourcePack
-	},
-	discord_bot: {
-		title: "制作実績 / Discord Bot",
-		component: DiscordBot
-	},
-	other: {
-		title: "制作実績 / その他",
-		component: Other
-	}
+export const componentMap: { [key: string]: ComponentType } = {
+	PortfolioApps,
+	WebService,
+	WebSite,
+	Illust,
+	Model,
+	Movie,
+	ChromeExtension,
+	VSCodeExtension,
+	MinecraftResourcePack,
+	DiscordBot,
+	Other
 };
