@@ -117,6 +117,10 @@ export function AppArea() {
 						}
 					}
 
+					body[data-touch="true"] & {
+						padding: 20px 10px;
+					}
+
 					@media (max-width: 720px) {
 						top: 26px;
 						display: grid;
@@ -125,7 +129,7 @@ export function AppArea() {
 						width: 100%;
 						height: auto;
 						row-gap: 10px;
-						padding: 30px 0;
+						padding: 10px 0;
 					}
 				`,
 				ready &&

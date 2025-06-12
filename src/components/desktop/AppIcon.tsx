@@ -57,9 +57,13 @@ export function AppIcon({
 						}
 					}
 
-					@container (max-width: 720px) {
-						width: auto;
+					body[data-touch="true"] & {
 						gap: 6px;
+					}
+
+					@container (max-width: 720px) {
+						gap: 6px;
+						width: auto;
 					}
 				`,
 				className
@@ -73,7 +77,7 @@ export function AppIcon({
 					flex-shrink: 0;
 					pointer-events: none;
 
-					@container (max-width: 720px) {
+					body[data-touch="true"] & {
 						width: 50px;
 						height: 50px;
 						border-radius: 50%;
@@ -97,13 +101,13 @@ export function AppIcon({
 								transform: translate(-50%, -50%);
 								width: 100%;
 								height: 100%;
+								filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
+									drop-shadow(0px 0px 1px white);
 
-								@container (max-width: 720px) {
+								body[data-touch="true"] & {
 									width: 80%;
 									height: 80%;
 									border-radius: 50%;
-									filter: drop-shadow(0px 0px 1px white) drop-shadow(0px 0px 1px white)
-										drop-shadow(0px 0px 1px white);
 								}
 							`,
 							isPixel
@@ -124,7 +128,7 @@ export function AppIcon({
 							left: 10px;
 							image-rendering: pixelated;
 
-							@container (max-width: 720px) {
+							body[data-touch="true"] & {
 								position: absolute;
 								left: 0;
 								bottom: 0;
