@@ -235,28 +235,6 @@ function _Portfolio() {
 }
 
 export function Portfolio() {
-	// useEffect(() => {
-	// 	const loadLayout = (response: MessageEvent) => {
-	// 		if (response.data.name === "AkiOSIframePath" && typeof response.data.value === "string") {
-	// 			const pathArray = String(response.data.value)
-	// 				.split("/")
-	// 				.filter((path) => {
-	// 					return path !== "";
-	// 				});
-	// 			const category = pathArray[1];
-	// 			if (category !== undefined) {
-	// 				setCategory(category);
-	// 			}
-	// 		}
-	// 	};
-
-	// 	window.addEventListener("message", loadLayout);
-
-	// 	return () => {
-	// 		window.removeEventListener("message", loadLayout);
-	// 	};
-	// }, []);
-
 	return (
 		<div
 			className={css`
