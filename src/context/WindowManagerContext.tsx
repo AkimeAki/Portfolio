@@ -85,6 +85,7 @@ function windowManagerReducer(state: WindowManagerSate, action: WindowAction): W
 			newApps.forEach((app, id) => {
 				if (id === idToMinimize) {
 					app.status = "minimized";
+					app.isFocused = false;
 				}
 			});
 

@@ -1,5 +1,6 @@
 import { WindowView } from "@/components/desktop/WindowView";
 import { APPS_DATA } from "@/data/app";
+import { portfolioCategoryData } from "@/data/portfolio";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -11,6 +12,13 @@ export default async function ({ params }: { params: Promise<{ slug?: string[] }
 	const isExistApp = APPS_DATA.find((app) => app.id === appId);
 	if (appId !== undefined && isExistApp === undefined) {
 		notFound();
+	}
+
+	if (appId === "portfolio") {
+		const category = slug[1];
+		if (category === undefined || category === "root" || !Object.keys(portfolioCategoryData).includes(category)) {
+			notFound();
+		}
 	}
 
 	return <WindowView defaultAppId={slug[0]} />;
