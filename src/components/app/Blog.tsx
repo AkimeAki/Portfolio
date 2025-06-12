@@ -35,6 +35,10 @@ export function Blog() {
 					justify-content: center;
 
 					body[data-touch="true"] & {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
 						@media (max-width: 560px) {
 							flex-direction: column;
 						}
