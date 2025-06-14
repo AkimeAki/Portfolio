@@ -1,6 +1,6 @@
 import { css } from "@kuma-ui/core";
 import { AppIcon } from "@/components/desktop/AppIcon";
-import { PortfolioProvider, usePortfolio } from "@/context/PortfolioContext";
+import { usePortfolio } from "@/context/PortfolioContext";
 
 export function PortfolioApps() {
 	const { setCategory } = usePortfolio();
@@ -27,100 +27,98 @@ export function PortfolioApps() {
 				}
 			`}
 		>
-			<PortfolioProvider>
-				<AppIcon
-					imgSrc="/app/global.png"
-					isPixel
-					onClick={() => {
-						setCategory("webservice");
-					}}
-				>
-					ウェブサービス
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/global.png"
-					isPixel
-					onClick={() => {
-						setCategory("website");
-					}}
-				>
-					ウェブサイト
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/illust.png"
-					isPixel
-					onClick={() => {
-						setCategory("illust");
-					}}
-				>
-					イラスト
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/cube.png"
-					isPixel
-					onClick={() => {
-						setCategory("model");
-					}}
-				>
-					3Dモデル
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/tv.png"
-					isPixel
-					onClick={() => {
-						setCategory("movie");
-					}}
-				>
-					映像
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/blocks.png"
-					isPixel
-					onClick={() => {
-						setCategory("chrome_extension");
-					}}
-				>
-					Chrome 拡張機能
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/blocks.png"
-					isPixel
-					onClick={() => {
-						setCategory("vscode_extension");
-					}}
-				>
-					VSCode 拡張機能
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/blocks.png"
-					isPixel
-					onClick={() => {
-						setCategory("minecraft_resourcepack");
-					}}
-				>
-					Minecraft
-					<br />
-					リソースパック
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/blocks.png"
-					isPixel
-					onClick={() => {
-						setCategory("discord_bot");
-					}}
-				>
-					Discord Bot
-				</AppIcon>
-				<AppIcon
-					imgSrc="/app/blocks.png"
-					isPixel
-					onClick={() => {
-						setCategory("other");
-					}}
-				>
-					その他
-				</AppIcon>
-			</PortfolioProvider>
+			<AppIcon
+				imgSrc="/app/global.png"
+				isPixel
+				onClick={() => {
+					setCategory("webservice");
+				}}
+			>
+				ウェブサービス
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/global.png"
+				isPixel
+				onClick={() => {
+					setCategory("website");
+				}}
+			>
+				ウェブサイト
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/illust.png"
+				isPixel
+				onClick={() => {
+					setCategory("illust");
+				}}
+			>
+				イラスト
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/cube.png"
+				isPixel
+				onClick={() => {
+					setCategory("model");
+				}}
+			>
+				3Dモデル
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/tv.png"
+				isPixel
+				onClick={() => {
+					setCategory("movie");
+				}}
+			>
+				映像
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/blocks.png"
+				isPixel
+				onClick={() => {
+					setCategory("chrome_extension");
+				}}
+			>
+				Chrome 拡張機能
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/blocks.png"
+				isPixel
+				onClick={() => {
+					setCategory("vscode_extension");
+				}}
+			>
+				VSCode 拡張機能
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/blocks.png"
+				isPixel
+				onClick={() => {
+					setCategory("minecraft_resourcepack");
+				}}
+			>
+				Minecraft
+				<br />
+				リソースパック
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/blocks.png"
+				isPixel
+				onClick={() => {
+					setCategory("discord_bot");
+				}}
+			>
+				Discord Bot
+			</AppIcon>
+			<AppIcon
+				imgSrc="/app/blocks.png"
+				isPixel
+				onClick={() => {
+					setCategory("other");
+				}}
+			>
+				その他
+			</AppIcon>
 		</div>
 	);
 }

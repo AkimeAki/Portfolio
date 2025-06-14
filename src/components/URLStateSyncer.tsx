@@ -36,8 +36,7 @@ export function URLStateSyncer() {
 
 		if (appToOpen !== undefined) {
 			if (appToOpen.url?.enableChangePath === undefined || appToOpen.url.enableChangePath) {
-				const path = appToOpen.url?.path ?? `/${appId}`;
-				window.history.pushState(null, "", path);
+				window.history.pushState(null, "", `/${appId}`);
 				if (appToOpen.title !== undefined) {
 					document.title = `${appToOpen.title} - ${pageTitle}`;
 				} else {
