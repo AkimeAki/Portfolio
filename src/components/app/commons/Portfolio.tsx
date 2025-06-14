@@ -37,6 +37,24 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText 
 		})();
 	}, []);
 
+	useEffect(() => {
+		if (selectId !== null) {
+			window.history.pushState({ app: "portfolio" }, "", `/portfolio/item/${selectId}`);
+		}
+	}, [selectId]);
+
+	useEffect(() => {
+		function syncUrlToState() {
+			setSelectId(null);
+		}
+
+		window.addEventListener("popstate", syncUrlToState);
+
+		return () => {
+			window.removeEventListener("popstate", syncUrlToState);
+		};
+	}, []);
+
 	return (
 		<>
 			{isLoading ? (
@@ -218,13 +236,7 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText 
 								{(() => {
 									const targetData = data.find((data) => String(data._id) === selectId);
 									if (targetData !== undefined) {
-										return (
-											<PortfolioPage
-												setSelectId={setSelectId}
-												data={targetData}
-												linkText={linkText}
-											/>
-										);
+										return <PortfolioPage data={targetData} linkText={linkText} />;
 									}
 
 									return "";

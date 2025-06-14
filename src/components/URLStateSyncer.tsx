@@ -7,7 +7,7 @@ import { pageTitle } from "@/libs/meta";
 
 export function URLStateSyncer() {
 	const { state, dispatch } = useWindowManager();
-	const init = useRef(true);
+	const isFirstRender = useRef(true);
 
 	useEffect(() => {
 		const pathSegments = location.pathname.split("/").filter(Boolean);
@@ -17,14 +17,14 @@ export function URLStateSyncer() {
 			return app.appData.url?.enableChangePath === undefined || app.appData.url.enableChangePath;
 		});
 
-		if (changePathApps.length === 0 && !init.current) {
+		if (changePathApps.length === 0 && !isFirstRender.current) {
 			window.history.pushState(null, "", "/");
 			document.title = pageTitle;
-			init.current = false;
+			isFirstRender.current = false;
 			return;
 		}
 
-		init.current = false;
+		isFirstRender.current = false;
 
 		const appId = state.sortOrder.at(-1);
 
@@ -36,7 +36,8 @@ export function URLStateSyncer() {
 
 		if (appToOpen !== undefined) {
 			if (appToOpen.url?.enableChangePath === undefined || appToOpen.url.enableChangePath) {
-				window.history.pushState(null, "", `/${appId}`);
+				const path = appToOpen.url?.path ?? `/${appId}`;
+				window.history.pushState(null, "", path);
 				if (appToOpen.title !== undefined) {
 					document.title = `${appToOpen.title} - ${pageTitle}`;
 				} else {

@@ -1,4 +1,4 @@
-import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useState } from "react";
+import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useRef, useState } from "react";
 
 interface CategoryContextType {
 	category: string;
@@ -9,38 +9,41 @@ const CategoryContext = createContext<CategoryContextType | undefined>(undefined
 
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 	const [category, setCategory] = useState<string>("root");
+	const isFirstRender = useRef(true);
+
+	function syncUrlToState() {
+		const pathSegments = location.pathname.split("/").filter(Boolean);
+		const appId = pathSegments[0];
+		const category = pathSegments[1];
+
+		if (appId !== "portfolio") {
+			return;
+		}
+
+		if (category === undefined) {
+			setCategory("root");
+		} else {
+			setCategory(category);
+		}
+	}
 
 	useEffect(() => {
+		if (isFirstRender.current) {
+			syncUrlToState();
+			isFirstRender.current = false;
+			return;
+		}
+
 		const expectedPath = category === "root" ? "/portfolio" : `/portfolio/${category}`;
 
 		if (location.pathname === expectedPath) {
 			return;
 		}
 
-		if (category === "root" && location.pathname !== "/portfolio") {
-			window.history.pushState({ app: "portfolio" }, "", "/portfolio");
-		} else {
-			window.history.pushState({ app: "portfolio" }, "", `/portfolio/${category}`);
-		}
+		window.history.pushState({ app: "portfolio" }, "", expectedPath);
 	}, [category]);
 
 	useEffect(() => {
-		function syncUrlToState() {
-			const pathSegments = location.pathname.split("/").filter(Boolean);
-			const appId = pathSegments[0];
-			const category = pathSegments[1];
-
-			if (appId !== "portfolio") {
-				return;
-			}
-
-			if (category === undefined) {
-				setCategory("root");
-			} else {
-				setCategory(category);
-			}
-		}
-
 		window.addEventListener("popstate", syncUrlToState);
 
 		return () => {

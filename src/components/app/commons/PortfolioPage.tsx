@@ -7,20 +7,18 @@ import { ColorLabel } from "@/components/commons/ColorLabel";
 import { DateTime } from "luxon";
 import type { PortfolioSchema } from "@/libs/nilto";
 import { PortfolioBadge } from "@/components/app/commons/PortfolioBadge";
-import type { Dispatch, SetStateAction } from "react";
 
 interface Props {
-	setSelectId: Dispatch<SetStateAction<string | null>>;
 	data: PortfolioSchema;
 	linkText?: string;
 }
 
-export function PortfolioPage({ setSelectId, data, linkText }: Props) {
+export function PortfolioPage({ data, linkText }: Props) {
 	return (
 		<>
 			<BackArrow
 				onClick={() => {
-					setSelectId(null);
+					history.go(-1);
 				}}
 				text="戻る"
 			/>

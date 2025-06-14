@@ -192,7 +192,9 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 		<div
 			ref={windowElement}
 			onMouseDown={() => {
-				dispatch({ type: "SELECT", payload: { id } });
+				if (state.sortOrder.at(-1) !== id) {
+					dispatch({ type: "SELECT", payload: { id } });
+				}
 			}}
 			data-app-id={id}
 			style={{ "--z-index": state.sortOrder.indexOf(id) } as React.CSSProperties}

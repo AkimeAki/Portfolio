@@ -55,6 +55,7 @@ export interface App {
 	icon?: React.ReactNode;
 	url?: {
 		enableChangePath?: boolean;
+		path?: string;
 	};
 	window: {
 		size?: {
@@ -164,6 +165,9 @@ export const APPS_DATA: App[] = [
 		id: "movie",
 		title: "映像",
 		icon: <AppIcon imagePath="/app/tv.png" alt="テレビ" />,
+		url: {
+			path: "/portfolio/movie"
+		},
 		window: {
 			content: {
 				type: "component",
@@ -175,6 +179,9 @@ export const APPS_DATA: App[] = [
 		id: "illust",
 		title: "イラスト",
 		icon: <AppIcon imagePath="/app/illust.png" alt="イラスト" />,
+		url: {
+			path: "/portfolio/illust"
+		},
 		window: {
 			content: {
 				type: "component",
@@ -186,6 +193,9 @@ export const APPS_DATA: App[] = [
 		id: "model",
 		title: "3Dモデル",
 		icon: <AppIcon imagePath="/app/cube.png" alt="キューブ" />,
+		url: {
+			path: "/portfolio/model"
+		},
 		window: {
 			content: {
 				type: "component",
