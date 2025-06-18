@@ -13,7 +13,8 @@ export async function GET() {
 				"Content-Type": "application/json",
 				"X-NILTO-API-KEY": process.env.NILTO_API_KEY ?? ""
 			},
-			cache: "force-cache"
+			cache: "force-cache",
+			next: { revalidate: false }
 		});
 		if (!response.ok) {
 			throw new Error(`データを取得できませんでした。ステータス：${response.status}`);
