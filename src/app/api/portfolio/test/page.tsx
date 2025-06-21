@@ -3,6 +3,7 @@ export const dynamic = "error";
 async function getCurrentTime() {
 	const res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
 
+	console.log(res.status);
 	if (!res.ok) {
 		console.error("Failed to fetch current time:", res.statusText);
 		throw new Error("Failed to fetch current time");
