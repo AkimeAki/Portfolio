@@ -4,7 +4,8 @@ async function getCurrentTime() {
 	const res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
 
 	if (!res.ok) {
-		throw new Error("error");
+		console.error("Failed to fetch current time:", res.statusText);
+		throw new Error("Failed to fetch current time");
 	}
 
 	const data = await res.json();
