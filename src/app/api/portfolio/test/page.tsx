@@ -3,7 +3,9 @@ export const dynamic = "force-static";
 export default async function () {
 	let currentTime = "test";
 	try {
-		const res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
+		const res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC", {
+			cache: "force-cache"
+		});
 
 		console.log(res.status);
 		if (!res.ok) {
