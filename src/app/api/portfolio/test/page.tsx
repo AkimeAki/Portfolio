@@ -1,20 +1,22 @@
 export const dynamic = "error";
 
-async function getCurrentTime() {
-	const res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
-
-	console.log(res.status);
-	if (!res.ok) {
-		console.error("Failed to fetch current time:", res.statusText);
-		throw new Error("Failed to fetch current time");
-	}
-
-	const data = await res.json();
-	return data.datetime;
-}
-
 export default async function () {
-	const currentTime = await getCurrentTime();
+	let currentTime = "test";
+	try {
+		const res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
+
+		console.log(res.status);
+		if (!res.ok) {
+			console.error("Failed to fetch current time:", res.statusText);
+			throw new Error("Failed to fetch current time");
+		}
+
+		currentTime = await res.json();
+		currentTime = String(currentTime);
+	} catch (e) {
+		console.error("Error fetching current time:", e);
+		return <div>Error fetching current time</div>;
+	}
 
 	return <div>SSG TEST: {currentTime}</div>;
 }
