@@ -2,7 +2,7 @@ import type { NiltoSchema, PortfolioSchema } from "@/libs/nilto";
 import nullToUndefined from "@akimeaki/null-to-undefined";
 import { NextResponse } from "next/server";
 
-export const dynamic = "error";
+export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export async function GET() {
@@ -20,7 +20,6 @@ export async function GET() {
 			throw new Error(`データを取得できませんでした。ステータス：${response.status}`);
 		}
 		const niltData: NiltoSchema<PortfolioSchema> = nullToUndefined(await response.json());
-		await new Promise((resolve) => setTimeout(resolve, 5000));
 
 		return new NextResponse(JSON.stringify(niltData.data), {
 			status: 200
