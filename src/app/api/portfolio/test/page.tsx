@@ -1,4 +1,4 @@
-export const dynamic = "error";
+export const dynamic = "force-static";
 
 export default async function () {
 	let currentTime = "test";
