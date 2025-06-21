@@ -12,7 +12,7 @@ export default async function () {
 		}
 
 		currentTime = await res.json();
-		currentTime = String(currentTime);
+		currentTime = JSON.stringify(currentTime);
 	} catch (e) {
 		console.error("Error fetching current time:", e);
 		return <div>Error fetching current time</div>;
