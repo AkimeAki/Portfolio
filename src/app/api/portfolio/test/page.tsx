@@ -1,8 +1,7 @@
 export const dynamic = "error";
-export const dynamicParams = false;
 
 async function getCurrentTime() {
-	const res = await fetch("http://worldtimeapi.org/api/timezone/Etc/UTC");
+	const res = await fetch("https://worldtimeapi.org/api/timezone/Etc/UTC");
 
 	if (!res.ok) {
 		throw new Error("error");
