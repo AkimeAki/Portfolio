@@ -1,4 +1,5 @@
-import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useRef, useState } from "react";
+import { useUpdateEffect } from "@/hooks/useUpdateEffect";
+import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useState } from "react";
 
 interface CategoryContextType {
 	category: string;
@@ -11,7 +12,6 @@ const CategoryContext = createContext<CategoryContextType | undefined>(undefined
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 	const [category, setCategory] = useState<string>("root");
 	const [itemId, setItemId] = useState<string>("");
-	const isFirstRender = useRef(true);
 
 	function syncUrlToState() {
 		const pathSegments = location.pathname.split("/").filter(Boolean);
@@ -35,12 +35,15 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 	}
 
 	useEffect(() => {
-		if (isFirstRender.current) {
-			syncUrlToState();
-			isFirstRender.current = false;
-			return;
-		}
+		syncUrlToState();
+		window.addEventListener("popstate", syncUrlToState);
 
+		return () => {
+			window.removeEventListener("popstate", syncUrlToState);
+		};
+	}, []);
+
+	useUpdateEffect(() => {
 		const expectedPath = category === "root" ? "/portfolio" : `/portfolio/${category}`;
 
 		if (location.pathname === expectedPath) {
@@ -48,15 +51,8 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 		}
 
 		window.history.pushState({ app: "portfolio" }, "", expectedPath);
+		setItemId("");
 	}, [category]);
-
-	useEffect(() => {
-		window.addEventListener("popstate", syncUrlToState);
-
-		return () => {
-			window.removeEventListener("popstate", syncUrlToState);
-		};
-	}, []);
 
 	return <CategoryContext.Provider value={{ category, setCategory, itemId }}>{children}</CategoryContext.Provider>;
 }
