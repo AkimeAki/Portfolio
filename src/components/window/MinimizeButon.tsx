@@ -19,20 +19,19 @@ export function MinimizeButton({ id }: { id: string }) {
 				position: relative;
 				width: 27px;
 				height: 27px;
-				border-radius: 50%;
 
 				&:before {
 					display: block;
 					content: "";
 					width: 13px;
 					height: 13px;
-					border-bottom-color: #c6dd9a;
+					border-bottom-color: #90797d;
 					border-bottom-style: solid;
 					border-bottom-width: 2px;
 				}
 
 				&:hover {
-					background-color: #c6dd9a;
+					background-color: #90797d;
 
 					&:before {
 						border-color: #060303;

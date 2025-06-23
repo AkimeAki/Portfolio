@@ -88,11 +88,13 @@ export function CodeBackground() {
 	}, [ready]);
 
 	useEffect(() => {
+		let timer: NodeJS.Timeout | null = null;
+
 		if (code !== "") {
 			if (element.current !== null) {
 				element.current.style.transitionDuration = `${element.current.scrollHeight * 32}ms`;
 			}
-			setTimeout(() => {
+			timer = setTimeout(() => {
 				if (element.current !== null) {
 					element.current.style.top = `${element.current.scrollHeight * -1}px`;
 				}
@@ -103,6 +105,12 @@ export function CodeBackground() {
 				element.current.style.top = "";
 			}
 		}
+
+		return () => {
+			if (timer !== null) {
+				clearTimeout(timer);
+			}
+		};
 	}, [code]);
 
 	return (
@@ -124,10 +132,11 @@ export function CodeBackground() {
 				opacity: 0.4;
 				width: 100%;
 				height: 100%;
-				color: #292929;
+				color: #363636;
 				transition-property: top;
 				transition-timing-function: linear;
 				tab-size: 2em;
+				font-family: "BestTenCRT";
 
 				animation-name: scroll-code;
 			`}

@@ -19,7 +19,6 @@ export function PinButton({ id }: { id: string }) {
 				position: relative;
 				width: 27px;
 				height: 27px;
-				border-radius: 50%;
 
 				&:before {
 					position: absolute;
@@ -30,7 +29,7 @@ export function PinButton({ id }: { id: string }) {
 					content: "";
 					width: 8px;
 					height: 8px;
-					background-color: #c6dd9a;
+					background-color: #90797d;
 				}
 
 				&:after {
@@ -42,11 +41,11 @@ export function PinButton({ id }: { id: string }) {
 					content: "";
 					width: 16px;
 					height: 5px;
-					background-color: #c6dd9a;
+					background-color: #90797d;
 				}
 
 				&:hover {
-					background-color: #c6dd9a;
+					background-color: #90797d;
 
 					&:before,
 					&:after,
@@ -70,7 +69,7 @@ export function PinButton({ id }: { id: string }) {
 					display: block;
 					width: 3px;
 					height: 9px;
-					background-color: #c6dd9a;
+					background-color: #90797d;
 				`}
 			/>
 			{/* {!$pinedWindowList.includes(id) && (

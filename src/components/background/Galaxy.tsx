@@ -3,7 +3,7 @@
 import { isOSReady } from "@/atom";
 import { css, cx } from "@kuma-ui/core";
 import { useStore } from "@nanostores/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Planet } from "@/components/background/galaxy/Planet";
 import { Orbit } from "@/components/background/galaxy/Orbit";
@@ -11,11 +11,20 @@ import { Orbit } from "@/components/background/galaxy/Orbit";
 export default function () {
 	const $isOSReady = useStore(isOSReady);
 	const canvasElement = useRef<HTMLCanvasElement>(null);
+	const [isReady, setisReady] = useState<boolean>(false);
+
+	useEffect(() => {
+		if ($isOSReady) {
+			setTimeout(() => {
+				setisReady(true);
+			}, 1000);
+		}
+	}, [$isOSReady]);
 
 	useEffect(() => {
 		let unmounted = false;
 
-		if ($isOSReady) {
+		if (isReady) {
 			if (canvasElement.current !== null) {
 				const canvas = canvasElement.current;
 
@@ -91,6 +100,16 @@ export default function () {
 				const maxFPS = 30;
 				let lastUpdateTime = performance.now();
 
+				// 3秒かけてspeedを徐々に1倍にする
+				const startSpeed = 50;
+				const endSpeed = 1;
+				const duration = 1000;
+				const startTime = performance.now();
+				let speed = startSpeed;
+
+				// イージング関数
+				const easeOutQuad = (t: number) => 1 - (1 - t) * (1 - t);
+
 				const tick = (): void => {
 					if (unmounted) {
 						return;
@@ -100,6 +119,16 @@ export default function () {
 					const now = performance.now();
 					const deltaTime = now - lastUpdateTime;
 
+					// 初回のスピード調整処理
+					const elapsed = now - startTime;
+					if (elapsed < duration) {
+						const t = Math.min(elapsed / duration, 1);
+						const easedT = easeOutQuad(t);
+						speed = startSpeed + (endSpeed - startSpeed) * easedT;
+					} else {
+						speed = endSpeed;
+					}
+
 					if (deltaTime < 1000 / maxFPS) {
 						return;
 					}
@@ -108,10 +137,10 @@ export default function () {
 
 					renderer.clear();
 
-					hiyokoPlanet.tracking(orbit1, 0.001, -3, -2);
+					hiyokoPlanet.tracking(orbit1, 0.001 * speed, -3, -2);
 					hiyokoPlanet.rotate(0.14, 1, -1, -1);
 
-					piglinPlanet.tracking(orbit2, 0.002, 0, 0);
+					piglinPlanet.tracking(orbit2, 0.002 * speed, 0, 0);
 					piglinPlanet.rotate(0.2, 1, 1, 1);
 
 					// カメラ
@@ -147,7 +176,7 @@ export default function () {
 		return () => {
 			unmounted = true;
 		};
-	}, [$isOSReady]);
+	}, [isReady]);
 
 	return (
 		<canvas
@@ -165,7 +194,7 @@ export default function () {
 
 					animation-duration: 70ms;
 					animation-fill-mode: forwards;
-					animation-delay: 1700ms;
+					animation-delay: 1000ms;
 					animation-iteration-count: 5;
 					animation-timing-function: linear;
 					opacity: 0;

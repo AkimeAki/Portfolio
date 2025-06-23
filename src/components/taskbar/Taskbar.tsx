@@ -42,7 +42,7 @@ const TaskbarIconMemo = memo(() => {
 						/>
 					</span>
 				))}
-			<span
+			<div
 				className={css`
 					order: 6;
 
@@ -52,7 +52,7 @@ const TaskbarIconMemo = memo(() => {
 				`}
 			>
 				<MinimizedAppArea />
-			</span>
+			</div>
 		</>
 	);
 });
@@ -178,6 +178,44 @@ export function Taskbar() {
 						}
 					`}
 				/>
+				<div
+					className={css`
+						position: absolute;
+						top: 50%;
+						right: 170px;
+						transform: translateY(-50%);
+						height: 50%;
+						user-select: none;
+						pointer-events: none;
+
+						@media (max-width: 1220px) {
+							width: 30vw;
+							height: auto;
+						}
+
+						@media (max-width: 920px) {
+							display: none;
+						}
+					`}
+				>
+					<img
+						src="/desktop/barcode.png"
+						loading="eager"
+						data-loading-image
+						alt=""
+						className={css`
+							height: 100%;
+							image-rendering: pixelated;
+							mask-image: url(/desktop/barcode-mask.png);
+							vertical-align: bottom;
+
+							@media (max-width: 1220px) {
+								width: 100%;
+								height: auto;
+							}
+						`}
+					/>
+				</div>
 				<TaskbarClock />
 			</div>
 		</div>

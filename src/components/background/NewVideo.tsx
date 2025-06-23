@@ -89,7 +89,7 @@ export default function () {
 						`}
 					>
 						<img
-							src="/desktop/new_video_frame.webp"
+							src="/desktop/new_video_frame-colorful.png"
 							alt=""
 							className={css`
 								position: absolute;
@@ -99,6 +99,8 @@ export default function () {
 								width: calc(2600 / 1920 * 100%);
 								height: calc(1700 / 1080 * 100%);
 								z-index: 1;
+								opacity: 0.9;
+								filter: grayscale(1);
 							`}
 						/>
 						<div

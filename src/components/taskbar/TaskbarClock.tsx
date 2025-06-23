@@ -97,7 +97,7 @@ export function TaskbarClock() {
 			</span>
 			<span
 				onClick={() => {
-					addMessage("ネットサーフィンなんかやめて\n早く寝なさい");
+					addMessage("ゲームなんかやめて\n早く寝なさい");
 				}}
 				className={css`
 					font-size: 25px;

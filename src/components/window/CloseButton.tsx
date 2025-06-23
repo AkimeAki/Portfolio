@@ -13,7 +13,6 @@ export function CloseButton({ id }: { id: string }) {
 				position: relative;
 				width: 27px;
 				height: 27px;
-				border-radius: 50%;
 
 				&:hover {
 					background-color: #c82746;
@@ -32,7 +31,7 @@ export function CloseButton({ id }: { id: string }) {
 					content: "";
 					width: 17px;
 					height: 3px;
-					background-color: #c6dd9a;
+					background-color: #90797d;
 				}
 
 				&:before {

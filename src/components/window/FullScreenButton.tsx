@@ -29,10 +29,9 @@ export function FullScreenButton({
 					position: relative;
 					width: 27px;
 					height: 27px;
-					border-radius: 50%;
 
 					&:hover {
-						background-color: #c6dd9a;
+						background-color: #90797d;
 
 						&:before,
 						&:after {
@@ -46,7 +45,7 @@ export function FullScreenButton({
 							&:after {
 								display: block;
 								content: "";
-								border-color: #c6dd9a;
+								border-color: #90797d;
 								border-style: solid;
 								border-width: 2px;
 							}
@@ -69,7 +68,7 @@ export function FullScreenButton({
 								content: "";
 								width: 11px;
 								height: 11px;
-								border-color: #c6dd9a;
+								border-color: #90797d;
 								border-style: solid;
 								border-width: 2px;
 							}
