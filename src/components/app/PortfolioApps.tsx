@@ -1,11 +1,33 @@
+"use client";
+
 import { css } from "@kuma-ui/core";
 import { AppIcon } from "@/components/desktop/AppIcon";
 import { usePortfolio } from "@/context/PortfolioContext";
+import { PortfolioPage } from "@/components/app/commons/PortfolioPage";
+import { getPortfolio, type PortfolioSchema } from "@/libs/nilto";
+import { useEffect, useState } from "react";
+import { Loading } from "@/components/app/commons/Loading";
 
 export function PortfolioApps() {
-	const { setCategory } = usePortfolio();
+	const { setCategory, itemId } = usePortfolio();
+	const [isLoading, setIsLoading] = useState(true);
+	const [data, setData] = useState<PortfolioSchema | null>(null);
 
-	return (
+	useEffect(() => {
+		if (itemId === "") {
+			return;
+		}
+
+		setIsLoading(true);
+		(async () => {
+			const rowData = await getPortfolio({ id: itemId });
+
+			setData(rowData[0]);
+			setIsLoading(false);
+		})();
+	}, [itemId]);
+
+	return itemId === "" ? (
 		<div
 			className={css`
 				display: flex;
@@ -110,15 +132,8 @@ export function PortfolioApps() {
 			>
 				Discord Bot
 			</AppIcon>
-			<AppIcon
-				imgSrc="/app/blocks.png"
-				isPixel
-				onClick={() => {
-					setCategory("other");
-				}}
-			>
-				その他
-			</AppIcon>
 		</div>
+	) : (
+		<>{isLoading || data === null ? <Loading /> : <PortfolioPage data={data} />}</>
 	);
 }

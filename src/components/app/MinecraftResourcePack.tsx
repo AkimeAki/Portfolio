@@ -9,6 +9,9 @@ export function MinecraftResourcePack() {
 			hoverText="詳しく見る"
 			data={() => getPortfolio({ type: "minecraft_resourcepack" })}
 			linkText="ダウンロードする"
+			backFunction={() => {
+				history.go(-1);
+			}}
 		/>
 	);
 }

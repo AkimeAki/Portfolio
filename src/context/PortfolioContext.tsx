@@ -2,6 +2,7 @@ import { createContext, type Dispatch, type SetStateAction, useContext, useEffec
 
 interface CategoryContextType {
 	category: string;
+	itemId: string;
 	setCategory: Dispatch<SetStateAction<string>>;
 }
 
@@ -9,6 +10,7 @@ const CategoryContext = createContext<CategoryContextType | undefined>(undefined
 
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 	const [category, setCategory] = useState<string>("root");
+	const [itemId, setItemId] = useState<string>("");
 	const isFirstRender = useRef(true);
 
 	function syncUrlToState() {
@@ -22,6 +24,11 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 
 		if (category === undefined) {
 			setCategory("root");
+		} else if (category === "item") {
+			const itemId = pathSegments[2];
+			setCategory("root");
+			setItemId(itemId ?? "");
+			console.log(itemId);
 		} else {
 			setCategory(category);
 		}
@@ -51,7 +58,7 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 		};
 	}, []);
 
-	return <CategoryContext.Provider value={{ category, setCategory }}>{children}</CategoryContext.Provider>;
+	return <CategoryContext.Provider value={{ category, setCategory, itemId }}>{children}</CategoryContext.Provider>;
 }
 
 export function usePortfolio() {

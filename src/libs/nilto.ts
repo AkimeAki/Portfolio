@@ -50,7 +50,7 @@ export type PortfolioSchema = NiltoDataSchema<{
 }>;
 
 interface GetPortfolioProps {
-	type: string;
+	type?: string;
 	id?: string;
 }
 
@@ -58,7 +58,7 @@ export async function getPortfolio({ type, id }: GetPortfolioProps) {
 	let result: PortfolioSchema[] = [];
 
 	try {
-		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_ROOT_UR ?? ""}/api/portfolio`, {
+		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_ROOT_URL ?? ""}/api/portfolio`, {
 			method: "GET",
 			cache: "force-cache"
 		});
@@ -69,9 +69,11 @@ export async function getPortfolio({ type, id }: GetPortfolioProps) {
 
 		result = niltData;
 
-		result = result.filter((data) => {
-			return data.data_type === type;
-		});
+		if (type !== undefined) {
+			result = result.filter((data) => {
+				return data.data_type === type;
+			});
+		}
 
 		if (id !== undefined) {
 			result = result.filter((data) => {

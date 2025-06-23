@@ -13,9 +13,10 @@ interface Props {
 	data: () => Promise<PortfolioSchema[]>;
 	aspect?: string;
 	linkText?: string;
+	backFunction?: () => void;
 }
 
-export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText }: Props) {
+export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText, backFunction }: Props) {
 	const [data, setData] = useState<PortfolioSchema[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [selectId, setSelectId] = useState<string | null>(null);
@@ -59,7 +60,7 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText 
 		<>
 			{isLoading ? (
 				<Loading />
-			) : (
+			) : selectId === null ? (
 				<div
 					className={css`
 						width: 100%;
@@ -79,172 +80,170 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText 
 							}
 						`}
 					>
-						{selectId === null ? (
-							<div
-								className={css`
-									display: grid;
-									grid-template-columns: 1fr 1fr 1fr;
-									gap: 20px;
+						<div
+							className={css`
+								display: grid;
+								grid-template-columns: 1fr 1fr 1fr;
+								gap: 20px;
 
-									@container (max-width: 800px) {
-										grid-template-columns: 1fr 1fr;
-									}
-								`}
-							>
-								{data.map((item) => {
-									return (
-										<div
-											key={item._id}
+								@container (max-width: 800px) {
+									grid-template-columns: 1fr 1fr;
+								}
+							`}
+						>
+							{data.map((item) => {
+								return (
+									<div
+										key={item._id}
+										className={css`
+											display: flex;
+											flex-direction: column;
+											gap: 5px;
+											width: 100%;
+										`}
+									>
+										<button
+											type="button"
+											onClick={() => {
+												setSelectId(String(item._id));
+											}}
 											className={css`
-												display: flex;
-												flex-direction: column;
-												gap: 5px;
+												position: relative;
+												display: block;
+												border: none;
 												width: 100%;
+
+												&:hover {
+													img {
+														filter: brightness(0.5);
+													}
+
+													span {
+														opacity: 1;
+													}
+												}
 											`}
+											onMouseEnter={(e) => {
+												if (
+													!(e.target instanceof HTMLImageElement) ||
+													item.hover_eyecatch === undefined
+												) {
+													return;
+												}
+
+												e.target.src = `${item.hover_eyecatch.url}?width=560`;
+											}}
+											onMouseLeave={(e) => {
+												if (
+													!(e.target instanceof HTMLImageElement) ||
+													item.hover_eyecatch === undefined ||
+													item.eyecatch === undefined
+												) {
+													return;
+												}
+
+												e.target.src = `${item.eyecatch.url}?width=560&format=webp`;
+											}}
 										>
-											<button
-												type="button"
-												onClick={() => {
-													setSelectId(String(item._id));
-												}}
+											<span
 												className={css`
-													position: relative;
-													display: block;
-													border: none;
-													width: 100%;
-
-													&:hover {
-														img {
-															filter: brightness(0.5);
-														}
-
-														span {
-															opacity: 1;
-														}
-													}
-												`}
-												onMouseEnter={(e) => {
-													if (
-														!(e.target instanceof HTMLImageElement) ||
-														item.hover_eyecatch === undefined
-													) {
-														return;
-													}
-
-													e.target.src = `${item.hover_eyecatch.url}?width=560`;
-												}}
-												onMouseLeave={(e) => {
-													if (
-														!(e.target instanceof HTMLImageElement) ||
-														item.hover_eyecatch === undefined ||
-														item.eyecatch === undefined
-													) {
-														return;
-													}
-
-													e.target.src = `${item.eyecatch.url}?width=560&format=webp`;
-												}}
-											>
-												<span
-													className={css`
-														position: absolute;
-														top: 50%;
-														left: 50%;
-														transform: translate(-50%, -50%);
-														opacity: 0;
-														user-select: none;
-														pointer-events: none;
-														width: 100%;
-														font-weight: bold;
-														text-align: center;
-														font-size: 18px;
-														color: white;
-														transition-duration: 200ms;
-														transition-property: opacity;
-														z-index: 1;
-														font-family: "BestTenCRT";
-													`}
-												>
-													{hoverText}
-												</span>
-												<img
-													src={
-														item.eyecatch !== undefined
-															? `${item.eyecatch?.url}?width=340&format=webp`
-															: "/portfolio/no-image.png"
-													}
-													alt={item.title}
-													style={{ "--aspect": aspect } as React.CSSProperties}
-													className={cx(
-														css`
-															width: 100%;
-															height: 100%;
-															object-fit: cover;
-															vertical-align: bottom;
-															transition-duration: 200ms;
-															transition-property: filter;
-															aspect-ratio: 3/2;
-															user-select: none;
-														`,
-														aspect !== undefined &&
-															css`
-																aspect-ratio: var(--aspect);
-																object-fit: contain;
-															`
-													)}
-												/>
-												{item.type === "work" && (
-													<div
-														className={css`
-															position: absolute;
-															bottom: 10px;
-															right: 10px;
-															z-index: 1;
-														`}
-													>
-														<PortfolioBadge type="work" />
-													</div>
-												)}
-											</button>
-											<h3
-												className={css`
+													position: absolute;
+													top: 50%;
+													left: 50%;
+													transform: translate(-50%, -50%);
+													opacity: 0;
 													user-select: none;
 													pointer-events: none;
 													width: 100%;
+													font-weight: bold;
 													text-align: center;
 													font-size: 18px;
 													color: white;
-													word-break: auto-phrase;
-													overflow-wrap: anywhere;
+													transition-duration: 200ms;
+													transition-property: opacity;
+													z-index: 1;
 													font-family: "BestTenCRT";
-													line-height: 1.3;
-													user-select: none;
-
-													@container (max-width: 720px) {
-														font-size: 16px;
-													}
 												`}
 											>
-												{item.title}
-											</h3>
-										</div>
-									);
-								})}
-							</div>
-						) : (
-							<>
-								{(() => {
-									const targetData = data.find((data) => String(data._id) === selectId);
-									if (targetData !== undefined) {
-										return <PortfolioPage data={targetData} linkText={linkText} />;
-									}
+												{hoverText}
+											</span>
+											<img
+												src={
+													item.eyecatch !== undefined
+														? `${item.eyecatch?.url}?width=340&format=webp`
+														: "/portfolio/no-image.png"
+												}
+												alt={item.title}
+												style={{ "--aspect": aspect } as React.CSSProperties}
+												className={cx(
+													css`
+														width: 100%;
+														height: 100%;
+														object-fit: cover;
+														vertical-align: bottom;
+														transition-duration: 200ms;
+														transition-property: filter;
+														aspect-ratio: 3/2;
+														user-select: none;
+													`,
+													aspect !== undefined &&
+														css`
+															aspect-ratio: var(--aspect);
+															object-fit: contain;
+														`
+												)}
+											/>
+											{item.type === "work" && (
+												<div
+													className={css`
+														position: absolute;
+														bottom: 10px;
+														right: 10px;
+														z-index: 1;
+													`}
+												>
+													<PortfolioBadge type="work" />
+												</div>
+											)}
+										</button>
+										<h3
+											className={css`
+												user-select: none;
+												pointer-events: none;
+												width: 100%;
+												text-align: center;
+												font-size: 18px;
+												color: white;
+												word-break: auto-phrase;
+												overflow-wrap: anywhere;
+												font-family: "BestTenCRT";
+												line-height: 1.3;
+												user-select: none;
 
-									return "";
-								})()}
-							</>
-						)}
+												@container (max-width: 720px) {
+													font-size: 16px;
+												}
+											`}
+										>
+											{item.title}
+										</h3>
+									</div>
+								);
+							})}
+						</div>
 					</div>
 				</div>
+			) : (
+				<>
+					{(() => {
+						const targetData = data.find((data) => String(data._id) === selectId);
+						if (targetData !== undefined) {
+							return <PortfolioPage data={targetData} linkText={linkText} backFunction={backFunction} />;
+						}
+
+						return "";
+					})()}
+				</>
 			)}
 		</>
 	);
