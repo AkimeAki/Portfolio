@@ -36,3 +36,8 @@ jobs:
             NILTO_API_KEY
         env:
           NILTO_API_KEY: ${{ secrets.NILTO_API_KEY }}
+      - name: Purge Cloudflare Cache
+        if: success()
+        run: npx wrangler cache purge --hosts "shikiiro.net" --zone-id ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
