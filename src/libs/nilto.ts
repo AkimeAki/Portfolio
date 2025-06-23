@@ -62,7 +62,7 @@ export async function getPortfolio({ type, id }: GetPortfolioProps) {
 	try {
 		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_ROOT_URL ?? ""}/api/portfolio`, {
 			method: "GET",
-			cache: "force-cache"
+			cache: "no-store"
 		});
 		if (!response.ok) {
 			throw new Error(`データを取得できませんでした。ステータス：${response.status}`);
