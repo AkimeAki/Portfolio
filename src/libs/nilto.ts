@@ -44,6 +44,7 @@ export type PortfolioSchema = NiltoDataSchema<{
 		}>;
 	}[];
 	client: NiltoDataSchema<PortfolioAccountSchema>;
+	is_fanmade: boolean;
 	credits: {
 		credit_position: string;
 		person: NiltoDataSchema<PortfolioAccountSchema>;

@@ -55,14 +55,17 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 						>
 							{data.title}
 						</h2>
-						{data.type === "work" && (
+						{(data.type === "work" || data.is_fanmade) && (
 							<div
 								className={css`
 									display: flex;
 									justify-content: center;
+									align-items: center;
+									gap: 5px;
 								`}
 							>
-								<PortfolioBadge type="work" />
+								{data.type === "work" && <PortfolioBadge type="work" />}
+								{data.is_fanmade && <PortfolioBadge type="fanmade" />}
 							</div>
 						)}
 						<div

@@ -192,16 +192,20 @@ export function PortfolioGrid({ hoverText = "", data: promiseData, aspect, backF
 														`
 												)}
 											/>
-											{item.type === "work" && (
+											{(item.type === "work" || item.is_fanmade) && (
 												<div
 													className={css`
+														display: flex;
+														align-items: center;
+														gap: 5px;
 														position: absolute;
 														bottom: 10px;
 														right: 10px;
 														z-index: 1;
 													`}
 												>
-													<PortfolioBadge type="work" />
+													{item.type === "work" && <PortfolioBadge type="work" />}
+													{item.is_fanmade && <PortfolioBadge type="fanmade" />}
 												</div>
 											)}
 										</button>

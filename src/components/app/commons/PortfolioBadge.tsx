@@ -42,10 +42,16 @@ export function PortfolioBadge({ type }: Props) {
 					css`
 						background-color: #ab2944;
 						color: white;
+					`,
+				type === "fanmade" &&
+					css`
+						background-color: #2291bd;
+						color: white;
 					`
 			)}
 		>
 			{type === "work" && "依頼"}
+			{type === "fanmade" && "二次創作"}
 		</span>
 	);
 }
