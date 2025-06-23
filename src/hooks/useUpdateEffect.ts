@@ -14,5 +14,5 @@ export const useUpdateEffect = (effect: EffectCallback, deps: DependencyList) =>
 		return () => {
 			isMounted.current = false;
 		};
-	}, []); // 空の依存配列でマウント・アンマウント時にのみ実行
+	}, []);
 };
