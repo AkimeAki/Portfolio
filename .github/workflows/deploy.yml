@@ -38,5 +38,8 @@ jobs:
           NILTO_API_KEY: ${{ secrets.NILTO_API_KEY }}
       - name: Purge Cloudflare Cache
         if: success()
-        run: curl --fail -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" -H "Content-Type: application/json" --data '{"hosts":["shikiiro.net"]}'
-
+        run: |
+          curl --fail -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"hosts":["shikiiro.net"]}'
