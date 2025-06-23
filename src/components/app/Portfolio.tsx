@@ -4,7 +4,7 @@ import { PortfolioProvider, usePortfolio } from "@/context/PortfolioContext";
 import { componentMap } from "@/data/portfolio";
 import { portfolioCategoryMap } from "@/data/portfolio-def";
 import { css, cx } from "@kuma-ui/core";
-import type { PropsWithChildren } from "react";
+import { useEffect, useRef, type PropsWithChildren } from "react";
 
 interface SideNavProps {
 	onClick: () => void;
@@ -17,7 +17,9 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 		<span
 			onClick={onClick}
 			style={{ "--indent": `${String(indent)}em` } as React.CSSProperties}
+			data-selected={selected}
 			className={cx(
+				"select-category-nav",
 				css`
 					padding: 5px 13px 10px;
 					padding-left: calc(13px + var(--indent));
@@ -37,8 +39,10 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 					}
 
 					@container (max-width: 960px) {
-						padding: 7px 13px 12px;
+						padding: 0 13px 5px;
 						white-space: nowrap;
+						display: flex;
+						align-items: center;
 
 						body[data-os="android"] & {
 							padding-bottom: 10px;
@@ -70,6 +74,26 @@ function _Portfolio() {
 	const { category, setCategory } = usePortfolio();
 	const componentId = portfolioCategoryMap[category].componentId;
 	const Component = componentMap[componentId];
+	const asideRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const aside = asideRef.current;
+		if (!aside) {
+			return;
+		}
+
+		if (window.matchMedia("(max-width: 960px)").matches) {
+			const selectedNav = aside.querySelector<HTMLSpanElement>(`.select-category-nav[data-selected="true"]`);
+			if (selectedNav === null) {
+				return;
+			}
+
+			aside.scroll({
+				left: selectedNav.offsetLeft,
+				behavior: "smooth"
+			});
+		}
+	}, [category]);
 
 	return (
 		<>
@@ -106,6 +130,7 @@ function _Portfolio() {
 				`}
 			>
 				<aside
+					ref={asideRef}
 					className={css`
 						display: flex;
 						flex-direction: column;
@@ -118,6 +143,7 @@ function _Portfolio() {
 							flex-direction: row;
 							overflow-y: hidden;
 							overflow-x: scroll;
+							height: 50px;
 						}
 					`}
 				>
@@ -226,6 +252,7 @@ function _Portfolio() {
 
 						@container (max-width: 960px) {
 							width: 100%;
+							height: calc(100% - 50px);
 						}
 					`}
 				>
