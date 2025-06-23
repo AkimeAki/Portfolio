@@ -99,8 +99,7 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 								/>
 							</div>
 						) : (
-							data["3dmodel"] === undefined &&
-							data.eyecatch !== undefined && (
+							data["3dmodel"] === undefined && (
 								<>
 									{data.url !== "" && (
 										<div
@@ -139,31 +138,33 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 											</a>
 										</div>
 									)}
-									<div
-										className={css`
-											position: relative;
-											display: block;
-											border: none;
-											width: 100%;
-											max-width: 560px;
-											margin: 0 auto;
-										`}
-									>
-										<img
-											src={`${data.eyecatch.url}?width=560&format=webp`}
-											alt={data.title}
+									{data.eyecatch !== undefined && (
+										<div
 											className={css`
+												position: relative;
+												display: block;
+												border: none;
 												width: 100%;
-												height: 100%;
-												object-fit: cover;
-												vertical-align: bottom;
-												transition-duration: 200ms;
-												transition-property: filter;
-												user-select: none;
-												pointer-events: none;
+												max-width: 560px;
+												margin: 0 auto;
 											`}
-										/>
-									</div>
+										>
+											<img
+												src={`${data.eyecatch.url}?width=560&format=webp`}
+												alt={data.title}
+												className={css`
+													width: 100%;
+													height: 100%;
+													object-fit: cover;
+													vertical-align: bottom;
+													transition-duration: 200ms;
+													transition-property: filter;
+													user-select: none;
+													pointer-events: none;
+												`}
+											/>
+										</div>
+									)}
 								</>
 							)
 						)}
