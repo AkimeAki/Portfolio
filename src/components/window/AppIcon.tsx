@@ -14,6 +14,8 @@ export function AppIcon({ imagePath, alt, isPixel = true }: Props) {
 				css`
 					height: 100%;
 					aspect-ratio: 1/1;
+					user-select: none;
+					pointer-events: none;
 				`,
 				isPixel &&
 					css`
