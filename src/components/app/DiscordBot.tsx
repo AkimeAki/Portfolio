@@ -1,11 +1,11 @@
 "use client";
 
-import { Portfolio } from "@/components/app/commons/Portfolio";
+import { PortfolioGrid } from "@/components/app/commons/PortfolioGrid";
 import { getPortfolio } from "@/libs/nilto";
 
 export function DiscordBot() {
 	return (
-		<Portfolio
+		<PortfolioGrid
 			hoverText="詳しく見る"
 			data={() => getPortfolio({ type: "discord_bot" })}
 			backFunction={() => {

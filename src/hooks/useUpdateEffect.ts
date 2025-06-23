@@ -1,6 +1,6 @@
 import { type DependencyList, type EffectCallback, useEffect, useRef } from "react";
 
-export const useUpdateEffect = (effect: EffectCallback, deps: DependencyList) => {
+export function useUpdateEffect(effect: EffectCallback, deps: DependencyList) {
 	const isMounted = useRef(false);
 
 	useEffect(() => {
@@ -15,4 +15,4 @@ export const useUpdateEffect = (effect: EffectCallback, deps: DependencyList) =>
 			isMounted.current = false;
 		};
 	}, []);
-};
+}

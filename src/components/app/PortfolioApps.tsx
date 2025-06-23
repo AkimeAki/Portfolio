@@ -134,6 +134,6 @@ export function PortfolioApps() {
 			</AppIcon>
 		</div>
 	) : (
-		<>{isLoading || data === null ? <Loading /> : <PortfolioPage data={data} />}</>
+		<>{isLoading || data === null ? <Loading /> : <PortfolioPage data={data} linkText={data.url_text} />}</>
 	);
 }

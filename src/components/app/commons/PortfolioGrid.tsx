@@ -12,11 +12,10 @@ interface Props {
 	target?: string;
 	data: () => Promise<PortfolioSchema[]>;
 	aspect?: string;
-	linkText?: string;
 	backFunction?: () => void;
 }
 
-export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText, backFunction }: Props) {
+export function PortfolioGrid({ hoverText = "", data: promiseData, aspect, backFunction }: Props) {
 	const [data, setData] = useState<PortfolioSchema[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [selectId, setSelectId] = useState<string | null>(null);
@@ -238,7 +237,13 @@ export function Portfolio({ hoverText = "", data: promiseData, aspect, linkText,
 					{(() => {
 						const targetData = data.find((data) => String(data._id) === selectId);
 						if (targetData !== undefined) {
-							return <PortfolioPage data={targetData} linkText={linkText} backFunction={backFunction} />;
+							return (
+								<PortfolioPage
+									data={targetData}
+									linkText={targetData.url_text}
+									backFunction={backFunction}
+								/>
+							);
 						}
 
 						return "";

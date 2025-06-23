@@ -32,6 +32,7 @@ export type PortfolioSchema = NiltoDataSchema<{
 	eyecatch?: NiltoMedia;
 	hover_eyecatch?: NiltoMedia;
 	url: string;
+	url_text: string;
 	"3dmodel"?: NiltoMedia;
 	type: string;
 	created_at: string;

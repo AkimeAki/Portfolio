@@ -132,7 +132,7 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 											>
 												{data.url.startsWith("https://www.pixiv.net/")
 													? "pixivで見る"
-													: (linkText ?? "アクセスする")}
+													: (linkText === "" || linkText === undefined) && "アクセスする"}
 											</a>
 										</div>
 									)}
@@ -246,7 +246,10 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 											key={index}
 											className={cx(
 												css`
+													display: flex;
+													align-items: center;
 													color: #d8d8d8;
+													gap: 10px;
 												`,
 												credit.person.name === "彩季" &&
 													css`
@@ -254,7 +257,7 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 													`
 											)}
 										>
-											<span>{credit.credit_position}: </span>
+											<span>{credit.credit_position}:</span>
 											{credit.person.url === "" ? (
 												<span>{credit.person.name}</span>
 											) : (
@@ -263,13 +266,54 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 													target="_blank"
 													rel="noreferrer"
 													className={cx(
+														css`
+															display: flex;
+															gap: 5px;
+															align-items: center;
+															position: relative;
+														`,
 														credit.person.url !== "" &&
 															css`
-																text-decoration: underline;
+																&:hover {
+																	&:after {
+																		content: "";
+																		width: 100%;
+																		height: 1px;
+																		background-color: currentColor;
+																		display: block;
+																		position: absolute;
+																		bottom: 0;
+																		left: 0;
+																	}
+																}
 															`
 													)}
 												>
-													{credit.person.name}
+													<span>{credit.person.name}</span>
+													{(() => {
+														const url = new URL(credit.person.url);
+														if (
+															url.hostname === "x.com" ||
+															url.hostname === "twitter.com"
+														) {
+															return (
+																<img
+																	src="/portfolio/link/x.png"
+																	alt="X"
+																	className={css`
+																		background-color: #000000;
+																		border-radius: 50%;
+																		width: 20px;
+																		aspect-ratio: 1/1;
+																		transform: translateY(1px);
+																		user-select: none;
+																	`}
+																/>
+															);
+														}
+
+														return null;
+													})()}
 												</a>
 											)}
 										</span>
