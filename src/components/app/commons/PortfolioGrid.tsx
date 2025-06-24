@@ -172,7 +172,7 @@ export function PortfolioGrid({ hoverText = "", data: promiseData, aspect, backF
 														? `${item.eyecatch?.url}?width=340&format=webp`
 														: "/portfolio/no-image.png"
 												}
-												alt={item.title}
+												alt={item.eyecatch?.alt ?? item.title}
 												style={{ "--aspect": aspect } as React.CSSProperties}
 												className={cx(
 													css`
