@@ -74,6 +74,10 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 									text-align: center;
 									white-space: pre-line;
 									line-height: 1.4;
+
+									&:not(:last-child) {
+										margin-bottom: 10px;
+									}
 								}
 							`}
 							dangerouslySetInnerHTML={{ __html: data.detail }}
