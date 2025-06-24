@@ -132,9 +132,18 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 													}
 												`}
 											>
-												{data.url.startsWith("https://www.pixiv.net/")
-													? "pixivで見る"
-													: (linkText === "" || linkText === undefined) && "アクセスする"}
+												{(() => {
+													const url = new URL(data.url);
+													if (url.hostname === "www.pixiv.net") {
+														return "pixivで見る";
+													}
+
+													if (linkText === "" || linkText === undefined) {
+														return "アクセスする";
+													}
+
+													return linkText;
+												})()}
 											</a>
 										</div>
 									)}
