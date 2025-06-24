@@ -45,11 +45,11 @@ function SideNav({ onClick, children, indent = 0, selected = false }: PropsWithC
 						align-items: center;
 
 						body[data-os="android"] & {
-							padding-bottom: 10px;
+							padding-bottom: 7px;
 						}
 
 						body[data-browser="safari"] & {
-							padding-bottom: 10px;
+							padding-bottom: 7px;
 						}
 					}
 
