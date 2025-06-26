@@ -28,7 +28,6 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 			const itemId = pathSegments[2];
 			setCategory("root");
 			setItemId(itemId ?? "");
-			console.log(itemId);
 		} else {
 			setCategory(category);
 		}
