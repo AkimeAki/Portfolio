@@ -23,7 +23,7 @@ export function TaskbarStartIcon({ href, alt, iconPath, text = "" }: Props) {
 					display: block;
 					width: 45px;
 					height: 45px;
-					background-color: #f44458;
+					background-color: var(--theme-red);
 					border-style: solid;
 					border-width: 2px;
 					border-color: transparent;
@@ -33,7 +33,7 @@ export function TaskbarStartIcon({ href, alt, iconPath, text = "" }: Props) {
 
 					@media (hover: hover) {
 						&:hover {
-							border-color: #c6dd95;
+							border-color: var(--theme-green);
 						}
 					}
 				`}

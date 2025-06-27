@@ -27,20 +27,20 @@ export function MinimizedAppArea() {
 								display: block;
 								width: 40px;
 								height: 40px;
-								background-color: #c6dd95;
+								background-color: var(--theme-green);
 								border-style: solid;
 								border-width: 3px;
 								border-color: transparent;
 
 								@media (hover: hover) {
 									&:hover {
-										border-color: #f44458;
+										border-color: var(--theme-red);
 									}
 								}
 							`,
 							state.isFocused &&
 								css`
-									border-color: #f44458;
+									border-color: var(--theme-red);
 								`
 						)}
 					>

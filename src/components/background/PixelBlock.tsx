@@ -50,7 +50,7 @@ export function PixelBlock({ opacity, top, left, right, bottom, width, height }:
 			className={cx(
 				css`
 					position: absolute;
-					background-color: #ad2b46;
+					background-color: var(--theme-red);
 					border: 2px solid #75182c;
 					user-select: none;
 					animation-duration: 70ms;

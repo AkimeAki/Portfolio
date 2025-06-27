@@ -286,7 +286,7 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 							width: 100%;
 							height: 100%;
 
-							background-color: #ad2b46;
+							background-color: var(--theme-red);
 							opacity: 0;
 
 							animation-duration: 150ms;

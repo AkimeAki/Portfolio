@@ -17,7 +17,7 @@ export function TaskbarIcon({ href, alt, iconPath }: Props) {
 				height: 40px;
 				background-color: #f44458;
 				border-style: solid;
-				border-width: 2px;
+				border-width: 3px;
 				border-color: transparent;
 
 				@container (max-width: 720px) {
@@ -26,7 +26,7 @@ export function TaskbarIcon({ href, alt, iconPath }: Props) {
 
 				@media (hover: hover) {
 					&:hover {
-						border-color: #c6dd95;
+						border-color: var(--theme-green);
 					}
 				}
 			`}

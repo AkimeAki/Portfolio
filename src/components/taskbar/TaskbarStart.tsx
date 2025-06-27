@@ -72,7 +72,7 @@ export function TaskbarStart() {
 						width: 450px;
 						max-height: 550px;
 						height: calc(100% - 90px);
-						background-color: #ad2b46;
+						background-color: var(--theme-red);
 						user-select: none;
 						pointer-events: none;
 						opacity: 0;
@@ -187,7 +187,7 @@ export function TaskbarStart() {
 						height: 40px;
 						background-color: #f44458;
 						border-style: solid;
-						border-width: 2px;
+						border-width: 3px;
 						border-color: transparent;
 						transition-duration: 200ms;
 						transition-property: background-color;
@@ -198,13 +198,13 @@ export function TaskbarStart() {
 
 						@media (hover: hover) {
 							&:hover {
-								border-color: #c6dd95;
+								border-color: var(--theme-green);
 							}
 						}
 					`,
 					isOpen
 						? css`
-								background-color: #c6dd95;
+								background-color: var(--theme-green);
 							`
 						: ""
 				].join(" ")}
