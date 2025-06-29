@@ -1,17 +1,18 @@
 import * as THREE from "three";
 import type { Orbit } from "@/components/background/galaxy/Orbit";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { type GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 export class Planet {
 	mesh: THREE.Group | null;
+	model: GLTF | null;
 	moveTime: number;
 	private readonly scene: THREE.Scene;
 
 	constructor(scene: THREE.Scene) {
 		this.scene = scene;
 		this.moveTime = 0;
-
 		this.mesh = null;
+		this.model = null;
 	}
 
 	tracking(orbit: Orbit, speed: number, x: number, y: number) {
@@ -62,8 +63,34 @@ export class Planet {
 		model.scene.traverse((node) => {
 			node.castShadow = true;
 			node.receiveShadow = true;
+
+			// 縁取り
+			// if ((node as THREE.Mesh).isMesh && (node as THREE.Mesh).geometry) {
+			// 	const mesh = node as THREE.Mesh;
+
+			// 	// アウトライン用のメッシュ
+			// 	const outline = new THREE.Mesh(
+			// 		mesh.geometry,
+			// 		new THREE.MeshBasicMaterial({
+			// 			color: 0x000000,
+			// 			side: THREE.BackSide
+			// 		})
+			// 	);
+
+			// 	outline.scale.multiplyScalar(1.05);
+			// 	outline.name = "outline";
+
+			// 	// メッシュの親に追加
+			// 	if (mesh.parent !== null) {
+			// 		mesh.parent.add(outline);
+			// 		outline.position.copy(mesh.position);
+			// 		outline.quaternion.copy(mesh.quaternion);
+			// 		outline.rotation.copy(mesh.rotation);
+			// 	}
+			// }
 		});
 		this.scene.add(model.scene);
 		this.mesh = model.scene;
+		this.model = model;
 	}
 }

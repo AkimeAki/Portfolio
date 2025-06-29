@@ -47,26 +47,26 @@ export default function () {
 				const scene = new THREE.Scene();
 
 				// 全方面を照らすライト
-				const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
-				scene.add(hemisphereLight);
+				const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 3);
+				scene.add(ambientLight);
 
 				// 太陽光
-				const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
-				directionalLight.position.set(-50, 100, 50);
+				// const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
+				// directionalLight.position.set(-50, 100, 50);
 
 				// 太陽光の可視化
 				// scene.add(new THREE.DirectionalLightHelper(directionalLight, 10));
 
 				// 影
-				directionalLight.castShadow = true; // 影 ON
-				directionalLight.shadow.camera.near = 0;
-				directionalLight.shadow.camera.top = 100;
-				directionalLight.shadow.camera.bottom = -100;
-				directionalLight.shadow.camera.right = 100;
-				directionalLight.shadow.camera.left = -100;
-				directionalLight.shadow.mapSize.width = directionalLight.shadow.mapSize.height = 512;
+				// directionalLight.castShadow = true; // 影 ON
+				// directionalLight.shadow.camera.near = 0;
+				// directionalLight.shadow.camera.top = 100;
+				// directionalLight.shadow.camera.bottom = -100;
+				// directionalLight.shadow.camera.right = 100;
+				// directionalLight.shadow.camera.left = -100;
+				// directionalLight.shadow.mapSize.width = directionalLight.shadow.mapSize.height = 512;
 				// directionalLight.shadow.mapSize.set(4096, 4096);
-				scene.add(directionalLight);
+				// scene.add(directionalLight);
 
 				// 影の可視化
 				// scene.add(new THREE.CameraHelper(directionalLight.shadow.camera));
@@ -77,12 +77,12 @@ export default function () {
 				camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 				const orbit1 = new Orbit(scene);
-				const orbit2 = new Orbit(scene);
+				// const orbit2 = new Orbit(scene);
 				// const orbit3 = new Orbit(scene);
 				// const orbit4 = new Orbit(scene);
 				// const orbit5 = new Orbit(scene);
 				orbit1.changePoints(0, 0, 2);
-				orbit2.changePoints(0, 0, 4);
+				// orbit2.changePoints(0, 0, 4);
 				// orbit3.changePoints(0, 0, 6);
 				// orbit4.changePoints(0, 0, 8);
 				// orbit5.changePoints(0, 0, 10);
@@ -93,9 +93,9 @@ export default function () {
 				hiyokoPlanet.load("/hiyoko.glb");
 
 				// ピグリン惑星
-				const piglinPlanet = new Planet(scene);
+				// const piglinPlanet = new Planet(scene);
 				// piglinPlanet.load("models/piglin.glb", -20, 5);
-				piglinPlanet.load("/piglin.glb");
+				// piglinPlanet.load("/piglin.glb");
 
 				const maxFPS = 30;
 				let lastUpdateTime = performance.now();
@@ -137,11 +137,11 @@ export default function () {
 
 					renderer.clear();
 
-					hiyokoPlanet.tracking(orbit1, 0.001 * speed, -3, -2);
-					hiyokoPlanet.rotate(0.14, 1, -1, -1);
+					hiyokoPlanet.tracking(orbit1, 0.002 * speed, 0, 0);
+					hiyokoPlanet.rotate(0.2, 1, 1, 1);
 
-					piglinPlanet.tracking(orbit2, 0.002 * speed, 0, 0);
-					piglinPlanet.rotate(0.2, 1, 1, 1);
+					// piglinPlanet.tracking(orbit2, 0.002 * speed, 0, 0);
+					// piglinPlanet.rotate(0.2, 1, 1, 1);
 
 					// カメラ
 					camera.position.copy(new THREE.Vector3((window.innerWidth / 3) * 0.1, 10, 50));

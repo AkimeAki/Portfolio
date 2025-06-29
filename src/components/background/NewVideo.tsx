@@ -77,10 +77,6 @@ export default function () {
 							height: 100%;
 							user-select: none;
 							pointer-events: none;
-							mask-image: url(/desktop/new_video-mask.png);
-							mask-position: center;
-							mask-size: cover;
-							mask-repeat: no-repeat;
 						`}
 					>
 						<div
