@@ -4,7 +4,7 @@ import { css } from "@kuma-ui/core";
 import { useEffect, useRef, useState } from "react";
 
 const introFullText =
-	"ホームページを開いていただきありがとうございます。彩季（あき）と申します。\nゆっくり実況、生配信、ウェブサービス制作など気まぐれにやってます🐱\nこのサイトにはいくつかおもしろ要素があるので楽しんで行ってください。";
+	"ホームページを開いていただきありがとうございます。彩季（あき）と申します。\nゆっくり実況、ウェブサービス制作など気まぐれにやってます🐱\nこのサイトにはいくつかおもしろ要素があるので楽しんで行ってください。";
 
 export function Welcome() {
 	const [ready, setReady] = useState<boolean>(false);
