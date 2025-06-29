@@ -356,7 +356,7 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 										font-family: "BestTenCRT";
 									`}
 								>
-									クライアント
+									依頼者
 								</h3>
 								<span
 									className={css`
