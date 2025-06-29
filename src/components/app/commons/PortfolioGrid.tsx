@@ -111,6 +111,7 @@ export function PortfolioGrid({ hoverText = "", data: promiseData, aspect, backF
 												display: block;
 												border: none;
 												width: 100%;
+												cursor: pointer;
 
 												&:hover {
 													img {

@@ -43,7 +43,22 @@ export default function () {
 						box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 					`}
 				>
-					<p>( ㅎ ֊ㅎ )</p>
+					<p
+						className={css`
+							padding: 0 10px;
+							text-align: center;
+							line-height: 1.4;
+						`}
+					>
+						( ㅎ ֊ㅎ )<br />
+						<span
+							className={css`
+								font-size: 15px;
+							`}
+						>
+							このサイトはWordPressではないんじゃ
+						</span>
+					</p>
 				</div>
 			</div>
 		</>

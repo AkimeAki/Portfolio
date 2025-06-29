@@ -15,7 +15,7 @@ export const siteUrl = process.env.NEXT_PUBLIC_SITE_ROOT_URL ?? "";
 export const metaHead = ({
 	title,
 	isFullTitle = false,
-	description = "彩季のサイトです。制作実績など載せています。このサイトにはいくつかおもしろ要素があるので楽しんで行ってください。",
+	description = "彩季のポートフォリオサイトです。制作実績など載せています。このサイトにはいくつかおもしろ要素があるので楽しんで行ってください。",
 	canonicalPath,
 	baseTitle = pageTitle,
 	noindex = false

@@ -2,10 +2,11 @@ import AkiSignal from "@/components/background/AkiSignal";
 import type { Metadata } from "next";
 import { css } from "@kuma-ui/core";
 import Loading from "@/components/desktop/Loading";
+import { metaHead } from "@/libs/meta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metaHead({
 	title: "ページが見つかりませんでした"
-};
+});
 
 export default function (): JSX.Element {
 	return (
