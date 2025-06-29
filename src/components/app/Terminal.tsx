@@ -197,6 +197,13 @@ export function Terminal() {
 							e.preventDefault();
 						}
 					}}
+					onBeforeInput={(e) => {
+						const inputEvent = e.nativeEvent as InputEvent;
+						if (inputEvent.inputType === "insertLineBreak") {
+							e.preventDefault();
+							setToggleEnter((prev) => !prev);
+						}
+					}}
 					className={cx(
 						css`
 							width: 100%;
