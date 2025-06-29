@@ -5,7 +5,7 @@ import { metaHead } from "@/libs/meta";
 import { getPortfolio } from "@/libs/nilto";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { load } from "cheerio";
+// import { load } from "cheerio";
 
 export const dynamic = "force-dynamic";
 
@@ -77,10 +77,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
 		}
 
 		if (data.portfolioItemDetail !== undefined) {
-			const $ = load(data.portfolioItemDetail);
-			const body = $("body").text().trim();
+			// const $ = load(data.portfolioItemDetail);
+			// const body = $("body").text().trim();
 
-			description = body;
+			// description = body;
+			description = data.portfolioItemDetail;
 		}
 	} else {
 		const existApp = APPS_DATA.find((app) => app.id === data?.appId);
