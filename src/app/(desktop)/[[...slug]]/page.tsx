@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
 	}
 
 	return metaHead({
-		title: title ?? "",
+		title: title,
 		description: description ?? `彩季のポートフォリオサイトの『${title}』のページです。`
 	});
 }
