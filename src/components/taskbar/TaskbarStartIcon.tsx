@@ -23,7 +23,7 @@ export function TaskbarStartIcon({ href, alt, iconPath, text = "" }: Props) {
 					display: block;
 					width: 45px;
 					height: 45px;
-					background-color: var(--theme-red);
+					background-color: #ef425a;
 					border-style: solid;
 					border-width: 2px;
 					border-color: transparent;
