@@ -1,4 +1,6 @@
+import { portfolioCategoryMap } from "@/data/portfolio-def";
 import { useUpdateEffect } from "@/hooks/useUpdateEffect";
+import { pageTitle } from "@/libs/meta";
 import { createContext, type Dispatch, type SetStateAction, useContext, useEffect, useState } from "react";
 
 interface CategoryContextType {
@@ -49,6 +51,7 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 			return;
 		}
 
+		document.title = `${portfolioCategoryMap[category].title} - ${pageTitle}`;
 		window.history.pushState({ app: "portfolio" }, "", expectedPath);
 		setItemId("");
 	}, [category]);

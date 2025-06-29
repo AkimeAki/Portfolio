@@ -6,6 +6,7 @@ import type { PortfolioSchema } from "@/libs/nilto";
 import { useEffect, useState } from "react";
 import { PortfolioPage } from "@/components/app/commons/PortfolioPage";
 import { Loading } from "@/components/app/commons/Loading";
+import { pageTitle } from "@/libs/meta";
 
 interface Props {
 	hoverText?: string;
@@ -39,6 +40,12 @@ export function PortfolioGrid({ hoverText = "", data: promiseData, aspect, backF
 
 	useEffect(() => {
 		if (selectId !== null) {
+			const existItem = data.find((item) => String(item._id) === selectId);
+
+			if (existItem !== undefined) {
+				document.title = `${existItem.title} - ポートフォリオ - ${pageTitle}`;
+			}
+
 			window.history.pushState({ app: "portfolio" }, "", `/portfolio/item/${selectId}`);
 		}
 	}, [selectId]);

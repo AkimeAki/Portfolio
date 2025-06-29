@@ -151,7 +151,7 @@ export const APPS_DATA: App[] = [
 	},
 	{
 		id: "movie",
-		title: "映像",
+		title: "映像 - 作ったもの",
 		icon: <AppIcon imagePath="/app/tv.png" alt="テレビ" />,
 		url: {
 			path: "/portfolio/movie"
@@ -168,7 +168,7 @@ export const APPS_DATA: App[] = [
 	},
 	{
 		id: "illust",
-		title: "イラスト",
+		title: "イラスト - 作ったもの",
 		icon: <AppIcon imagePath="/app/illust.png" alt="イラスト" />,
 		url: {
 			path: "/portfolio/illust"
@@ -185,7 +185,7 @@ export const APPS_DATA: App[] = [
 	},
 	{
 		id: "model",
-		title: "3Dモデル",
+		title: "3Dモデル - 作ったもの",
 		icon: <AppIcon imagePath="/app/cube.png" alt="キューブ" />,
 		url: {
 			path: "/portfolio/model"
