@@ -14,9 +14,18 @@
 			cursor: text;
 		}
 	}
+
+	body {
+		&[data-grabbing="true"] {
+			cursor: grabbing !important;
+			* {
+				cursor: grabbing !important;
+			}
+		}
+	}
 }
 
 :root {
-	--theme-green: #00c6ac;
-	--theme-red: #c3375b;
+	--theme-green: #e3ffa2;
+	--theme-red: #ad2b46;
 }

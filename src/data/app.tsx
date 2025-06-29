@@ -19,18 +19,6 @@ const Terminal = dynamic(() => import("@/components/app/Terminal").then((mod) =>
 	loading: () => <Loading />
 });
 
-const Illust = dynamic(() => import("@/components/app/Illust").then((mod) => mod.Illust), {
-	loading: () => <Loading />
-});
-
-const Movie = dynamic(() => import("@/components/app/Movie").then((mod) => mod.Movie), {
-	loading: () => <Loading />
-});
-
-const Model = dynamic(() => import("@/components/app/Model").then((mod) => mod.Model), {
-	loading: () => <Loading />
-});
-
 const Blog = dynamic(() => import("@/components/app/Blog").then((mod) => mod.Blog), {
 	loading: () => <Loading />
 });
@@ -171,7 +159,10 @@ export const APPS_DATA: App[] = [
 		window: {
 			content: {
 				type: "component",
-				component: Movie
+				component: Portfolio
+			},
+			fullScreen: {
+				isFullScreen: true
 			}
 		}
 	},
@@ -185,7 +176,10 @@ export const APPS_DATA: App[] = [
 		window: {
 			content: {
 				type: "component",
-				component: Illust
+				component: Portfolio
+			},
+			fullScreen: {
+				isFullScreen: true
 			}
 		}
 	},
@@ -199,7 +193,10 @@ export const APPS_DATA: App[] = [
 		window: {
 			content: {
 				type: "component",
-				component: Model
+				component: Portfolio
+			},
+			fullScreen: {
+				isFullScreen: true
 			}
 		}
 	},

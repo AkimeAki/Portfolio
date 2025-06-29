@@ -47,19 +47,10 @@ export default function () {
 						animation-iteration-count: 5;
 						animation-timing-function: linear;
 						opacity: 0;
-						filter: brightness(80%);
+						filter: brightness(80%) drop-shadow(-3px 0 0 #363636) drop-shadow(0 -3px 0 #363636)
+							drop-shadow(3px 0 0 #363636) drop-shadow(0 3px 0 #363636);
 
-						&:after {
-							position: absolute;
-							content: "";
-							display: block;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%, -50%);
-							width: 100%;
-							height: 100%;
-							border: 4px solid #060303;
-						}
+						image-rendering: pixelated;
 
 						@media (max-width: 720px) {
 							filter: brightness(50%) opacity(0.4);
@@ -86,23 +77,12 @@ export default function () {
 							height: 100%;
 							user-select: none;
 							pointer-events: none;
+							mask-image: url(/desktop/new_video-mask.png);
+							mask-position: center;
+							mask-size: cover;
+							mask-repeat: no-repeat;
 						`}
 					>
-						<img
-							src="/desktop/new_video_frame-colorful.png"
-							alt=""
-							className={css`
-								position: absolute;
-								top: 50%;
-								left: 50%;
-								transform: translate(-50%, -50%);
-								width: calc(2600 / 1920 * 100%);
-								height: calc(1700 / 1080 * 100%);
-								z-index: 1;
-								opacity: 0.9;
-								filter: grayscale(1);
-							`}
-						/>
 						<div
 							className={css`
 								position: absolute;

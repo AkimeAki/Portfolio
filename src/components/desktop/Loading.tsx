@@ -516,7 +516,7 @@ export default function ({ notFound = false }: Props) {
 												left: 2px;
 												width: calc(100% - 4px);
 												height: calc(100% - 4px);
-												background-color: #caf8af;
+												background-color: var(--theme-green);
 											}
 
 											&:before {
@@ -553,7 +553,7 @@ export default function ({ notFound = false }: Props) {
 
 														@keyframes error-progress-color {
 															70% {
-																background-color: #caf8af;
+																background-color: var(--theme-green);
 															}
 
 															100% {
@@ -597,7 +597,7 @@ export default function ({ notFound = false }: Props) {
 
 													@keyframes error-progress-color {
 														70% {
-															background-color: #caf8af;
+															background-color: var(--theme-green);
 														}
 
 														100% {

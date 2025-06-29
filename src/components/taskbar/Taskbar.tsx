@@ -9,6 +9,7 @@ import { useStore } from "@nanostores/react";
 import { MinimizedAppArea } from "@/components/taskbar/MinimizedAppArea";
 import { linkData } from "@/data/links";
 import { memo } from "react";
+import { TaskbarVolume } from "@/components/taskbar/TaskbarVolume";
 
 const TaskbarIconMemo = memo(() => {
 	return (
@@ -182,39 +183,16 @@ export function Taskbar() {
 					className={css`
 						position: absolute;
 						top: 50%;
-						right: 170px;
+						right: 190px;
 						transform: translateY(-50%);
-						height: 50%;
-						user-select: none;
-						pointer-events: none;
+						z-index: calc(infinity - 1);
 
-						@media (max-width: 1220px) {
-							width: 30vw;
-							height: auto;
-						}
-
-						@media (max-width: 920px) {
+						@container (max-width: 720px) {
 							display: none;
 						}
 					`}
 				>
-					<img
-						src="/desktop/barcode.png"
-						loading="eager"
-						data-loading-image
-						alt=""
-						className={css`
-							height: 100%;
-							image-rendering: pixelated;
-							mask-image: url(/desktop/barcode-mask.png);
-							vertical-align: bottom;
-
-							@media (max-width: 1220px) {
-								width: 100%;
-								height: auto;
-							}
-						`}
-					/>
+					<TaskbarVolume />
 				</div>
 				<TaskbarClock />
 			</div>

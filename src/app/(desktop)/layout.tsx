@@ -109,7 +109,7 @@ export default function ({ children }: React.PropsWithChildren) {
 									pointer-events: none;
 
 									video:nth-child(1) {
-										opacity: 0.05;
+										display: none;
 									}
 
 									video:nth-child(2) {

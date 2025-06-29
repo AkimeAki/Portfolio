@@ -64,7 +64,7 @@ export function TaskbarStart() {
 		<>
 			<div
 				ref={areaElement}
-				className={[
+				className={cx(
 					css`
 						position: fixed;
 						bottom: 80px;
@@ -98,15 +98,14 @@ export function TaskbarStart() {
 							max-height: 100%;
 						}
 					`,
-					isOpen
-						? css`
-								opacity: 1;
-								user-select: auto;
-								pointer-events: all;
-								transform: translateY(0);
-							`
-						: ""
-				].join(" ")}
+					isOpen &&
+						css`
+							opacity: 1;
+							user-select: auto;
+							pointer-events: all;
+							transform: translateY(0);
+						`
+				)}
 			>
 				<h2
 					className={css`
