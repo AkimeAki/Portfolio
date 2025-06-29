@@ -18,6 +18,7 @@ export function MinimizedAppArea() {
 				return (
 					<button
 						key={id}
+						tabIndex={0}
 						type="button"
 						onClick={() => {
 							dispatch({ type: "SELECT", payload: { id: state.appData.id } });
@@ -36,6 +37,10 @@ export function MinimizedAppArea() {
 									&:hover {
 										border-color: #75182c;
 									}
+								}
+
+								&:focus {
+									border-color: #75182c;
 								}
 							`,
 							state.isFocused &&

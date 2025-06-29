@@ -123,6 +123,7 @@ export function TaskbarVolume() {
 				/>
 				<button
 					type="button"
+					tabIndex={-1}
 					style={{ top: `${100 - volume}%` }}
 					className={css`
 						position: absolute;
@@ -158,6 +159,7 @@ export function TaskbarVolume() {
 			<button
 				type="button"
 				ref={buttonElement}
+				tabIndex={-1}
 				onClick={() => {
 					setIsOpen((prev) => !prev);
 				}}

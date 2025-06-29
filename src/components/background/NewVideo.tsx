@@ -93,6 +93,7 @@ export default function () {
 							`}
 						/>
 						<iframe
+							tabIndex={-1}
 							title="新着動画"
 							src="https://www.youtube.com/embed/?list=UUHV3Taosn76pn9_ip1u7Zkg&loop=1&autoplay=1&mute=1&rel=0&controls=0&playsinline=1"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

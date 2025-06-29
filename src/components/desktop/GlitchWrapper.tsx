@@ -54,6 +54,7 @@ export default function ({ children, style, className }: React.PropsWithChildren
 		<div style={style} className={cx(className)}>
 			{children}
 			<video
+				tabIndex={-1}
 				className={css`
 					position: absolute;
 					top: 0;
@@ -72,6 +73,7 @@ export default function ({ children, style, className }: React.PropsWithChildren
 				playsInline
 			/>
 			<video
+				tabIndex={-1}
 				className={css`
 					position: absolute;
 					top: 0;

@@ -11,6 +11,7 @@ interface Props {
 	onClick?: () => void;
 	target?: string;
 	className?: string;
+	tabIndex?: number;
 }
 
 export function AppIcon({
@@ -20,10 +21,12 @@ export function AppIcon({
 	isPixel = false,
 	onClick,
 	target = "_self",
-	className
+	className,
+	tabIndex
 }: PropsWithChildren<Props>) {
 	return (
 		<button
+			tabIndex={tabIndex}
 			type="button"
 			onClick={() => {
 				if (onClick !== undefined) {
@@ -54,6 +57,15 @@ export function AppIcon({
 							.app-icon-name {
 								color: white;
 							}
+						}
+					}
+
+					&:focus {
+						border-color: #d8fa8e88;
+						background-color: #d8fa8e55;
+
+						.app-icon-name {
+							color: white;
 						}
 					}
 

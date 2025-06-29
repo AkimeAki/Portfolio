@@ -19,6 +19,7 @@ export function TaskbarStartIcon({ href, alt, iconPath, text = "" }: Props) {
 			<a
 				href={href}
 				target="_blank"
+				data-taskbar-start-icon
 				className={css`
 					display: block;
 					width: 45px;
@@ -35,6 +36,10 @@ export function TaskbarStartIcon({ href, alt, iconPath, text = "" }: Props) {
 						&:hover {
 							border-color: var(--theme-green);
 						}
+					}
+
+					&:focus {
+						border-color: var(--theme-green);
 					}
 				`}
 				rel="noreferrer"

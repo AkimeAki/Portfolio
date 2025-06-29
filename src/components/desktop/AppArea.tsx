@@ -45,6 +45,7 @@ export function DesktopIcon({ children, id, imgSrc, isPixel }: PropsWithChildren
 
 	return (
 		<AppIcon
+			tabIndex={0}
 			imgSrc={imgSrc}
 			onClick={() => {
 				appClick(id);

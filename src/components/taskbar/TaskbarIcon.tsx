@@ -11,6 +11,7 @@ export function TaskbarIcon({ href, alt, iconPath }: Props) {
 		<a
 			href={href}
 			target="_blank"
+			tabIndex={0}
 			className={css`
 				display: block;
 				width: 40px;
@@ -28,6 +29,10 @@ export function TaskbarIcon({ href, alt, iconPath }: Props) {
 					&:hover {
 						border-color: var(--theme-green);
 					}
+				}
+
+				&:focus {
+					border-color: var(--theme-green);
 				}
 			`}
 			rel="noreferrer"

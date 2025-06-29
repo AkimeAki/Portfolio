@@ -9,7 +9,7 @@ export function TaskbarStart() {
 	const [imagePath, setImagePath] = useState<string>("/emoji/1.png");
 	const [ready, setReady] = useState<boolean>(false);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
-	const buttonElement = useRef<HTMLDivElement>(null);
+	const buttonElement = useRef<HTMLButtonElement>(null);
 	const areaElement = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -59,6 +59,40 @@ export function TaskbarStart() {
 			unmounted = true;
 		};
 	}, [ready, isOpen]);
+
+	useEffect(() => {
+		const taskbarStartIcons = document.querySelectorAll<HTMLAnchorElement>("[data-taskbar-start-icon]");
+
+		function focus() {
+			setIsOpen(true);
+		}
+
+		function blur() {
+			let isActive = false;
+			for (const taskbarStartIcon of taskbarStartIcons) {
+				if (taskbarStartIcon.matches(":focus")) {
+					isActive = true;
+					break;
+				}
+			}
+
+			if (!isActive) {
+				setIsOpen(false);
+			}
+		}
+
+		for (const taskbarStartIcon of taskbarStartIcons) {
+			taskbarStartIcon.addEventListener("focus", focus);
+			taskbarStartIcon.addEventListener("blur", blur);
+		}
+
+		return () => {
+			for (const taskbarStartIcon of taskbarStartIcons) {
+				taskbarStartIcon.removeEventListener("focus", focus);
+				taskbarStartIcon.removeEventListener("blur", blur);
+			}
+		};
+	}, []);
 
 	return (
 		<>
@@ -169,7 +203,9 @@ export function TaskbarStart() {
 						))}
 				</div>
 			</div>
-			<div
+			<button
+				type="button"
+				tabIndex={0}
 				ref={buttonElement}
 				onClick={() => {
 					setIsOpen((prev) => {
@@ -200,6 +236,10 @@ export function TaskbarStart() {
 								border-color: var(--theme-green);
 							}
 						}
+
+						&:focus {
+							border-color: var(--theme-green);
+						}
 					`,
 					isOpen
 						? css`
@@ -220,7 +260,7 @@ export function TaskbarStart() {
 						pointer-events: none;
 					`}
 				/>
-			</div>
+			</button>
 		</>
 	);
 }
