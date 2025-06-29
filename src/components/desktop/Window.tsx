@@ -196,6 +196,7 @@ export function Window({ children, id, appData, ready: _ready = true }: PropsWit
 					dispatch({ type: "SELECT", payload: { id } });
 				}
 			}}
+			data-window
 			data-app-id={id}
 			style={{ "--z-index": state.sortOrder.indexOf(id) } as React.CSSProperties}
 			className={cx(

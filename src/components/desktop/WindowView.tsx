@@ -40,6 +40,30 @@ export function WindowView({ defaultAppId }: Props) {
 		}
 	}, [$isOSReady]);
 
+	useEffect(() => {
+		function resize() {
+			const appWindows = document.querySelectorAll<HTMLDivElement>("[data-window]");
+			for (const appWindow of appWindows) {
+				const rect = appWindow.getBoundingClientRect();
+				const outOfBounds =
+					rect.left < 0 || rect.top < 0 || rect.right > window.innerWidth || rect.bottom > window.innerHeight;
+
+				if (outOfBounds) {
+					const appId = appWindow.dataset.appId;
+					if (appId !== undefined) {
+						dispatch({ type: "CLOSE", payload: { id: appId } });
+					}
+				}
+			}
+		}
+
+		window.addEventListener("resize", resize);
+
+		return () => {
+			window.removeEventListener("resize", resize);
+		};
+	}, []);
+
 	return (
 		<>
 			{[...state.apps].map(([id, state]) => {
