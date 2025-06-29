@@ -34,13 +34,13 @@ export function MinimizedAppArea() {
 
 								@media (hover: hover) {
 									&:hover {
-										border-color: var(--theme-red);
+										border-color: #75182c;
 									}
 								}
 							`,
 							state.isFocused &&
 								css`
-									border-color: var(--theme-red);
+									border-color: #75182c;
 								`
 						)}
 					>
