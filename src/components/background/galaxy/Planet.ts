@@ -65,29 +65,29 @@ export class Planet {
 			node.receiveShadow = true;
 
 			// 縁取り
-			// if ((node as THREE.Mesh).isMesh && (node as THREE.Mesh).geometry) {
-			// 	const mesh = node as THREE.Mesh;
+			if ((node as THREE.Mesh).isMesh && (node as THREE.Mesh).geometry) {
+				const mesh = node as THREE.Mesh;
 
-			// 	// アウトライン用のメッシュ
-			// 	const outline = new THREE.Mesh(
-			// 		mesh.geometry,
-			// 		new THREE.MeshBasicMaterial({
-			// 			color: 0x000000,
-			// 			side: THREE.BackSide
-			// 		})
-			// 	);
+				// アウトライン用のメッシュ
+				const outline = new THREE.Mesh(
+					mesh.geometry,
+					new THREE.MeshBasicMaterial({
+						color: 0xad2b46,
+						side: THREE.BackSide
+					})
+				);
 
-			// 	outline.scale.multiplyScalar(1.05);
-			// 	outline.name = "outline";
+				outline.scale.multiplyScalar(1.03);
+				outline.name = "outline";
 
-			// 	// メッシュの親に追加
-			// 	if (mesh.parent !== null) {
-			// 		mesh.parent.add(outline);
-			// 		outline.position.copy(mesh.position);
-			// 		outline.quaternion.copy(mesh.quaternion);
-			// 		outline.rotation.copy(mesh.rotation);
-			// 	}
-			// }
+				// メッシュの親に追加
+				if (mesh.parent !== null) {
+					mesh.parent.add(outline);
+					outline.position.copy(mesh.position);
+					outline.quaternion.copy(mesh.quaternion);
+					outline.rotation.copy(mesh.rotation);
+				}
+			}
 		});
 		this.scene.add(model.scene);
 		this.mesh = model.scene;

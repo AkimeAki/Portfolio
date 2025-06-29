@@ -23,12 +23,34 @@ export default function () {
 
 	useEffect(() => {
 		let unmounted = false;
+		let renderer: THREE.WebGLRenderer | null = null;
+		let scene: THREE.Scene | null = null;
+		let camera: THREE.PerspectiveCamera | null = null;
+
+		const onResize = (): void => {
+			// サイズを取得
+			const width = window.innerWidth;
+			const height = window.innerHeight;
+
+			// レンダラーのサイズ調整
+			// renderer.setPixelRatio(window.devicePixelRatio);
+			if (renderer !== null) {
+				renderer.setPixelRatio(1);
+				renderer.setSize(width, height);
+			}
+
+			// カメラのアスペクト比を正す
+			if (camera !== null) {
+				camera.aspect = width / height;
+				camera.updateProjectionMatrix();
+			}
+		};
 
 		if (isReady) {
 			if (canvasElement.current !== null) {
 				const canvas = canvasElement.current;
 
-				const renderer = new THREE.WebGLRenderer({
+				renderer = new THREE.WebGLRenderer({
 					canvas,
 					alpha: true, // 透明度を有効化
 					antialias: false // 表面を滑らかにする
@@ -44,7 +66,7 @@ export default function () {
 				renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
 				// ゲーム用シーン作成
-				const scene = new THREE.Scene();
+				scene = new THREE.Scene();
 
 				// 全方面を照らすライト
 				const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 3);
@@ -72,7 +94,7 @@ export default function () {
 				// scene.add(new THREE.CameraHelper(directionalLight.shadow.camera));
 
 				// カメラ
-				const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+				camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
 				camera.rotation.order = "ZYX"; // なぜか縦を動かすと斜めに傾くのでそれ防止
 				camera.lookAt(new THREE.Vector3(0, 0, 0));
 
@@ -135,7 +157,9 @@ export default function () {
 
 					lastUpdateTime = now - (deltaTime % (1000 / maxFPS));
 
-					renderer.clear();
+					if (renderer !== null) {
+						renderer.clear();
+					}
 
 					hiyokoPlanet.tracking(orbit1, 0.002 * speed, 0, 0);
 					hiyokoPlanet.rotate(0.2, 1, 1, 1);
@@ -144,28 +168,17 @@ export default function () {
 					// piglinPlanet.rotate(0.2, 1, 1, 1);
 
 					// カメラ
-					camera.position.copy(new THREE.Vector3((window.innerWidth / 3) * 0.1, 10, 50));
+					if (camera !== null) {
+						camera.position.copy(new THREE.Vector3((window.innerWidth / 3) * 0.1, 10, 50));
+					}
 
 					// カメラを指定
-					renderer.render(scene, camera);
+					if (renderer !== null && scene !== null && camera !== null) {
+						renderer.render(scene, camera);
+					}
 				};
 
 				tick();
-
-				const onResize = (): void => {
-					// サイズを取得
-					const width = window.innerWidth;
-					const height = window.innerHeight;
-
-					// レンダラーのサイズ調整
-					// renderer.setPixelRatio(window.devicePixelRatio);
-					renderer.setPixelRatio(1);
-					renderer.setSize(width, height);
-
-					// カメラのアスペクト比を正す
-					camera.aspect = width / height;
-					camera.updateProjectionMatrix();
-				};
 
 				// リサイズ
 				onResize();
@@ -175,6 +188,15 @@ export default function () {
 
 		return () => {
 			unmounted = true;
+			if (renderer !== null) {
+				renderer.dispose();
+			}
+
+			if (scene !== null) {
+				scene.clear();
+			}
+
+			window.removeEventListener("resize", onResize);
 		};
 	}, [isReady]);
 
