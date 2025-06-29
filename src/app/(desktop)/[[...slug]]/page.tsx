@@ -5,7 +5,6 @@ import { metaHead } from "@/libs/meta";
 import { getPortfolio } from "@/libs/nilto";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-// import { load } from "cheerio";
 
 export const dynamic = "force-dynamic";
 
@@ -66,8 +65,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
 		notFound();
 	}
 
-	let title: string | undefined = "";
-	let description: string | undefined = "";
+	let title: string | undefined = undefined;
+	let description: string | undefined = undefined;
 
 	if (data?.portfolioCategoryId !== undefined) {
 		title = portfolioCategoryMap[data.portfolioCategoryId]?.title;
@@ -77,15 +76,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
 		}
 
 		if (data.portfolioItemDetail !== undefined) {
-			// const $ = load(data.portfolioItemDetail);
-			// const body = $("body").text().trim();
+			const detail = data.portfolioItemDetail;
 
-			// description = body;
-			description = data.portfolioItemDetail;
+			description = `彩季のポートフォリオサイトの『${data.portfolioItemTitle}』のページです。${detail.replace(/<[^>]+>/g, "")}`;
 		}
 	} else {
 		const existApp = APPS_DATA.find((app) => app.id === data?.appId);
 		title = existApp?.title;
+	}
+
+	if (data !== undefined && data.appId === undefined) {
+		return metaHead({});
 	}
 
 	return metaHead({
