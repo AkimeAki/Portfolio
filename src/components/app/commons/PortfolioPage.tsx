@@ -173,8 +173,7 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 										/>
 									</div>
 								) : (
-									data["3dmodel"] === undefined &&
-									data.eyecatch !== undefined && (
+									data["3dmodel"] === undefined && (
 										<div
 											className={css`
 												position: relative;
@@ -186,7 +185,11 @@ export function PortfolioPage({ data, linkText, backFunction }: Props) {
 											`}
 										>
 											<img
-												src={`${data.eyecatch.url}?width=560&format=webp`}
+												src={
+													data.eyecatch !== undefined
+														? `${data.eyecatch?.url}?width=560&format=webp`
+														: "/portfolio/no-image.png"
+												}
 												alt={data.title}
 												className={css`
 													width: 100%;
