@@ -60,7 +60,7 @@ export function AppIcon({
 						}
 					}
 
-					&:focus {
+					&:focus-visible {
 						border-color: #d8fa8e88;
 						background-color: #d8fa8e55;
 

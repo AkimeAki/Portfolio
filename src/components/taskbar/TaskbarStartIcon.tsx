@@ -38,7 +38,7 @@ export function TaskbarStartIcon({ href, alt, iconPath, text = "" }: Props) {
 						}
 					}
 
-					&:focus {
+					&:focus-visible {
 						border-color: var(--theme-green);
 					}
 				`}

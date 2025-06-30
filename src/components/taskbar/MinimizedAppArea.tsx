@@ -39,7 +39,7 @@ export function MinimizedAppArea() {
 									}
 								}
 
-								&:focus {
+								&:focus-visible {
 									border-color: #75182c;
 								}
 							`,

@@ -237,7 +237,7 @@ export function TaskbarStart() {
 							}
 						}
 
-						&:focus {
+						&:focus-visible {
 							border-color: var(--theme-green);
 						}
 					`,
